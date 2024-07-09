@@ -1,4 +1,4 @@
-package DTO;
+package smu.DTO;
 
 public class Utente {
 
