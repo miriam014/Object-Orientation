@@ -5,8 +5,12 @@ import java.sql.SQLException;
 
 public interface UtenteDAO {
 
-    public boolean insert(Utente user) throws SQLException;
-    public boolean update(Utente user) throws SQLException;
-    public boolean delete(Utente user) throws SQLException;
+    Utente getByUsername(String username) throws SQLException;
+    Utente checkLogin(String username, String password) throws SQLException;
+     boolean insert(Utente user) throws SQLException;
+     boolean update(Utente user) throws SQLException;
+     boolean delete(Utente user) throws SQLException;
+
+
 
 }
