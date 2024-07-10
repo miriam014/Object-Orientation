@@ -26,5 +26,4 @@ public class Database {
             System.out.println("Errore: " + ex.getMessage());
         }
     }
-
 }
