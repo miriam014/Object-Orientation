@@ -9,17 +9,17 @@ public class Utente {
     private String Telefono;
     private String Email;
     private String Password;
-    private int IdFamiglia;
+    private String IdFamiglia;
 
     // Costruttore
-    public Utente(String username, String nome, String cognome, String telefono, String email, String password, int id_famiglia){
+    public Utente(String username, String nome, String cognome, String telefono, String email, String password, String idFamiglia){
         this.Username = username;
         this.Nome = nome;
         this.Cognome = cognome;
         this.Telefono = telefono;
         this.Email = email;
         this.Password = password;
-        this.IdFamiglia = id_famiglia;
+        this.IdFamiglia = idFamiglia;
     }
 
     // funzioni getter e setter
@@ -71,12 +71,18 @@ public class Utente {
         this.Password = password;
     }
 
-    public int getIdFamiglia() {
+    public String getIdFamiglia() {
         return IdFamiglia;
     }
 
-    public void setIdFamiglia(int idFamiglia) {
+    public void setIdFamiglia(String idFamiglia) {
         this.IdFamiglia = idFamiglia;
+    }
+
+    @Override
+    public String toString(){
+        return "UTENTE: |Username = "+ Username + "|\t" + "|Nome = " + Nome + "|\t" + "|Cognome = " + Cognome +"|\t" + "|Telefono = "+
+        Telefono+ "|\t" + "|Email = "+ Email+ "|\t" + "|Password = " + Password + "|\t" + "|IdFamiglia = " + IdFamiglia+"|";
     }
 
 }

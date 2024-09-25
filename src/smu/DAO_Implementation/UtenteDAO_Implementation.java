@@ -29,7 +29,7 @@ public class UtenteDAO_Implementation  implements UtenteDAO {
             String telefono = rs.getString("Telefono");
             String email = rs.getString("Email");
             String password = rs.getString("Password");
-            Integer id_famiglia = rs.getInt("IdFamiglia");
+            String id_famiglia = rs.getString("IdFamiglia");
             user = new Utente(username2, nome, cognome, telefono, email, password,id_famiglia);
         }
         rs.close();
@@ -50,7 +50,7 @@ public class UtenteDAO_Implementation  implements UtenteDAO {
         p.setString(4, user.getTelefono());
         p.setString(5, user.getEmail());
         p.setString(6, user.getPassword());
-        p.setInt(7, user.getIdFamiglia());
+        p.setString(7, user.getIdFamiglia());
 
         int result = p.executeUpdate();
         p.close();
@@ -71,7 +71,7 @@ public class UtenteDAO_Implementation  implements UtenteDAO {
         p.setString(4, user.getTelefono());
         p.setString(5, user.getEmail());
         p.setString(6, user.getPassword());
-        p.setInt(7, user.getIdFamiglia());
+        p.setString(7, user.getIdFamiglia());
 
         int result = p.executeUpdate();
         p.close();

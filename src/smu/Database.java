@@ -1,5 +1,4 @@
 package smu;
-
 import java.sql.*;
 
 public class Database {
