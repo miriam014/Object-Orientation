@@ -21,12 +21,12 @@
             <TextField layoutX="67.0" layoutY="175.0" promptText="username" style="-fx-background-color: transparent; -fx-border-color: #008080; -fx-border-width: 0px 0px 2px 0px;" />
             <ImageView fitHeight="23.0" fitWidth="21.0" layoutX="35.0" layoutY="180.0" pickOnBounds="true" smooth="false">
                <image>
-                  <Image url="@../../Downloads/Telegram%20Desktop/person.png" />
+                  <Image url="@/images/person.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="23.0" fitWidth="23.0" layoutX="35.0" layoutY="217.0" pickOnBounds="true" smooth="false">
                <image>
-                  <Image url="@../../Downloads/Telegram%20Desktop/lock-2.png" />
+                  <Image url="@/images/lock-2.png" />
                </image>
             </ImageView>
          </children>
