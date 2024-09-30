@@ -31,5 +31,7 @@ public class Main {
         Categoria categoria = new Categoria("Alimentari", "Cibo");
         System.out.println(categoria.toString());
 
+        
+
     }
 }

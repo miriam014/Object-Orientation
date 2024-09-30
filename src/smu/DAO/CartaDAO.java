@@ -8,4 +8,5 @@ public interface CartaDAO {
     boolean insert(Carta card) throws SQLException;
     boolean update(Carta card) throws SQLException;
     boolean delete(String cardNumber) throws SQLException;
+
 }

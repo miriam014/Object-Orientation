@@ -21,8 +21,6 @@ public class Utente {
         this.Password = password;
         this.IdFamiglia = idFamiglia;
     }
-
-    // funzioni getter e setter
     public String getUsername() {
         return Username;
     }
