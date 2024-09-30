@@ -38,6 +38,17 @@ public class UtenteDAO_Implementation  implements UtenteDAO {
     }
 
     @Override
+    public Utente getByEmail(String email) throws SQLException {
+        return null;
+    }
+
+    @Override
+    public Utente getByCF(String cf) throws SQLException {
+        return null;
+    }
+
+
+    @Override
     public boolean insert(Utente user) throws SQLException{
         Connection connection = Database.getConnection();
 
