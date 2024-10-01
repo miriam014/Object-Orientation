@@ -1,29 +1,31 @@
 package smu.DTO;
 
+import java.sql.Date;
 import java.sql.Time;
-import java.time.LocalDate;
 
 public class Transazione {
     private String IDTransazione;
     private String CRO;
     private Float Importo;
-    private LocalDate Data;
+    private Date Data;
     private Time Ora;
     private String Causale;
     private String TipoTransazione;
     private String Mittente;
     private String Destinatario;
+    private String NumeroCarta;
 
-    public Transazione(String IDTransazione, String CRO, Float Importo, LocalDate Data, Time Ora, String Causale, String TipoTransazione, String Mittente, String Destinatario) {
-        this.IDTransazione = IDTransazione;
-        this.CRO = CRO;
-        this.Importo = Importo;
-        this.Data = Data;
-        this.Ora = Ora;
-        this.Causale = Causale;
-        this.TipoTransazione = TipoTransazione;
-        this.Mittente = Mittente;
-        this.Destinatario = Destinatario;
+    public Transazione(String idTransazione, String cro, Float importo, Date data, Time ora, String causale, String tipoTransazione, String mittente, String destinatario, String numeroCarta) {
+        this.IDTransazione = idTransazione;
+        this.CRO = cro;
+        this.Importo = importo;
+        this.Data = data;
+        this.Ora = ora;
+        this.Causale = causale;
+        this.TipoTransazione = tipoTransazione;
+        this.Mittente = mittente;
+        this.Destinatario = destinatario;
+        this.NumeroCarta = numeroCarta;
     }
 
     public String getIDTransazione() {
@@ -38,7 +40,7 @@ public class Transazione {
         return Importo;
     }
 
-    public LocalDate getData() {
+    public Date getData() {
         return Data;
     }
 
@@ -74,7 +76,7 @@ public class Transazione {
         this.Importo = Importo;
     }
 
-    public void setData(LocalDate Data) {
+    public void setData(Date Data) {
         this.Data = Data;
     }
 
@@ -96,6 +98,14 @@ public class Transazione {
 
     public void setDestinatario(String Destinatario) {
         this.Destinatario = Destinatario;
+    }
+
+    public String getNumeroCarta() {
+        return NumeroCarta;
+    }
+
+    public void setNumeroCarta(String NumeroCarta) {
+        this.NumeroCarta = NumeroCarta;
     }
 
     @Override

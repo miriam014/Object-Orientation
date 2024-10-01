@@ -116,16 +116,16 @@ public class UtenteDAOimp implements UtenteDAO {
     public boolean update(Utente user) throws SQLException {
         Connection connection = Database.getConnection();
 
-        String sql = "UPDATE smu.Utente SET Username = ?,Nome = ?, Cognome = ?, Telefono = ?, Email = ?, Password = ?, IdFamiglia = ?";
+        String sql = "UPDATE smu.Utente SET Nome = ?, Cognome = ?, Telefono = ?, Email = ?, Password = ?, IdFamiglia = ? WHERE Username = ?";
         PreparedStatement ps = connection.prepareStatement(sql);
 
-        ps.setString(1, user.getUsername());
-        ps.setString(2, user.getNome());
-        ps.setString(3, user.getCognome());
-        ps.setString(4, user.getTelefono());
-        ps.setString(5, user.getEmail());
-        ps.setString(6, user.getPassword());
-        ps.setString(7, user.getIdFamiglia());
+        ps.setString(1, user.getNome());
+        ps.setString(2, user.getCognome());
+        ps.setString(3, user.getTelefono());
+        ps.setString(4, user.getEmail());
+        ps.setString(5, user.getPassword());
+        ps.setString(6, user.getIdFamiglia());
+        ps.setString(7, user.getUsername());
 
         int result = ps.executeUpdate();
         ps.close();
