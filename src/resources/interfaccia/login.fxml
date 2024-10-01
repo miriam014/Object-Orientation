@@ -4,7 +4,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="399.0" prefWidth="448.0" style="-fx-background-radius: 15px;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="399.0" prefWidth="448.0" style="-fx-background-radius: 15px;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smu.Control.LoginControl">
    <left>
       <AnchorPane prefHeight="400.0" prefWidth="162.0" style="-fx-background-color: #008080;" BorderPane.alignment="CENTER">
          <children>
@@ -18,9 +18,9 @@
    <right>
       <AnchorPane prefHeight="400.0" prefWidth="423.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="118.0" layoutY="279.0" mnemonicParsing="false" style="-fx-background-color: #008080; -fx-border-color: transparent; -fx-background-radius: 15px;" text="Login" textFill="WHITE" />
-            <PasswordField layoutX="67.0" layoutY="214.0" promptText="password" style="-fx-background-color: transparent; -fx-border-color: #008080; -fx-border-width: 0px 0px 2px 0px;" />
-            <TextField layoutX="67.0" layoutY="175.0" promptText="email" style="-fx-background-color: transparent; -fx-border-color: #008080; -fx-border-width: 0px 0px 2px 0px;" />
+            <Button fx:id="button" layoutX="118.0" layoutY="279.0" mnemonicParsing="false" style="-fx-background-color: #008080; -fx-border-color: transparent; -fx-background-radius: 15px;" text="Login" textFill="WHITE" onAction="#login"/>
+            <PasswordField fx:id="passwordField" layoutX="67.0" layoutY="214.0" promptText="password" style="-fx-background-color: transparent; -fx-border-color: #008080; -fx-border-width: 0px 0px 2px 0px;" />
+            <TextField fx:id="emailField" layoutX="67.0" layoutY="175.0" promptText="email" style="-fx-background-color: transparent; -fx-border-color: #008080; -fx-border-width: 0px 0px 2px 0px;" />
             <ImageView fitHeight="23.0" fitWidth="21.0" layoutX="35.0" layoutY="180.0" pickOnBounds="true" smooth="false">
                <image>
                   <Image url="@/images/person.png" />

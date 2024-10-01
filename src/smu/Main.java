@@ -1,4 +1,3 @@
-// Starter.java
 package smu;
 
 import javafx.application.Application;
@@ -6,65 +5,46 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import smu.DTO.Famiglia;
-import smu.DTO.Utente;
-import smu.DTO.Carta;
-import smu.DTO.ContoCorrente;
-import smu.DTO.Categoria;
 
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 
-/**
- * Classe Starter dell'applicazione JavaFX.
- * Estende javafx.application.Application e configura lo stage principale.
- */
 public class Main extends Application {
+    private static Stage primaryStage; // Riferimento allo stage principale
+
     public static void main(String[] args) {
         launch(args); // Lancia l'applicazione JavaFX
     }
 
     @Override
-    public void start(Stage primaryStage) {
-        try {
-            // Codice di debug
-            System.out.println("Avvio del metodo start...");
+    public void start(Stage primaryStage) throws IOException {
+        Main.primaryStage = primaryStage; // Imposta il palco principale
+        System.out.println("Avvio del metodo start...");
 
-            // Esecuzione del codice di Main.java
-            eseguiProve();
+        //eseguiProve();
 
-            // Carica il file FXML della schermata di login
-            URL fxmlLocation = getClass().getResource("/interfaccia/login.fxml");
-            if (fxmlLocation == null) {
-                System.out.println("login.fxml non trovato!");
-                return;
-            } else {
-                System.out.println("login.fxml trovato: " + fxmlLocation);
-            }
+        // Configura lo stage principale
+        primaryStage.setTitle("Applicazione login"); // Titolo della finestra
+        primaryStage.setResizable(false); // Impedisce il ridimensionamento della finestra
+        setRoot("login");
+    }
 
-            Parent root = FXMLLoader.load(fxmlLocation);
 
-            // Crea una nuova scena con il layout caricato
-            Scene scene = new Scene(root, 448, 399); // Dimensioni della finestra
+    public static void setRoot(String fxml) throws IOException {
+        // Carica il file FXML
+        URL fxmlLocation = Main.class.getResource("/interfaccia/" + fxml + ".fxml");
+        Parent root = FXMLLoader.load(fxmlLocation);
 
-            // Configura lo stage principale
-            primaryStage.setTitle("Applicazione Login"); // Titolo della finestra
-            primaryStage.setScene(scene); // Imposta la scena
-            primaryStage.setResizable(false); // Impedisce il ridimensionamento della finestra
-            primaryStage.show(); // Mostra la finestra
-
-            // Codice di debug
-            System.out.println("Stage mostrato correttamente.");
-
-        } catch (IOException e) {
-            e.printStackTrace(); // Stampa l'errore
-        }
+        // Cambia la root della scena attuale
+        primaryStage.setScene(new Scene(root, 448, 399)); // Imposta la scena con le dimensioni
+        primaryStage.getScene().setRoot(root);
+        primaryStage.show();
     }
 
     /**
      * Metodo per eseguire le prove iniziali.
-     */
+
     private void eseguiProve() {
         // Prove da cancellare poi
         Utente utente = new Utente("giulia28", "Giulia", "Gargiulo", "3664842648", "giulia@hotmail.it", "1234","1");
@@ -82,5 +62,7 @@ public class Main extends Application {
         Categoria categoria = new Categoria("Alimentari", "Cibo");
         System.out.println(categoria.toString());
     }
+     */
+
 }
 
