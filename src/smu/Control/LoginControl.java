@@ -25,7 +25,7 @@ public class LoginControl {
                 } else {
                         //aggiungere il cambio di pagina
                 }
-            } catch (SQLException | IOException e) {
+            } catch (SQLException e) {
                 System.err.println("Errore: " + e.getMessage());
             }
         }
