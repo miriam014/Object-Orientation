@@ -17,6 +17,13 @@ public class CartaDAOimp implements CartaDAO {
         Connection connection = Database.getConnection();
         String sql = "INSERT INTO smu.Carta(NumeroCarta, DataScadenza, CVV, Saldo, IDUtente) VALUES(?,?,?,?,?)";
 
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ps.setString(1, card.getNumeroCarta());
+        ps.setDate(2, card.getDataScadenza());
+        ps.setString(3, card.getCVV());
+        ps.setFloat(4, card.getSaldo());
+        ps.setString(5, card.getIDUtente());
+
         return false;
     }
 
