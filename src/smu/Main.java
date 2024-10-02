@@ -37,7 +37,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(fxmlLocation);
 
         // Cambia la root della scena attuale
-        primaryStage.setScene(new Scene(root, 448, 399)); // Imposta la scena con le dimensioni
+        primaryStage.setScene(new Scene(root, 400, 350)); // Imposta la scena con le dimensioni
         primaryStage.getScene().setRoot(root);
         primaryStage.show();
     }
