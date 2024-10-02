@@ -1,0 +1,24 @@
+/* Stile per i pulsanti del menu */
+.menu-item {
+    -fx-background-color: #66b2b2; /* Colore di sfondo per il pulsante */
+    -fx-text-fill: white; /* Colore del testo */
+    -fx-font-size: 12px; /* Dimensione del testo */
+}
+
+.menu-item:hover {
+    -fx-background-color: #339999; /* Colore più scuro quando il pulsante è in hover */
+}
+
+/* Stile per i pulsanti */
+.button {
+    -fx-background-color: #339999; /* Pulsanti in una tonalità teal più scura */
+    -fx-text-fill: white; /* Testo bianco sui pulsanti */
+    -fx-font-size: 12px;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+.button:hover {
+    -fx-background-color: #008080; /* Colore più scuro quando il pulsante è in hover */
+}

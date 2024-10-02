@@ -138,7 +138,7 @@ public class UtenteDAOimp implements UtenteDAO {
 
         Connection connection = Database.getConnection();
 
-        String sql ="DELETE FROM smu.Utente WHERE Username = ? CASCADE";
+        String sql ="DELETE FROM smu.Utente WHERE Username = ?";
         PreparedStatement ps = connection.prepareStatement(sql);
 
         ps.setString(1, username);
