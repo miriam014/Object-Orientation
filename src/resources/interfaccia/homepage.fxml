@@ -1,22 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="515.0" prefWidth="671.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smu.Control.HomepageControl">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="515.0" prefWidth="671.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smu.Control.HomepageControl">
    <BorderPane prefHeight="515.0" prefWidth="671.0">
       <left>
-         <VBox fx:id="sidePanel" prefHeight="453.0" prefWidth="113.0" style="-fx-background-color: #339999;" BorderPane.alignment="CENTER">
+         <VBox fx:id="sidePanel" prefHeight="411.0" prefWidth="131.0" style="-fx-background-color: #339999;" BorderPane.alignment="CENTER">
             <children>
-               <Button fx:id="toggleButton" mnemonicParsing="false" onAction="#toggleMenu" prefWidth="113.0" text="Toggle Menu" />
+               <Button fx:id="toggleButton" mnemonicParsing="false" onAction="#toggleMenu" prefHeight="26.0" prefWidth="96.0" text="Toggle Menu" />
                <Button disable="true" mnemonicParsing="false" prefHeight="32.0" prefWidth="179.0" stylesheets="@stileHomepage.css" text="Homepage" textFill="#f8f6f6">
                   <padding>
                      <Insets left="50.0" />
@@ -34,12 +29,12 @@
                <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="141.0" stylesheets="@stileHomepage.css" text="Transazioni" />
                <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="145.0" stylesheets="@stileHomepage.css" text="Programmazione" />
                <Line endX="130.0" stroke="WHITE" />
-               <Button alignment="TOP_CENTER" contentDisplay="TOP" mnemonicParsing="false" prefHeight="19.0" prefWidth="73.0" style="-fx-background-color: #38A6A6;" text="Logout" textFill="#f8f3f3" textOverrun="CENTER_WORD_ELLIPSIS">
+               <Button alignment="TOP_CENTER" contentDisplay="TOP" mnemonicParsing="false" prefHeight="0.0" prefWidth="74.0" style="-fx-background-color: #38A6A6;" text="Logout" textFill="#f8f3f3" textOverrun="CENTER_WORD_ELLIPSIS">
                   <opaqueInsets>
                      <Insets />
                   </opaqueInsets>
                   <VBox.margin>
-                     <Insets left="30.0" top="220.0" />
+                     <Insets left="30.0" top="200.0" />
                   </VBox.margin>
                </Button>
             </children>
@@ -60,7 +55,7 @@
          </HBox>
       </top>
       <center>
-         <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+         <BorderPane prefHeight="461.0" prefWidth="540.0" BorderPane.alignment="CENTER" />
       </center>
    </BorderPane>
    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />

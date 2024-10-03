@@ -39,7 +39,7 @@ public class LoginControl {
                 if (user == null) {
                     showAlert(AlertType.ERROR, "Errore", "Email e/o password errati.");
                 } else {
-                    Main.setRoot("Homepage");
+                    Main.setRoot("homepage");
                 }
             } catch (SQLException e) {
                 showAlert(AlertType.ERROR, "Errore", "Si è verificato un errore durante il login.");
