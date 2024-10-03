@@ -6,12 +6,11 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="515.0" prefWidth="671.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smu.Control.HomepageControl">
-   <BorderPane prefHeight="515.0" prefWidth="671.0">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="792.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smu.Controller.HomepageController">
+   <BorderPane layoutX="-7.0" prefHeight="600.0" prefWidth="800.0">
       <left>
-         <VBox fx:id="sidePanel" prefHeight="411.0" prefWidth="131.0" style="-fx-background-color: #339999;" BorderPane.alignment="CENTER">
+         <VBox fx:id="sidePanel" prefHeight="538.0" prefWidth="129.0" style="-fx-background-color: #339999;" BorderPane.alignment="CENTER">
             <children>
-               <Button fx:id="toggleButton" mnemonicParsing="false" onAction="#toggleMenu" prefHeight="26.0" prefWidth="96.0" text="Toggle Menu" />
                <Button disable="true" mnemonicParsing="false" prefHeight="32.0" prefWidth="179.0" stylesheets="@stileHomepage.css" text="Homepage" textFill="#f8f6f6">
                   <padding>
                      <Insets left="50.0" />
@@ -34,15 +33,24 @@
                      <Insets />
                   </opaqueInsets>
                   <VBox.margin>
-                     <Insets left="30.0" top="200.0" />
+                     <Insets left="30.0" top="280.0" />
                   </VBox.margin>
                </Button>
             </children>
          </VBox>
       </left>
       <top>
-         <HBox prefHeight="62.0" prefWidth="671.0" style="-fx-background-color: #008080;" BorderPane.alignment="CENTER">
+         <HBox prefHeight="62.0" prefWidth="792.0" style="-fx-background-color: #008080;" BorderPane.alignment="CENTER">
             <children>
+               <!-- Il pulsante "Toggle Menu" per aprire/chiudere il menu -->
+               <Button fx:id="toggleButton" mnemonicParsing="false" onAction="#toggleMenu" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #008080; -fx-text-fill: white;" text="X">
+                  <HBox.margin>
+                     <Insets left="15.0" top="15.0" />
+                  </HBox.margin>
+                  <font>
+                     <Font name="Segoe UI Symbol" size="18.0" />  <!-- Usa "Segoe UI Symbol" per il simbolo ☰ -->
+                  </font>
+               </Button>
                <Label alignment="TOP_CENTER" text="Label" textFill="WHITE">
                   <font>
                      <Font size="18.0" />
@@ -55,8 +63,7 @@
          </HBox>
       </top>
       <center>
-         <BorderPane prefHeight="461.0" prefWidth="540.0" BorderPane.alignment="CENTER" />
+         <BorderPane prefHeight="454.0" prefWidth="610.0" BorderPane.alignment="CENTER" />
       </center>
    </BorderPane>
-   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
 </AnchorPane>
