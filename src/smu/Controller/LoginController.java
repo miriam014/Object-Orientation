@@ -22,8 +22,11 @@ public class LoginController {
 
     private LoginControl model;
 
-    public LoginController() {
-        model = new LoginControl(); // Inizializza il modello
+    // Metodo di inizializzazione chiamato automaticamente da JavaFX
+    @FXML
+    public void initialize() {
+        // Inizializza l'oggetto model
+        model = new LoginControl();
     }
 
     @FXML

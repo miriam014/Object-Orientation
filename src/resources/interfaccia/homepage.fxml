@@ -28,7 +28,7 @@
                <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="141.0" stylesheets="@stileHomepage.css" text="Transazioni" />
                <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="145.0" stylesheets="@stileHomepage.css" text="Programmazione" />
                <Line endX="130.0" stroke="WHITE" />
-               <Button alignment="TOP_CENTER" contentDisplay="TOP" mnemonicParsing="false" prefHeight="0.0" prefWidth="74.0" style="-fx-background-color: #38A6A6;" text="Logout" textFill="#f8f3f3" textOverrun="CENTER_WORD_ELLIPSIS">
+               <Button fx:id="logoutButton" alignment="TOP_CENTER" contentDisplay="TOP" mnemonicParsing="false" prefHeight="0.0" prefWidth="74.0" style="-fx-background-color: #38A6A6;" text="Logout" textFill="#f8f3f3" textOverrun="CENTER_WORD_ELLIPSIS" onAction = "#btnLogout">
                   <opaqueInsets>
                      <Insets />
                   </opaqueInsets>

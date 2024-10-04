@@ -5,13 +5,18 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
+import smu.Main;
+
+import java.io.IOException;
 
 public class HomepageController {
 
+    public Button logoutButton;
     @FXML
     private Button toggleButton; // Il pulsante per mostrare/nascondere
     @FXML
     private VBox sidePanel; // Il pannello laterale
+
 
     private boolean isMenuVisible = true; // Inizialmente il menù è nascosto
 
@@ -47,5 +52,15 @@ public class HomepageController {
 
     private void transformToBurger() {
         toggleButton.setText("☰");
+    }
+
+    @FXML
+    private void btnLogout() {
+        try {
+            // Torna alla schermata di login
+            Main.setRoot("login", 400, 350); // Imposta la dimensione della schermata di login
+        } catch (IOException e) {
+            e.printStackTrace(); // Gestisci l'eccezione in caso di errore nel caricamento
+        }
     }
 }
