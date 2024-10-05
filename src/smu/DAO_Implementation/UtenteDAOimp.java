@@ -63,27 +63,27 @@ public class UtenteDAOimp implements UtenteDAO {
         return user;
     }
 
-    public Utente checkCredentials(String email, String password) throws SQLException{
+    public Utente checkCredentials(String username, String password) throws SQLException{
         Connection connection = Database.getConnection();
         Utente user = null;
 
-        String sql = "SELECT * FROM smu.Utente WHERE Email = ? AND Password = ?";
+        String sql = "SELECT * FROM smu.Utente WHERE username = ? AND Password = ?";
         PreparedStatement ps = connection.prepareStatement(sql);
 
-        ps.setString(1, email);
+        ps.setString(1, username);
         ps.setString(2, password);
 
         ResultSet rs =ps.executeQuery();
 
         if(rs.next()){
-            String username = rs.getString("Username");
+            String username2 = rs.getString("Username");
             String nome = rs.getString("Nome");
             String cognome = rs.getString("Cognome");
             String telefono = rs.getString("Telefono");
             String email2 = rs.getString("Email");
             String password2 = rs.getString("Password");
             String id_famiglia = rs.getString("IdFamiglia");
-            user = new Utente(username, nome, cognome, telefono, email2, password2,id_famiglia);
+            user = new Utente(username2, nome, cognome, telefono, email2, password2,id_famiglia);
         }
         rs.close();
         ps.close();

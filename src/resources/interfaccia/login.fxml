@@ -10,7 +10,7 @@
          <children>
             <Button fx:id="button" layoutX="176.0" layoutY="284.0" mnemonicParsing="false" onAction="#login" style="-fx-background-color: #008080; -fx-border-color: transparent; -fx-background-radius: 15px;" text="Login" textFill="WHITE" />
             <PasswordField fx:id="passwordField" layoutX="125.0" layoutY="227.0" promptText="password" style="-fx-background-color: transparent; -fx-border-color: #008080; -fx-border-width: 0px 0px 2px 0px;" />
-            <TextField fx:id="emailField" layoutX="125.0" layoutY="172.0" promptText="email" style="-fx-background-color: transparent; -fx-border-color: #008080; -fx-border-width: 0px 0px 2px 0px;" />
+            <TextField fx:id="usernameField" layoutX="125.0" layoutY="172.0" promptText="username" style="-fx-background-color: transparent; -fx-border-color: #008080; -fx-border-width: 0px 0px 2px 0px;" />
             <ImageView fitHeight="23.0" fitWidth="21.0" layoutX="100.0" layoutY="175.0" pickOnBounds="true" smooth="false">
                <image>
                   <Image url="@/images/person.png" />

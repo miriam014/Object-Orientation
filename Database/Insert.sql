@@ -1,10 +1,13 @@
 -- Famiglie
 INSERT INTO smu.Famiglia(NomeFamiglia) VALUES('Famiglia Gaetano');
+INSERT INTO smu.Famiglia(NomeFamiglia) VALUES('Famiglia Gargiulo');
+
 
 -- Utenti
 INSERT INTO smu.Utente(Username, Nome, Cognome, Telefono, Email, Password) VALUES('Giulia28', 'Giulia', 'Gargiulo', '+393662648291', 'giulia.gargiulo3@studenti.unina.it', 'Password1');
 INSERT INTO smu.Utente(Username, Nome, Cognome, Telefono, Email, Password, IdFamiglia) VALUES('MirGae', 'Miriam', 'Gaetano', '+393316581941', 'miriam.gaetano@studenti.unina.it', 'Password2', 1);
 INSERT INTO smu.Utente(Username, Nome, Cognome, Telefono, Email, Password, IdFamiglia) VALUES('TataDur', 'Fortunata', 'DUrso', '+398765481948', 'fotunata.duso@studenti.unina.it', 'Password3', 1);
+INSERT INTO smu.Utente(Username, Nome, Cognome, Telefono, Email, Password, IdFamiglia) VALUES('Lrgarg', 'Lorenzo', 'Gargiulo', '+393662048291', 'loreg.y@gmail.com', 'Password4', 2);
 
 -- Conti Correnti da fare
 INSERT INTO smu.ContoCorrente (NumeroConto, IBAN, Saldo, NomeBanca, BIC, Username)VALUES ('000000123456', 'IT60X0542811101000000123456', 1500.00, 'UniCredit', 'BICABCD1234', 'Giulia28');

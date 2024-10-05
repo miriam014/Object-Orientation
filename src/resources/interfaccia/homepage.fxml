@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="792.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smu.Controller.HomepageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="792.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smu.Controller.HomepageController">
    <BorderPane layoutX="-7.0" prefHeight="600.0" prefWidth="800.0">
       <left>
          <VBox fx:id="sidePanel" prefHeight="538.0" prefWidth="129.0" style="-fx-background-color: #339999;" BorderPane.alignment="CENTER">
             <children>
-               <Button disable="true" mnemonicParsing="false" prefHeight="32.0" prefWidth="179.0" stylesheets="@stileHomepage.css" text="Homepage" textFill="#f8f6f6">
+               <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="179.0" stylesheets="@stileHomepage.css" text="Homepage" textFill="#f8f6f6">
                   <padding>
                      <Insets left="50.0" />
                   </padding>
@@ -28,7 +32,7 @@
                <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="141.0" stylesheets="@stileHomepage.css" text="Transazioni" />
                <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="145.0" stylesheets="@stileHomepage.css" text="Programmazione" />
                <Line endX="130.0" stroke="WHITE" />
-               <Button fx:id="logoutButton" alignment="TOP_CENTER" contentDisplay="TOP" mnemonicParsing="false" prefHeight="0.0" prefWidth="74.0" style="-fx-background-color: #38A6A6;" text="Logout" textFill="#f8f3f3" textOverrun="CENTER_WORD_ELLIPSIS" onAction = "#btnLogout">
+               <Button fx:id="logoutButton" alignment="TOP_CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#btnLogout" prefHeight="0.0" prefWidth="74.0" style="-fx-background-color: #38A6A6;" text="Logout" textFill="#f8f3f3" textOverrun="CENTER_WORD_ELLIPSIS">
                   <opaqueInsets>
                      <Insets />
                   </opaqueInsets>
@@ -51,12 +55,12 @@
                      <Font name="Segoe UI Symbol" size="18.0" />  <!-- Usa "Segoe UI Symbol" per il simbolo ☰ -->
                   </font>
                </Button>
-               <Label alignment="TOP_CENTER" text="Label" textFill="WHITE">
+               <Label fx:id="welcomeLabel" alignment="TOP_CENTER" text="Lieti di rivederla" textFill="WHITE">
                   <font>
                      <Font size="18.0" />
                   </font>
                   <HBox.margin>
-                     <Insets left="150.0" top="20.0" />
+                     <Insets left="75.0" top="20.0" />
                   </HBox.margin>
                </Label>
             </children>

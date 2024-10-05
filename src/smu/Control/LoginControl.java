@@ -14,8 +14,9 @@ public class LoginControl {
         userDao = new UtenteDAOimp(); // Inizializza il DAO
     }
 
-    public boolean authenticateUser(String email, String password) throws SQLException {
-        Utente user = userDao.checkCredentials(email, password);
-        return user != null; // Restituisce true se l'utente è autenticato
+    public Utente authenticateUser(String username, String password) throws SQLException {
+        UtenteDAO userDAO = new UtenteDAOimp();
+        Utente utente = userDAO.checkCredentials(username, password);
+        return utente;
     }
 }

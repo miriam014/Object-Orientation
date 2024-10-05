@@ -22,7 +22,7 @@ CREATE TABLE smu.Utente(
 
     CONSTRAINT PK_Utente PRIMARY KEY (Username),
     CONSTRAINT FK_Famiglia FOREIGN KEY (IdFamiglia) REFERENCES smu.Famiglia (IdFamiglia) ON DELETE CASCADE,
-    CONSTRAINT UK_Utente UNIQUE (Email, Password),
+    CONSTRAINT UK_Utente UNIQUE (Username, Email),
     CONSTRAINT CK_Telefono CHECK (Telefono ~ '\+[0-9]{2}[0-9]{10}'),
     CONSTRAINT CK_Email CHECK (Email ~ '[a-zA-Z0-9._%+\-]@[a-zA-Z0-9.-]\d*.*[A-Za-z]{2,4}'),
     CONSTRAINT CK_Password CHECK (Password ~ '[a-zA-Z0-9! " # $ % & ( ) * + , - . / : ; < = > ? @ \[ \] \ ^ _` \{ | \} ~ ]{8,32}')

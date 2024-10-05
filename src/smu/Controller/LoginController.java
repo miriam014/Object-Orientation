@@ -7,6 +7,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 import smu.Control.LoginControl;
+import smu.DTO.Utente; // Importa la classe Utente
+import smu.Sessione; // Importa la classe Sessione
 import smu.Main;
 
 import java.io.IOException;
@@ -18,7 +20,7 @@ public class LoginController {
     private PasswordField passwordField;
 
     @FXML
-    private TextField emailField;
+    private TextField usernameField;
 
     private LoginControl model;
 
@@ -31,20 +33,22 @@ public class LoginController {
 
     @FXML
     public void login() {
-        String email = emailField.getText();
+        String username = usernameField.getText();
         String password = passwordField.getText();
 
-        if (email.isEmpty() || password.isEmpty()) {
-            showAlert(AlertType.ERROR, "Errore", "Campi email e/o password sono vuoti.");
+        if (username.isEmpty() || password.isEmpty()) {
+            showAlert(AlertType.ERROR, "Errore", "Campi username e/o password sono vuoti.");
             return;
         }
 
         try {
-            boolean isAuthenticated = model.authenticateUser(email, password);
+            // Controlla se l'utente è autenticato
+            Utente utente = model.authenticateUser(username, password);
 
-            if (!isAuthenticated) {
-                showAlert(AlertType.ERROR, "Errore", "Email e/o password errati.");
+            if (utente ==null) {
+                showAlert(AlertType.ERROR, "Errore", "Username e/o password errati.");
             } else {
+                Sessione.getInstance().setUtenteLoggato(utente);
                 Main.showAnotherInterface("homepage");
             }
         } catch (SQLException e) {
