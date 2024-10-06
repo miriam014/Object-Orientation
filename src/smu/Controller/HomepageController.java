@@ -26,15 +26,19 @@ public class HomepageController {
     private Label welcomeLabel; // Etichetta di benvenuto
 
 
-    private boolean isMenuVisible = true; // Inizialmente il menù è nascosto
+    private boolean isMenuVisible; // Inizialmente il menù è nascosto
 
     @FXML
     public void initialize() {
-        // Imposta il pannello laterale all'inizio fuori dallo schermo
-        sidePanel.setTranslateX(0);
-        toggleButton.setText("X");//il menu parte aperto
+        isMenuVisible = false; // Inizialmente il menù è nascosto
+        //  listener per la larghezza del sidePanel e applica la traslazione dopo il rendering
+        sidePanel.widthProperty().addListener((observable, oldValue, newValue) -> {
+            sidePanel.setTranslateX(-newValue.doubleValue()); // Posiziona il pannello fuori schermo
+        });
 
-        Utente utente = Sessione.getInstance().getUtenteLoggato();
+        toggleButton.setText("☰");
+
+        Utente utente = Sessione.getInstance().getUtenteLoggato(); // Recupera l'utente loggato
         if (utente != null) {
             setWelcomeLabel(utente);
         }
@@ -50,15 +54,15 @@ public class HomepageController {
 
 
         if (isMenuVisible) {
-            slide.setToX(-sidePanel.getWidth()); // Nasconde il pannello
+            slide.setToX(0); // Nasconde il pannello
             transformToBurger();
         } else {
-            slide.setToX(0); // Mostra il pannello
+            slide.setToX(sidePanel.getWidth()); // Mostra il pannello
             transformToX();
         }
 
         slide.play();
-        slide.setOnFinished(event -> {
+        slide.setOnFinished(event -> { // Aggiungi un listener per l'evento di fine animazione
             isMenuVisible = !isMenuVisible; // Cambia lo stato solo dopo che l'animazione è completata
         });
     }

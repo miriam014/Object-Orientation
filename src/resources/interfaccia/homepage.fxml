@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -12,62 +13,109 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="792.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smu.Controller.HomepageController">
    <BorderPane layoutX="-7.0" prefHeight="600.0" prefWidth="800.0">
-      <left>
-         <VBox fx:id="sidePanel" prefHeight="538.0" prefWidth="129.0" style="-fx-background-color: #339999;" BorderPane.alignment="CENTER">
+      <top>
+         <HBox prefHeight="30.0" prefWidth="800.0" style="-fx-background-color: #008080;" BorderPane.alignment="CENTER">
             <children>
-               <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="179.0" stylesheets="@stileHomepage.css" text="Homepage" textFill="#f8f6f6">
-                  <padding>
-                     <Insets left="50.0" />
-                  </padding>
+               <Button fx:id="toggleButton" mnemonicParsing="false" onAction="#toggleMenu" prefHeight="31.0" prefWidth="43.0" style="-fx-background-color: #008080; -fx-text-fill: white;" text="X">
+                  <HBox.margin>
+                     <Insets left="15.0" />
+                  </HBox.margin>
                   <font>
-                     <Font size="12.0" />
+                     <Font name="Segoe UI Symbol" size="18.0" />
                   </font>
-               </Button>
-               <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="142.0" stylesheets="@stileHomepage.css" text="Famiglia">
-                  <font>
-                     <Font size="12.0" />
-                  </font>
-               </Button>
-               <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="141.0" stylesheets="@stileHomepage.css" text="Portafoglio" />
-               <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="141.0" stylesheets="@stileHomepage.css" text="Transazioni" />
-               <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="145.0" stylesheets="@stileHomepage.css" text="Programmazione" />
-               <Line endX="130.0" stroke="WHITE" />
-               <Button fx:id="logoutButton" alignment="TOP_CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#btnLogout" prefHeight="0.0" prefWidth="74.0" style="-fx-background-color: #38A6A6;" text="Logout" textFill="#f8f3f3" textOverrun="CENTER_WORD_ELLIPSIS">
                   <opaqueInsets>
                      <Insets />
                   </opaqueInsets>
-                  <VBox.margin>
-                     <Insets left="30.0" top="280.0" />
-                  </VBox.margin>
-               </Button>
-            </children>
-         </VBox>
-      </left>
-      <top>
-         <HBox prefHeight="62.0" prefWidth="792.0" style="-fx-background-color: #008080;" BorderPane.alignment="CENTER">
-            <children>
-               <!-- Il pulsante "Toggle Menu" per aprire/chiudere il menu -->
-               <Button fx:id="toggleButton" mnemonicParsing="false" onAction="#toggleMenu" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #008080; -fx-text-fill: white;" text="X">
-                  <HBox.margin>
-                     <Insets left="15.0" top="15.0" />
-                  </HBox.margin>
-                  <font>
-                     <Font name="Segoe UI Symbol" size="18.0" />  <!-- Usa "Segoe UI Symbol" per il simbolo ☰ -->
-                  </font>
+                  <padding>
+                     <Insets bottom="-1.0" top="8.0" />
+                  </padding>
                </Button>
                <Label fx:id="welcomeLabel" alignment="TOP_CENTER" text="Lieti di rivederla" textFill="WHITE">
                   <font>
                      <Font size="18.0" />
                   </font>
                   <HBox.margin>
-                     <Insets left="75.0" top="20.0" />
+                     <Insets left="75.0" top="8.0" />
                   </HBox.margin>
                </Label>
             </children>
          </HBox>
       </top>
       <center>
-         <BorderPane prefHeight="454.0" prefWidth="610.0" BorderPane.alignment="CENTER" />
+         <AnchorPane prefHeight="454.0" prefWidth="610.0" BorderPane.alignment="CENTER">
+            <VBox layoutY="1.0" prefHeight="527.0" prefWidth="780.0" spacing="10" AnchorPane.bottomAnchor="10" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10" AnchorPane.topAnchor="1.0">
+               <HBox prefHeight="215.0" prefWidth="780.0" spacing="10">
+                  <!-- Sezione per il Saldo -->
+                  <VBox prefHeight="187.0" prefWidth="330.0">
+                     <Label alignment="TOP_RIGHT" text="Saldo disponibile:">
+                        <VBox.margin>
+                           <Insets left="30.0" top="25.0" />
+                        </VBox.margin>
+                        <font>
+                           <Font size="15.0" />
+                        </font></Label>
+                     <Label fx:id="balanceLabel" prefHeight="42.0" prefWidth="252.0" style="-fx-font-size: 30px; -fx-font-weight: bold;" text="0.00">
+                        <VBox.margin>
+                           <Insets left="30.0" top="10.0" />
+                        </VBox.margin></Label>
+                  </VBox>
+
+                  <!-- Sezione per la Carta con Freccia -->
+                  <VBox alignment="CENTER" prefHeight="149.0" prefWidth="395.0" style="-fx-background-color: #008080;">
+                     <Label fx:id="cardLabel" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;" text="Nome della Carta" />
+                     <Label style="-fx-text-fill: white;" text="Numero Carta: 1234 5678 9012 3456" />
+                     <Label style="-fx-text-fill: white;" text="Nome Banca: Banca Esempio" />
+                     <HBox.margin>
+                        <Insets left="50.0" right="30.0" top="20.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <Button fx:id="nextCardButton" prefHeight="56.0" prefWidth="70.0" style="-fx-background-color: transparent; -fx-text-fill: #008765; -fx-font-size: 18px;" text="-&gt;" textFill="#660000" wrapText="true">
+                     <HBox.margin>
+                        <Insets top="80.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Button>
+               </HBox>
+
+                     <!-- Sezione per le Transazioni -->
+               <Label text="Transazioni:">
+                  <VBox.margin>
+                     <Insets bottom="-9.0" left="30.0" />
+                  </VBox.margin>
+               </Label>
+               <ListView fx:id="transactionsListView" prefHeight="298.0" prefWidth="780.0">
+                  <VBox.margin>
+                     <Insets left="20.0" right="20.0" />
+                  </VBox.margin></ListView>
+            </VBox>
+         </AnchorPane>
       </center>
    </BorderPane>
+   <VBox fx:id="sidePanel" layoutX="-132.0" layoutY="37.0" prefHeight="564.0" prefWidth="131.0" style="-fx-background-color: #339999;">
+      <children>
+         <Button disable="true" mnemonicParsing="false" prefHeight="33.0" prefWidth="131.0" stylesheets="@stileHomepage.css" text="Homepage" textFill="#f8f6f6">
+            <padding>
+               <Insets left="50.0" />
+            </padding>
+            <font>
+               <Font size="12.0" />
+            </font>
+         </Button>
+         <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="142.0" stylesheets="@stileHomepage.css" text="Famiglia" />
+         <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="141.0" stylesheets="@stileHomepage.css" text="Portafoglio" />
+         <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="141.0" stylesheets="@stileHomepage.css" text="Transazioni" />
+         <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="145.0" stylesheets="@stileHomepage.css" text="Programmazione" />
+         <Line endX="130.0" stroke="WHITE" />
+         <Button fx:id="logoutButton" alignment="TOP_CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#btnLogout" prefHeight="0.0" prefWidth="74.0" style="-fx-background-color: #38A6A6;" text="Logout" textFill="#f8f3f3" textOverrun="CENTER_WORD_ELLIPSIS">
+            <opaqueInsets>
+               <Insets />
+            </opaqueInsets>
+            <VBox.margin>
+               <Insets left="30.0" top="280.0" />
+            </VBox.margin>
+         </Button>
+      </children>
+   </VBox>
 </AnchorPane>
