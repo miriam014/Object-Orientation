@@ -49,7 +49,7 @@ public class LoginController {
                 showAlert(AlertType.ERROR, "Errore", "Username e/o password errati.");
             } else {
                 Sessione.getInstance().setUtenteLoggato(utente);
-                Main.showAnotherInterface("homepage");
+                Main.setRoot("homepage");
             }
         } catch (SQLException e) {
             showAlert(AlertType.ERROR, "Errore", "Si è verificato un errore durante il login.");

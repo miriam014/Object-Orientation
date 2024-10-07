@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="792.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smu.Controller.MenuController">
+    <BorderPane layoutX="-7.0" prefHeight="600.0" prefWidth="800.0">
+        <top>
+            <HBox prefHeight="30.0" prefWidth="830.0" style="-fx-background-color: #008080;" BorderPane.alignment="CENTER">
+                <children>
+                    <Button fx:id="toggleButton" mnemonicParsing="false" onAction="#toggleMenu" prefHeight="31.0" prefWidth="43.0" style="-fx-background-color: #008080; -fx-text-fill: white;" text="X">
+                        <HBox.margin>
+                            <Insets bottom="2.0" left="15.0" />
+                        </HBox.margin>
+                        <font>
+                            <Font name="Segoe UI Symbol" size="18.0" />
+                        </font>
+                        <opaqueInsets>
+                            <Insets />
+                        </opaqueInsets>
+                        <padding>
+                            <Insets bottom="-1.0" />
+                        </padding>
+                    </Button>
+                </children>
+            </HBox>
+        </top>
+        <center>
+            <AnchorPane prefHeight="454.0" prefWidth="610.0" BorderPane.alignment="CENTER">
+            <children>
+                <VBox fx:id="sidePanel" layoutY="1.0" prefHeight="569.0" prefWidth="131.0" style="-fx-background-color: #339999;">
+                    <children>
+                        <Button fx:id="homepageButton" disable="true" mnemonicParsing="false" onAction="#handleHomepageButton" prefHeight="33.0" prefWidth="131.0" stylesheets="@stileHomepage.css" text="Homepage" textFill="#f8f6f6">
+                            <padding>
+                                <Insets left="50.0" />
+                            </padding>
+                            <font>
+                                <Font size="12.0" />
+                            </font>
+                        </Button>
+                        <Button fx:id="famigliaButton" mnemonicParsing="false" prefHeight="38.0" prefWidth="142.0" stylesheets="@stileHomepage.css" text="Famiglia" />
+                        <Button fx:id="portafoglioButton" mnemonicParsing="false" prefHeight="38.0" prefWidth="141.0" stylesheets="@stileHomepage.css" text="Portafoglio" />
+                        <Button fx:id="transazioniButton" mnemonicParsing="false" prefHeight="38.0" prefWidth="141.0" stylesheets="@stileHomepage.css" text="Transazioni" />
+                        <Button fx:id="programmazioneButton" mnemonicParsing="false" prefHeight="38.0" prefWidth="145.0" stylesheets="@stileHomepage.css" text="Programmazione" />
+                        <Line endX="130.0" stroke="WHITE" />
+                        <Button fx:id="logoutButton" alignment="TOP_CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#btnLogout" prefHeight="0.0" prefWidth="74.0" style="-fx-background-color: #38A6A6;" text="Logout" textFill="#f8f3f3" textOverrun="CENTER_WORD_ELLIPSIS">
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <VBox.margin>
+                                <Insets left="30.0" top="330.0" />
+                            </VBox.margin>
+                        </Button>
+                    </children>
+                </VBox>
+            </children></AnchorPane>
+        </center>
+    </BorderPane>
+</AnchorPane>
