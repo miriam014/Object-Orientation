@@ -64,6 +64,7 @@ public class UtenteDAOimp implements UtenteDAO {
     }
 
     public Utente checkCredentials(String username, String password) throws SQLException{
+
         Connection connection = Database.getConnection();
         Utente user = null;
 

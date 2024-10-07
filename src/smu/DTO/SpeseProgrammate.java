@@ -1,36 +1,39 @@
 package smu.DTO;
 
-import java.time.LocalDate;
+import java.sql.Time;
+import java.sql.Date;
 
 public class SpeseProgrammate {
 
     private String IdSpesa;
-    private String Periodicità;
-    private LocalDate DataScadenza;
+    private String Periodicita;
+    private Date DataScadenza;
     private float Importo;
     private String Destinatario;
-    private LocalDate FineRinnovo;
+    private Date FineRinnovo;
     private String Descrizione;
+    private String NumeroCarta;
 
-    public SpeseProgrammate(String idSpesa, String periodicità, LocalDate dataScadenza, float importo, String destinatario, LocalDate fineRinnovo, String descrizione){
+    public SpeseProgrammate(String idSpesa, String periodicita, Date dataScadenza, float importo, String destinatario, Date fineRinnovo, String descrizione, String numeroCarta){
         this.IdSpesa = idSpesa;
-        this.Periodicità = periodicità;
+        this.Periodicita = periodicita;
         this.DataScadenza = dataScadenza;
         this.Importo = importo;
         this.Destinatario = destinatario;
         this.FineRinnovo = fineRinnovo;
         this.Descrizione = descrizione;
+        this.NumeroCarta = numeroCarta;
     }
 
     public String getIdSpesa(){
         return IdSpesa;
     }
 
-    public String getPeriodicità(){
-        return Periodicità;
+    public String getPeriodicita(){
+        return Periodicita;
     }
 
-    public LocalDate getDataScadenza(){
+    public Date getDataScadenza(){
         return DataScadenza;
     }
 
@@ -42,23 +45,26 @@ public class SpeseProgrammate {
         return Destinatario;
     }
 
-    public LocalDate getFineRinnovo(){
+    public Date getFineRinnovo(){
         return FineRinnovo;
     }
 
     public String getDescrizione(){
         return Descrizione;
     }
+    public String getNumeroCarta(){
+        return NumeroCarta;
+    }
 
     public void setIdSpesa(String idSpesa){
         this.IdSpesa = idSpesa;
     }
 
-    public void setPeriodicità(String periodicità){
-        this.Periodicità = periodicità;
+    public void setPeriodicita(String periodicita){
+        this.Periodicita = periodicita;
     }
 
-    public void setDataScadenza(LocalDate dataScadenza){
+    public void setDataScadenza(Date dataScadenza){
         this.DataScadenza = dataScadenza;
     }
 
@@ -70,7 +76,7 @@ public class SpeseProgrammate {
         this.Destinatario = destinatario;
     }
 
-    public void setFineRinnovo(LocalDate fineRinnovo){
+    public void setFineRinnovo(Date fineRinnovo){
         this.FineRinnovo = fineRinnovo;
     }
 
@@ -78,9 +84,14 @@ public class SpeseProgrammate {
         this.Descrizione = descrizione;
     }
 
+    public void setNumeroCarta(String numeroCarta){
+        this.NumeroCarta = numeroCarta;
+    }
+
+
     @Override
     public String toString(){
-        return "SPESA PROGRAMMATA: |IdSpesa = "+ IdSpesa + "|\t" + "|Periodicità = " + Periodicità + "|\t" + "|DataScadenza = "
+        return "SPESA PROGRAMMATA: |IdSpesa = "+ IdSpesa + "|\t" + "|Periodicità = " + Periodicita + "|\t" + "|DataScadenza = "
                 + DataScadenza + "|\t" + "|Importo = " + Importo + "|\t" + "|Destinatario = " + Destinatario + "|\t" +
                 "|FineRinnovo = " + FineRinnovo + "|\t" + "|Descrizione = " + Descrizione + "|";
     }

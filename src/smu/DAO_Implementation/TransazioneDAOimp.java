@@ -54,7 +54,7 @@ public class TransazioneDAOimp implements TransazioneDAO {
     @Override
     public boolean delete(String idTransazione) throws SQLException {
         Connection connection = Database.getConnection();
-        String sql = "DELETE FROM smu.Transazione WHERE IDTransazione = ? CASCADE";
+        String sql = "DELETE FROM smu.Transazione WHERE IDTransazione = ?";
 
         PreparedStatement ps = connection.prepareStatement(sql);
         ps.setString(1, idTransazione);

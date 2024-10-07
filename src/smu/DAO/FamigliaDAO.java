@@ -8,4 +8,5 @@ public interface FamigliaDAO {
     boolean insert(Famiglia family) throws SQLException;
     boolean update(Famiglia family) throws SQLException;
     boolean delete(String familyID) throws SQLException;
+    Famiglia getByID(String familyID) throws SQLException;
 }
