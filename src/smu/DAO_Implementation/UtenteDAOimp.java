@@ -67,7 +67,7 @@ public class UtenteDAOimp implements UtenteDAO {
         Connection connection = Database.getConnection();
         Utente user = null;
 
-        String sql = "SELECT * FROM smu.Utente WHERE username = ? AND Password = ?";
+        String sql = "SELECT * FROM smu.Utente WHERE Username = ? AND Password = ?";
         PreparedStatement ps = connection.prepareStatement(sql);
 
         ps.setString(1, username);
@@ -80,10 +80,10 @@ public class UtenteDAOimp implements UtenteDAO {
             String nome = rs.getString("Nome");
             String cognome = rs.getString("Cognome");
             String telefono = rs.getString("Telefono");
-            String email2 = rs.getString("Email");
+            String email = rs.getString("Email");
             String password2 = rs.getString("Password");
             String id_famiglia = rs.getString("IdFamiglia");
-            user = new Utente(username2, nome, cognome, telefono, email2, password2,id_famiglia);
+            user = new Utente(username2, nome, cognome, telefono, email, password2,id_famiglia);
         }
         rs.close();
         ps.close();

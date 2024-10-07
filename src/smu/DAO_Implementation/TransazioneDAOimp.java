@@ -127,5 +127,4 @@ public class TransazioneDAOimp implements TransazioneDAO {
         return list;
     }
 
-
 }
