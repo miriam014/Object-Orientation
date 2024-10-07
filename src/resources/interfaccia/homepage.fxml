@@ -2,82 +2,83 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="792.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smu.Controller.HomepageController">
-   <BorderPane layoutX="-7.0" prefHeight="600.0" prefWidth="800.0">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="792.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smu.Controller.HomepageController">
+   <BorderPane AnchorPane.bottomAnchor="20" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50">
       <center>
-         <AnchorPane prefHeight="454.0" prefWidth="610.0" BorderPane.alignment="CENTER">
-            <VBox layoutY="1.0" prefHeight="527.0" prefWidth="780.0" spacing="10" AnchorPane.bottomAnchor="10" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10" AnchorPane.topAnchor="1.0">
-               <HBox prefHeight="215.0" prefWidth="780.0">
-                  <!-- Sezione per il Saldo -->
-                  <VBox prefHeight="187.0" prefWidth="330.0">
-                     <Label alignment="TOP_RIGHT" text="Saldo disponibile:">
-                        <VBox.margin>
-                           <Insets left="30.0" top="25.0" />
-                        </VBox.margin>
-                        <font>
-                           <Font size="15.0" />
-                        </font></Label>
-                     <Label fx:id="balanceLabel" prefHeight="42.0" prefWidth="252.0" style="-fx-font-size: 30px; -fx-font-weight: bold;" text="0.00">
-                        <VBox.margin>
-                           <Insets left="30.0" top="10.0" />
-                        </VBox.margin></Label>
-                  </VBox>
+         <VBox spacing="10">
+            <HBox alignment="CENTER_LEFT" spacing="10.0">
+               <!-- Sezione per il Saldo -->
+               <VBox>
+                  <Label alignment="TOP_RIGHT" mouseTransparent="true" text="Saldo disponibile:">
+                     <VBox.margin>
+                        <Insets left="30.0" top="25.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="balanceLabel" minHeight="-Infinity" minWidth="-Infinity" style="-fx-font-size: 30px; -fx-font-weight: bold;" text="0.00">
+                     <VBox.margin>
+                        <Insets left="30.0" top="10.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets left="6.0" />
+                     </padding>
+                  </Label>
+                  <HBox.margin>
+                     <Insets />
+                  </HBox.margin>
+                  <padding>
+                     <Insets left="3.0" />
+                  </padding>
+               </VBox>
 
-                  <!-- Sezione per la Carta con i Dati Rilevanti -->
-                  <VBox alignment="CENTER" prefHeight="169.0" prefWidth="354.0" style="-fx-background-color: linear-gradient(to bottom right, #1e3c72, #2a5298); -fx-background-radius: 15px; -fx-padding: 20px;">
-                     <!-- Nome della Carta -->
-                     <Label fx:id="cardNameLabel" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white;" text="---">
-                        <VBox.margin>
-                           <Insets bottom="10.0" />
-                        </VBox.margin>
-                     </Label>
+               <!-- Sezione per la Carta con i Dati Rilevanti -->
+               <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mouseTransparent="true" spacing="10.0" style="-fx-background-color: linear-gradient(to bottom right, #1e3c72, #2a5298); -fx-background-radius: 15px; -fx-padding: 20px;">
+                  <Label fx:id="cardNameLabel" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white;" text="---" />
+                  <Label fx:id="cardNumberLabel" style="-fx-font-size: 16px; -fx-text-fill: white;" text="Numero Carta: **** **** **** ----" />
+                  <HBox spacing="10">
+                     <Label style="-fx-font-size: 14px; -fx-text-fill: white;" text="Tipo Carta:" />
+                     <Label fx:id="cardTypeLabel" style="-fx-font-size: 14px; -fx-text-fill: white;" text="---" />
+                  </HBox>
+                  <HBox spacing="10">
+                     <Label style="-fx-font-size: 14px; -fx-text-fill: white;" text="Scadenza:" />
+                     <Label fx:id="expiryDateLabel" style="-fx-font-size: 14px; -fx-text-fill: white;" text="--/--" />
+                  </HBox>
+                  <opaqueInsets>
+                     <Insets left="30.0" />
+                  </opaqueInsets>
+                  <HBox.margin>
+                     <Insets left="220.0" right="10.0" />
+                  </HBox.margin>
+               </VBox>
 
-                     <!-- Numero Carta (Mascherato) -->
-                     <Label fx:id="cardNumberLabel" style="-fx-font-size: 16px; -fx-text-fill: white;" text="Numero Carta: **** **** **** ----">
-                        <VBox.margin>
-                           <Insets bottom="10.0" />
-                        </VBox.margin>
-                     </Label>
+               <!-- Pulsante per Cambiare Carta -->
+               <Button fx:id="nextCardButton" onAction="#handleNextCard" nodeOrientation="RIGHT_TO_LEFT" style="-fx-background-color: transparent; -fx-text-fill: #008765; -fx-font-size: 18px;" text="Next Card" textAlignment="CENTER">
+                  <HBox.margin>
+                     <Insets right="5.0" top="80.0"/>
+                  </HBox.margin>
+               </Button>
+               <padding>
+                  <Insets top="15.0" />
+               </padding>
+            </HBox>
 
-                     <!-- Tipo Carta -->
-                     <HBox spacing="10">
-                        <Label style="-fx-font-size: 14px; -fx-text-fill: white;" text="Tipo Carta:" />
-                        <Label fx:id="cardTypeLabel" style="-fx-font-size: 14px; -fx-text-fill: white;" text="---" />
-                     </HBox>
-
-                     <!-- Scadenza -->
-                     <HBox spacing="10">
-                        <Label style="-fx-font-size: 14px; -fx-text-fill: white;" text="Scadenza:" />
-                        <Label fx:id="expiryDateLabel" style="-fx-font-size: 14px; -fx-text-fill: white;" text="--/--" />
-                     </HBox>
-                     <HBox.margin>
-                        <Insets top="10.0" />
-                     </HBox.margin>
-                  </VBox>
-
-                  <!-- Pulsante per Cambiare Carta (Posizionato a Destra della Carta) -->
-                  <Button fx:id="nextCardButton" onAction="#handleNextCard" prefHeight="56.0" prefWidth="94.0" style="-fx-background-color: transparent; -fx-text-fill: #008765; -fx-font-size: 18px;" text="-&gt;" textFill="WHITE" wrapText="true">
-                     <HBox.margin>
-                        <Insets right="5.0" top="80.0" />
-                     </HBox.margin>
-                  </Button>
-               </HBox>
-
-               <!-- Sezione per le Transazioni -->
-               <Label text="Transazioni:">
-                  <VBox.margin>
-                     <Insets bottom="-9.0" left="30.0" />
-                  </VBox.margin>
-               </Label>
-               <ListView fx:id="transactionsListView" prefHeight="298.0" prefWidth="780.0">
-                  <VBox.margin>
-                     <Insets left="20.0" right="20.0" />
-                  </VBox.margin></ListView>
-            </VBox>
-         </AnchorPane>
+            <!-- Sezione per le Transazioni -->
+            <Label text="Transazioni:">
+               <VBox.margin>
+                  <Insets left="30.0" />
+               </VBox.margin></Label>
+            <ListView fx:id="transactionsListView" VBox.vgrow="ALWAYS">
+               <VBox.margin>
+                  <Insets left="20.0" right="20.0" />
+               </VBox.margin>
+            </ListView>
+         </VBox>
       </center>
    </BorderPane>
 </AnchorPane>

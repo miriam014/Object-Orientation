@@ -1,13 +1,8 @@
 package smu.Controller;
 
-import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
-import javafx.util.Duration;
 import javafx.scene.control.ListView;
 import smu.Sessione;
 import smu.DTO.Utente;
@@ -38,7 +33,6 @@ public class HomepageController {
     private ListView<String> transactionsListView;
 
 
-    private boolean isMenuVisible; // Inizialmente il menù è nascosto
     private List<Carta> carteUtente; // Lista delle carte dell'utente
     private int currentCardIndex; // Indice della carta corrente che si sta visualizzando
 
@@ -62,7 +56,9 @@ public class HomepageController {
             if (carteUtente == null || carteUtente.isEmpty()) {
                 System.out.println("Nessuna carta trovata per l'utente."); // Debug
             } else {
-                System.out.println("Carte caricate: " + carteUtente); // Debug
+                if(carteUtente.size() > 1) {
+                    nextCardButton.setVisible(true); // Mostra il pulsante per la prossima carta
+                }
             }
             currentCardIndex = 0;
         } catch (Exception e) {
@@ -92,6 +88,7 @@ public class HomepageController {
 
     @FXML
     private void handleNextCard() {
+        System.out.println("Next card button clicked!"); // Verifica che questo venga eseguito
         currentCardIndex++; // Incrementa l'indice della carta
         if (currentCardIndex >= carteUtente.size()) { // Se l'indice supera il numero di carte
             currentCardIndex = 0; // Torna alla prima carta
