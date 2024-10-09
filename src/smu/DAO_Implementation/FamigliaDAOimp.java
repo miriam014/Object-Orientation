@@ -12,7 +12,6 @@ import java.sql.SQLException;
 public class FamigliaDAOimp implements FamigliaDAO {
     public boolean insert(Famiglia family) throws SQLException{
         Connection connection = Database.getConnection();
-
         String sql = "INSERT INTO smu.Famiglia(NomeFamiglia) VALUES (?)";
 
         PreparedStatement ps = connection.prepareStatement(sql);

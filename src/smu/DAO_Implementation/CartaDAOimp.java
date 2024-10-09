@@ -15,41 +15,41 @@ public class CartaDAOimp implements CartaDAO {
     @Override
     public boolean insert(Carta card) throws SQLException {
         Connection connection = Database.getConnection(); // Ottiene la connessione al database
-        String sql = "INSERT INTO smu.Carta(NumeroCarta, nome, Scadenza, CVV, Saldo, tipocarta, plafond) VALUES(?,?,?,?,?,?,?)"; // Query SQL per l'inserimento di una carta
+        String sql = "INSERT INTO smu.Carta(NumeroCarta, Nome, CVV, Scadenza, Saldo, TipoCarta, Plafond, NumeroConto) VALUES(?,?,?,?,?,?,?,?)"; // Query SQL per l'inserimento di una carta
 
         PreparedStatement ps = connection.prepareStatement(sql); // Prepara la query
         ps.setString(1, card.getNumeroCarta());  // Imposta i parametri della query
         ps.setString(2, card.getNomeCarta());
-        ps.setDate(3, Date.valueOf(card.getScadenza()));
-        ps.setString(4, card.getCVV());
+        ps.setString(3, card.getCVV());
+        ps.setDate(4, card.getScadenza());
         ps.setFloat(5, card.getSaldo());
         ps.setString(6, card.getTipoCarta());
         ps.setFloat(7, card.getPlafond());
+        ps.setString(8, card.getNumeroConto());
 
         int result = ps.executeUpdate();   // Esegue la query
         ps.close(); // Chiude la query
         return result != 0; // Ritorna true se la query ha avuto successo, false altrimenti
-
     }
 
     @Override
     public boolean update(Carta card) throws SQLException {
         Connection connection = Database.getConnection();
-        String sql = "UPDATE smu.Carta SET Nome = ?, Scadenza = ?, CVV = ?, Saldo = ?, TipoCarta = ?, Plafond = ? WHERE NumeroCarta = ?"; // Query SQL per l'aggiornamento di una carta
+        String sql = "UPDATE smu.Carta SET Nome = ?, CVV = ?, Scadenza = ?, Saldo = ?, TipoCarta = ?, Plafond = ?, NumeroConto = ? WHERE NumeroCarta = ?"; // Query SQL per l'aggiornamento di una carta
 
         PreparedStatement ps = connection.prepareStatement(sql);
         ps.setString(1, card.getNomeCarta()); // Imposta i parametri della query
-        ps.setDate(2, Date.valueOf(card.getScadenza()));
-        ps.setString(3, card.getCVV());
+        ps.setString(2, card.getCVV());
+        ps.setDate(3, card.getScadenza());
         ps.setFloat(4, card.getSaldo());
         ps.setString(5, card.getTipoCarta());
         ps.setFloat(6, card.getPlafond());
-        ps.setString(7, card.getNumeroCarta());
+        ps.setString(7, card.getNumeroConto());
+        ps.setString(8, card.getNumeroCarta());
 
         int result = ps.executeUpdate();
         ps.close();
         return result != 0;
-
     }
 
     @Override
@@ -80,11 +80,12 @@ public class CartaDAOimp implements CartaDAO {
             card = new Carta(
                     rs.getString("NumeroCarta"),
                     rs.getString("Nome"),
-                    rs.getDate("Scadenza").toLocalDate(),
+                    rs.getDate("Scadenza"),
                     rs.getFloat("Saldo"),
                     rs.getString("TipoCarta"),
                     rs.getFloat("Plafond"),
-                    rs.getString("CVV")
+                    rs.getString("CVV"),
+                    rs.getString("NumeroConto")
             );
         }
         return card; // Ritorna la carta trovata o null se non trovata
@@ -93,10 +94,7 @@ public class CartaDAOimp implements CartaDAO {
     @Override
     public List<Carta> getCardsByUsername(String username) throws SQLException {
         Connection connection = Database.getConnection();
-        String sql = "SELECT c.NumeroCarta, c.Nome, c.Scadenza, c.Saldo, c.TipoCarta, c.Plafond, c.CVV " +
-                "FROM smu.CARTA c " +
-                "JOIN smu.ContoCorrente cc ON c.NumeroConto = cc.NumeroConto " +
-                "WHERE cc.Username = ?";
+        String sql = "SELECT * FROM smu.CARTA AS C NATURAL JOIN smu.ContoCorrente AS CC WHERE CC.Username = ?";
 
         PreparedStatement ps = connection.prepareStatement(sql);
         ps.setString(1, username);
@@ -110,11 +108,12 @@ public class CartaDAOimp implements CartaDAO {
             Carta card = new Carta(
                     rs.getString("NumeroCarta"),
                     rs.getString("Nome"),
-                    rs.getDate("Scadenza").toLocalDate(),
+                    rs.getDate("Scadenza"),
                     rs.getFloat("Saldo"),
                     rs.getString("TipoCarta"),
                     rs.getFloat("Plafond"),
-                    rs.getString("CVV")
+                    rs.getString("CVV"),
+                    rs.getString("NumeroConto")
             );
             System.out.println("Carta trovata: " + card); // Debug
             cards.add(card);

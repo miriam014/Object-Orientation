@@ -6,14 +6,16 @@ public class ContoCorrente {
     private float Saldo;
     private String NomeBanca;
     private String BIC;
+    private String Username;
 
 
-    public ContoCorrente(String numeroConto, String iban, float saldo, String nomeBanca, String bic){
+    public ContoCorrente(String numeroConto, String iban, float saldo, String nomeBanca, String bic, String username){
         this.NumeroConto = numeroConto;
         this.IBAN = iban;
         this.Saldo = saldo;
         this.NomeBanca = nomeBanca;
         this.BIC = bic;
+        this.Username = username;
     }
 
     public String getNumeroConto(){
@@ -36,6 +38,10 @@ public class ContoCorrente {
         return BIC;
     }
 
+    public String getUsername(){
+        return Username;
+    }
+
     public void setNumeroConto(String numerConto){
         this.NumeroConto = numerConto;
     }
@@ -56,10 +62,14 @@ public class ContoCorrente {
         this.BIC = bic;
     }
 
+    public void setUsername(String username){
+        this.Username = username;
+    }
+
     @Override
     public String toString(){
         return "CONTO CORRENTE: |NumeroConto = "+ NumeroConto + "|\t" + "|IBAN = " + IBAN + "|\t" + "|Saldo = " + Saldo +"|\t" + "|NomeBanca = "+
-                NomeBanca+"\t"+ "|BIC = " + BIC+"|";
+                NomeBanca+"\t"+ "|BIC = " + BIC+"| |Username = " + Username + "|";
     }
 
 

@@ -1,17 +1,17 @@
 package smu.DTO;
 import java.sql.Date;
-import java.time.LocalDate;
 
 public class Carta {
     private String NumeroCarta;
     private String NomeCarta;
-    private LocalDate Scadenza;
+    private Date Scadenza;
     private float Saldo;
     private String TipoCarta;
     private float Plafond;
     private String CVV;
+    private String NumeroConto;
 
-    public Carta(String numeroCarta, String nomeCarta, LocalDate scadenza, float saldo, String tipoCarta, float plafond, String cvv){
+    public Carta(String numeroCarta, String nomeCarta, Date scadenza, float saldo, String tipoCarta, float plafond, String cvv, String numeroConto){
         this.NumeroCarta = numeroCarta;
         this.NomeCarta = nomeCarta;
         this.Scadenza = scadenza;
@@ -19,6 +19,7 @@ public class Carta {
         this.Saldo = saldo;
         this.Plafond = plafond;
         this.CVV = cvv;
+        this.NumeroConto = numeroConto;
     }
 
     public String getNumeroCarta(){
@@ -29,7 +30,7 @@ public class Carta {
         return NomeCarta;
     }
 
-    public LocalDate getScadenza(){
+    public Date getScadenza(){
         return Scadenza;
     }
 
@@ -49,6 +50,10 @@ public class Carta {
         return CVV;
     }
 
+    public String getNumeroConto(){
+        return NumeroConto;
+    }
+
     public void setNumeroCarta(String numeroCarta){
         this.NumeroCarta = numeroCarta;
     }
@@ -57,7 +62,7 @@ public class Carta {
         this.NomeCarta = nomeCarta;
     }
 
-    public void setScadenza(LocalDate scadenza){
+    public void setScadenza(Date scadenza){
         this.Scadenza = scadenza;
     }
 
@@ -75,6 +80,10 @@ public class Carta {
 
     public void setCVV(String cvv){
         this.CVV = cvv;
+    }
+
+    public void setNumeroConto(String numeroConto){
+        this.NumeroConto = numeroConto;
     }
 
     @Override
