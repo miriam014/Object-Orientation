@@ -2,32 +2,32 @@ package smu.DTO;
 
 public class Categoria {
     private String NomeCategoria;
-    private String ParolaChiave;
+    private String ParoleChiavi;
 
-    public Categoria(String nomeCategoria, String parolaChiave) {
+    public Categoria(String nomeCategoria, String paroleChiavi) {
         this.NomeCategoria = nomeCategoria;
-        this.ParolaChiave = parolaChiave;
+        this.ParoleChiavi = paroleChiavi;
     }
 
     public String getNomeCategoria() {
         return NomeCategoria;
     }
 
-    public String getParolaChiave() {
-        return ParolaChiave;
+    public String getParoleChiavi() {
+        return ParoleChiavi;
     }
 
     public void setNomeCategoria(String nomeCategoria) {
         this.NomeCategoria = nomeCategoria;
     }
 
-    public void setParolaChiave(String parolaChiave) {
-        this.ParolaChiave = parolaChiave;
+    public void setParoleChiavi(String paroleChiavi) {
+        this.ParoleChiavi = paroleChiavi;
     }
 
     @Override
     public String toString() {
-        return "CATEGORIA: |NomeCategoria = "+ NomeCategoria + "|\t" + "|ParolaChiave = " + ParolaChiave +"|";
+        return "CATEGORIA: |NomeCategoria = "+ NomeCategoria + "|\t" + "|ParolaChiave = " + ParoleChiavi +"|";
     }
 
 }

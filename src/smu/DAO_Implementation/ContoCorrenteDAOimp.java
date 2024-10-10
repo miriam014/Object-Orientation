@@ -13,6 +13,7 @@ import java.util.List;
 
 public class ContoCorrenteDAOimp implements ContoCorrenteDAO {
 
+    @Override
     public boolean insert(ContoCorrente account) throws SQLException{
         Connection connection = Database.getConnection();
         String sql = "INSERT INTO smu.ContoCorrente(NumeroConto, IBAN, Saldo, NomeBanca, BIC, Username)VALUES (?,?,?,?,?,?)";
@@ -30,6 +31,7 @@ public class ContoCorrenteDAOimp implements ContoCorrenteDAO {
         return result != 0;
     }
 
+    @Override
     public boolean update(ContoCorrente account) throws SQLException{
         Connection connection = Database.getConnection();
         String sql = "UPDATE smu.ContoCorrente SET IBAN = ?, Saldo = ?, NomeBanca = ?, BIC = ?, Username = ? WHERE NumeroConto = ?";
@@ -47,6 +49,7 @@ public class ContoCorrenteDAOimp implements ContoCorrenteDAO {
         return result != 0;
     }
 
+    @Override
     public boolean delete(String accountNumber) throws SQLException{
         Connection connection = Database.getConnection();
         String sql = "DELETE FROM smu.ContoCorrente WHERE NumeroConto = ?";
@@ -59,6 +62,7 @@ public class ContoCorrenteDAOimp implements ContoCorrenteDAO {
         return result != 0;
     }
 
+    @Override
     public ContoCorrente getByAccountNumber(String accountNumber) throws SQLException{
         Connection connection = Database.getConnection();
         ContoCorrente account = null;
@@ -81,6 +85,7 @@ public class ContoCorrenteDAOimp implements ContoCorrenteDAO {
         return account;
     }
 
+    @Override
     public List<ContoCorrente> getByUsername(String username) throws SQLException{
         Connection connection = Database.getConnection();
         List<ContoCorrente> list = new ArrayList<>();
@@ -105,6 +110,7 @@ public class ContoCorrenteDAOimp implements ContoCorrenteDAO {
         return list;
     }
 
+    @Override
     public List<ContoCorrente> getByFamilyID(String familyID) throws SQLException{
         Connection connection = Database.getConnection();
         List<ContoCorrente> list = new ArrayList<>();

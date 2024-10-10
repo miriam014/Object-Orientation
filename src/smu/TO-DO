@@ -5,3 +5,4 @@
    per utilizzare i metodi associati (ad esempio per confrontare due valori).
 5. Controllare se nelle classi DAOimp, nei metodi delete è necessario utilizzare "CASCADE" per eliminare
    le righe collegate.
+6. Cambiare le insert di Transazione nel database (mancano i NomiCategoria in tutte le insert)

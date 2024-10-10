@@ -13,7 +13,7 @@ public class TransazioneDAOimp implements TransazioneDAO {
     @Override
     public boolean insert(Transazione transaction) throws SQLException{
         Connection connection = Database.getConnection();
-        String sql ="INSERT INTO smu.Transazione(Importo, Data, Ora, Causale, Tipo, Mittente, Destinatario, NumeroCarta) VALUES(?,?,?,?,?,?,?,?)";
+        String sql ="INSERT INTO smu.Transazione(Importo, Data, Ora, Causale, Tipo, Mittente, Destinatario, NumeroCarta, NomeCategoria) VALUES(?,?,?,?,?,?,?,?,?)";
 
         PreparedStatement ps = connection.prepareStatement(sql);
         ps.setFloat(1, transaction.getImporto());
@@ -24,6 +24,7 @@ public class TransazioneDAOimp implements TransazioneDAO {
         ps.setString(6, transaction.getMittente());
         ps.setString(7, transaction.getDestinatario());
         ps.setString(8, transaction.getNumeroCarta());
+        ps.setString(9, transaction.getCategoria());
 
         int result = ps.executeUpdate();
         ps.close();
@@ -33,7 +34,7 @@ public class TransazioneDAOimp implements TransazioneDAO {
     @Override
     public boolean update(Transazione transaction) throws SQLException {
         Connection connection = Database.getConnection();
-        String sql = "UPDATE smu.Transazione SET Importo = ?, Data = ?, Ora = ?, Causale = ?, Tipo = ?, Mittente = ?, Destinatario = ?, NumeroCarta = ? WHERE IDTransazione = ?";
+        String sql = "UPDATE smu.Transazione SET Importo = ?, Data = ?, Ora = ?, Causale = ?, Tipo = ?, Mittente = ?, Destinatario = ?, NumeroCarta = ?, NomeCategoria = ? WHERE IDTransazione = ?";
 
         PreparedStatement ps = connection.prepareStatement(sql);
         ps.setFloat(1, transaction.getImporto());
@@ -44,7 +45,9 @@ public class TransazioneDAOimp implements TransazioneDAO {
         ps.setString(6, transaction.getMittente());
         ps.setString(7, transaction.getDestinatario());
         ps.setString(8, transaction.getNumeroCarta());
-        ps.setString(9, transaction.getIDTransazione());
+        ps.setString(9, transaction.getCategoria());
+        ps.setString(10, transaction.getIDTransazione());
+
 
         int result = ps.executeUpdate();
         ps.close();
@@ -86,9 +89,10 @@ public class TransazioneDAOimp implements TransazioneDAO {
             String mittente = rs.getString("Mittente");
             String destinatario = rs.getString("Destinatario");
             String numeroCarta = rs.getString("NumeroCarta");
-            transaction = new Transazione(id2,cro,importo,data,ora,causale,tipo,mittente,destinatario,numeroCarta);
-
+            String categoria = rs.getString("NomeCategoria");
+            transaction = new Transazione(id2,cro,importo,data,ora,causale,tipo,mittente,destinatario,numeroCarta,categoria);
         }
+
         rs.close();
         ps.close();
         return transaction;
@@ -117,8 +121,9 @@ public class TransazioneDAOimp implements TransazioneDAO {
             String mittente = rs.getString("Mittente");
             String destinatario = rs.getString("Destinatario");
             String numeroCarta = rs.getString("NumeroCarta");
+            String categoria = rs.getString("NomeCategoria");
 
-            Transazione transaction = new Transazione(id,cro,importo,data,ora,causale,tipo,mittente,destinatario,numeroCarta);
+            Transazione transaction = new Transazione(id,cro,importo,data,ora,causale,tipo,mittente,destinatario,numeroCarta,categoria);
             list.add(transaction);
         }
         rs.close();
@@ -127,4 +132,35 @@ public class TransazioneDAOimp implements TransazioneDAO {
         return list;
     }
 
+    @Override
+    public List<Transazione> getByCategory(String category) throws SQLException {
+        Connection connection = Database.getConnection();
+        List<Transazione> list = new ArrayList<>();
+
+        String sql = "SELECT * FROM smu.Transazione WHERE NomeCategoria = ?";
+
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ps.setString(1, category);
+        ResultSet rs = ps.executeQuery();
+
+        while (rs.next()) {
+            String id = rs.getString("IDTransazione");
+            String cro = rs.getString("CRO");
+            Float importo = rs.getFloat("Importo");
+            Date data = rs.getDate("Data");
+            Time ora = rs.getTime("Ora");
+            String causale = rs.getString("Causale");
+            String tipo = rs.getString("Tipo");
+            String mittente = rs.getString("Mittente");
+            String destinatario = rs.getString("Destinatario");
+            String numeroCarta = rs.getString("NumeroCarta");
+            String categoria2 = rs.getString("NomeCategoria");
+
+            Transazione transaction = new Transazione(id, cro, importo, data, ora, causale, tipo, mittente, destinatario, numeroCarta, categoria2);
+            list.add(transaction);
+        }
+        rs.close();
+        ps.close();
+        return list;
+    }
 }

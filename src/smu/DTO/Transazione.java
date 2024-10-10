@@ -14,8 +14,9 @@ public class Transazione {
     private String Mittente;
     private String Destinatario;
     private String NumeroCarta;
+    private String Categoria;
 
-    public Transazione(String idTransazione, String cro, Float importo, Date data, Time ora, String causale, String tipoTransazione, String mittente, String destinatario, String numeroCarta) {
+    public Transazione(String idTransazione, String cro, Float importo, Date data, Time ora, String causale, String tipoTransazione, String mittente, String destinatario, String numeroCarta, String categoria) {
         this.IDTransazione = idTransazione;
         this.CRO = cro;
         this.Importo = importo;
@@ -26,6 +27,7 @@ public class Transazione {
         this.Mittente = mittente;
         this.Destinatario = destinatario;
         this.NumeroCarta = numeroCarta;
+        this.Categoria = categoria;
     }
 
     public String getIDTransazione() {
@@ -64,6 +66,8 @@ public class Transazione {
         return Destinatario;
     }
 
+    public String getCategoria(){ return Categoria; }
+
     public void setIDTransazione(String IDTransazione) {
         this.IDTransazione = IDTransazione;
     }
@@ -99,6 +103,8 @@ public class Transazione {
     public void setDestinatario(String Destinatario) {
         this.Destinatario = Destinatario;
     }
+
+    public void setCategoria(String Categoria){ this.Categoria = Categoria; }
 
     public String getNumeroCarta() {
         return NumeroCarta;

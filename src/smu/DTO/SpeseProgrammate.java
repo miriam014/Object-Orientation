@@ -52,6 +52,7 @@ public class SpeseProgrammate {
     public String getDescrizione(){
         return Descrizione;
     }
+
     public String getNumeroCarta(){
         return NumeroCarta;
     }

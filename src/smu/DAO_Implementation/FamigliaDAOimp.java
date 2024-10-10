@@ -10,6 +10,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class FamigliaDAOimp implements FamigliaDAO {
+
+    @Override
     public boolean insert(Famiglia family) throws SQLException{
         Connection connection = Database.getConnection();
         String sql = "INSERT INTO smu.Famiglia(NomeFamiglia) VALUES (?)";
@@ -22,6 +24,7 @@ public class FamigliaDAOimp implements FamigliaDAO {
         return result != 0;
     }
 
+    @Override
     public boolean update(Famiglia family) throws SQLException{
         Connection connection = Database.getConnection();
         String sql = "UPDATE smu.Famiglia SET NomeFamiglia = ? WHERE IdFamiglia = ?";
@@ -35,6 +38,7 @@ public class FamigliaDAOimp implements FamigliaDAO {
         return result != 0;
     }
 
+    @Override
     public boolean delete(String familyID) throws SQLException{
         Connection connection = Database.getConnection();
         String sql = "DELETE FROM smu.Famiglia WHERE IdFamiglia = ?";
@@ -47,6 +51,7 @@ public class FamigliaDAOimp implements FamigliaDAO {
         return result != 0;
     }
 
+    @Override
     public Famiglia getByID(String familyID) throws SQLException{
         Connection connection = Database.getConnection();
         Famiglia family = null;

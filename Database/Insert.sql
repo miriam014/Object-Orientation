@@ -14,7 +14,7 @@ INSERT INTO smu.ContoCorrente (NumeroConto, IBAN, Saldo, NomeBanca, BIC, Usernam
 INSERT INTO smu.ContoCorrente (NumeroConto, IBAN, Saldo, NomeBanca, BIC, Username)VALUES ('000000987654', 'IT60X0542811101000000987654', 2500.00, 'Intesa Sanpaolo', 'BICWXYZ5678', 'MirGae');
 INSERT INTO smu.ContoCorrente (NumeroConto, IBAN, Saldo, NomeBanca, BIC, Username) VALUES ('000000555555', 'IT60X0542811101000000555555', 3000.00, 'Banco BPM', 'BICDEFG9012', 'MirGae');
 INSERT INTO smu.ContoCorrente (NumeroConto, IBAN, Saldo, NomeBanca, BIC, Username) VALUES ('000000666666', 'IT60X0542811101000000666666', 5000.00, 'Banca Monte dei Paschi di Siena (MPS)', 'BICMNOPQR78', 'Giulia28');
-INSERT INTO smu.ContoCorrente (NumeroConto, IBAN, Saldo, NomeBanca, BIC, Username)VALUES ('000000777777', 'IT60X0542811101000000777777', 7000.00, 'Banca Mediolanum', 'BICUVWX3456', 'Giulia28');
+INSERT INTO smu.ContoCorrente (NumeroConto, IBAN, Saldo, NomeBanca, BIC, Username)VALUES ('000000777777', 'IT60X0542811101000000777777', 7000.00, 'Banca Mediolanum', 'BICUVWX3456', 'TataDur');
 INSERT INTO smu.ContoCorrente (NumeroConto, IBAN, Saldo, NomeBanca, BIC, Username)VALUES ('000000888888', 'IT60X0542811101000000888888', 9000.00, 'Poste Italiane', 'BICSTUV7890','MirGae');
 
 --Carte

@@ -10,6 +10,7 @@ import java.util.List;
 
 public class PortafoglioDAOimp implements PortafoglioDAO {
 
+    @Override
     public boolean insert(Portafoglio wallet) throws SQLException {
         Connection connection = Database.getConnection();
         String sql = "INSERT INTO smu.Portafoglio(NomePortafoglio, IdFamiglia) VALUES(?,?)";
@@ -23,6 +24,7 @@ public class PortafoglioDAOimp implements PortafoglioDAO {
         return result != 0;
     }
 
+    @Override
     public boolean update(Portafoglio wallet) throws SQLException {
         Connection connection = Database.getConnection();
         String sql = "UPDATE smu.Portafoglio SET NomePortafoglio = ?, IdFamiglia = ?, Saldo = ? WHERE IdPortafoglio = ?";
@@ -37,6 +39,7 @@ public class PortafoglioDAOimp implements PortafoglioDAO {
         return result != 0;
     }
 
+    @Override
     public boolean delete(String walletID) throws SQLException {
         Connection connection = Database.getConnection();
         String sql = "DELETE FROM smu.Portafoglio WHERE IdPortafoglio = ?";
@@ -49,6 +52,7 @@ public class PortafoglioDAOimp implements PortafoglioDAO {
         return result != 0;
     }
 
+    @Override
     public Portafoglio getByID(String walletID) throws SQLException {
         Connection connection = Database.getConnection();
         Portafoglio wallet = null;
@@ -70,6 +74,7 @@ public class PortafoglioDAOimp implements PortafoglioDAO {
         return wallet;
     }
 
+    @Override
     public List<Portafoglio> getByUsername(String username) throws SQLException {
         Connection connection = Database.getConnection();
         List<Portafoglio> list = new ArrayList<>();
