@@ -8,9 +8,9 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="132.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smu.Controller.MenuController">
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="132.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smu.Controller.MenuController">
     <top>
-        <HBox prefHeight="33.0" prefWidth="518.0" style="-fx-background-color: #008080;" BorderPane.alignment="CENTER">
+        <HBox prefHeight="13.0" prefWidth="132.0" style="-fx-background-color: #008080;" BorderPane.alignment="CENTER">
             <children>
                 <Button fx:id="toggleButton" mnemonicParsing="false" onAction="#toggleMenu" prefHeight="31.0" prefWidth="43.0" style="-fx-background-color: #008080; -fx-text-fill: white;" text="X">
                     <HBox.margin>

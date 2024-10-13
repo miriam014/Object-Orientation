@@ -94,7 +94,7 @@ public class CartaDAOimp implements CartaDAO {
     @Override
     public List<Carta> getCardsByUsername(String username) throws SQLException {
         Connection connection = Database.getConnection();
-        String sql = "SELECT * FROM smu.CARTA AS C NATURAL JOIN smu.ContoCorrente AS CC WHERE CC.Username = ?";
+        String sql = "SELECT * FROM smu.CARTA AS C JOIN smu.ContoCorrente AS CC ON c.NumeroConto = cc.NumeroConto WHERE CC.Username = ?";
 
         PreparedStatement ps = connection.prepareStatement(sql);
         ps.setString(1, username);

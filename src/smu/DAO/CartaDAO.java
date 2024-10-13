@@ -11,6 +11,5 @@ public interface CartaDAO {
     boolean delete(String cardNumber) throws SQLException;
 
     Carta getByNumeroCarta(String cardNumber) throws SQLException;
-
     List<Carta> getCardsByUsername(String username) throws SQLException;
 }
