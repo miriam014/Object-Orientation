@@ -8,9 +8,9 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="792.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smu.Controller.MenuController">
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="132.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smu.Controller.MenuController">
     <top>
-        <HBox style="-fx-background-color: #008080;" BorderPane.alignment="CENTER">
+        <HBox prefHeight="33.0" prefWidth="518.0" style="-fx-background-color: #008080;" BorderPane.alignment="CENTER">
             <children>
                 <Button fx:id="toggleButton" mnemonicParsing="false" onAction="#toggleMenu" prefHeight="31.0" prefWidth="43.0" style="-fx-background-color: #008080; -fx-text-fill: white;" text="X">
                     <HBox.margin>
@@ -43,7 +43,7 @@
                 <Button fx:id="famigliaButton" mnemonicParsing="false" prefHeight="38.0" prefWidth="142.0" stylesheets="@stileHomepage.css" text="Famiglia" />
                 <Button fx:id="portafoglioButton" mnemonicParsing="false" prefHeight="38.0" prefWidth="141.0" stylesheets="@stileHomepage.css" text="Portafogli" />
                 <Button fx:id="transazioniButton" mnemonicParsing="false" prefHeight="38.0" prefWidth="141.0" stylesheets="@stileHomepage.css" text="Report" />
-                <Button fx:id="programmazioneButton" mnemonicParsing="false" onAction="#ProgrammazioneButton" prefHeight="38.0" prefWidth="145.0" stylesheets="@stileHomepage.css" text="Scadenze" />
+                <Button fx:id="scadenzeButton" mnemonicParsing="false" onAction="#ScadenzeButton" prefHeight="38.0" prefWidth="145.0" stylesheets="@stileHomepage.css" text="Scadenze" />
                 <Line endX="130.0" stroke="WHITE" />
 
                 <!-- Region per occupare spazio -->

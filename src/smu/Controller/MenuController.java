@@ -38,8 +38,8 @@ public class MenuController {
     }
 
     @FXML
-    public void ProgrammazioneButton() throws IOException {
-        Main.setRoot("programmazione");
+    public void ScadenzeButton() throws IOException {
+        Main.setRoot("scadenze");
     }
 
     @FXML

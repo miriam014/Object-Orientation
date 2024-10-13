@@ -26,7 +26,7 @@ public class Main extends Application {
 
         // Configura lo stage principale
         primaryStage.setTitle("Applicazione login"); // Titolo della finestra
-        primaryStage.setResizable(false); // Impedisce il ridimensionamento della finestra
+        primaryStage.setResizable(false);
         setRoot("login"); // Imposta la root della scena di login
     }
 
@@ -35,19 +35,10 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(fxmlLocation);
 
         if (!fxml.equals("login")) {
-            // Carica il menu (menu.fxml) e il suo controller
-            FXMLLoader menuLoader = new FXMLLoader(Main.class.getResource("/interfaccia/menu.fxml"));
-            Parent menu = menuLoader.load();
-            MenuController menuController = menuLoader.getController(); // Ottieni il controller del menu
-
-            // Crea un layout principale (StackPane)
-            StackPane layout = new StackPane();
-            layout.getChildren().addAll(menu, root); // Aggiungi il contenuto principale e il menu
-
-            primaryStage.setResizable(true); // Impedisce il ridimensionamento della finestra
-            primaryStage.setScene(new Scene(layout, 800, 600)); // Imposta la scena
+            primaryStage.setResizable(true);
+            primaryStage.setScene(new Scene(root, 800, 600));
         } else {
-            primaryStage.setScene(new Scene(root, 400, 350)); // Imposta la scena con la pagina di login
+            primaryStage.setScene(new Scene(root, 400, 350));
         }
         primaryStage.show();
     }
