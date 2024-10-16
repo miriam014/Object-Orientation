@@ -5,11 +5,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="792.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smu.Controller.HomepageController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="792.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smu.Controller.HomepageController">
    <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <center>
          <VBox prefHeight="600.0" prefWidth="684.0" spacing="10.0">
-            <Pane prefHeight="42.0" prefWidth="660.0" style="-fx-background-color: #008080;" />
+            <Pane prefHeight="28.0" prefWidth="800.0" style="-fx-background-color: #008080;" />
             <HBox alignment="CENTER_LEFT" prefHeight="123.0" prefWidth="660.0" spacing="10.0">
                <!-- Sezione per il Saldo -->
                <VBox>
@@ -83,7 +83,7 @@
                <Insets />
             </opaqueInsets>
             <BorderPane.margin>
-               <Insets />
+               <Insets left="-130.0" />
             </BorderPane.margin>
          </VBox>
       </center>

@@ -8,13 +8,13 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="132.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smu.Controller.MenuController">
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="132.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smu.Controller.MenuController">
     <top>
         <HBox prefHeight="13.0" prefWidth="132.0" style="-fx-background-color: #008080;" BorderPane.alignment="CENTER">
             <children>
                 <Button fx:id="toggleButton" mnemonicParsing="false" onAction="#toggleMenu" prefHeight="31.0" prefWidth="43.0" style="-fx-background-color: #008080; -fx-text-fill: white;" text="X">
                     <HBox.margin>
-                        <Insets bottom="2.0" left="15.0" />
+                        <Insets bottom="1.0" left="7.0" />
                     </HBox.margin>
                     <font>
                         <Font name="Segoe UI Symbol" size="18.0" />
@@ -22,15 +22,15 @@
                     <opaqueInsets>
                         <Insets />
                     </opaqueInsets>
-                    <padding>
-                        <Insets bottom="-1.0" />
-                    </padding>
+               <padding>
+                  <Insets bottom="-1.0" />
+               </padding>
                 </Button>
             </children>
         </HBox>
     </top>
     <left>
-        <VBox fx:id="sidePanel" prefHeight="569.0" prefWidth="131.0" style="-fx-background-color: #339999;" BorderPane.alignment="CENTER">
+        <VBox fx:id="sidePanel" prefHeight="577.0" prefWidth="136.0" spacing="3.0" style="-fx-background-color: #339999;" BorderPane.alignment="TOP_LEFT">
             <children>
                 <Button fx:id="homepageButton" mnemonicParsing="false" onAction="#HomepageButton" prefHeight="33.0" prefWidth="131.0" stylesheets="@stileHomepage.css" text="Homepage" textFill="#f8f6f6">
                     <padding>
@@ -42,8 +42,8 @@
                 </Button>
                 <Button fx:id="famigliaButton" mnemonicParsing="false" prefHeight="38.0" prefWidth="142.0" stylesheets="@stileHomepage.css" text="Famiglia" />
                 <Button fx:id="portafoglioButton" mnemonicParsing="false" prefHeight="38.0" prefWidth="141.0" stylesheets="@stileHomepage.css" text="Portafogli" />
-                <Button fx:id="transazioniButton" mnemonicParsing="false" prefHeight="38.0" prefWidth="141.0" stylesheets="@stileHomepage.css" text="Report" />
-                <Button fx:id="scadenzeButton" mnemonicParsing="false" onAction="#ScadenzeButton" prefHeight="38.0" prefWidth="145.0" stylesheets="@stileHomepage.css" text="Scadenze" />
+                <Button fx:id="ReportButton" mnemonicParsing="false" onAction="#ReportButton" prefHeight="38.0" prefWidth="141.0" stylesheets="@stileHomepage.css" text="Report" />
+                <Button fx:id="ScadenzeButton" mnemonicParsing="false" onAction="#ScadenzeButton" prefHeight="38.0" prefWidth="145.0" stylesheets="@stileHomepage.css" text="Scadenze" />
                 <Line endX="130.0" stroke="WHITE" />
 
                 <!-- Region per occupare spazio -->
@@ -58,6 +58,12 @@
                     </VBox.margin>
                 </Button>
             </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
         </VBox>
     </left>
     <cursor>

@@ -7,7 +7,7 @@
     <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <center>
             <VBox prefHeight="600.0" prefWidth="684.0" spacing="10">
-                <Pane prefHeight="34.0" prefWidth="800.0" style="-fx-background-color: #008080;">
+                <Pane prefHeight="23.0" prefWidth="789.0" style="-fx-background-color: #008080;">
                <VBox.margin>
                   <Insets />
                </VBox.margin></Pane>

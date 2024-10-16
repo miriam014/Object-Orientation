@@ -1,6 +1,7 @@
 package smu.Controller;
 
 import javafx.animation.TranslateTransition;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -16,6 +17,7 @@ import java.util.Optional;
 public class MenuController {
 
     @FXML private Button toggleButton;
+    @FXML private Button scadenzeButton;
     @FXML private Button homepageButton;
     @FXML private Button familyButton;
     @FXML private Button walletButton;
@@ -35,6 +37,11 @@ public class MenuController {
     @FXML
     public void HomepageButton() throws IOException {
         Main.setRoot("homepage");
+    }
+    
+    @FXML
+    public void ReportButton() throws IOException {
+        Main.setRoot("report");
     }
 
     @FXML
@@ -79,4 +86,5 @@ public class MenuController {
             isMenuVisible = !isMenuVisible;
         });
     }
+
 }
