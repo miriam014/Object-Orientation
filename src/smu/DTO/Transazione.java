@@ -66,7 +66,9 @@ public class Transazione {
         return Destinatario;
     }
 
-    public String getCategoria(){ return Categoria; }
+    public String getCategoria() {
+        return Categoria;
+    }
 
     public void setIDTransazione(String IDTransazione) {
         this.IDTransazione = IDTransazione;
@@ -104,7 +106,9 @@ public class Transazione {
         this.Destinatario = Destinatario;
     }
 
-    public void setCategoria(String Categoria){ this.Categoria = Categoria; }
+    public void setCategoria(String Categoria) {
+        this.Categoria = Categoria;
+    }
 
     public String getNumeroCarta() {
         return NumeroCarta;
@@ -116,8 +120,13 @@ public class Transazione {
 
     @Override
     public String toString() {
-        return "TRANSAZIONE: |IDTransazione = " + IDTransazione + "|\t" + "|CRO = " + CRO + "|\t" + "|Importo = " + Importo + "|\t"
-                + "|Data = " + Data + "|\t" + "|Ora = " + Ora + "|\t" + "|Causale = " + Causale + "|\t" + "|TipoTransazione = "
-                + TipoTransazione + "|\t" + "|Mittente = " + Mittente + "|\t" + "|Destinatario = " + Destinatario + "|\t";
+        // Utilizza Unicode per le frecce colorate
+        String freccia = TipoTransazione.equalsIgnoreCase("entrata") ? "🟢 →" : "🔴 ←";
+
+        // Se è un'entrata, mostriamo il Mittente; se è un'uscita, mostriamo il Destinatario
+        String controparte = TipoTransazione.equalsIgnoreCase("entrata") ? Mittente : Destinatario;
+
+        // Mostriamo solo importo, causale e controparte
+        return freccia + " Importo: " + String.format("%.2f", Importo) + " € | Causale: " + Causale + " | Controparte: " + controparte;
     }
 }

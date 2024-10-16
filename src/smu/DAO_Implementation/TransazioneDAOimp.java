@@ -104,7 +104,7 @@ public class TransazioneDAOimp implements TransazioneDAO {
         Connection connection = Database.getConnection();
         List<Transazione> list = new ArrayList<>();
 
-        String sql = "SELECT * FROM smu.Transazione WHERE NumeroCarta = ?";
+        String sql = "SELECT * FROM smu.Transazione WHERE NumeroCarta = ? ORDER BY Data DESC, Ora DESC";
         PreparedStatement ps = connection.prepareStatement(sql);
 
         ps.setString(1, cardNumber);

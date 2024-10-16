@@ -4,12 +4,18 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import smu.Sessione;
 import smu.DTO.Utente;
 import smu.DTO.Carta;
-import smu.Main;
+import smu.DTO.Transazione;
+import smu.DAO_Implementation.TransazioneDAOimp;
+import smu.DAO_Implementation.CartaDAOimp;
+
 
 import java.io.IOException;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.List;
 
@@ -79,12 +85,35 @@ public class HomepageController {
             cardNumberLabel.setText("Numero Carta: **** **** **** " + carta.getNumeroCarta().substring(carta.getNumeroCarta().length() - 4)); // Mostra solo gli ultimi 4 numeri
             expiryDateLabel.setText(carta.getScadenza().toString()); // Imposta la data di scadenza
             cardTypeLabel.setText(carta.getTipoCarta()); // Imposta il tipo di carta
+
+            loadTransactions(carta.getNumeroCarta()); // Carica le transazioni per la carta corrente
         }
         else {
             System.out.println("Nessuna carta da mostrare.");
         }
     }
 
+    private void loadTransactions(String cardNumber) {
+        try {
+            TransazioneDAOimp transazioneDAO = new TransazioneDAOimp();
+            List<Transazione> transazioni = transazioneDAO.getByCardNumber(cardNumber);
+
+            ObservableList<String> transactionDetails = FXCollections.observableArrayList(); // Crea una lista osservabile per le transazioni
+
+            for (Transazione transazione : transazioni) {
+                String directionArrow = transazione.getTipoTransazione().equals("entrata") ? "🟢 →" : "🔴 ←";
+                String transactionInfo = directionArrow + transazione.getImporto() + " € - "
+                        + transazione.getCausale() + " - "
+                        + (transazione.getTipoTransazione().equals("Entrata") ? "Da: " + transazione.getMittente() : "A: " + transazione.getDestinatario());
+
+                transactionDetails.add(transactionInfo);
+            }
+            transactionsListView.setItems(transactionDetails); // Imposta le transazioni nella ListView
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     private void handleNextCard() {
