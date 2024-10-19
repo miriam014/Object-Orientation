@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import smu.Main;
 import smu.Sessione;
 import smu.DTO.Utente;
 import smu.DTO.Carta;
@@ -36,6 +37,8 @@ public class HomepageController {
     @FXML
     private Button nextCardButton; // Pulsante per la prossima carta
     @FXML
+    private Button statisticaButton; // Pulsante per passare al report
+    @FXML
     private ListView<String> transactionsListView;
 
 
@@ -64,6 +67,7 @@ public class HomepageController {
             } else {
                 if(carteUtente.size() > 1) {
                     nextCardButton.setVisible(true); // Mostra il pulsante per la prossima carta
+                    statisticaButton.setVisible(true); // Mostra il pulsante per le statistiche
                 }
             }
             currentCardIndex = 0;
@@ -85,12 +89,34 @@ public class HomepageController {
             cardNumberLabel.setText("Numero Carta: **** **** **** " + carta.getNumeroCarta().substring(carta.getNumeroCarta().length() - 4)); // Mostra solo gli ultimi 4 numeri
             expiryDateLabel.setText(carta.getScadenza().toString()); // Imposta la data di scadenza
             cardTypeLabel.setText(carta.getTipoCarta()); // Imposta il tipo di carta
+            loadTransactions(carta.getNumeroCarta()); // Carica le transazioni per la carta corrente
         }
         else {
             System.out.println("Nessuna carta da mostrare.");
         }
     }
 
+    private void loadTransactions(String cardNumber) {
+        try {
+            TransazioneDAOimp transazioneDAO = new TransazioneDAOimp();
+            List<Transazione> transazioni = transazioneDAO.getByCardNumber(cardNumber);
+
+            ObservableList<String> transactionDetails = FXCollections.observableArrayList(); // Crea una lista osservabile per le transazioni
+
+            for (Transazione transazione : transazioni) {
+                String directionArrow = transazione.getTipoTransazione().equals("entrata") ? "🟢 →" : "🔴 ←";
+                String transactionInfo = directionArrow + transazione.getImporto() + " € - "
+                        + transazione.getCausale() + " - "
+                        + (transazione.getTipoTransazione().equals("Entrata") ? "Da: " + transazione.getMittente() : "A: " + transazione.getDestinatario());
+
+                transactionDetails.add(transactionInfo);
+            }
+            transactionsListView.setItems(transactionDetails); // Imposta le transazioni nella ListView
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     private void handleNextCard() {
@@ -100,5 +126,16 @@ public class HomepageController {
             currentCardIndex = 0; // Torna alla prima carta
         }
         showCard(); // Mostra la carta corrente
+    }
+
+    @FXML
+    private void scenaReport() {
+        try {
+            Carta cartaSelezionata = carteUtente.get(currentCardIndex); // Recupera la carta selezionata
+            Sessione.getInstance().setCartaSelezionata(cartaSelezionata); // Imposta la carta selezionata
+            Main.setRoot("report"); // Imposta la root della scena del report
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
