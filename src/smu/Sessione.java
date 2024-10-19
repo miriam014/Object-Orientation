@@ -14,6 +14,7 @@ public class Sessione {
     private static Sessione istanza;
     private Utente utenteLoggato;
     private List<Carta> carte; // Lista delle carte dell'utente
+    private Carta cartaSelezionata; // Carta attualmente selezionata
 
     private Sessione() {
         carte = new ArrayList<>(); // Inizializza la lista delle carte
@@ -58,5 +59,16 @@ public class Sessione {
     public List<Carta> getCarteUtente() {
         return carte; // Restituisce la lista delle carte
     }
+
+    // Imposta la carta selezionata
+    public void setCartaSelezionata(Carta carta) {
+        this.cartaSelezionata = carta;
+    }
+
+    // Recupera la carta attualmente in uso
+    public Carta getCartaSelezionata() {
+        return cartaSelezionata;
+    }
+
 }
 

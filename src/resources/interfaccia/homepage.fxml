@@ -9,7 +9,17 @@
    <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <center>
          <VBox prefHeight="600.0" prefWidth="684.0" spacing="10.0">
-            <Pane prefHeight="28.0" prefWidth="800.0" style="-fx-background-color: #008080;" />
+            <Pane prefHeight="28.0" prefWidth="800.0" style="-fx-background-color: #008080;">
+               <children>
+                  <Button fx:id="statisticaButton" layoutX="672.0" layoutY="5.0" mnemonicParsing="false" onAction="#scenaReport" style="-fx-background-color: #008080;" text="report" textFill="WHITE" visible="false">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets bottom="-2.0" />
+                     </padding>
+                  </Button>
+               </children></Pane>
             <HBox alignment="CENTER_LEFT" prefHeight="123.0" prefWidth="660.0" spacing="10.0">
                <!-- Sezione per il Saldo -->
                <VBox>

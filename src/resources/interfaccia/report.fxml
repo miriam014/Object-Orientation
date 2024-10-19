@@ -32,12 +32,13 @@
 
                   <HBox fx:id="comboBoxContainer" prefHeight="47.0" prefWidth="337.0">
                      <children>
-                        <Button fx:id="selectButton" mnemonicParsing="false" onAction="#SelezionaMese" prefHeight="30.0" prefWidth="111.0" style="-fx-background-color: #008080;" stylesheets="@stileHomepage.css" text="seleziona mese">
+                        <Button fx:id="selectButton" mnemonicParsing="false" onAction="#SelezionaCarta" prefHeight="30.0" prefWidth="111.0" style="-fx-background-color: #008080;" stylesheets="@stileHomepage.css" text="seleziona carta">
                            <HBox.margin>
                               <Insets left="5.0" />
                            </HBox.margin>
                         </Button>
-                        <ComboBox fx:id="monthComboBox" prefHeight="23.0" prefWidth="127.0" promptText="Seleziona Mese" stylesheets="@stileHomepage.css" visible="false" visibleRowCount="5">
+                        <ComboBox fx:id="cardComboBox" prefWidth="150.0" promptText="carta" stylesheets="@stileHomepage.css" visible="false"  visibleRowCount="5" />
+                        <ComboBox fx:id="monthComboBox" prefHeight="38.0" prefWidth="136.0" promptText="mese" stylesheets="@stileHomepage.css" visible="false" visibleRowCount="5">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -45,17 +46,17 @@
                               <Insets left="2.0" right="2.0" />
                            </HBox.margin>
                         </ComboBox>
-                        <ComboBox fx:id="yearComboBox" prefHeight="35.0" prefWidth="96.0" promptText="2024" stylesheets="@stileHomepage.css" visible="false" visibleRowCount="5">
+                        <ComboBox fx:id="yearComboBox" prefHeight="38.0" prefWidth="96.0" promptText="anno" stylesheets="@stileHomepage.css" visible="false" visibleRowCount="5">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
                         </ComboBox>
                      </children>
                      <VBox.margin>
-                        <Insets right="455.0" top="5.0" />
+                        <Insets right="250.0" top="5.0" />
                      </VBox.margin>
                   </HBox>
-                  <Label fx:id="selezionaMeseAnno" text="Label" textAlignment="CENTER">
+                  <Label fx:id="CartaMeseAnno" text="Label" textAlignment="CENTER">
                      <VBox.margin>
                         <Insets bottom="40.0" left="345.0" top="-20.0" />
                      </VBox.margin>

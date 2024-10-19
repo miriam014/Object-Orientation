@@ -41,14 +41,14 @@
 }
 
 .combo-box .arrow {
-    -fx-background-color: #3498db; /* Colore del triangolo della ComboBox */
+    -fx-background-color: #008080; /* Colore del triangolo della ComboBox */
     -fx-background-radius: 0;       /* Rimuove l'arrotondamento dal triangolo */
 }
 
 .combo-box .text {
-    -fx-padding: 0 0 0 5;          /* Riduce lo spazio tra il testo e il triangolo */
+    -fx-padding: 0;          /* Riduce lo spazio tra il testo e il triangolo */
 }
 
 .combo-box:focused {
-    -fx-border-color: #2980b9;     /* Colore del bordo quando la ComboBox è in focus */
+    -fx-border-color: #008080;     /* Colore del bordo quando la ComboBox è in focus */
 }

@@ -9,9 +9,12 @@ import javafx.scene.layout.VBox;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.util.Duration;
+import smu.DTO.Carta;
 import smu.Main;
+import smu.Sessione;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 public class MenuController {
@@ -41,7 +44,16 @@ public class MenuController {
     
     @FXML
     public void ReportButton() throws IOException {
-        Main.setRoot("report");
+        List<Carta> carteUtente = Sessione.getInstance().getCarteUtente();
+        if(!carteUtente.isEmpty()) {
+            Main.setRoot("report");
+        } else {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Errore");
+            alert.setHeaderText(null);
+            alert.setContentText("Non hai carte associate al tuo account.");
+            alert.showAndWait();
+        }
     }
 
     @FXML

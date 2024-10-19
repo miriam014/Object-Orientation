@@ -8,15 +8,21 @@ import javafx.event.ActionEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 
+import smu.Sessione;
+import smu.DTO.Carta;
+
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ReportController {
     @FXML
-    public Label selezionaMeseAnno;
+    public Label CartaMeseAnno;
     @FXML
     private Button selectButton;
+    @FXML
+    private ComboBox<String> cardComboBox;
     @FXML
     private ComboBox<String> monthComboBox; // ComboBox per i mesi
     @FXML
@@ -28,10 +34,18 @@ public class ReportController {
 
     @FXML
     private void initialize() {
+        //Popola le carte dell'utente
+        List<Carta> carteUtente = Sessione.getInstance().getCarteUtente();
+        cardComboBox.getItems().clear();
+        for (Carta carta : carteUtente){
+            cardComboBox.getItems().add(carta.getNomeCarta());
+        }
+
         // Popola i mesi nella ComboBox
         List<String> months = Arrays.asList("Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno",
                 "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre");
         monthComboBox.getItems().addAll(months);
+
 
         // Popola gli anni nella ComboBox
         int currentYear = Calendar.getInstance().get(Calendar.YEAR);
@@ -39,30 +53,38 @@ public class ReportController {
             yearComboBox.getItems().add(i);
         }
 
-        // Imposta il mese e l'anno correnti nelle ComboBox
-        monthComboBox.setValue(months.get(Calendar.getInstance().get(Calendar.MONTH))); // Imposta il mese corrente
-        yearComboBox.setValue(currentYear); // Imposta l'anno corrente
+        // Recupera la carta selezionata dall'utente e inizia ad impostare i valori nel label
+        Carta cartaSelezionata = Sessione.getInstance().getCartaSelezionata();
+        if (cartaSelezionata != null) {
+            cardComboBox.setValue(cartaSelezionata.getNomeCarta());
+        } else {
+            cardComboBox.setValue(carteUtente.getFirst().getNomeCarta());
+        }
+        monthComboBox.setValue(months.get(Calendar.getInstance().get(Calendar.MONTH)));
+        yearComboBox.setValue(currentYear);
 
-        // Aggiorna il label con il valore corrente
-        selezionaMeseAnno.setText(monthComboBox.getValue() + " " + yearComboBox.getValue());
+        CartaMeseAnno.setText(cardComboBox.getValue() + "\n" + monthComboBox.getValue() + " " + yearComboBox.getValue());
 
-        // Aggiungi listener per aggiornare il Label in tempo reale
+        // listener per aggiornare il Label in tempo reale
+        cardComboBox.setOnAction(e -> aggiornaLabel());
         monthComboBox.setOnAction(e -> aggiornaLabel());
         yearComboBox.setOnAction(e -> aggiornaLabel());
     }
 
     // Metodo per aggiornare il Label quando il mese o l'anno vengono modificati
     private void aggiornaLabel() {
+        String selectedCard = cardComboBox.getValue();
         String selectedMonth = monthComboBox.getValue();
         Integer selectedYear = yearComboBox.getValue();
 
-        if (selectedMonth != null && selectedYear != null) {
-            selezionaMeseAnno.setText(selectedMonth + " " + selectedYear);
+        if (selectedMonth != null && selectedYear != null &&selectedCard != null) {
+            CartaMeseAnno.setText(selectedCard + "\n" + selectedMonth + " " + selectedYear);
         }
     }
 
     @FXML
-    private void SelezionaMese(ActionEvent event) {
+    private void SelezionaCarta(ActionEvent event) {
+        cardComboBox.setVisible(true);
         monthComboBox.setVisible(true);
         yearComboBox.setVisible(true);
     }
@@ -72,7 +94,8 @@ public class ReportController {
     public void handleMouseClick(MouseEvent event) {
         // Se si clicca al di fuori dell'HBox, chiudi le ComboBox
         if (event.getTarget() != comboBoxContainer && event.getTarget() != selectButton) {
-            
+
+            cardComboBox.setVisible(false);
             monthComboBox.setVisible(false);
             yearComboBox.setVisible(false);
         }

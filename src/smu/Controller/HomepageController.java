@@ -10,7 +10,6 @@ import smu.DTO.Carta;
 import smu.Main;
 
 import java.io.IOException;
-import java.util.Optional;
 import java.util.List;
 
 public class HomepageController {
@@ -29,6 +28,8 @@ public class HomepageController {
     private Label expiryDateLabel; // Etichetta per la data di scadenza
     @FXML
     private Button nextCardButton; // Pulsante per la prossima carta
+    @FXML
+    private Button statisticaButton; // Pulsante per le statistiche
     @FXML
     private ListView<String> transactionsListView;
 
@@ -58,6 +59,7 @@ public class HomepageController {
             } else {
                 if(carteUtente.size() > 1) {
                     nextCardButton.setVisible(true); // Mostra il pulsante per la prossima carta
+                    statisticaButton.setVisible(true);
                 }
             }
             currentCardIndex = 0;
@@ -94,5 +96,16 @@ public class HomepageController {
             currentCardIndex = 0; // Torna alla prima carta
         }
         showCard(); // Mostra la carta corrente
+    }
+
+    @FXML
+    private void scenaReport() {
+        try {
+            Carta cartaSelezionata = carteUtente.get(currentCardIndex);
+            Sessione.getInstance().setCartaSelezionata(cartaSelezionata);
+            Main.setRoot("report");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
