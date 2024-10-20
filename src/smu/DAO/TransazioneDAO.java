@@ -10,6 +10,6 @@ public interface TransazioneDAO {
     boolean update(Transazione transaction) throws SQLException;
     boolean delete(String transactionID) throws SQLException;
     Transazione getByID(String transactionID) throws SQLException;
-    List<Transazione> getByCardNumber(String cardNumber) throws SQLException;
+    List<Transazione> getByCardNumber(String cardNumbe, String x) throws SQLException;
     List<Transazione> getByCategory(String category) throws SQLException;
 }

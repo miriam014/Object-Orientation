@@ -30,7 +30,6 @@ public class Sessione {
 
     // Imposta l'utente autenticato
     public void setUtenteLoggato(Utente utente) {
-
         this.utenteLoggato = utente;
         loadUserCards(); // Carica le carte dell'utente
     }
@@ -41,7 +40,6 @@ public class Sessione {
     }
 
     //vengono recuperate le carte associate all'utente loggato
-
     private void loadUserCards() {
         if (utenteLoggato != null) { // Verifica che l'utente sia loggato
             CartaDAO cartaDAO = new CartaDAOimp(); // Crea un'istanza del DAO per le carte
@@ -60,7 +58,7 @@ public class Sessione {
         return carte; // Restituisce la lista delle carte
     }
 
-    // Imposta la carta selezionata
+    // Imposta la carta selezionata dall'utente in quel momento
     public void setCartaSelezionata(Carta carta) {
         this.cartaSelezionata = carta;
     }

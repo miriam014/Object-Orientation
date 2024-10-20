@@ -52,3 +52,11 @@
 .combo-box:focused {
     -fx-border-color: #008080;     /* Colore del bordo quando la ComboBox è in focus */
 }
+
+#statisticheUscite .chart-bar {
+    -fx-bar-fill: #A52A2A; /* Imposta il colore delle barre su rosso */
+}
+
+#statisticheEntrate .chart-bar {
+    -fx-bar-fill: #277e0a; /* Imposta il colore delle barre su verde */
+}

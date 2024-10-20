@@ -99,7 +99,7 @@ public class HomepageController {
     private void loadTransactions(String cardNumber) {
         try {
             TransazioneDAOimp transazioneDAO = new TransazioneDAOimp();
-            List<Transazione> transazioni = transazioneDAO.getByCardNumber(cardNumber);
+            List<Transazione> transazioni = transazioneDAO.getByCardNumber(cardNumber, "tutte"); // Recupera le transazioni per la carta
 
             ObservableList<String> transactionDetails = FXCollections.observableArrayList(); // Crea una lista osservabile per le transazioni
 

@@ -56,9 +56,9 @@
                      </font>
                   </Label>
 
-                  <FlowPane prefHeight="235.0" prefWidth="792.0">
+                  <FlowPane prefHeight="306.0" prefWidth="791.0">
                      <children>
-                        <BarChart prefHeight="249.0" prefWidth="287.0">
+                        <BarChart fx:id="statisticheEntrate" alternativeColumnFillVisible="true" barGap="20.0" legendVisible="false" prefHeight="301.0" prefWidth="329.0" stylesheets="@stileHomepage.css" title="entrate" verticalGridLinesVisible="false">
                           <xAxis>
                             <CategoryAxis side="BOTTOM" />
                           </xAxis>
@@ -66,16 +66,19 @@
                             <NumberAxis side="LEFT" />
                           </yAxis>
                            <FlowPane.margin>
-                              <Insets left="20.0" right="130.0" />
+                              <Insets left="20.0" right="80.0" />
                            </FlowPane.margin>
                         </BarChart>
-                        <BarChart prefHeight="183.0" prefWidth="279.0">
+                        <BarChart fx:id="statisticheUscite" alternativeColumnFillVisible="true" barGap="20.0" legendVisible="false" prefHeight="301.0" prefWidth="329.0" stylesheets="@stileHomepage.css" title="uscite" verticalGridLinesVisible="false">
                            <xAxis>
                               <CategoryAxis side="BOTTOM" />
                            </xAxis>
                            <yAxis>
                               <NumberAxis side="LEFT" />
                            </yAxis>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
                         </BarChart>
                      </children>
                   </FlowPane>

@@ -99,14 +99,24 @@ public class TransazioneDAOimp implements TransazioneDAO {
     }
 
     @Override
-    public List<Transazione> getByCardNumber(String cardNumber) throws SQLException{
+    public List<Transazione> getByCardNumber(String cardNumber, String x) throws SQLException {
 
         Connection connection = Database.getConnection();
-        List<Transazione> list = new ArrayList<>();
+        List<Transazione> transazioni = new ArrayList<>();
 
-        String sql = "SELECT * FROM smu.Transazione WHERE NumeroCarta = ? ORDER BY Data DESC, Ora DESC";
+
+        String sql = "SELECT * FROM smu.Transazione WHERE NumeroCarta = ? ";
+        if( x != null) {
+            if (x.equals("Entrata")) {  //se è entrata allora le transazioni di tipo uscita vengono ignorate
+                sql += "AND Tipo = 'Entrata' ";
+            } else if (x.equals("Uscita")) {
+                sql += "AND Tipo = 'Uscita' ";
+            }
+        }
+        sql += "ORDER BY Data DESC, Ora DESC";
+
+
         PreparedStatement ps = connection.prepareStatement(sql);
-
         ps.setString(1, cardNumber);
         ResultSet rs = ps.executeQuery();
 
@@ -124,12 +134,12 @@ public class TransazioneDAOimp implements TransazioneDAO {
             String categoria = rs.getString("NomeCategoria");
 
             Transazione transaction = new Transazione(id,cro,importo,data,ora,causale,tipo,mittente,destinatario,numeroCarta,categoria);
-            list.add(transaction);
+            transazioni.add(transaction);
         }
         rs.close();
         ps.close();
 
-        return list;
+        return transazioni;
     }
 
     @Override
