@@ -12,7 +12,7 @@
          <center>
             <VBox prefHeight="611.0" prefWidth="790.0" BorderPane.alignment="CENTER">
                <BorderPane.margin>
-                  <Insets left="-110.0" />
+                  <Insets />
                </BorderPane.margin>
                <children>
                   <Pane prefHeight="26.0" prefWidth="790.0" style="-fx-background-color: #008080;">

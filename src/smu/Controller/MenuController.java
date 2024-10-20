@@ -2,6 +2,7 @@ package smu.Controller;
 
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -87,9 +88,8 @@ public class MenuController {
         if (isMenuVisible) {
             slide.setToX(-sidePanel.getWidth()); // Imposta la larghezza a zero
             toggleButton.setText("☰");
-
         } else {
-            slide.setToX(0); // Ripristina la larghezza
+            slide.setToX(20); // Ripristina la larghezza
             toggleButton.setText("X");
         }
 
@@ -97,6 +97,15 @@ public class MenuController {
         slide.setOnFinished(event -> {
             isMenuVisible = !isMenuVisible;
         });
+    }
+
+
+    @FXML
+    public void handleMouseClick(MouseEvent event) {
+        // Se si clicca al di fuori della VBox, chiudi il menu richiama il metodo del toggle
+        if (event.getTarget() != sidePanel) {
+            toggleMenu();
+        }
     }
 
 }

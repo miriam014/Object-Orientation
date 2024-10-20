@@ -17,7 +17,10 @@
                         <Insets bottom="-2.0" />
                      </padding>
                   </Button>
-               </children></Pane>
+               </children>
+               <VBox.margin>
+                  <Insets left="-1.0" />
+               </VBox.margin></Pane>
             <HBox alignment="CENTER_LEFT" prefHeight="123.0" prefWidth="660.0" spacing="10.0">
                <!-- Sezione per il Saldo -->
                <VBox>
@@ -94,9 +97,7 @@
             <opaqueInsets>
                <Insets />
             </opaqueInsets>
-            <BorderPane.margin>
-               <Insets left="-130.0" />
-            </BorderPane.margin>
+
          </VBox>
       </center>
       <left>

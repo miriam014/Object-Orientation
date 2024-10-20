@@ -84,16 +84,17 @@ public class ReportController {
 
     @FXML
     private void SelezionaCarta(ActionEvent event) {
-        cardComboBox.setVisible(true);
-        monthComboBox.setVisible(true);
-        yearComboBox.setVisible(true);
+        boolean isVisible = cardComboBox.isVisible();
+        cardComboBox.setVisible(!isVisible);
+        monthComboBox.setVisible(!isVisible);
+        yearComboBox.setVisible(!isVisible);
     }
 
 
     @FXML
     public void handleMouseClick(MouseEvent event) {
         // Se si clicca al di fuori dell'HBox, chiudi le ComboBox
-        if (event.getTarget() != comboBoxContainer && event.getTarget() != selectButton) {
+        if (event.getTarget() != comboBoxContainer) {
 
             cardComboBox.setVisible(false);
             monthComboBox.setVisible(false);

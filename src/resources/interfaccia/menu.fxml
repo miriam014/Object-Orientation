@@ -8,13 +8,13 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="132.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smu.Controller.MenuController">
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleMouseClick" prefHeight="600.0" prefWidth="1.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smu.Controller.MenuController">
     <top>
-        <HBox prefHeight="13.0" prefWidth="132.0" style="-fx-background-color: #008080;" BorderPane.alignment="CENTER">
+        <HBox prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: #008080;" BorderPane.alignment="BOTTOM_CENTER">
             <children>
-                <Button fx:id="toggleButton" mnemonicParsing="false" onAction="#toggleMenu" prefHeight="31.0" prefWidth="43.0" style="-fx-background-color: #008080; -fx-text-fill: white;" text="X">
+                <Button fx:id="toggleButton" mnemonicParsing="false" onAction="#toggleMenu" prefHeight="22.0" prefWidth="27.0" style="-fx-background-color: #008080; -fx-text-fill: white;" text="X">
                     <HBox.margin>
-                        <Insets bottom="1.0" left="7.0" />
+                        <Insets bottom="1.0" right="-25.0" />
                     </HBox.margin>
                     <font>
                         <Font name="Segoe UI Symbol" size="18.0" />
@@ -27,23 +27,41 @@
                </padding>
                 </Button>
             </children>
+         <BorderPane.margin>
+            <Insets right="4.0" />
+         </BorderPane.margin>
         </HBox>
     </top>
     <left>
-        <VBox fx:id="sidePanel" prefHeight="577.0" prefWidth="136.0" spacing="3.0" style="-fx-background-color: #339999;" BorderPane.alignment="TOP_LEFT">
+        <VBox fx:id="sidePanel" prefHeight="578.0" prefWidth="124.0" spacing="3.0" style="-fx-background-color: #339999;" BorderPane.alignment="TOP_LEFT">
             <children>
-                <Button fx:id="homepageButton" mnemonicParsing="false" onAction="#HomepageButton" prefHeight="33.0" prefWidth="131.0" stylesheets="@stileHomepage.css" text="Homepage" textFill="#f8f6f6">
-                    <padding>
-                        <Insets left="50.0" />
-                    </padding>
+                <Button fx:id="homepageButton" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#HomepageButton" prefHeight="33.0" prefWidth="131.0" stylesheets="@stileHomepage.css" text="Homepage" textAlignment="CENTER" textFill="#f8f6f6">
                     <font>
                         <Font size="12.0" />
                     </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets left="12.0" />
+               </VBox.margin>
                 </Button>
-                <Button fx:id="famigliaButton" mnemonicParsing="false" prefHeight="38.0" prefWidth="142.0" stylesheets="@stileHomepage.css" text="Famiglia" />
-                <Button fx:id="portafoglioButton" mnemonicParsing="false" prefHeight="38.0" prefWidth="141.0" stylesheets="@stileHomepage.css" text="Portafogli" />
-                <Button fx:id="ReportButton" mnemonicParsing="false" onAction="#ReportButton" prefHeight="38.0" prefWidth="141.0" stylesheets="@stileHomepage.css" text="Report" />
-                <Button fx:id="ScadenzeButton" mnemonicParsing="false" onAction="#ScadenzeButton" prefHeight="38.0" prefWidth="145.0" stylesheets="@stileHomepage.css" text="Scadenze" />
+                <Button fx:id="famigliaButton" mnemonicParsing="false" prefHeight="38.0" prefWidth="142.0" stylesheets="@stileHomepage.css" text="Famiglia">
+               <VBox.margin>
+                  <Insets left="5.0" />
+               </VBox.margin></Button>
+                <Button fx:id="portafoglioButton" mnemonicParsing="false" prefHeight="38.0" prefWidth="141.0" stylesheets="@stileHomepage.css" text="Portafogli">
+               <VBox.margin>
+                  <Insets left="11.0" />
+               </VBox.margin></Button>
+                <Button fx:id="ReportButton" mnemonicParsing="false" onAction="#ReportButton" prefHeight="38.0" prefWidth="141.0" stylesheets="@stileHomepage.css" text="Report">
+               <VBox.margin>
+                  <Insets left="5.0" />
+               </VBox.margin></Button>
+                <Button fx:id="ScadenzeButton" mnemonicParsing="false" onAction="#ScadenzeButton" prefHeight="38.0" prefWidth="145.0" stylesheets="@stileHomepage.css" text="Scadenze">
+               <VBox.margin>
+                  <Insets left="11.0" />
+               </VBox.margin></Button>
                 <Line endX="130.0" stroke="WHITE" />
 
                 <!-- Region per occupare spazio -->
@@ -54,16 +72,19 @@
                         <Insets />
                     </opaqueInsets>
                     <VBox.margin>
-                        <Insets left="30.0" />
+                        <Insets left="41.0" />
                     </VBox.margin>
                 </Button>
             </children>
          <BorderPane.margin>
-            <Insets />
+            <Insets left="-20.0" />
          </BorderPane.margin>
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
+         <padding>
+            <Insets left="-20.0" />
+         </padding>
         </VBox>
     </left>
     <cursor>
