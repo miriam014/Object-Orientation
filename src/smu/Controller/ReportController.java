@@ -15,7 +15,9 @@ import smu.DTO.Transazione;
 import smu.Sessione;
 import smu.DTO.Carta;
 
+import java.sql.Date;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.*;
 
 public class ReportController {
@@ -65,59 +67,82 @@ public class ReportController {
             cardComboBox.setValue(cartaSelezionata.getNomeCarta());
         } else {
             cardComboBox.setValue(carteUtente.getFirst().getNomeCarta());
+            Sessione.getInstance().setCartaSelezionata(carteUtente.getFirst());
         }
         monthComboBox.setValue(months.get(Calendar.getInstance().get(Calendar.MONTH)));
         yearComboBox.setValue(currentYear);
 
         CartaMeseAnno.setText(cardComboBox.getValue() + "\n" + monthComboBox.getValue() + " " + yearComboBox.getValue());
 
-        // listener per aggiornare il Label in tempo reale
-        cardComboBox.setOnAction(e -> aggiornaLabel());
-        monthComboBox.setOnAction(e -> aggiornaLabel());
-        yearComboBox.setOnAction(e -> aggiornaLabel());
+        // listener per aggiornare il Label e i grafici in tempo reale
+        monthComboBox.setOnAction(e -> aggiornaGrafici());
+        yearComboBox.setOnAction(e -> aggiornaGrafici());
+        cardComboBox.setOnAction(e -> {
+            for (Carta carta : carteUtente) {    // Aggiorna la carta selezionata nella sessione
+                if (carta.getNomeCarta().equals(cardComboBox.getValue())) {
+                    Sessione.getInstance().setCartaSelezionata(carta);
+                }
+            }
+            aggiornaGrafici();
+        });
 
-
-        popolabarChartEntrate();
-        popolabarChartUscite();
+        aggiornaGrafici();
     }
 
-    private void popolabarChartEntrate() {
-        popolaBarChart("Entrata", statisticheEntrate, "Entrate");
+    private void aggiornaGrafici() {
+        String month = monthComboBox.getValue();
+        Integer year = yearComboBox.getValue();
+
+        if ((month != null) && (year != null)) {
+            popolabarChartEntrate(month, year);
+            popolabarChartUscite(month, year);
+            aggiornaLabel();
+        }
     }
 
-    private void popolabarChartUscite() {
-        popolaBarChart("Uscita", statisticheUscite, "Uscite");
+    private void popolabarChartEntrate(String month, Integer year) {
+        popolaBarChart("Entrata", statisticheEntrate, "Entrate", month, year);
     }
 
-    private void popolaBarChart (String tipoTransazione, XYChart<String, Number> grafico, String nomeSerie) {
-        grafico.getData().clear(); // Pulisce i dati precedenti
+    private void popolabarChartUscite(String month, Integer year) {
+        popolaBarChart("Uscita", statisticheUscite, "Uscite", month, year);
+    }
+
+    private void popolaBarChart (String tipoTransazione, XYChart<String, Number> grafico, String nomeSerie, String mese, Integer anno) {
+        grafico.getData().clear(); // Pulisce i dati precedeti
         Carta cartaSelezionata = Sessione.getInstance().getCartaSelezionata();
         TransazioneDAOimp transazioneDAO = new TransazioneDAOimp();
         List<Transazione> transazioni = new ArrayList<>();
 
         try {
             transazioni = transazioneDAO.getByCardNumber(cartaSelezionata.getNumeroCarta(), tipoTransazione);
-            System.out.println ("Transazioni: " + transazioni);
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        if(transazioni.isEmpty()){
-            System.out.println("Nessuna transazione in " + tipoTransazione);
-            return;
+        List<Float> importi = new ArrayList<>();
+        int meseSelezionato = convertiMeseInNumero(mese);
+        System.out.println("Mese selezionato: " + meseSelezionato);
+
+        for (Transazione transazione : transazioni) {
+            LocalDate dataTransazione = transazione.getData().toLocalDate();
+            int meseTransazione = dataTransazione.getMonthValue();
+            int annoTransazione = dataTransazione.getYear();
+
+            System.out.println("Transazione: " + transazione + " - Mese: " + meseTransazione + ", Anno: " + annoTransazione);
+
+            if(meseTransazione == meseSelezionato && annoTransazione == anno){
+                importi.add(transazione.getImporto());
+            }
         }
 
-        List<Float> importi = new ArrayList<>();
-        for (Transazione transazione : transazioni) {
-            importi.add(transazione.getImporto());  // Supponendo che getImporto restituisca un valore di tipo Double
-        }
+        // Se non ci sono importi, imposta tutti i valori (massimo, minimo, medio) a 0
+        float massimo = importi.isEmpty() ? 0 : calcolaMassimo(importi);
+        float minimo = importi.isEmpty() ? 0 : calcolaMinimo(importi);
+        float medio = importi.isEmpty() ? 0 : calcolaMedio(importi);
 
         XYChart.Series<String, Number> serie = new XYChart.Series<>();
         serie.setName(nomeSerie);
-
-        float massimo = calcolaMassimo(importi);
-        float medio = calcolaMedio(importi);
-        float minimo = calcolaMinimo(importi);
 
         serie.getData().add(new XYChart.Data<>("Massima " + tipoTransazione, massimo));
         serie.getData().add(new XYChart.Data<>("Media " + tipoTransazione, medio));
@@ -127,8 +152,9 @@ public class ReportController {
     }
 
     private float calcolaMassimo(List<Float> importi) {
-        if (importi.isEmpty()) return 0; // Aggiungi un controllo per la lista vuota
-        float massimo = Float.MIN_VALUE; // Inizializza con il valore più basso possibile
+        if (importi.isEmpty())
+            return 0;
+        float massimo = Float.MIN_VALUE;
         for (Float importo : importi) {
             if (importo > massimo) {
                 massimo = importo;
@@ -137,6 +163,7 @@ public class ReportController {
         System.out.println("Massimo: " + massimo);
         return massimo;
     }
+
 
     private float calcolaMinimo(List<Float> importi) {
         if (importi.isEmpty()) return 0; // Aggiungi un controllo per la lista vuota
@@ -194,4 +221,22 @@ public class ReportController {
         }
     }
 
+
+    private int convertiMeseInNumero (String mese) {
+        return switch (mese) {
+            case "Gennaio" -> 1;
+            case "Febbraio" -> 2;
+            case "Marzo" -> 3;
+            case "Aprile" -> 4;
+            case "Maggio" -> 5;
+            case "Giugno" -> 6;
+            case "Luglio" -> 7;
+            case "Agosto" -> 8;
+            case "Settembre" -> 9;
+            case "Ottobre" -> 10;
+            case "Novembre" -> 11;
+            case "Dicembre" -> 12;
+            default -> 0;
+        };
+    }
 }
