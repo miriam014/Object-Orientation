@@ -2,27 +2,33 @@ package smu.Controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
+import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.event.ActionEvent;
+import javafx.scene.control.Tooltip;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 
+import javafx.util.Duration;
 import smu.DAO_Implementation.TransazioneDAOimp;
 import smu.DTO.Transazione;
 import smu.Sessione;
 import smu.DTO.Carta;
 
-import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.*;
 
 public class ReportController {
     @FXML
-    public Label CartaMeseAnno;
+    public Label LabelDati;
+    @FXML
+    private Label saldoIniziale;
+    @FXML
+    private Label saldoFinale;
     @FXML
     private Button selectButton;
     @FXML
@@ -54,7 +60,6 @@ public class ReportController {
                 "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre");
         monthComboBox.getItems().addAll(months);
 
-
         // Popola gli anni nella ComboBox
         int currentYear = Calendar.getInstance().get(Calendar.YEAR);
         for (int i = currentYear; i >= currentYear - 20; i--) {
@@ -72,7 +77,7 @@ public class ReportController {
         monthComboBox.setValue(months.get(Calendar.getInstance().get(Calendar.MONTH)));
         yearComboBox.setValue(currentYear);
 
-        CartaMeseAnno.setText(cardComboBox.getValue() + "\n" + monthComboBox.getValue() + " " + yearComboBox.getValue());
+        LabelDati.setText(cardComboBox.getValue() + "\n" + monthComboBox.getValue() + " " + yearComboBox.getValue());
 
         // listener per aggiornare il Label e i grafici in tempo reale
         monthComboBox.setOnAction(e -> aggiornaGrafici());
@@ -90,22 +95,22 @@ public class ReportController {
     }
 
     private void aggiornaGrafici() {
-        String month = monthComboBox.getValue();
-        Integer year = yearComboBox.getValue();
+        String mese = monthComboBox.getValue();
+        Integer anno = yearComboBox.getValue();
 
-        if ((month != null) && (year != null)) {
-            popolabarChartEntrate(month, year);
-            popolabarChartUscite(month, year);
+        if ((mese != null) && (anno != null)) {
+            popolabarChartEntrate(mese, anno);
+            popolabarChartUscite(mese, anno);
             aggiornaLabel();
         }
     }
 
-    private void popolabarChartEntrate(String month, Integer year) {
-        popolaBarChart("Entrata", statisticheEntrate, "Entrate", month, year);
+    private void popolabarChartEntrate(String mese, Integer anno) {
+        popolaBarChart("Entrata", statisticheEntrate, "Entrate", mese, anno);
     }
 
-    private void popolabarChartUscite(String month, Integer year) {
-        popolaBarChart("Uscita", statisticheUscite, "Uscite", month, year);
+    private void popolabarChartUscite(String mese, Integer anno) {
+        popolaBarChart("Uscita", statisticheUscite, "Uscite", mese, anno);
     }
 
     private void popolaBarChart (String tipoTransazione, XYChart<String, Number> grafico, String nomeSerie, String mese, Integer anno) {
@@ -137,23 +142,38 @@ public class ReportController {
         }
 
         // Se non ci sono importi, imposta tutti i valori (massimo, minimo, medio) a 0
-        float massimo = importi.isEmpty() ? 0 : calcolaMassimo(importi);
-        float minimo = importi.isEmpty() ? 0 : calcolaMinimo(importi);
-        float medio = importi.isEmpty() ? 0 : calcolaMedio(importi);
+        float massimo = importi.isEmpty() ? 0.1F : calcolaMassimo(importi);
+        float minimo = importi.isEmpty() ? 0.1F : calcolaMinimo(importi);
+        float medio = importi.isEmpty() ? 0.1F : calcolaMedio(importi);
 
         XYChart.Series<String, Number> serie = new XYChart.Series<>();
         serie.setName(nomeSerie);
 
-        serie.getData().add(new XYChart.Data<>("Massima " + tipoTransazione, massimo));
-        serie.getData().add(new XYChart.Data<>("Media " + tipoTransazione, medio));
-        serie.getData().add(new XYChart.Data<>("Minima " + tipoTransazione, minimo));
+        // Crea i dati per il grafico con i tooltip
+        XYChart.Data<String, Number> dataMassimo = new XYChart.Data<>("Massima " + tipoTransazione, massimo);
+        XYChart.Data<String, Number> dataMedio = new XYChart.Data<>("Media " + tipoTransazione, medio);
+        XYChart.Data<String, Number> dataMinimo = new XYChart.Data<>("Minima " + tipoTransazione, minimo);
 
+        serie.getData().add(dataMassimo);
+        serie.getData().add(dataMedio);
+        serie.getData().add(dataMinimo);
         grafico.getData().add(serie);
+
+        aggiungiTooltip(dataMassimo, massimo);
+        aggiungiTooltip(dataMedio, medio);
+        aggiungiTooltip(dataMinimo, minimo);
+
+        NumberAxis asseY = (NumberAxis) grafico.getYAxis();
+        if (importi.size() <= 1) {
+            asseY.setAutoRanging(false);
+            asseY.setLowerBound(0);
+            asseY.setUpperBound(Math.max(10, massimo)); // imposta un limite massimo ragionevole
+        } else {
+            asseY.setAutoRanging(true);
+        }
     }
 
     private float calcolaMassimo(List<Float> importi) {
-        if (importi.isEmpty())
-            return 0;
         float massimo = Float.MIN_VALUE;
         for (Float importo : importi) {
             if (importo > massimo) {
@@ -166,7 +186,6 @@ public class ReportController {
 
 
     private float calcolaMinimo(List<Float> importi) {
-        if (importi.isEmpty()) return 0; // Aggiungi un controllo per la lista vuota
         float minimo = Float.MAX_VALUE; // Inizializza con il valore più alto possibile
         for (Float importo : importi) {
             if (importo < minimo) {
@@ -178,8 +197,6 @@ public class ReportController {
     }
 
     private float calcolaMedio(List<Float> importi) {
-        if (importi.isEmpty()) return 0; // Gestisci il caso di lista vuota
-
         float somma = 0;
         for (Float importo : importi) {
             somma += importo;
@@ -188,15 +205,22 @@ public class ReportController {
         return somma / importi.size();
     }
 
+    private void aggiungiTooltip(XYChart.Data<String, Number> data, float valore) {
+        Tooltip tooltip = new Tooltip("Importo: " + valore);
+        Tooltip.install(data.getNode(), tooltip);
 
-    // Metodo per aggiornare il Label quando il mese o l'anno vengono modificati
+        tooltip.setShowDelay(Duration.millis(0.1)); // Ritardo di visualizzazione
+        tooltip.setHideDelay(Duration.millis(100)); // Ritardo di scomparsa
+    }
+
+    // Metodo per aggiornare i Label quando il mese o l'anno vengono modificati
     private void aggiornaLabel() {
         String selectedCard = cardComboBox.getValue();
         String selectedMonth = monthComboBox.getValue();
         Integer selectedYear = yearComboBox.getValue();
 
         if (selectedMonth != null && selectedYear != null &&selectedCard != null) {
-            CartaMeseAnno.setText(selectedCard + "\n" + selectedMonth + " " + selectedYear);
+            LabelDati.setText(selectedCard + "\n" + selectedMonth + " " + selectedYear);
         }
     }
 
