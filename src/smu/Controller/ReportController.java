@@ -48,10 +48,16 @@ public class ReportController {
 
     @FXML
     private void initialize() throws SQLException {
+        popolaComboBox();
+        addComboBoxListeners();
+        aggiornaGrafici();
+    }
+
+    private void popolaComboBox() {
         //Popola le carte dell'utente
         List<Carta> carteUtente = Sessione.getInstance().getCarteUtente();
         cardComboBox.getItems().clear();
-        for (Carta carta : carteUtente){
+        for (Carta carta : carteUtente) {
             cardComboBox.getItems().add(carta.getNomeCarta());
         }
 
@@ -78,11 +84,14 @@ public class ReportController {
         yearComboBox.setValue(currentYear);
 
         LabelDati.setText(cardComboBox.getValue() + "\n" + monthComboBox.getValue() + " " + yearComboBox.getValue());
+    }
 
+    private void addComboBoxListeners() {
         // listener per aggiornare il Label e i grafici in tempo reale
         monthComboBox.setOnAction(e -> aggiornaGrafici());
         yearComboBox.setOnAction(e -> aggiornaGrafici());
         cardComboBox.setOnAction(e -> {
+            List<Carta> carteUtente = Sessione.getInstance().getCarteUtente();
             for (Carta carta : carteUtente) {    // Aggiorna la carta selezionata nella sessione
                 if (carta.getNomeCarta().equals(cardComboBox.getValue())) {
                     Sessione.getInstance().setCartaSelezionata(carta);
@@ -90,8 +99,6 @@ public class ReportController {
             }
             aggiornaGrafici();
         });
-
-        aggiornaGrafici();
     }
 
     private void aggiornaGrafici() {
@@ -99,21 +106,14 @@ public class ReportController {
         Integer anno = yearComboBox.getValue();
 
         if ((mese != null) && (anno != null)) {
-            popolabarChartEntrate(mese, anno);
-            popolabarChartUscite(mese, anno);
+            popolaBarChart(statisticheEntrate, "Entrata",mese, anno);
+            popolaBarChart(statisticheUscite, "Uscita", mese, anno);
             aggiornaLabel();
+            aggiornaSaldi(monthComboBox.getValue(), yearComboBox.getValue());
         }
     }
 
-    private void popolabarChartEntrate(String mese, Integer anno) {
-        popolaBarChart("Entrata", statisticheEntrate, "Entrate", mese, anno);
-    }
-
-    private void popolabarChartUscite(String mese, Integer anno) {
-        popolaBarChart("Uscita", statisticheUscite, "Uscite", mese, anno);
-    }
-
-    private void popolaBarChart (String tipoTransazione, XYChart<String, Number> grafico, String nomeSerie, String mese, Integer anno) {
+    private void popolaBarChart ( BarChart<String, Number> grafico, String tipoTransazione, String mese, Integer anno) {
         grafico.getData().clear(); // Pulisce i dati precedeti
         Carta cartaSelezionata = Sessione.getInstance().getCartaSelezionata();
         TransazioneDAOimp transazioneDAO = new TransazioneDAOimp();
@@ -142,17 +142,19 @@ public class ReportController {
         }
 
         // Se non ci sono importi, imposta tutti i valori (massimo, minimo, medio) a 0
-        float massimo = importi.isEmpty() ? 0.1F : calcolaMassimo(importi);
-        float minimo = importi.isEmpty() ? 0.1F : calcolaMinimo(importi);
-        float medio = importi.isEmpty() ? 0.1F : calcolaMedio(importi);
+        float massimo = importi.isEmpty() ? 0 : calcolaMassimo(importi);
+        float minimo = importi.isEmpty() ? 0 : calcolaMinimo(importi);
+        float medio = importi.isEmpty() ? 0 : calcolaMedio(importi);
+
+        float valoreMinimoColonne = 0.15F;
 
         XYChart.Series<String, Number> serie = new XYChart.Series<>();
-        serie.setName(nomeSerie);
+        serie.setName(tipoTransazione);
 
         // Crea i dati per il grafico con i tooltip
-        XYChart.Data<String, Number> dataMassimo = new XYChart.Data<>("Massima " + tipoTransazione, massimo);
-        XYChart.Data<String, Number> dataMedio = new XYChart.Data<>("Media " + tipoTransazione, medio);
-        XYChart.Data<String, Number> dataMinimo = new XYChart.Data<>("Minima " + tipoTransazione, minimo);
+        XYChart.Data<String, Number> dataMassimo = new XYChart.Data<>("Massima " + tipoTransazione, massimo == 0 ? valoreMinimoColonne : massimo);
+        XYChart.Data<String, Number> dataMedio = new XYChart.Data<>("Media " + tipoTransazione, medio == 0 ? valoreMinimoColonne : medio);
+        XYChart.Data<String, Number> dataMinimo = new XYChart.Data<>("Minima " + tipoTransazione, minimo == 0 ? valoreMinimoColonne : minimo);
 
         serie.getData().add(dataMassimo);
         serie.getData().add(dataMedio);
@@ -171,6 +173,8 @@ public class ReportController {
         } else {
             asseY.setAutoRanging(true);
         }
+        //forza il layout per forzare l'aggiornamneto del grafico
+        grafico.layout();
     }
 
     private float calcolaMassimo(List<Float> importi) {
@@ -213,15 +217,45 @@ public class ReportController {
         tooltip.setHideDelay(Duration.millis(100)); // Ritardo di scomparsa
     }
 
-    // Metodo per aggiornare i Label quando il mese o l'anno vengono modificati
-    private void aggiornaLabel() {
-        String selectedCard = cardComboBox.getValue();
-        String selectedMonth = monthComboBox.getValue();
-        Integer selectedYear = yearComboBox.getValue();
+    private void aggiornaSaldi(String mese, int anno) {
+        try {
+            Carta cartaSelezionata = Sessione.getInstance().getCartaSelezionata();
+            TransazioneDAOimp transazioneDAO = new TransazioneDAOimp();
 
-        if (selectedMonth != null && selectedYear != null &&selectedCard != null) {
-            LabelDati.setText(selectedCard + "\n" + selectedMonth + " " + selectedYear);
+            List<Transazione> tutteTransazioni = transazioneDAO.getByCardNumber(cartaSelezionata.getNumeroCarta(), "Entrata/Uscita");
+
+            // Ottieni la data di inizio mese (primo giorno del mese)
+            int meseSelezionato = convertiMeseInNumero(mese);
+            LocalDate inizioMese = LocalDate.of(anno, meseSelezionato, 1);
+
+            // Calcolare il saldo iniziale (sottraendo tutte le transazioni effettuate dopo l'inizio del mese)
+            float saldoInizialeVal = cartaSelezionata.getSaldo(); // Saldo iniziale della carta
+            float saldoFinaleVal = cartaSelezionata.getSaldo();
+            for (Transazione transazione : tutteTransazioni) {
+                LocalDate dataTransazione = transazione.getData().toLocalDate();
+                if (dataTransazione.isBefore(inizioMese)) {
+                    saldoInizialeVal -= transazione.getImporto();
+                    saldoFinaleVal -= transazione.getImporto();
+                }else if (dataTransazione.getMonthValue() == meseSelezionato && dataTransazione.getYear() == anno) {
+                    //se la transazione è stata effettuata nel mese ed annp selezionato, aggiorna il saldo finale
+                    saldoFinaleVal += transazione.getImporto();
+                }
+            }
+
+            // Aggiorna i label per il saldo iniziale e finale
+            saldoIniziale.setText(String.format("Saldo Iniziale: %.2f €", saldoInizialeVal));
+            saldoFinale.setText(String.format("Saldo Finale: %.2f €", saldoFinaleVal));
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+    }
+
+
+    // Metodo per aggiornare i Label quando il mese o l'anno vengono modificati
+    //non mi serve fare il controllo per vedere se sono nulli perchè mai lo possono essere
+    private void aggiornaLabel() {
+        LabelDati.setText(cardComboBox.getValue() + "\n" + monthComboBox.getValue() + " " + yearComboBox.getValue());
     }
 
 
@@ -238,7 +272,6 @@ public class ReportController {
     public void handleMouseClick(MouseEvent event) {
         // Se si clicca al di fuori dell'HBox, chiudi le ComboBox
         if (event.getTarget() != comboBoxContainer) {
-
             cardComboBox.setVisible(false);
             monthComboBox.setVisible(false);
             yearComboBox.setVisible(false);
@@ -247,20 +280,7 @@ public class ReportController {
 
 
     private int convertiMeseInNumero (String mese) {
-        return switch (mese) {
-            case "Gennaio" -> 1;
-            case "Febbraio" -> 2;
-            case "Marzo" -> 3;
-            case "Aprile" -> 4;
-            case "Maggio" -> 5;
-            case "Giugno" -> 6;
-            case "Luglio" -> 7;
-            case "Agosto" -> 8;
-            case "Settembre" -> 9;
-            case "Ottobre" -> 10;
-            case "Novembre" -> 11;
-            case "Dicembre" -> 12;
-            default -> 0;
-        };
+        return List.of("Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno",
+                "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre").indexOf(mese) + 1;
     }
 }
