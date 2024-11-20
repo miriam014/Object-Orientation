@@ -222,7 +222,7 @@ public class ReportController {
             Carta cartaSelezionata = Sessione.getInstance().getCartaSelezionata();
             TransazioneDAOimp transazioneDAO = new TransazioneDAOimp();
 
-            List<Transazione> tutteTransazioni = transazioneDAO.getByCardNumber(cartaSelezionata.getNumeroCarta(), "Entrata/Uscita");
+            List<Transazione> tutteTransazioni = transazioneDAO.getByCardNumber(cartaSelezionata.getNumeroCarta(), "Tutte");
 
             // Ottieni la data di inizio mese (primo giorno del mese)
             int meseSelezionato = convertiMeseInNumero(mese);
@@ -231,14 +231,19 @@ public class ReportController {
             // Calcolare il saldo iniziale (sottraendo tutte le transazioni effettuate dopo l'inizio del mese)
             float saldoInizialeVal = cartaSelezionata.getSaldo(); // Saldo iniziale della carta
             float saldoFinaleVal = cartaSelezionata.getSaldo();
+
             for (Transazione transazione : tutteTransazioni) {
                 LocalDate dataTransazione = transazione.getData().toLocalDate();
-                if (dataTransazione.isBefore(inizioMese)) {
-                    saldoInizialeVal -= transazione.getImporto();
-                    saldoFinaleVal -= transazione.getImporto();
-                }else if (dataTransazione.getMonthValue() == meseSelezionato && dataTransazione.getYear() == anno) {
+                float importo = transazione.getImporto();
+                String tipoTransazione = transazione.getTipoTransazione(); // Usa getTipo() se il tipo è nel campo Tipo
+
+                if (dataTransazione.isAfter(inizioMese)) {
+                    saldoInizialeVal += tipoTransazione.equals("Entrata") ? -importo : importo;
+                    saldoFinaleVal += tipoTransazione.equals("Entrata") ? -importo : importo;
+                }
+                if (dataTransazione.getMonthValue() == meseSelezionato && dataTransazione.getYear() == anno) {
                     //se la transazione è stata effettuata nel mese ed annp selezionato, aggiorna il saldo finale
-                    saldoFinaleVal += transazione.getImporto();
+                    saldoFinaleVal += tipoTransazione.equals("Entrata") ? importo : -importo;
                 }
             }
 
