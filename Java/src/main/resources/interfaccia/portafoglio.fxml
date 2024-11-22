@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="792.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smu.Controller.PortafoglioController">
+    <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <center>
+            <VBox prefHeight="600.0" prefWidth="684.0" spacing="10.0">
+                <Pane prefHeight="28.0" prefWidth="790.0" style="-fx-background-color: #008080;">
+                    <children>
+                        <!--<Button fx:id="statisticaButton" layoutX="620.0" layoutY="5.0" mnemonicParsing="false" onAction="#scenaReport" prefHeight="16.0" prefWidth="62.0" style="-fx-background-color: #008080;" text="report" textFill="WHITE" visible="false">
+                            <padding>
+                                <Insets bottom="-2.0" />
+                            </padding>
+                        </Button>-->
+                    </children>
+                    <VBox.margin>
+                        <Insets left="-1.0" />
+                    </VBox.margin></Pane>
+                <HBox alignment="CENTER_LEFT" prefHeight="123.0" prefWidth="660.0" spacing="10.0">
+                    <!-- Sezione per il Saldo -->
+                    <VBox>
+                        <Label alignment="TOP_RIGHT" mouseTransparent="true" text="Saldo portafoglio:">
+                            <VBox.margin>
+                                <Insets left="30.0" top="25.0" />
+                            </VBox.margin>
+                            <font>
+                                <Font size="15.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="balanceLabel" minHeight="-Infinity" minWidth="-Infinity" style="-fx-font-size: 30px; -fx-font-weight: bold;" text="0.00">
+                            <VBox.margin>
+                                <Insets left="30.0" top="10.0" />
+                            </VBox.margin>
+                            <padding>
+                                <Insets left="6.0" />
+                            </padding>
+                        </Label>
+                        <HBox.margin>
+                            <Insets />
+                        </HBox.margin>
+                        <padding>
+                            <Insets left="3.0" />
+                        </padding>
+                    </VBox>
+
+                    <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mouseTransparent="true" spacing="10.0" style="-fx-background-color: gray; -fx-background-radius: 15px; -fx-padding: 20px;">
+                        <Label fx:id="walletNameLabel" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white;" text="---" />
+                        <HBox spacing="10">
+                            <Label style="-fx-font-size: 14px; -fx-text-fill: white;" />
+                        </HBox>
+                        <HBox spacing="10">
+                            <Label style="-fx-font-size: 14px; -fx-text-fill: white;"/>
+                        </HBox>
+                        <opaqueInsets>
+                            <Insets left="30.0" />
+                        </opaqueInsets>
+                        <HBox.margin>
+                            <Insets left="220.0" right="10.0" />
+                        </HBox.margin>
+                    </VBox>
+
+                    <!-- Pulsante per Cambiare Carta
+                    <Button fx:id="nextCardButton" nodeOrientation="RIGHT_TO_LEFT" onAction="#handleNextCard" style="-fx-background-color: transparent; -fx-text-fill: #008765; -fx-font-size: 18px;" text="Next Card" textAlignment="CENTER">
+                        <HBox.margin>
+                            <Insets right="5.0" top="80.0" />
+                        </HBox.margin>
+                    </Button>
+                    <VBox.margin>
+                        <Insets />
+                    </VBox.margin> -->
+                </HBox>
+                <Pane prefHeight="52.0" prefWidth="660.0">
+                    <children>
+                        <Button layoutX="86.0" layoutY="-2.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="+" textFill="TEAL">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </Button>
+                        <Label layoutX="24.0" layoutY="10.0" text="Transazioni:" />
+                        <Circle fill="TRANSPARENT" layoutX="105.0" layoutY="20.0" radius="10.0" stroke="TEAL" strokeType="INSIDE" />
+                    </children>
+                </Pane>
+                <ListView fx:id="transactionsListView" prefHeight="350.0" prefWidth="620.0" VBox.vgrow="ALWAYS">
+                    <VBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                    </VBox.margin>
+                </ListView>
+                <opaqueInsets>
+                    <Insets />
+                </opaqueInsets>
+
+            </VBox>
+        </center>
+        <left>
+            <fx:include source="menu.fxml" />
+        </left>
+    </BorderPane>
+</AnchorPane>

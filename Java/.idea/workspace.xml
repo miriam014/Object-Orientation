@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="df4d01a2-e17b-4881-9bee-4a47bce15a26" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/sqldialects.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Database/Database.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/Database.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Database/Insert.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Database/Trigger_Funzioni.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OO.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/Object-Orientation.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/resources/images/lock-2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/resources/images/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/resources/images/logo_teal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/resources/images/person.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/resources/images/statistica.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/resources/interfaccia/homepage.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/resources/interfaccia/login.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/resources/interfaccia/menu.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/resources/interfaccia/report.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/resources/interfaccia/scadenze.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/resources/interfaccia/stileHomepage.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/smu/Control/HomepageControl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/smu/Control/LoginControl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/smu/Control/MenuControl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/smu/Controller/HomepageController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/smu/Controller/LoginController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/smu/Controller/MenuController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/smu/Controller/ReportController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/smu/Controller/ScadenzeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/smu/DAO/CartaDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/smu/DAO/CategoriaDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/smu/DAO/ContoCorrenteDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/smu/DAO/FamigliaDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/smu/DAO/PortafoglioDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/smu/DAO/SpeseProgrammateDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/smu/DAO/TransazioneDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/smu/DAO/UtenteDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/smu/DAO_Implementation/CartaDAOimp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/smu/DAO_Implementation/CategoriaDAOimp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/smu/DAO_Implementation/ContoCorrenteDAOimp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/smu/DAO_Implementation/FamigliaDAOimp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/smu/DAO_Implementation/PortafoglioDAOimp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/smu/DAO_Implementation/SpeseProgrammateDAOimp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/smu/DAO_Implementation/TransazioneDAOimp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/smu/DAO_Implementation/UtenteDAOimp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/smu/DTO/Carta.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/smu/DTO/Categoria.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/smu/DTO/ContoCorrente.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/smu/DTO/Famiglia.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/smu/DTO/Portafoglio.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/smu/DTO/SpeseProgrammate.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/smu/DTO/Transazione.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/smu/DTO/Utente.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/smu/Database.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/smu/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/smu/Sessione.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/smu/TO-DO" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="module-info" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2pA9OSz7kY6HhhaS3tOTiBUcgub" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/giuliagargiulo/Documents/Progetto-OO/Java",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.21565.193" />
+        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-IU-243.21565.193" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="df4d01a2-e17b-4881-9bee-4a47bce15a26" name="Changes" comment="" />
+      <created>1732197981100</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1732197981100</updated>
+      <workItem from="1732197982255" duration="186000" />
+      <workItem from="1732198171710" duration="347000" />
+      <workItem from="1732199724400" duration="1403000" />
+      <workItem from="1732214338414" duration="56000" />
+      <workItem from="1732214514771" duration="5615000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
