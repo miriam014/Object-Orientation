@@ -13,7 +13,7 @@ public class PortafoglioDAOimp implements PortafoglioDAO {
     @Override
     public boolean insert(Portafoglio wallet) throws SQLException {
         Connection connection = Database.getConnection();
-        String sql = "INSERT INTO smu.Portafoglio(NomePortafoglio, IdFamiglia) VALUES(?,?)";
+        String sql = "INSERT INTO smu.Portafoglio(NomePortafoglio, IdFamiglia) VALUES(?,?);";
 
         PreparedStatement ps = connection.prepareStatement(sql);
         ps.setString(1, wallet.getNomePortafoglio());
@@ -27,7 +27,7 @@ public class PortafoglioDAOimp implements PortafoglioDAO {
     @Override
     public boolean update(Portafoglio wallet) throws SQLException {
         Connection connection = Database.getConnection();
-        String sql = "UPDATE smu.Portafoglio SET NomePortafoglio = ?, IdFamiglia = ?, Saldo = ? WHERE IdPortafoglio = ?";
+        String sql = "UPDATE smu.Portafoglio SET NomePortafoglio = ?, IdFamiglia = ?, Saldo = ? WHERE IdPortafoglio = ?;";
 
         PreparedStatement ps = connection.prepareStatement(sql);
         ps.setString(1, wallet.getNomePortafoglio());
@@ -42,7 +42,7 @@ public class PortafoglioDAOimp implements PortafoglioDAO {
     @Override
     public boolean delete(String walletID) throws SQLException {
         Connection connection = Database.getConnection();
-        String sql = "DELETE FROM smu.Portafoglio WHERE IdPortafoglio = ?";
+        String sql = "DELETE FROM smu.Portafoglio WHERE IdPortafoglio = ?;";
 
         PreparedStatement ps = connection.prepareStatement(sql);
         ps.setString(1, walletID);
@@ -57,7 +57,7 @@ public class PortafoglioDAOimp implements PortafoglioDAO {
         Connection connection = Database.getConnection();
         Portafoglio wallet = null;
 
-        String sql = "SELECT * FROM smu.Portafoglio WHERE IdPortafoglio = ?";
+        String sql = "SELECT * FROM smu.Portafoglio WHERE IdPortafoglio = ?;";
 
         PreparedStatement ps = connection.prepareStatement(sql);
         ps.setString(1, walletID);
@@ -79,7 +79,8 @@ public class PortafoglioDAOimp implements PortafoglioDAO {
         Connection connection = Database.getConnection();
         List<Portafoglio> list = new ArrayList<>();
 
-        String sql = "SELECT * FROM smu.Portafoglio NATURAL JOIN (smu.Famiglia NATURAL JOIN smu.Utente AS U) WHERE U.Username = ?";
+        String sql = "SELECT * FROM smu.Portafoglio AS P JOIN (smu.AssociazioneCartaPortafoglio ACP NATURAL JOIN smu.Carta AS C) On P.IdPortafoglio = ACP.IdPortafoglio JOIN\n" +
+                "    (smu.ContoCorrente AS CC JOIN smu.Utente AS U ON CC.Username = U.Username) ON CC.NumeroConto = C.NumeroConto WHERE U.Username = ?;";
 
         PreparedStatement ps = connection.prepareStatement(sql);
         ps.setString(1, username);

@@ -5,65 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df4d01a2-e17b-4881-9bee-4a47bce15a26" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Database/Database.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/Database.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Database/Insert.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Database/Trigger_Funzioni.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../OO.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/Object-Orientation.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/resources/images/lock-2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/resources/images/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/resources/images/logo_teal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/resources/images/person.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/resources/images/statistica.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/resources/interfaccia/homepage.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/resources/interfaccia/login.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/resources/interfaccia/menu.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/resources/interfaccia/report.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/resources/interfaccia/scadenze.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/resources/interfaccia/stileHomepage.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/smu/Control/HomepageControl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/smu/Control/LoginControl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/smu/Control/MenuControl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/smu/Controller/HomepageController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/smu/Controller/LoginController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/smu/Controller/MenuController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/smu/Controller/ReportController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/smu/Controller/ScadenzeController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/smu/DAO/CartaDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/smu/DAO/CategoriaDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/smu/DAO/ContoCorrenteDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/smu/DAO/FamigliaDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/smu/DAO/PortafoglioDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/smu/DAO/SpeseProgrammateDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/smu/DAO/TransazioneDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/smu/DAO/UtenteDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/smu/DAO_Implementation/CartaDAOimp.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/smu/DAO_Implementation/CategoriaDAOimp.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/smu/DAO_Implementation/ContoCorrenteDAOimp.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/smu/DAO_Implementation/FamigliaDAOimp.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/smu/DAO_Implementation/PortafoglioDAOimp.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/smu/DAO_Implementation/SpeseProgrammateDAOimp.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/smu/DAO_Implementation/TransazioneDAOimp.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/smu/DAO_Implementation/UtenteDAOimp.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/smu/DTO/Carta.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/smu/DTO/Categoria.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/smu/DTO/ContoCorrente.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/smu/DTO/Famiglia.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/smu/DTO/Portafoglio.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/smu/DTO/SpeseProgrammate.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/smu/DTO/Transazione.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/smu/DTO/Utente.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/smu/Database.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/smu/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/smu/Sessione.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/smu/TO-DO" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/226edb4b-a1b9-40b2-a490-3343b8a3c3ae/storage_v2/_src_/database/postgres.edMnLQ/schema/smu.W70BAA.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/226edb4b-a1b9-40b2-a490-3343b8a3c3ae/storage_v2/_src_/database/postgres.edMnLQ/schema/smu.W70BAA.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/PortafoglioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/PortafoglioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/DAO/TransazioneDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/DAO/TransazioneDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/DAO_Implementation/PortafoglioDAOimp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/DAO_Implementation/PortafoglioDAOimp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/DAO_Implementation/TransazioneDAOimp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/DAO_Implementation/TransazioneDAOimp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/homepage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/homepage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/portafoglio.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/portafoglio.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/report.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/report.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/scadenze.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/scadenze.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Progetto-OO-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/Progetto-OO-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/interfaccia/homepage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/interfaccia/homepage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/interfaccia/portafoglio.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/interfaccia/portafoglio.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/interfaccia/report.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/interfaccia/report.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/interfaccia/scadenze.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/interfaccia/scadenze.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/smu/Controller/PortafoglioController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/smu/Controller/PortafoglioController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/smu/DAO/TransazioneDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/smu/DAO/TransazioneDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/smu/DAO_Implementation/PortafoglioDAOimp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/smu/DAO_Implementation/PortafoglioDAOimp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/smu/DAO_Implementation/TransazioneDAOimp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/smu/DAO_Implementation/TransazioneDAOimp.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,12 +36,18 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="module-info" />
+        <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -88,22 +56,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/giuliagargiulo/Documents/Progetto-OO/Java",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/giuliagargiulo/Documents/Progetto-OO/Java&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
+    ]
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -124,7 +97,10 @@
       <workItem from="1732198171710" duration="347000" />
       <workItem from="1732199724400" duration="1403000" />
       <workItem from="1732214338414" duration="56000" />
-      <workItem from="1732214514771" duration="5615000" />
+      <workItem from="1732214514771" duration="13589000" />
+      <workItem from="1733067650932" duration="13759000" />
+      <workItem from="1733592578676" duration="711000" />
+      <workItem from="1733774574884" duration="10007000" />
     </task>
     <servers />
   </component>

@@ -173,4 +173,39 @@ public class TransazioneDAOimp implements TransazioneDAO {
         ps.close();
         return list;
     }
+
+    @Override
+    public List<Transazione> getByWalletId(String walletId) throws SQLException{
+        Connection connection = Database.getConnection();
+        List<Transazione> list = new ArrayList<>();
+
+        String sql = "SELECT T.IdTransazione, T.CRO, T.Importo, T.Data, T.Ora, T.Causale, T.Tipo, T.Mittente, T.Destinatario, T.NumeroCarta, T.NomeCategoria " +
+                "FROM smu.TransazioniInPortafogli AS TP JOIN smu.Transazione AS T ON TP.IdTransazione = T.IdTransazione WHERE TP.IdPortafoglio= ?";
+
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ps.setInt(1, Integer.parseInt(walletId));
+        ResultSet rs = ps.executeQuery();
+
+        while (rs.next()) {
+            String id = rs.getString("IDTransazione");
+            String cro = rs.getString("CRO");
+            Float importo = rs.getFloat("Importo");
+            Date data = rs.getDate("Data");
+            Time ora = rs.getTime("Ora");
+            String causale = rs.getString("Causale");
+            String tipo = rs.getString("Tipo");
+            String mittente = rs.getString("Mittente");
+            String destinatario = rs.getString("Destinatario");
+            String numeroCarta = rs.getString("NumeroCarta");
+            String categoria = rs.getString("NomeCategoria");
+
+            Transazione transaction = new Transazione(id, cro, importo, data, ora, causale, tipo, mittente, destinatario, numeroCarta, categoria);
+            list.add(transaction);
+        }
+        rs.close();
+        ps.close();
+        return list;
+    }
+
 }
+

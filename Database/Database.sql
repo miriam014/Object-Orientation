@@ -477,6 +477,7 @@ INSERT INTO smu.CARTA(NumeroCarta, Nome, CVV, Scadenza, Saldo, TipoCarta, Plafon
 INSERT INTO smu.Portafoglio(NomePortafoglio, IdFamiglia) VALUES('Viaggi', 1);
 INSERT INTO smu.Portafoglio(NomePortafoglio) VALUES('Spese Mensili');
 INSERT INTO smu.Portafoglio(NomePortafoglio,IdFamiglia) VALUES('Casa', 1);
+INSERT INTO smu.Portafoglio(NomePortafoglio)VALUES('Vacanze');
 
 -- Categorie
 INSERT INTO smu.Categoria(NomeCategoria, ParoleChiavi) VALUES('Cibo e spesa', 'supermercato,supermarket,alimentari,discount,frutta,verdura,salumeria');
@@ -539,7 +540,7 @@ INSERT INTO smu.Transazione(Importo, Data, Ora, Causale, Tipo, Mittente, Destina
 INSERT INTO smu.Transazione(Importo, Data, Ora, Causale, Tipo, Mittente, Destinatario, NumeroCarta) VALUES(20.00, '2020-01-12', '18:12:12', 'Acquisto libro', 'Uscita', NULL, 'Feltrinelli', '9876543210987654');
 INSERT INTO smu.Transazione(Importo, Data, Ora, Causale, Tipo, Mittente, Destinatario, NumeroCarta) VALUES(99.00, '2023-06-06', '12:12:12', 'Abbigliamento online', 'Uscita', NULL, 'Zalando', '9876543210987654');
 INSERT INTO smu.Transazione(Importo, Data, Ora, Causale, Tipo, Mittente, Destinatario, NumeroCarta) VALUES(500.00, '2023-12-31', '23:59:59', 'Donazione', 'Uscita', NULL, 'Croce Rossa Italiana', '9876543210987654');
-
+--44
 INSERT INTO smu.Transazione(Importo, Data, Ora, Causale, Tipo, Mittente, Destinatario, NumeroCarta) VALUES(40.30, '2024-03-09', '17:45:30', 'Ricarica cellulare', 'Uscita', NULL, 'Operatore Telefonico ', '5337589274884783');
 INSERT INTO smu.Transazione(Importo, Data, Ora, Causale, Tipo, Mittente, Destinatario, NumeroCarta) VALUES(1500.00, '2023-02-01', '09:00:00', 'Stipendio mensile', 'Entrata', 'Azienda S.p.A.', NULL, '5337589274884783');
 INSERT INTO smu.Transazione(Importo, Data, Ora, Causale, Tipo, Mittente, Destinatario, NumeroCarta) VALUES(85.75, '2021-03-08', '11:20:10', 'Pagamento tasse', 'Uscita', NULL, 'Agenzia delle Entrate', '5337589274884783');
@@ -591,6 +592,9 @@ INSERT INTO smu.TransazioniInPortafogli(IdTransazione, IdPortafoglio) VALUES(10,
 INSERT INTO smu.TransazioniInPortafogli(IdTransazione, IdPortafoglio) VALUES(11,3);
 INSERT INTO smu.TransazioniInPortafogli(IdTransazione, IdPortafoglio) VALUES(12,3);
 
+INSERT INTO smu.TransazioniInPortafogli(IdTransazione, IdPortafoglio) VALUES(46,4);
+INSERT INTO smu.TransazioniInPortafogli(IdTransazione, IdPortafoglio) VALUES(47,4);
+
 -- Spese programmate
 INSERT INTO  smu.SpeseProgrammate(Descrizione, Periodicita, DataScadenza, DataFineRinnovo, Importo, Destinatario, NumeroCarta) VALUES('Paghetta Armando', '15 giorni', '2024-03-27', '2024-03-27', 20.00, 'Armando figlio', '5355284927482884');
 INSERT INTO  smu.SpeseProgrammate(Descrizione, Periodicita, DataScadenza, DataFineRinnovo, Importo, Destinatario, NumeroCarta) VALUES('Affitto Mensile', '1 mese', '2024-04-05', '2025-04-05', 800.00, 'Proprietario', '5555666677778888');
@@ -605,3 +609,6 @@ INSERT INTO  smu.SpeseProgrammate(Descrizione, Periodicita, DataScadenza, DataFi
 -- Associazione portafoglio e carta
 INSERT INTO smu.AssociazioneCartaPortafoglio(IdPortafoglio, NumeroCarta)VALUES (1, '5355284927482884');
 INSERT INTO smu.AssociazioneCartaPortafoglio(IdPortafoglio, NumeroCarta)VALUES (2, '9999000011112222');
+INSERT INTO smu.AssociazioneCartaPortafoglio(IdPortafoglio, NumeroCarta)VALUES (4, '5337589274884783');
+INSERT INTO smu.AssociazioneCartaPortafoglio(IdPortafoglio, NumeroCarta)VALUES (4, '1515151515151515');
+

@@ -28,6 +28,13 @@
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
+                     <children>
+                        <Label layoutX="23.0" layoutY="2.0" text="Report" textFill="WHITE">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                     </children>
                   </Pane>
 
                   <HBox fx:id="comboBoxContainer" prefHeight="47.0" prefWidth="337.0">
