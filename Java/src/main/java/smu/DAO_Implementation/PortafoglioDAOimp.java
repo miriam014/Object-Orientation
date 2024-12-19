@@ -77,10 +77,11 @@ public class PortafoglioDAOimp implements PortafoglioDAO {
     @Override
     public List<Portafoglio> getByUsername(String username) throws SQLException {
         Connection connection = Database.getConnection();
-        List<Portafoglio> list = new ArrayList<>();
+        List<Portafoglio> wallets = new ArrayList<>();
 
-        String sql = "SELECT * FROM smu.Portafoglio AS P JOIN (smu.AssociazioneCartaPortafoglio ACP NATURAL JOIN smu.Carta AS C) On P.IdPortafoglio = ACP.IdPortafoglio JOIN\n" +
-                "    (smu.ContoCorrente AS CC JOIN smu.Utente AS U ON CC.Username = U.Username) ON CC.NumeroConto = C.NumeroConto WHERE U.Username = ?;";
+        String sql = "SELECT * FROM smu.Portafoglio AS P JOIN (smu.AssociazioneCartaPortafoglio ACP NATURAL JOIN smu.Carta AS C) " +
+                "ON P.IdPortafoglio = ACP.IdPortafoglio JOIN (smu.ContoCorrente AS CC JOIN smu.Utente AS U ON CC.Username = U.Username) " +
+                "ON CC.NumeroConto = C.NumeroConto WHERE U.Username = ?;";
 
         PreparedStatement ps = connection.prepareStatement(sql);
         ps.setString(1, username);
@@ -91,10 +92,11 @@ public class PortafoglioDAOimp implements PortafoglioDAO {
                     rs.getString("NomePortafoglio"),
                     rs.getFloat("Saldo"),
                     rs.getString("IdFamiglia"));
-            list.add(wallet);
+            wallets.add(wallet);
         }
         rs.close();
         ps.close();
-        return list;
+        System.out.println("Numero totale di portafogli trovati: " + wallets.size());
+        return wallets;
     }
 }

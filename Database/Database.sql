@@ -609,6 +609,5 @@ INSERT INTO  smu.SpeseProgrammate(Descrizione, Periodicita, DataScadenza, DataFi
 -- Associazione portafoglio e carta
 INSERT INTO smu.AssociazioneCartaPortafoglio(IdPortafoglio, NumeroCarta)VALUES (1, '5355284927482884');
 INSERT INTO smu.AssociazioneCartaPortafoglio(IdPortafoglio, NumeroCarta)VALUES (2, '9999000011112222');
+INSERT INTO smu.AssociazioneCartaPortafoglio(IdPortafoglio, NumeroCarta)VALUES (3, '9999000011112222');
 INSERT INTO smu.AssociazioneCartaPortafoglio(IdPortafoglio, NumeroCarta)VALUES (4, '5337589274884783');
-INSERT INTO smu.AssociazioneCartaPortafoglio(IdPortafoglio, NumeroCarta)VALUES (4, '1515151515151515');
-

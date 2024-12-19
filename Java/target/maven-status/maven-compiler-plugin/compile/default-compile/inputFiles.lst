@@ -15,6 +15,7 @@
 /Users/giuliagargiulo/Documents/Progetto-OO/Java/src/main/java/smu/DAO/PortafoglioDAO.java
 /Users/giuliagargiulo/Documents/Progetto-OO/Java/src/main/java/smu/DAO/SpeseProgrammateDAO.java
 /Users/giuliagargiulo/Documents/Progetto-OO/Java/src/main/java/smu/DAO/TransazioneDAO.java
+/Users/giuliagargiulo/Documents/Progetto-OO/Java/src/main/java/smu/DAO/TransazioneInPortafoglioDAO.java
 /Users/giuliagargiulo/Documents/Progetto-OO/Java/src/main/java/smu/DAO/UtenteDAO.java
 /Users/giuliagargiulo/Documents/Progetto-OO/Java/src/main/java/smu/DAO_Implementation/CartaDAOimp.java
 /Users/giuliagargiulo/Documents/Progetto-OO/Java/src/main/java/smu/DAO_Implementation/CategoriaDAOimp.java
@@ -23,6 +24,7 @@
 /Users/giuliagargiulo/Documents/Progetto-OO/Java/src/main/java/smu/DAO_Implementation/PortafoglioDAOimp.java
 /Users/giuliagargiulo/Documents/Progetto-OO/Java/src/main/java/smu/DAO_Implementation/SpeseProgrammateDAOimp.java
 /Users/giuliagargiulo/Documents/Progetto-OO/Java/src/main/java/smu/DAO_Implementation/TransazioneDAOimp.java
+/Users/giuliagargiulo/Documents/Progetto-OO/Java/src/main/java/smu/DAO_Implementation/TransazioneInPortafoglioDAOimp.java
 /Users/giuliagargiulo/Documents/Progetto-OO/Java/src/main/java/smu/DAO_Implementation/UtenteDAOimp.java
 /Users/giuliagargiulo/Documents/Progetto-OO/Java/src/main/java/smu/DTO/Carta.java
 /Users/giuliagargiulo/Documents/Progetto-OO/Java/src/main/java/smu/DTO/Categoria.java
@@ -31,6 +33,7 @@
 /Users/giuliagargiulo/Documents/Progetto-OO/Java/src/main/java/smu/DTO/Portafoglio.java
 /Users/giuliagargiulo/Documents/Progetto-OO/Java/src/main/java/smu/DTO/SpeseProgrammate.java
 /Users/giuliagargiulo/Documents/Progetto-OO/Java/src/main/java/smu/DTO/Transazione.java
+/Users/giuliagargiulo/Documents/Progetto-OO/Java/src/main/java/smu/DTO/TransazioneInPortafoglio.java
 /Users/giuliagargiulo/Documents/Progetto-OO/Java/src/main/java/smu/DTO/Utente.java
 /Users/giuliagargiulo/Documents/Progetto-OO/Java/src/main/java/smu/Database.java
 /Users/giuliagargiulo/Documents/Progetto-OO/Java/src/main/java/smu/Main.java

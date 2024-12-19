@@ -58,7 +58,6 @@ public class HomepageController {
         }
     }
 
-
     private void loadUserCards() {
         try {
             carteUtente = Sessione.getInstance().getCarteUtente();

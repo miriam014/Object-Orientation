@@ -1,5 +1,6 @@
 smu/DAO/CartaDAO.class
 smu/DAO_Implementation/UtenteDAOimp.class
+smu/DAO/TransazioneInPortafoglioDAO.class
 smu/Controller/MenuController.class
 smu/DAO_Implementation/CategoriaDAOimp.class
 smu/DTO/SpeseProgrammate.class
@@ -26,9 +27,11 @@ smu/DTO/Carta.class
 smu/DTO/Transazione.class
 smu/Main.class
 smu/Controller/HomepageController.class
+smu/DTO/TransazioneInPortafoglio.class
 smu/Control/MenuControl.class
 smu/DAO/FamigliaDAO.class
 smu/DAO/UtenteDAO.class
+smu/DAO_Implementation/TransazioneInPortafoglioDAOimp.class
 smu/DAO/ContoCorrenteDAO.class
 smu/Controller/ScadenzeController.class
 smu/DTO/Portafoglio.class
