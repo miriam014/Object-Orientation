@@ -1,4 +1,4 @@
 package smu.Controller;
 
-public class ScadenzeController {
+public class ScadenzeController extends Controller {
 }

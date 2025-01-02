@@ -20,7 +20,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.List;
 
-public class HomepageController {
+public class HomepageController extends Controller {
 
     @FXML
     private Label welcomeLabel; // Etichetta di benvenuto
