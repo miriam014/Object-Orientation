@@ -13,6 +13,17 @@ public class Portafoglio {
         this.IdFamiglia = idFamiglia;
     }
 
+    public Portafoglio(String IdPortafoglio, String nomePortafoglio, String idFamiglia){
+        this.IdPortafoglio = IdPortafoglio;
+        this.NomePortafoglio = nomePortafoglio;
+        this.IdFamiglia = idFamiglia;
+    }
+
+    public Portafoglio(String nomePortafoglio, String idFamiglia){
+        this.NomePortafoglio = nomePortafoglio;
+        this.IdFamiglia = idFamiglia;
+    }
+
     public String getIdPortafoglio(){
         return IdPortafoglio;
     }

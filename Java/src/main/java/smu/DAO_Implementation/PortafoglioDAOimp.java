@@ -8,6 +8,8 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.sql.Types.NULL;
+
 public class PortafoglioDAOimp implements PortafoglioDAO {
 
     @Override
@@ -17,7 +19,13 @@ public class PortafoglioDAOimp implements PortafoglioDAO {
 
         PreparedStatement ps = connection.prepareStatement(sql);
         ps.setString(1, wallet.getNomePortafoglio());
-        ps.setString(2, wallet.getIdFamiglia());
+
+        String idFamiglia = wallet.getIdFamiglia();
+        if (idFamiglia == null) {
+            ps.setNull(2, NULL);
+        } else {
+            ps.setInt(2, Integer.parseInt(idFamiglia));
+        }
 
         int result = ps.executeUpdate();
         ps.close();
@@ -27,17 +35,22 @@ public class PortafoglioDAOimp implements PortafoglioDAO {
     @Override
     public boolean update(Portafoglio wallet) throws SQLException {
         Connection connection = Database.getConnection();
-        String sql = "UPDATE smu.Portafoglio SET NomePortafoglio = ?, IdFamiglia = ?, Saldo = ? WHERE IdPortafoglio = ?;";
+        String sql = "UPDATE smu.Portafoglio SET NomePortafoglio = ?, IdFamiglia = ? WHERE IdPortafoglio = ?;";
 
         PreparedStatement ps = connection.prepareStatement(sql);
         ps.setString(1, wallet.getNomePortafoglio());
-        ps.setString(2, wallet.getIdFamiglia());
-        ps.setFloat(3, wallet.getSaldo());
-
+        String idFamiglia = wallet.getIdFamiglia();
+        if (idFamiglia == null) {
+            ps.setNull(2, NULL);
+        } else {
+            ps.setInt(2, Integer.parseInt(idFamiglia));
+        }
+        ps.setInt(3, Integer.parseInt(wallet.getIdPortafoglio()));
         int result = ps.executeUpdate();
         ps.close();
         return result != 0;
     }
+
 
     @Override
     public boolean delete(String walletID) throws SQLException {

@@ -1,7 +1,10 @@
 package smu;
 
+import smu.DAO.FamigliaDAO;
 import smu.DAO.PortafoglioDAO;
+import smu.DAO_Implementation.FamigliaDAOimp;
 import smu.DAO_Implementation.PortafoglioDAOimp;
+import smu.DTO.Famiglia;
 import smu.DTO.Portafoglio;
 import smu.DTO.Utente;
 import smu.DTO.Carta;
@@ -16,8 +19,9 @@ public class Sessione {
 
     private static Sessione istanza;
     private Utente utenteLoggato;
-    private List<Carta> carte;// Lista delle carte dell'utente
-    private List<Portafoglio> portafogli;
+    private final List<Carta> carte;// Lista delle carte dell'utente
+    private final List<Portafoglio> portafogli;
+    private List<Famiglia> famiglie;
     private Carta cartaSelezionata; // Carta attualmente selezionata
 
     private Sessione() {
@@ -38,6 +42,7 @@ public class Sessione {
         this.utenteLoggato = utente;
         loadUserCards();
         loadUserWallets();
+        loadUserFamily();
     }
 
     // Recupera l'utente autenticato
@@ -72,6 +77,37 @@ public class Sessione {
         }
     }
 
+    private void loadUserFamily() {
+        if (utenteLoggato != null) {
+            try {
+                // Inizializza la lista delle famiglie, se necessario
+                if (famiglie == null) {
+                    famiglie = new ArrayList<>();
+                }
+
+                // Recupera le famiglie associate all'utente dal DAO
+                FamigliaDAO famigliaDAO = new FamigliaDAOimp();
+                List<Famiglia> userFamily = famigliaDAO.getByUsername(utenteLoggato.getUsername());
+
+                // Controlla se ci sono famiglie associate e aggiorna la lista
+                if (userFamily == null || userFamily.isEmpty()) {
+                    System.out.println("Nessuna famiglia trovata per l'utente.");
+                    famiglie.clear(); // Assicurati che la lista sia vuota
+                } else {
+                    famiglie.clear(); // Pulisci la lista esistente
+                    famiglie.addAll(userFamily); // Aggiungi le nuove famiglie
+                    System.out.println("Famiglie caricate: ");
+                    for (Famiglia famiglia : famiglie) {
+                        System.out.println("ID Famiglia: " + famiglia.getIdFamiglia());
+                    }
+                }
+            } catch (SQLException e) {
+                System.out.println("Errore durante il caricamento delle famiglie: " + e.getMessage());
+                e.printStackTrace();
+            }
+        }
+    }
+
     // Restituisce le carte dell'utente loggato
     public List<Carta> getCarteUtente() {
         return carte; // Restituisce la lista delle carte
@@ -79,6 +115,10 @@ public class Sessione {
 
     public List<Portafoglio> getPortafogliUtente(){
         return portafogli;
+    }
+
+    public List<Famiglia> getFamilyByUsername(){
+        return famiglie;
     }
 
     // Imposta la carta selezionata dall'utente in quel momento

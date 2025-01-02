@@ -12,6 +12,7 @@ smu/Controller/ReportController.class
 smu/DAO_Implementation/CartaDAOimp.class
 smu/Control/LoginControl.class
 smu/DAO/PortafoglioDAO.class
+smu/Controller/Controller.class
 smu/DTO/Utente.class
 smu/DAO_Implementation/ContoCorrenteDAOimp.class
 smu/DTO/ContoCorrente.class
@@ -36,5 +37,7 @@ smu/DAO/ContoCorrenteDAO.class
 smu/Controller/ScadenzeController.class
 smu/DTO/Portafoglio.class
 smu/Controller/PortafoglioController.class
+smu/Controller/EditWalletController.class
 smu/DAO_Implementation/FamigliaDAOimp.class
 smu/DTO/Categoria.class
+smu/Controller/AddWalletController.class

@@ -5,5 +5,5 @@ module smu.Progetto.OO {
     requires javafx.fxml;
     requires java.desktop;
 
-    opens smu to javafx.fxml;
+    opens smu.Controller to javafx.fxml;
 }

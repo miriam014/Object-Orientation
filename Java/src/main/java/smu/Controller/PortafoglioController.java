@@ -4,54 +4,44 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableView;
+
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import smu.DAO.TransazioneInPortafoglioDAO;
 import smu.DAO_Implementation.TransazioneDAOimp;
-import smu.DAO_Implementation.TransazioneInPortafoglioDAOimp;
+import smu.DTO.Famiglia;
 import smu.DTO.Portafoglio;
 import smu.DTO.Transazione;
-import smu.DTO.TransazioneInPortafoglio;
-import smu.DTO.Utente;
 import smu.Sessione;
-import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
-public class PortafoglioController {
+public class PortafoglioController extends Controller {
+    @FXML public Button nextWalletButton;
+    @FXML public Button addWalletButton;
+    @FXML public Button editWalletButton;
+    @FXML private Label balanceLabel;
+    @FXML protected Label walletNameLabel;
+    @FXML private TableView<Transazione> transactionsTableView;
 
-    @FXML
-    private Label balanceLabel;
-    @FXML
-    private Label walletNameLabel;
-    @FXML
-    private TableView<Transazione> transactionsTableView;
+    @FXML protected TextField nomePortafoglio;
+    @FXML protected ComboBox<String> IdFamiglia;
+    @FXML protected ComboBox<String> IdPortafoglio;
+    @FXML protected Button Conferma;
 
-    private List<Portafoglio> portafogliUtente; // Lista delle carte dell'utente
+    protected List<Portafoglio> portafogliUtente; // Lista delle carte dell'utente
     private int currentWalletIndex;
 
-    @FXML
-    private TableColumn<Transazione, String> idColumn;
-    @FXML
-    private TableColumn<Transazione, String> tipoColumn;
-    @FXML
-    private TableColumn<Transazione, Double> importoColumn;
-    @FXML
-    private TableColumn<Transazione, String> dataColumn;
-    @FXML
-    private TableColumn<Transazione, String> causaleColumn;
-    @FXML
-    private TableColumn<Transazione, String> daAColumn;
-    @FXML
-    private TableColumn<Transazione, String> categoriaColumn;
+    @FXML private TableColumn<Transazione, String> idColumn;
+    @FXML private TableColumn<Transazione, String> tipoColumn;
+    @FXML private TableColumn<Transazione, Double> importoColumn;
+    @FXML private TableColumn<Transazione, String> dataColumn;
+    @FXML private TableColumn<Transazione, String> causaleColumn;
+    @FXML private TableColumn<Transazione, String> daAColumn;
+    @FXML private TableColumn<Transazione, String> categoriaColumn;
 
     @FXML
     public void initialize() {
@@ -77,18 +67,48 @@ public class PortafoglioController {
         showWallet();
     }
 
-
-    private void loadUserWallet() {
+    protected void loadUserWallet() {
         try {
             portafogliUtente = Sessione.getInstance().getPortafogliUtente();
             if (portafogliUtente == null || portafogliUtente.isEmpty()) {
                 System.out.println("Nessun portafoglio trovato per l'utente."); // Debug
             } else {
-                /*if(portafogliUtente.size() > 1) {
-                    nextWalletButton.setVisible(true); // Mostra il pulsante per la prossima carta
-                }*/
+                List<String> walletsID = new ArrayList<>();
+
+                // Aggiungi gli ID delle famiglie alla lista
+                for (Portafoglio portafoglio : portafogliUtente) {
+                    walletsID.add(portafoglio.getIdPortafoglio());
+                }
+                if(IdPortafoglio != null)
+                    IdPortafoglio.getItems().setAll(walletsID);
+
             }
             currentWalletIndex = 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    protected void loadFamilyID() {
+        try {
+            // Recupera la lista delle famiglie
+            List<Famiglia> famiglieUtente = Sessione.getInstance().getFamilyByUsername();
+
+            if (famiglieUtente == null || famiglieUtente.isEmpty()) {
+                System.out.println("Nessuna famiglia trovata per l'utente."); // Debug
+            } else {
+                // Crea una lista per contenere gli ID delle famiglie
+                List<String> familyIds = new ArrayList<>();
+
+                // Aggiungi gli ID delle famiglie alla lista
+                for (Famiglia famiglia : famiglieUtente) {
+                    familyIds.add(famiglia.getIdFamiglia());
+                }
+
+                // Imposta gli ID delle famiglie nella ComboBox
+                IdFamiglia.getItems().setAll(familyIds);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -134,57 +154,23 @@ public class PortafoglioController {
         showWallet(); // Mostra la carta corrente
     }
 
-    /*
+
     @FXML
-    private void addNewTransactionInWallet() {
-        try {
-            // Carica la nuova finestra per la selezione delle transazioni
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/smu/View/TransactionSelectionView.fxml"));
-            Parent root = loader.load();
+    public void insertWallet() {
+        showDialog("/interfaccia/addWallet.fxml", addWalletButton, "Nuovo Portafoglio");
+        loadUserWallet();
+    }
 
-            // Ottieni il controller della nuova finestra
-            TransactionSelectionController transactionController = loader.getController();
-
-            // Passa l'utente corrente per recuperare le transazioni
-            transactionController.setUtente(Sessione.getInstance().getUtenteLoggato());
-
-            // Mostra la finestra
-            Stage stage = new Stage();
-            stage.setTitle("Seleziona Transazione");
-            stage.setScene(new Scene(root));
-            stage.initModality(Modality.WINDOW_MODAL); // Blocca la finestra principale finché questa è aperta
-            stage.showAndWait();
-
-            // Recupera la transazione selezionata dall'utente
-            Transazione selectedTransaction = transactionController.getSelectedTransaction();
-
-            if (selectedTransaction != null) {
-                // Ottieni il portafoglio corrente
-                Portafoglio currentWallet = portafogliUtente.get(currentWalletIndex);
-
-                // Crea l'associazione tra transazione e portafoglio
-                TransazioneInPortafoglio association = new TransazioneInPortafoglio(
-                        selectedTransaction.getIDTransazione(),
-                        currentWallet.getIdPortafoglio()
-                );
-
-                // Inserisci l'associazione nel database
-                TransazioneInPortafoglioDAO newTransactionInWallet = new TransazioneInPortafoglioDAOimp();
-                boolean success = newTransactionInWallet.insert(association);
-
-                if (success) {
-                    System.out.println("Transazione aggiunta al portafoglio: " + selectedTransaction);
-
-                    // Aggiorna la vista per includere la nuova transazione
-                    loadTransactions(currentWallet.getIdPortafoglio());
-                } else
-                    System.out.println("Errore durante l'inserimento della transazione nel portafoglio.");
-
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    } */
+    @FXML
+    public void updateWallet() {
+        showDialog("/interfaccia/editWallet.fxml", editWalletButton, "Modifica Portafoglio");
+        loadUserWallet();
+    }
+/*
+    @FXML
+    public void deleteWallet() {
+        showDialog("/interfaccia/deleteWallet.fxml", deleteWalletButton, "Elimina Portafoglio");
+    }*/
 
 
 }

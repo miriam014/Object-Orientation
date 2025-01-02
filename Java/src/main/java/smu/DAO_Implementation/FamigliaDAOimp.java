@@ -8,6 +8,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FamigliaDAOimp implements FamigliaDAO {
 
@@ -69,5 +71,25 @@ public class FamigliaDAOimp implements FamigliaDAO {
         rs.close();
 
         return family;
+    }
+
+    @Override
+    public List<Famiglia> getByUsername(String username) throws SQLException{
+        Connection connection = Database.getConnection();
+        List<Famiglia> families = new ArrayList<>();
+
+        String sql = "SELECT * FROM smu.Famiglia AS F JOIN smu.Utente AS U ON F.IdFamiglia = U.IdFamiglia WHERE U.Username = ?";
+
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ps.setString(1, username);
+
+        ResultSet rs = ps.executeQuery();
+        while(rs.next())
+            families.add(new Famiglia(rs.getString("IdFamiglia"),rs.getString("NomeFamiglia")));
+
+        ps.close();
+        rs.close();
+
+        return families;
     }
 }
