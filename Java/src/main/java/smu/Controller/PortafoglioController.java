@@ -158,7 +158,7 @@ public class PortafoglioController extends Controller {
     @FXML
     public void insertWallet() {
         showDialog("/interfaccia/addWallet.fxml", addWalletButton, "Nuovo Portafoglio");
-        initialize();
+        loadUserWallet();
     }
 
     @FXML
