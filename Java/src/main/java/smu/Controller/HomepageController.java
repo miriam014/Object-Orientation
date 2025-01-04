@@ -6,6 +6,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import smu.Main;
 import smu.Sessione;
 import smu.DTO.Utente;
@@ -22,6 +24,8 @@ import java.util.List;
 
 public class HomepageController extends Controller {
 
+    @FXML
+    public VBox SaldoDisponibile;
     @FXML
     private Label welcomeLabel; // Etichetta di benvenuto
     @FXML
@@ -40,6 +44,10 @@ public class HomepageController extends Controller {
     private Button statisticaButton; // Pulsante per passare al report
     @FXML
     private ListView<String> transactionsListView;
+    @FXML
+    private Pane harderPane;
+    @FXML
+    public VBox DatiCarta;
 
 
     private List<Carta> carteUtente; // Lista delle carte dell'utente
@@ -47,6 +55,9 @@ public class HomepageController extends Controller {
 
     @FXML
     public void initialize() {
+        statisticaButton.layoutXProperty().bind(
+                harderPane.widthProperty().multiply(0.95).subtract(statisticaButton.widthProperty().divide(2))
+        );
 
         Utente utente = Sessione.getInstance().getUtenteLoggato();// Recupera l'utente loggato
         System.out.println("Utente loggato: " + utente); // Debug

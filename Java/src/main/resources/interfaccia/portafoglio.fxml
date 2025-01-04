@@ -10,7 +10,7 @@
     <BorderPane prefHeight="600.0" prefWidth="792.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <center>
             <VBox spacing="10.0" BorderPane.alignment="TOP_LEFT">
-                <Pane prefHeight="19.0" prefWidth="793.0" style="-fx-background-color: #008080;">
+                <Pane prefHeight="21.0" prefWidth="792.0" style="-fx-background-color: #008080;">
                     <VBox.margin>
                         <Insets left="-1.0" />
                     </VBox.margin>
@@ -109,7 +109,7 @@
             </VBox>
       </center>
         <left>
-           <!-- <fx:include source="menu.fxml" /> -->
+           <fx:include source="menu.fxml" />
         </left>
     </BorderPane>
 </AnchorPane>
