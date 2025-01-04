@@ -12,12 +12,12 @@
     <top>
         <HBox prefHeight="0.0" prefWidth="0.0" style="-fx-background-color: #008080;" BorderPane.alignment="BOTTOM_CENTER">
             <children>
-                <Button fx:id="toggleButton" mnemonicParsing="false" onAction="#toggleMenu" prefHeight="22.0" prefWidth="27.0" style="-fx-background-color: #008080; -fx-text-fill: white;" text="X">
+                <Button fx:id="toggleButton" mnemonicParsing="false" onAction="#toggleMenu" prefHeight="19.0" prefWidth="28.0" style="-fx-background-color: #008080; -fx-text-fill: white;" text="X">
                     <HBox.margin>
                         <Insets bottom="1.0" right="-25.0" />
                     </HBox.margin>
                     <font>
-                        <Font name="Segoe UI Symbol" size="18.0" />
+                        <Font size="16.0" />
                     </font>
                     <opaqueInsets>
                         <Insets />
@@ -33,7 +33,7 @@
         </HBox>
     </top>
     <left>
-        <VBox fx:id="sidePanel" prefHeight="578.0" prefWidth="124.0" spacing="3.0" style="-fx-background-color: #339999;" BorderPane.alignment="TOP_LEFT">
+        <VBox fx:id="sidePanel" prefHeight="570.0" prefWidth="111.0" spacing="3.0" style="-fx-background-color: #339999;" BorderPane.alignment="TOP_LEFT">
             <children>
                 <Button fx:id="homepageButton" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#HomepageButton" prefHeight="33.0" prefWidth="131.0" stylesheets="@stileHomepage.css" text="Homepage" textAlignment="CENTER" textFill="#f8f6f6">
                     <font>
