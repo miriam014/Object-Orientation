@@ -1,0 +1,15 @@
+# Ignora i file generati dall'IDE
+*.iml
+.idea/
+out/
+
+# Ignora i file di compilazione di Maven
+target/
+
+# Ignora i file temporanei del sistema operativo
+*.swp
+*.DS_Store
+Thumbs.db
+
+# Ignora i file di log
+*.log
