@@ -38,20 +38,6 @@ public class MenuController {
     public void initialize() {
         sidePanel.setTranslateX(-130);
         toggleButton.setText("☰");
-
-        // Aggiungi un listener alla scena principale
-        sidePanel.sceneProperty().addListener((observable, oldScene, newScene) -> {
-            if (newScene != null) {
-                newScene.setOnMouseClicked(event -> {
-                    // Chiudi il menu solo se il clic NON è su sidePanel o toggleButton
-                    if (!sidePanel.isHover() && !toggleButton.isHover()) {
-                        if (isMenuVisible) {
-                            toggleMenu();
-                        }
-                    }
-                });
-            }
-        });
     }
 
     @FXML
