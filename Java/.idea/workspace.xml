@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="df4d01a2-e17b-4881-9bee-4a47bce15a26" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/HomepageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/HomepageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/PortafoglioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/PortafoglioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/ScadenzeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/ScadenzeController.java" afterDir="false" />
-    </list>
+    <list default="true" id="df4d01a2-e17b-4881-9bee-4a47bce15a26" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -62,6 +58,40 @@
     ]
   }
 }</component>
+  <component name="RunManager">
+    <configuration name="Progetto-OO " type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="cmdOptions" />
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="clean" />
+                <option value="install" />
+                <option value="exec:java" />
+              </list>
+            </option>
+            <option name="multimoduleDir" />
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="projectsCmdOptionValues">
+              <list />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
