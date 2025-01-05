@@ -30,7 +30,7 @@
                   </Label>
                </children>
             </Pane>
-            <HBox alignment="CENTER_RIGHT" prefHeight="41.0" prefWidth="752.0" spacing="5.0">
+            <HBox alignment="CENTER_RIGHT" prefHeight="34.0" prefWidth="752.0" spacing="5.0">
                <VBox.margin>
                   <Insets left="20.0" right="20.0" />
                </VBox.margin>
@@ -40,14 +40,14 @@
                         <Insets />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="editWalletButton" alignment="CENTER" mnemonicParsing="false" onAction="#updateWallet" prefHeight="26.0" prefWidth="70.0" text="Modifica" />
+                  <Button fx:id="editWalletButton" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#updateWallet" prefHeight="26.0" prefWidth="70.0" text="Modifica" />
                   <Button mnemonicParsing="false" text="Rimuovi" />
                </children>
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
             </HBox>
-            <Pane prefHeight="132.0" prefWidth="752.0">
+            <Pane prefHeight="151.0" prefWidth="741.0">
                <VBox.margin>
                   <Insets left="20.0" right="20.0" />
                </VBox.margin>
@@ -55,26 +55,26 @@
    
                                       <!-- Pulsante per Cambiare Portafoglio -->
                        <Button fx:id="nextWalletButton" layoutX="597.0" layoutY="42.0" nodeOrientation="RIGHT_TO_LEFT" onAction="#handleNextWallet" prefHeight="36.0" prefWidth="126.0" style="-fx-background-color: transparent; -fx-text-fill: #008765; -fx-font-size: 18px;" text="Next Wallet" textAlignment="CENTER" />
-                  <ImageView fitHeight="119.0" fitWidth="151.0" layoutY="-19.0">
-                     <image>
-                        <Image url="@../images/wallet-38-256.png" />
-                     </image>
-                  </ImageView>
-                        <Label alignment="TOP_RIGHT" layoutX="179.0" layoutY="14.0" mouseTransparent="true" prefHeight="23.0" prefWidth="56.0" text="Saldo:">
+                        <Label alignment="TOP_RIGHT" layoutX="207.0" layoutY="19.0" mouseTransparent="true" prefHeight="23.0" prefWidth="56.0" text="Saldo:">
                             <font>
                                 <Font size="18.0" />
                             </font>
                         </Label>
-                        <Label fx:id="balanceLabel" layoutX="197.0" layoutY="42.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="37.0" prefWidth="146.0" style="-fx-font-size: 30px; -fx-font-weight: bold;" text="0.00">
+                        <Label fx:id="balanceLabel" layoutX="235.0" layoutY="60.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="37.0" prefWidth="146.0" style="-fx-font-size: 30px; -fx-font-weight: bold;" text="0.00">
                             <padding>
                                 <Insets left="6.0" />
                             </padding>
                         </Label>
-                        <Label fx:id="walletNameLabel" layoutX="63.0" layoutY="103.0" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: black;" text="---">
+                        <Label fx:id="walletNameLabel" alignment="CENTER" layoutX="7.0" layoutY="134.0" prefHeight="34.0" prefWidth="180.0" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: black;" text="---">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
+                  <ImageView fitHeight="143.0" fitWidth="179.0" layoutX="7.0" layoutY="-11.0">
+                     <image>
+                        <Image url="@../images/portafoglio.png" />
+                     </image>
+                  </ImageView>
                </children>
                <padding>
                   <Insets left="20.0" right="20.0" />
@@ -93,7 +93,7 @@
                   <Insets left="20.0" right="20.0" />
                </VBox.margin>
                 </Pane>
-            <TableView fx:id="transactionsTableView" prefHeight="315.0" prefWidth="752.0">
+            <TableView fx:id="transactionsTableView" prefHeight="290.0" prefWidth="752.0">
               <columns>
                 <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID" />
                   <TableColumn fx:id="tipoColumn" prefWidth="100.0" text="Tipo" />
