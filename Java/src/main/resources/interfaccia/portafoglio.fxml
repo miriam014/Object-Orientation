@@ -1,31 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="792.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smu.Controller.PortafoglioController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="792.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smu.Controller.PortafoglioController">
     <BorderPane prefHeight="600.0" prefWidth="792.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <center>
             <VBox spacing="10.0" BorderPane.alignment="TOP_LEFT">
-                <Pane prefHeight="28.0" prefWidth="794.0" style="-fx-background-color: #008080;">
+                <Pane prefHeight="21.0" prefWidth="792.0" style="-fx-background-color: #008080;">
                     <VBox.margin>
                         <Insets left="-1.0" />
                     </VBox.margin>
                <children>
-                  <Label layoutX="25.0" layoutY="3.0" prefHeight="22.0" prefWidth="193.0" text="Portafogli" textFill="WHITE">
+                  <Label layoutX="37.0" layoutY="-1.0" prefHeight="21.0" prefWidth="60.0" text="Portafogli" textFill="WHITE">
                      <font>
-                        <Font size="17.0" />
+                        <Font size="14.0" />
                      </font>
                   </Label>
                </children>
@@ -117,7 +109,7 @@
             </VBox>
       </center>
         <left>
-           <!-- <fx:include source="menu.fxml" /> -->
+           <fx:include source="menu.fxml" />
         </left>
     </BorderPane>
 </AnchorPane>
