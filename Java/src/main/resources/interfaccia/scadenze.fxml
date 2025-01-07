@@ -9,17 +9,17 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="792.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smu.Controller.ScadenzeController">
-    <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <BorderPane prefHeight="600.0" prefWidth="792.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <center>
-            <VBox prefHeight="600.0" prefWidth="684.0" spacing="10">
-                <Pane prefHeight="23.0" prefWidth="789.0" style="-fx-background-color: #008080;">
+            <VBox prefHeight="600.0" prefWidth="792.0" spacing="10">
+                <Pane prefHeight="30.0" prefWidth="792.0" style="-fx-background-color: #008080;">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
                <children>
-                  <Label layoutX="164.0" layoutY="1.0" text="Scadenze" textFill="WHITE">
+                  <Label layoutX="164.0" layoutY="6.0" text="Scadenze" textFill="WHITE">
                      <font>
-                        <Font size="17.0" />
+                        <Font size="16.0" />
                      </font>
                   </Label>
                </children></Pane>

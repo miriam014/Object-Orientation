@@ -31,6 +31,7 @@ public class Controller {
             Stage modalStage = new Stage();
             modalStage.setTitle(title);
             modalStage.setScene(new Scene(root));
+            modalStage.setResizable(false);
             modalStage.initOwner(primaryStage);
             modalStage.initModality(Modality.APPLICATION_MODAL);
 
