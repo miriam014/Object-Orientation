@@ -35,34 +35,10 @@ public class PortafoglioController extends Controller {
     protected List<Portafoglio> portafogliUtente; // Lista delle carte dell'utente
     private int currentWalletIndex;
 
-    @FXML private TableColumn<Transazione, String> idColumn;
-    @FXML private TableColumn<Transazione, String> tipoColumn;
-    @FXML private TableColumn<Transazione, Double> importoColumn;
-    @FXML private TableColumn<Transazione, String> dataColumn;
-    @FXML private TableColumn<Transazione, String> causaleColumn;
-    @FXML private TableColumn<Transazione, String> daAColumn;
-    @FXML private TableColumn<Transazione, String> categoriaColumn;
 
     @FXML
     public void initialize() {
-        // Configura le colonne
-        idColumn.setCellValueFactory(new PropertyValueFactory<>("IDTransazione"));
-        tipoColumn.setCellValueFactory(new PropertyValueFactory<>("TipoTransazione"));
-        importoColumn.setCellValueFactory(new PropertyValueFactory<>("Importo"));
-        dataColumn.setCellValueFactory(new PropertyValueFactory<>("Data"));
-        causaleColumn.setCellValueFactory(new PropertyValueFactory<>("Causale"));
-        categoriaColumn.setCellValueFactory(new PropertyValueFactory<>("Categoria"));
-
-        daAColumn.setCellValueFactory(cellData -> {
-            Transazione transazione = cellData.getValue();
-            if ("Entrata".equals(transazione.getTipoTransazione())) {
-                return new SimpleStringProperty(transazione.getMittente());
-            } else {
-                return new SimpleStringProperty(transazione.getDestinatario());
-            }
-        });
-
-        // Carica i portafogli dell'utente
+        initializeTableView();
         loadUserWallet();
         showWallet();
     }

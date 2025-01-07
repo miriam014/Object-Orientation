@@ -1,9 +1,7 @@
 package smu.Controller;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.layout.Pane;
@@ -49,12 +47,22 @@ public class HomepageController extends Controller {
     @FXML
     public VBox DatiCarta;
 
+    @FXML private TableView<Transazione> transactionsTableView;
+    @FXML private TableColumn<Transazione, String> idColumn;
+    @FXML private TableColumn<Transazione, String> tipoColumn;
+    @FXML private TableColumn<Transazione, Double> importoColumn;
+    @FXML private TableColumn<Transazione, String> dataColumn;
+    @FXML private TableColumn<Transazione, String> causaleColumn;
+    @FXML private TableColumn<Transazione, String> daAColumn;
+    @FXML private TableColumn<Transazione, String> categoriaColumn;
+
 
     private List<Carta> carteUtente; // Lista delle carte dell'utente
     private int currentCardIndex; // Indice della carta corrente che si sta visualizzando
 
     @FXML
     public void initialize() {
+        initializeTableView();
         statisticaButton.layoutXProperty().bind(
                 harderPane.widthProperty().multiply(0.95).subtract(statisticaButton.widthProperty().divide(2))
         );
@@ -111,17 +119,8 @@ public class HomepageController extends Controller {
             TransazioneDAOimp transazioneDAO = new TransazioneDAOimp();
             List<Transazione> transazioni = transazioneDAO.getByCardNumber(cardNumber, "tutte"); // Recupera le transazioni per la carta
 
-            ObservableList<String> transactionDetails = FXCollections.observableArrayList(); // Crea una lista osservabile per le transazioni
-
-            for (Transazione transazione : transazioni) {
-                String directionArrow = transazione.getTipoTransazione().equals("entrata") ? "🟢 →" : "🔴 ←";
-                String transactionInfo = directionArrow + transazione.getImporto() + " € - "
-                        + transazione.getCausale() + " - "
-                        + (transazione.getTipoTransazione().equals("Entrata") ? "Da: " + transazione.getMittente() : "A: " + transazione.getDestinatario());
-
-                transactionDetails.add(transactionInfo);
-            }
-            transactionsListView.setItems(transactionDetails); // Imposta le transazioni nella ListView
+            ObservableList<Transazione> transactionDetails = FXCollections.observableArrayList(transazioni);
+            transactionsTableView.setItems(transactionDetails);
 
         } catch (Exception e) {
             e.printStackTrace();
