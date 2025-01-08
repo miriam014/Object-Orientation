@@ -2,7 +2,6 @@ package smu.DAO_Implementation;
 
 import smu.DAO.PortafoglioDAO;
 import smu.DTO.Portafoglio;
-import smu.DTO.Transazione;
 import smu.Database;
 import java.sql.*;
 import java.util.ArrayList;
@@ -15,7 +14,7 @@ public class PortafoglioDAOimp implements PortafoglioDAO {
     @Override
     public boolean insert(Portafoglio wallet) throws SQLException {
         Connection connection = Database.getConnection();
-        String sql = "INSERT INTO smu.Portafoglio(NomePortafoglio, IdFamiglia) VALUES(?,?);";
+        String sql = "INSERT INTO smu.Portafoglio(NomePortafoglio, IdFamiglia) VALUES(?,?) RETURNING IdPortafoglio;";
 
         PreparedStatement ps = connection.prepareStatement(sql);
         ps.setString(1, wallet.getNomePortafoglio());
@@ -27,9 +26,14 @@ public class PortafoglioDAOimp implements PortafoglioDAO {
             ps.setInt(2, Integer.parseInt(idFamiglia));
         }
 
-        int result = ps.executeUpdate();
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            int generatedId = rs.getInt("IdPortafoglio");
+            wallet.setIdPortafoglio(String.valueOf(generatedId)); // Imposta l'ID generato nell'oggetto Portafoglio
+        }
+        rs.close();
         ps.close();
-        return result != 0;
+        return wallet.getIdPortafoglio() != null;
     }
 
     @Override
@@ -50,7 +54,6 @@ public class PortafoglioDAOimp implements PortafoglioDAO {
         ps.close();
         return result != 0;
     }
-
 
     @Override
     public boolean delete(String walletID) throws SQLException {

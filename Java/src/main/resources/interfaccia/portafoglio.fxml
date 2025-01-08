@@ -18,12 +18,12 @@
     <BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="792.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <center>
             <VBox spacing="10.0" BorderPane.alignment="TOP_LEFT">
-                <Pane prefHeight="30.0" prefWidth="792.0" style="-fx-background-color: #008080;">
+                <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="792.0" style="-fx-background-color: #008080;">
                     <VBox.margin>
                         <Insets left="-1.0" />
                     </VBox.margin>
                <children>
-                  <Label layoutX="23.0" layoutY="6.0" prefHeight="21.0" prefWidth="84.0" text="Portafogli" textFill="WHITE">
+                  <Label layoutX="23.0" layoutY="4.0" prefHeight="21.0" prefWidth="84.0" text="Portafogli" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>

@@ -17,7 +17,7 @@
    <BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="792.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <center>
          <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="792.0" spacing="10.0" BorderPane.alignment="CENTER" VBox.vgrow="ALWAYS">
-            <Pane fx:id="harderPane" minHeight="-Infinity" prefHeight="30.0" prefWidth="792.0" style="-fx-background-color: #008080;">
+            <Pane fx:id="harderPane" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="30.0" prefWidth="792.0" style="-fx-background-color: #008080;">
                <children>
                   <Button fx:id="statisticaButton" layoutX="724.0" layoutY="9.0" mnemonicParsing="false" onAction="#scenaReport" style="-fx-background-color: #008080;" text="report" textAlignment="RIGHT" textFill="WHITE" textOverrun="WORD_ELLIPSIS" visible="true">
                      <padding>
@@ -39,7 +39,7 @@
             </Pane>
             <HBox alignment="CENTER_RIGHT" prefHeight="34.0" prefWidth="792.0" spacing="5.0">
                <children>
-                  <Button alignment="CENTER" mnemonicParsing="false"  prefHeight="26.0" prefWidth="70.0" text="Aggiungi" />
+                  <Button alignment="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="70.0" text="Aggiungi" />
                   <Button alignment="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="70.0" text="Modifica" />
                   <Button mnemonicParsing="false" text="Rimuovi" />
                </children>

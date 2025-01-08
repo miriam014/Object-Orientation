@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import smu.DAO_Implementation.TransazioneDAOimp;
+import smu.DTO.Carta;
 import smu.DTO.Famiglia;
 import smu.DTO.Portafoglio;
 import smu.DTO.Transazione;
@@ -21,8 +22,8 @@ import java.util.List;
 
 public class PortafoglioController extends Controller {
     @FXML public Button nextWalletButton;
-    @FXML public Button addWalletButton;
-    @FXML public Button editWalletButton;
+    @FXML protected Button addWalletButton;
+    @FXML protected Button editWalletButton;
     @FXML private Label balanceLabel;
     @FXML protected Label walletNameLabel;
     @FXML private TableView<Transazione> transactionsTableView;
@@ -30,9 +31,10 @@ public class PortafoglioController extends Controller {
     @FXML protected TextField nomePortafoglio;
     @FXML protected ComboBox<String> IdFamiglia;
     @FXML protected ComboBox<String> IdPortafoglio;
+    @FXML protected ComboBox<String> NumeroCarta;
     @FXML protected Button Conferma;
 
-    protected List<Portafoglio> portafogliUtente; // Lista delle carte dell'utente
+    protected List<Portafoglio> portafogliUtente;
     private int currentWalletIndex;
 
 
@@ -50,6 +52,8 @@ public class PortafoglioController extends Controller {
                 System.out.println("Nessun portafoglio trovato per l'utente."); // Debug
             } else {
                 List<String> walletsID = new ArrayList<>();
+
+                System.out.println("Portafogli trovati: " + portafogliUtente.size());
 
                 // Aggiungi gli ID delle famiglie alla lista
                 for (Portafoglio portafoglio : portafogliUtente) {
@@ -90,7 +94,24 @@ public class PortafoglioController extends Controller {
         }
     }
 
-    private void showWallet() {
+    protected void loadUserCards(){
+        try {
+            List<Carta> carteUtente = Sessione.getInstance().getCarteUtente();
+            if (carteUtente == null || carteUtente.isEmpty()) {
+                System.out.println("Nessuna carta trovata per l'utente.");
+            } else {
+                List<String> cardsNumber = new ArrayList<>();
+                for (Carta carta : carteUtente) {
+                    cardsNumber.add(carta.getNumeroCarta());
+                }
+                NumeroCarta.getItems().setAll(cardsNumber);
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    protected void showWallet() {
         if (portafogliUtente != null && !portafogliUtente.isEmpty()) {
             if (currentWalletIndex >= portafogliUtente.size()) {
                 System.out.println("Indice del portafoglio supera la dimensione della lista.");
@@ -98,7 +119,7 @@ public class PortafoglioController extends Controller {
             }
 
             Portafoglio portafoglio = portafogliUtente.get(currentWalletIndex);
-            balanceLabel.setText(String.valueOf(portafoglio.getSaldo()));
+            balanceLabel.setText(portafoglio.getSaldo() != 0 ? String.valueOf(portafoglio.getSaldo()) : "0.00");
             walletNameLabel.setText(portafoglio.getNomePortafoglio());
             loadTransactions(portafoglio.getIdPortafoglio());
         }
@@ -127,14 +148,14 @@ public class PortafoglioController extends Controller {
         if (currentWalletIndex >= portafogliUtente.size()) { // Se l'indice supera il numero di carte
             currentWalletIndex = 0; // Torna alla prima carta
         }
-        showWallet(); // Mostra la carta corrente
+        showWallet();
     }
 
 
     @FXML
     public void insertWallet() {
         showDialog("/interfaccia/addWallet.fxml", addWalletButton, "Nuovo Portafoglio");
-        initialize();
+        loadUserWallet();
     }
 
     @FXML

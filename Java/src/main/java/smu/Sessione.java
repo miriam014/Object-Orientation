@@ -20,7 +20,7 @@ public class Sessione {
     private static Sessione istanza;
     private Utente utenteLoggato;
     private final List<Carta> carte;// Lista delle carte dell'utente
-    private final List<Portafoglio> portafogli;
+    private List<Portafoglio> portafogli;
     private List<Famiglia> famiglie;
     private Carta cartaSelezionata; // Carta attualmente selezionata
 
@@ -114,6 +114,7 @@ public class Sessione {
     }
 
     public List<Portafoglio> getPortafogliUtente(){
+        loadUserWallets();
         return portafogli;
     }
 
