@@ -7,26 +7,27 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="380.0" prefWidth="330.0" stylesheets="@stileShowDialogPages.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smu.Controller.AddWalletController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="380.0" stylesheets="@stileShowDialogPages.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smu.Controller.AddWalletController">
    <top>
-      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="330.0" style="-fx-background-color: #008080;" BorderPane.alignment="CENTER">
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="380.0" style="-fx-background-color: #008080;" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="14.0" layoutY="3.0" prefHeight="24.0" prefWidth="228.0" text="Inserisci nuovo Portafoglio" textFill="WHITE">
+            <Label layoutX="14.0" layoutY="3.0" prefHeight="24.0" prefWidth="228.0" style="-fx-text-fill: #FFFFFF; -fx-font-size: 16px;" text="Inserisci nuovo Portafoglio" textFill="WHITE">
                <font>
-                  <Font size="17.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
          </children>
       </Pane>
    </top>
    <center>
-      <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="320.0" prefWidth="220.0" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="350.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="220.0">
+            <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="380.0">
                <children>
                   <ImageView fitHeight="70.0" fitWidth="75.0">
                      <image>
@@ -35,22 +36,25 @@
                   </ImageView>
                </children>
             </VBox>
-            <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="220.0">
+            <HBox alignment="CENTER" prefHeight="65.0" prefWidth="350.0" spacing="10.0">
                <children>
-                  <TextField fx:id="nomePortafoglio" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="185.0" promptText="Nome portafoglio" style="-fx-background-color: transparent; -fx-border-color: #008080; -fx-border-width: 0px 0px 2px 0px;" />
+                  <Label prefHeight="30.0" prefWidth="120.0" text="Nome Portafoglio" />
+                  <TextField fx:id="nomePortafoglio" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="180.0" />
                </children>
-            </VBox>
-            <VBox alignment="CENTER" prefHeight="60.0" prefWidth="220.0">
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="65.0" prefWidth="350.0" spacing="10.0">
                <children>
-                  <ComboBox fx:id="NumeroCarta" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="185.0" promptText="Numero Carta" style="-fx-background-color: transparent; -fx-border-color: #008080; -fx-border-width: 0px 0px 2px 0px;" />
+                  <Label prefHeight="30.0" prefWidth="120.0" text="Numero Carta" />
+                  <ComboBox fx:id="NumeroCarta" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="180.0" />
                </children>
-            </VBox>
-            <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="220.0">
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="65.0" prefWidth="350.0" spacing="10.0">
                <children>
-                  <ComboBox fx:id="IdFamiglia" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="185.0" promptText="ID famiglia" style="-fx-background-color: transparent; -fx-border-color: #008080; -fx-border-width: 0px 0px 2px 0px;" />
+                  <Label prefHeight="30.0" prefWidth="120.0" text="ID Famiglia" />
+                  <ComboBox fx:id="IdFamiglia" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="180.0" />
                </children>
-            </VBox>
-            <VBox alignment="CENTER" prefHeight="60.0" prefWidth="220.0">
+            </HBox>
+            <VBox alignment="CENTER" prefHeight="70.0" prefWidth="220.0">
                <children>
                   <Button fx:id="Conferma" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#addWallet" prefHeight="28.0" prefWidth="73.5" style="-fx-border-color: transparent; -fx-background-color: #008080; -fx-background-radius: 15px;" text="Conferma" textFill="WHITE" />
                </children>

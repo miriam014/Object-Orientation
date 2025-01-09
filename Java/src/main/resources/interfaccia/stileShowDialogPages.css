@@ -6,9 +6,19 @@
     -fx-border-width: 0px 0px 2px 0px;
 }
 
+.label {
+    -fx-background-color: transparent; /* Sfondo della label (opzionale) */
+    -fx-text-fill: #008080; /* Colore del testo */
+    -fx-font-size: 14px;    /* Dimensione del testo */
+}
+
+#excludedLabel {
+    -fx-border-color: transparent; /* Nessun bordo per questa label */
+}
+
 .combo-box .list-cell {
     -fx-background-color: transparent; /* Sfondo delle opzioni nel menu a tendina */
-    -fx-text-fill: #000000;        /* Colore del testo */
+    -fx-text-fill: #000000; /* Colore del testo */
 }
 
 .combo-box .list-cell:hover {
@@ -17,7 +27,7 @@
 
 .combo-box .arrow {
     -fx-background-color: #008080; /* Colore del triangolo della ComboBox */
-    -fx-background-radius: 0;       /* Rimuove l'arrotondamento dal triangolo */
+    -fx-background-radius: 2;       /* Rimuove l'arrotondamento dal triangolo */
 }
 
 .combo-box .text {
@@ -26,4 +36,12 @@
 
 .combo-box:focused {
     -fx-border-color: #008080;     /* Colore del bordo quando la ComboBox è in focus */
+}
+
+.text-field{
+    -fx-background-color: transparent; /* Colore di sfondo bianco per la ComboBox */
+    -fx-border-color: #008080;     /* Colore del bordo (puoi cambiarlo a tuo piacimento) */
+    -fx-padding: 4 8 4 8;           /* Padding interno */
+    -fx-prompt-text-fill: #CBCBCB; /* Colore del promptText (grigio chiaro) */
+    -fx-border-width: 0px 0px 2px 0px;
 }

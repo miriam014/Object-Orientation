@@ -29,6 +29,11 @@ public class AddWalletController extends PortafoglioController{
         nomePortafoglio.setFocusTraversable(false);
         loadFamilyID();
         loadUserCards();
+        Conferma.setDisable(true);
+
+        nomePortafoglio.textProperty().addListener((observable, oldValue, newValue) -> {
+            checkFormValidity(); // Verifica la validità del modulo ogni volta che il nome cambia
+        });
 
         IdFamiglia.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
@@ -41,9 +46,17 @@ public class AddWalletController extends PortafoglioController{
             if (newValue != null) {
                 selectedCardNumber = newValue; // Salva il numero della carta selezionata
                 System.out.println("Carta selezionata: " + selectedCardNumber); // Debugging
+                checkFormValidity();
             }
         });
+    }
 
+    private void checkFormValidity() {
+        // Controlla se il nome del portafoglio è stato inserito e se è stata selezionata una carta
+        if (nomePortafoglio.getText() != null && !nomePortafoglio.getText().trim().isEmpty() &&
+                selectedCardNumber != null && !selectedCardNumber.trim().isEmpty()) {
+            Conferma.setDisable(false); // Abilita il bottone se entrambi i campi sono validi
+        }
     }
 
     @FXML

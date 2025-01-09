@@ -61,7 +61,7 @@ public class PortafoglioDAOimp implements PortafoglioDAO {
         String sql = "DELETE FROM smu.Portafoglio WHERE IdPortafoglio = ?;";
 
         PreparedStatement ps = connection.prepareStatement(sql);
-        ps.setString(1, walletID);
+        ps.setInt(1, Integer.parseInt(walletID));
 
         int result = ps.executeUpdate();
         ps.close();
@@ -76,7 +76,7 @@ public class PortafoglioDAOimp implements PortafoglioDAO {
         String sql = "SELECT * FROM smu.Portafoglio WHERE IdPortafoglio = ?;";
 
         PreparedStatement ps = connection.prepareStatement(sql);
-        ps.setString(1, walletID);
+        ps.setInt(1, Integer.parseInt(walletID));
 
         ResultSet rs = ps.executeQuery();
         if(rs.next()) {
@@ -114,5 +114,23 @@ public class PortafoglioDAOimp implements PortafoglioDAO {
         ps.close();
         System.out.println("Numero totale di portafogli trovati: " + wallets.size());
         return wallets;
+    }
+
+    public String getCardNumberByWalletID(String walletID) throws SQLException{
+        Connection connection = Database.getConnection();
+        String cardNumber = null;
+
+        String sql = "SELECT NumeroCarta FROM smu.AssociazioneCartaPortafoglio WHERE IdPortafoglio = ?;";
+
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ps.setInt(1, Integer.parseInt(walletID));
+
+        ResultSet rs = ps.executeQuery();
+        if(rs.next()) {
+            cardNumber = rs.getString("NumeroCarta");
+        }
+        rs.close();
+        ps.close();
+        return cardNumber;
     }
 }
