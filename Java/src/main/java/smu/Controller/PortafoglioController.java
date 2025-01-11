@@ -24,8 +24,10 @@ public class PortafoglioController extends Controller {
     @FXML public Button nextWalletButton;
     @FXML protected Button addWalletButton;
     @FXML protected Button editWalletButton;
+    @FXML protected Button deleteWalletButton;
     @FXML private Label balanceLabel;
     @FXML protected Label walletNameLabel;
+    @FXML private Label currentWalletID;
     @FXML private TableView<Transazione> transactionsTableView;
 
     @FXML protected TextField nomePortafoglio;
@@ -148,6 +150,19 @@ public class PortafoglioController extends Controller {
         if (currentWalletIndex >= portafogliUtente.size()) { // Se l'indice supera il numero di carte
             currentWalletIndex = 0; // Torna alla prima carta
         }
+        currentWalletID.setText(portafogliUtente.get(currentWalletIndex).getIdPortafoglio());
+        showWallet();
+    }
+
+    @FXML
+    private void handlePreviousWallet() {
+        System.out.println("Previous wallet button clicked!");
+        if (currentWalletIndex == 0)
+            currentWalletIndex = portafogliUtente.size() -1;
+        else
+            currentWalletIndex--;
+
+        currentWalletID.setText(portafogliUtente.get(currentWalletIndex).getIdPortafoglio());
         showWallet();
     }
 
@@ -155,19 +170,23 @@ public class PortafoglioController extends Controller {
     @FXML
     public void insertWallet() {
         showDialog("/interfaccia/addWallet.fxml", addWalletButton, "Nuovo Portafoglio");
+        handlePreviousWallet();
+        handleNextWallet();
         loadUserWallet();
     }
 
     @FXML
     public void updateWallet() {
         showDialog("/interfaccia/editWallet.fxml", editWalletButton, "Modifica Portafoglio");
+        handlePreviousWallet();
+        handleNextWallet();
         loadUserWallet();
     }
-/*
+
     @FXML
     public void deleteWallet() {
         showDialog("/interfaccia/deleteWallet.fxml", deleteWalletButton, "Elimina Portafoglio");
-    }*/
-
+        loadUserWallet();
+    }
 
 }

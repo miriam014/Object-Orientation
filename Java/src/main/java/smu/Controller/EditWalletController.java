@@ -90,15 +90,13 @@ public class EditWalletController extends PortafoglioController {
         Portafoglio wallet = new Portafoglio(selectedWalletId, walletName, selectedFamilyId);
         portafoglioDAO.update(wallet);
 
-        loadUserWallet();
-
         // Chiudi la finestra corrente
         Stage stage = (Stage) nomePortafoglio.getScene().getWindow();
         stage.close();
     }
 
     @FXML
-    public void loadWalletInfo() {
+    private void loadWalletInfo() {
 
         if (selectedWalletId == null || selectedWalletId.trim().isEmpty()) {
             System.out.println("Nessun portafoglio selezionato per il caricamento delle informazioni.");
