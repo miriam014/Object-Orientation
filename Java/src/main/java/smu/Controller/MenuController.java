@@ -75,7 +75,7 @@ public class MenuController {
 
     @FXML
     public void ScadenzeButton() throws IOException {
-        Main.setRoot("scadenze");
+        Main.setRoot("speseProgrammate");
     }
 
    @FXML void portafoglioButton() throws IOException {

@@ -45,3 +45,11 @@
     -fx-prompt-text-fill: #CBCBCB; /* Colore del promptText (grigio chiaro) */
     -fx-border-width: 0px 0px 2px 0px;
 }
+
+.striped-table .table-row-cell:odd {
+    -fx-background-color: #f0f0f0; /* Grigio chiaro */
+}
+
+.striped-table .table-row-cell:even {
+    -fx-background-color: #ffffff; /* Bianco */
+}
