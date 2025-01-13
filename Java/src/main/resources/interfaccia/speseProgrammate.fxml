@@ -31,9 +31,9 @@
                 </Pane>
                 <HBox alignment="CENTER_RIGHT" prefHeight="46.0" prefWidth="792.0" spacing="5.0">
                     <children>
-                        <Button fx:id="NewProgram" alignment="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="70.0" text="Aggiungi" />
-                        <Button fx:id="ChangeProgram" alignment="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="70.0" text="Modifica" />
-                        <Button mnemonicParsing="false" text="Rimuovi" />
+                        <Button fx:id="NewProgram" onAction="#newProgrammazione" alignment="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="70.0" text="Aggiungi" />
+                        <Button fx:id="ChangeProgram" onAction="#changeProgrammazione" alignment="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="70.0" text="Modifica" />
+                        <Button fx:id="deleteProgram" onAction="#deleteProgrammazione" mnemonicParsing="false" text="Rimuovi" />
                     </children>
                     <padding>
                         <Insets left="20.0" right="20.0" />
