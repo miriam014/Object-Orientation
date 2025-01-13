@@ -41,14 +41,11 @@ public class HomepageController extends Controller {
     @FXML
     private Button statisticaButton; // Pulsante per passare al report
     @FXML
-    private ListView<String> transactionsListView;
-    @FXML
-    private Pane harderPane;
+    private Pane headerPane;
     @FXML
     public VBox DatiCarta;
 
     @FXML private TableView<Transazione> transactionsTableView;
-    @FXML private TableColumn<Transazione, String> idColumn;
     @FXML private TableColumn<Transazione, String> tipoColumn;
     @FXML private TableColumn<Transazione, Double> importoColumn;
     @FXML private TableColumn<Transazione, String> dataColumn;
@@ -64,8 +61,15 @@ public class HomepageController extends Controller {
     public void initialize() {
         initializeTableView();
         statisticaButton.layoutXProperty().bind(
-                harderPane.widthProperty().multiply(0.95).subtract(statisticaButton.widthProperty().divide(2))
+                headerPane.widthProperty().multiply(0.95).subtract(statisticaButton.widthProperty().divide(2))
         );
+
+        System.out.println("initialize chiamato");
+        if (nextCardButton == null) {
+            System.out.println("nextCardButton non è stato inizializzato.");
+        } else {
+            System.out.println("nextCardButton è inizializzato correttamente.");
+        }
 
         Utente utente = Sessione.getInstance().getUtenteLoggato();// Recupera l'utente loggato
         System.out.println("Utente loggato: " + utente); // Debug
@@ -83,9 +87,11 @@ public class HomepageController extends Controller {
             if (carteUtente == null || carteUtente.isEmpty()) {
                 System.out.println("Nessuna carta trovata per l'utente."); // Debug
             } else {
+                System.out.println("Utente trovato: " + carteUtente.size());
                 if(carteUtente.size() > 1) {
                     nextCardButton.setVisible(true); // Mostra il pulsante per la prossima carta
                     statisticaButton.setVisible(true); // Mostra il pulsante per le statistiche
+                    System.out.println("pulsante succssivo visibile");
                 }
             }
             currentCardIndex = 0;
@@ -128,12 +134,13 @@ public class HomepageController extends Controller {
     }
 
     @FXML
-    private void handleNextCard() {
+    public void handleNextCard() {
         System.out.println("Next card button clicked!"); // Verifica che questo venga eseguito
         currentCardIndex++; // Incrementa l'indice della carta
         if (currentCardIndex >= carteUtente.size()) { // Se l'indice supera il numero di carte
             currentCardIndex = 0; // Torna alla prima carta
         }
+        System.out.println("indice corrente della carta: " + currentCardIndex);
         showCard(); // Mostra la carta corrente
     }
 

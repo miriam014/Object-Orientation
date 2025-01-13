@@ -18,7 +18,6 @@ import java.net.URL;
 
 public class Controller {
 
-    @FXML protected TableColumn<Transazione, String> idColumn;
     @FXML protected TableColumn<Transazione, String> tipoColumn;
     @FXML protected TableColumn<Transazione, Double> importoColumn;
     @FXML protected TableColumn<Transazione, String> dataColumn;
@@ -62,7 +61,6 @@ public class Controller {
     }
 
     protected void initializeTableView() {
-        idColumn.setCellValueFactory(new PropertyValueFactory<>("IDTransazione"));
         tipoColumn.setCellValueFactory(new PropertyValueFactory<>("TipoTransazione"));
         importoColumn.setCellValueFactory(new PropertyValueFactory<>("Importo"));
         dataColumn.setCellValueFactory(new PropertyValueFactory<>("Data"));
