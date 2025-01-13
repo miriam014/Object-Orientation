@@ -50,10 +50,6 @@ public class SpeseProgrammateController extends Controller {
 
     }
 
-    private void BottonePaga(SpeseProgrammate spesa) {
-        System.out.println("Paga spesa programmata: " + spesa.getIdSpesa());
-    }
-
 
     @FXML
     protected void initializeTableView() {
@@ -68,7 +64,7 @@ public class SpeseProgrammateController extends Controller {
                 // Configura l'evento per ogni bottone della colonna "Stato"
                 Button bottone = spesa.getStato();
                 bottone.setOnAction(event -> {
-                    BottonePaga(spesa);
+                    BottonePaga(spesa, bottone);
                 });
             }
 
@@ -76,4 +72,15 @@ public class SpeseProgrammateController extends Controller {
             e.printStackTrace();
         }
     }
+
+    private void BottonePaga(SpeseProgrammate spesa, Button bottone) {
+        System.out.println("Pagamento spesa programmata: " + spesa.getIdSpesa());
+        bottone.setStyle("-fx-background-color: green; -fx-text-fill: white;");
+        bottone.setText("Pagato");
+        bottone.setDisable(true);   //in modo che non venga pagata di nuovo la spesa prima del dovuto
+
+        //riattivo il bottone una volta passato il tempo necessario in base alla data di scadenza
+
+    }
+
 }

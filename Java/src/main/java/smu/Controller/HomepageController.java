@@ -37,6 +37,8 @@ public class HomepageController extends Controller {
     @FXML
     private Label expiryDateLabel; // Etichetta per la data di scadenza
     @FXML
+    public Button previousCardButton; // Pulsante per la carta precedente
+    @FXML
     private Button nextCardButton; // Pulsante per la prossima carta
     @FXML
     private Button statisticaButton; // Pulsante per passare al report
@@ -59,18 +61,6 @@ public class HomepageController extends Controller {
 
     @FXML
     public void initialize() {
-        initializeTableView();
-        statisticaButton.layoutXProperty().bind(
-                headerPane.widthProperty().multiply(0.95).subtract(statisticaButton.widthProperty().divide(2))
-        );
-
-        System.out.println("initialize chiamato");
-        if (nextCardButton == null) {
-            System.out.println("nextCardButton non è stato inizializzato.");
-        } else {
-            System.out.println("nextCardButton è inizializzato correttamente.");
-        }
-
         Utente utente = Sessione.getInstance().getUtenteLoggato();// Recupera l'utente loggato
         System.out.println("Utente loggato: " + utente); // Debug
         if (utente != null) {
@@ -79,6 +69,12 @@ public class HomepageController extends Controller {
         } else {
             System.out.println("Utente non trovato"); // Debug
         }
+
+        System.out.println("Next button visible: " + nextCardButton.isVisible());
+        System.out.println("Previous button visible: " + previousCardButton.isVisible());
+        System.out.println("Next button disabled: " + nextCardButton.isDisable());
+        System.out.println("Previous button disabled: " + previousCardButton.isDisable());
+        initializeTableView();
     }
 
     private void loadUserCards() {
@@ -91,7 +87,6 @@ public class HomepageController extends Controller {
                 if(carteUtente.size() > 1) {
                     nextCardButton.setVisible(true); // Mostra il pulsante per la prossima carta
                     statisticaButton.setVisible(true); // Mostra il pulsante per le statistiche
-                    System.out.println("pulsante succssivo visibile");
                 }
             }
             currentCardIndex = 0;
@@ -102,11 +97,13 @@ public class HomepageController extends Controller {
 
     private void showCard() {
         if (carteUtente != null && !carteUtente.isEmpty()) {
+            System.out.println("Indice corrente: " + currentCardIndex);
+
             if (currentCardIndex >= carteUtente.size()) {
                 System.out.println("Indice della carta supera la dimensione della lista.");
                 return;
             }
-         // Verifica che la lista delle carte non sia vuota e che l'indice sia valido
+
             Carta carta = carteUtente.get(currentCardIndex); // Recupera la carta corrente
             balanceLabel.setText(String.valueOf(carta.getSaldo())); // Imposta il saldo
             cardNameLabel.setText(carta.getNomeCarta()); // Imposta il nome della carta
@@ -140,7 +137,18 @@ public class HomepageController extends Controller {
         if (currentCardIndex >= carteUtente.size()) { // Se l'indice supera il numero di carte
             currentCardIndex = 0; // Torna alla prima carta
         }
-        System.out.println("indice corrente della carta: " + currentCardIndex);
+        System.out.println("Indice aggiornato (next): " + currentCardIndex);
+
+        showCard(); // Mostra la carta corrente
+    }
+
+    @FXML
+    public void handlePreviousCard() {
+        System.out.println("Previous card button clicked!"); // Debug
+        currentCardIndex--; // Decrementa l'indice della carta
+        if (currentCardIndex < 0) { // Se l'indice è negativo
+            currentCardIndex = carteUtente.size() - 1; // Torna all'ultima carta
+        }
         showCard(); // Mostra la carta corrente
     }
 

@@ -12,12 +12,28 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="792.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smu.Controller.HomepageController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="792.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smu.Controller.HomepageController">
    <BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="792.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 
       <!-- Contenuto principale -->
       <center>
          <VBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
+            <Pane fx:id="headerPane" prefHeight="31.0" prefWidth="791.0" style="-fx-background-color: #008080;">
+               <children>
+                  <Label layoutX="52.0" layoutY="6.0" text="Homepage" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="statisticaButton" layoutX="718.0" layoutY="1.0" mnemonicParsing="false" onAction="#scenaReport" style="-fx-background-color: #008080;" text="Report" textFill="WHITE" />
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Pane>
             <!-- Saldo e carta -->
             <HBox alignment="CENTER_LEFT" prefWidth="792.0" spacing="10.0">
                <!-- Saldo -->
@@ -35,10 +51,13 @@
                </VBox>
 
                      <!-- Pulsante precedente -->
-               <Button fx:id="previousCardButton" style="-fx-background-color: #008080; -fx-text-fill: white; -fx-font-size: 16px;" text="Precedente" />
+               <Button fx:id="previousCardButton" onAction="#handlePreviousCard" style="-fx-background-color: #79a6a6; -fx-text-fill: white; -fx-font-size: 14px;" text="Precedente">
+                  <font>
+                     <Font size="12.0" />
+                  </font></Button>
 
                      <!-- Carta -->
-               <VBox fx:id="DatiCarta" alignment="CENTER" prefHeight="159.0" prefWidth="285.0" spacing="10.0" style="-fx-background-color: #79a6a6; -fx-background-radius: 15px; -fx-padding: 20px;">
+               <VBox fx:id="DatiCarta" alignment="CENTER" prefHeight="159.0" prefWidth="285.0" spacing="10.0" style="-fx-background-color: #008080; -fx-background-radius: 15px; -fx-padding: 20px;">
                   <Label fx:id="cardNameLabel" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white;" text="---" />
                   <Label fx:id="cardNumberLabel" style="-fx-font-size: 14px; -fx-text-fill: white;" text="Numero Carta: **** **** **** ----" />
                   <HBox spacing="10">
@@ -52,7 +71,13 @@
                </VBox>
 
                      <!-- Pulsante successivo -->
-               <Button fx:id="nextCardButton" onAction="#handleNextCard" style="-fx-background-color: #008080; -fx-text-fill: white; -fx-font-size: 16px;" text="Successiva" />
+               <Button fx:id="nextCardButton" onAction="#handleNextCard" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: #79a6a6; -fx-text-fill: white; -fx-font-size: 14px;" text="Successiva">
+                  <font>
+                     <Font size="12.0" />
+                  </font></Button>
+               <VBox.margin>
+                  <Insets bottom="20.0" top="30.0" />
+               </VBox.margin>
             </HBox>
 
                   <!-- Pulsante aggiungi transazione -->
@@ -61,6 +86,9 @@
                   <HBox.margin>
                      <Insets left="30.0" />
                   </HBox.margin>
+                  <font>
+                     <Font name="Al Bayan Bold" size="13.0" />
+                  </font>
                </Button>
             </HBox>
 
@@ -80,18 +108,8 @@
             </TableView>
          </VBox>
       </center>
-      <top>
-         <Pane fx:id="headerPane" prefHeight="30.0" prefWidth="792.0" style="-fx-background-color: #008080;" BorderPane.alignment="CENTER">
-            <children>
-               <fx:include source="menu.fxml" />
-               <Label layoutX="52.0" layoutY="6.0" text="Homepage" textFill="WHITE">
-                  <font>
-                     <Font size="16.0" />
-                  </font>
-               </Label>
-               <Button fx:id="statisticaButton" layoutX="718.0" layoutY="1.0" mnemonicParsing="false" onAction="#scenaReport" style="-fx-background-color: #008080;" text="Report" textFill="WHITE" />
-            </children>
-         </Pane>
-      </top>
+      <left>
+         <fx:include source="menu.fxml" />
+      </left>
    </BorderPane>
 </AnchorPane>
