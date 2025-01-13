@@ -1,5 +1,6 @@
 package smu.Controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
@@ -29,6 +30,7 @@ public class SpeseProgrammateController extends Controller {
     @FXML private TableColumn<SpeseProgrammate, String> frequenzaColumn;
 
     private SpeseProgrammateDAO speseProgrammateDAO;
+    @FXML private Button deleteProgram;
     @FXML private Button NewProgram;
     @FXML private Button ChangeProgram;
 
@@ -73,6 +75,7 @@ public class SpeseProgrammateController extends Controller {
         }
     }
 
+    @FXML
     private void BottonePaga(SpeseProgrammate spesa, Button bottone) {
         System.out.println("Pagamento spesa programmata: " + spesa.getIdSpesa());
         bottone.setStyle("-fx-background-color: green; -fx-text-fill: white;");
@@ -80,7 +83,23 @@ public class SpeseProgrammateController extends Controller {
         bottone.setDisable(true);   //in modo che non venga pagata di nuovo la spesa prima del dovuto
 
         //riattivo il bottone una volta passato il tempo necessario in base alla data di scadenza
-
     }
 
+    @FXML
+    public void newProgrammazione(ActionEvent actionEvent) {
+        showDialog("/interfaccia/newProgrammazione.fxml", NewProgram, "Crea nuovo Portafoglio");
+        initializeTableView();
+    }
+
+    @FXML
+    public void changeProgrammazione(ActionEvent actionEvent) {
+        showDialog("/interfaccia/changeProgrammazione.fxml", ChangeProgram, "Modifica Portafoglio");
+        initializeTableView();
+    }
+
+    @FXML
+    public void deleteProgrammazione(ActionEvent actionEvent) {
+        showDialog("/interfaccia/deleteProgrammazione.fxml", deleteProgram, "Elimina Portafoglio");
+        initializeTableView();
+    }
 }
