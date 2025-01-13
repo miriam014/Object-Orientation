@@ -1,5 +1,6 @@
 package smu.Controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.collections.FXCollections;
@@ -25,8 +26,6 @@ public class HomepageController extends Controller {
     @FXML
     public VBox SaldoDisponibile;
     @FXML
-    private Label welcomeLabel; // Etichetta di benvenuto
-    @FXML
     private Label balanceLabel; // Etichetta del saldo
     @FXML
     private Label cardNameLabel; // Etichetta del numero della carta
@@ -37,7 +36,7 @@ public class HomepageController extends Controller {
     @FXML
     private Label expiryDateLabel; // Etichetta per la data di scadenza
     @FXML
-    public Button previousCardButton; // Pulsante per la carta precedente
+    private Button previousCardButton; // Pulsante per la carta precedente
     @FXML
     private Button nextCardButton; // Pulsante per la prossima carta
     @FXML
@@ -46,6 +45,9 @@ public class HomepageController extends Controller {
     private Pane headerPane;
     @FXML
     public VBox DatiCarta;
+    @FXML
+    private Button addTransactionButton;
+
 
     @FXML private TableView<Transazione> transactionsTableView;
     @FXML private TableColumn<Transazione, String> tipoColumn;
@@ -70,10 +72,6 @@ public class HomepageController extends Controller {
             System.out.println("Utente non trovato"); // Debug
         }
 
-        System.out.println("Next button visible: " + nextCardButton.isVisible());
-        System.out.println("Previous button visible: " + previousCardButton.isVisible());
-        System.out.println("Next button disabled: " + nextCardButton.isDisable());
-        System.out.println("Previous button disabled: " + previousCardButton.isDisable());
         initializeTableView();
     }
 
@@ -97,7 +95,6 @@ public class HomepageController extends Controller {
 
     private void showCard() {
         if (carteUtente != null && !carteUtente.isEmpty()) {
-            System.out.println("Indice corrente: " + currentCardIndex);
 
             if (currentCardIndex >= carteUtente.size()) {
                 System.out.println("Indice della carta supera la dimensione della lista.");
@@ -131,25 +128,29 @@ public class HomepageController extends Controller {
     }
 
     @FXML
-    public void handleNextCard() {
-        System.out.println("Next card button clicked!"); // Verifica che questo venga eseguito
+    private void handleNextCard() {
+        System.out.println("Next card button clicked!");
         currentCardIndex++; // Incrementa l'indice della carta
         if (currentCardIndex >= carteUtente.size()) { // Se l'indice supera il numero di carte
             currentCardIndex = 0; // Torna alla prima carta
         }
-        System.out.println("Indice aggiornato (next): " + currentCardIndex);
 
         showCard(); // Mostra la carta corrente
     }
 
     @FXML
-    public void handlePreviousCard() {
-        System.out.println("Previous card button clicked!"); // Debug
+    private void handlePreviousCard() {
+        System.out.println("Previous card button clicked!");
         currentCardIndex--; // Decrementa l'indice della carta
-        if (currentCardIndex < 0) { // Se l'indice è negativo
+        if (currentCardIndex < 0) { //
             currentCardIndex = carteUtente.size() - 1; // Torna all'ultima carta
         }
         showCard(); // Mostra la carta corrente
+    }
+
+    @FXML
+    public void insertTransaction() {
+        showDialog("/interfaccia/addTransaction.fxml", addTransactionButton, "Nuova Transazione");
     }
 
     @FXML
