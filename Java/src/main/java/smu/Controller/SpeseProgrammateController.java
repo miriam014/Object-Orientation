@@ -2,6 +2,7 @@ package smu.Controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -17,7 +18,7 @@ public class SpeseProgrammateController extends Controller {
 
     private List<SpeseProgrammate> programmazioni;
 
-    @FXML public TableColumn destinatarioColumn;
+    @FXML public TableColumn<SpeseProgrammate, String> destinatarioColumn;
     @FXML private TableView<SpeseProgrammate> TabellaProgrammazioni;
     @FXML private TableColumn<SpeseProgrammate, Boolean> statoColumn;
     @FXML private TableColumn<SpeseProgrammate, String> nomeColumn;
@@ -43,11 +44,15 @@ public class SpeseProgrammateController extends Controller {
         dataColumn.setCellValueFactory(new PropertyValueFactory<>("DataScadenza"));
         causaleColumn.setCellValueFactory(new PropertyValueFactory<>("Descrizione"));
         frequenzaColumn.setCellValueFactory(new PropertyValueFactory<>("Periodicita"));
+        statoColumn.setCellValueFactory(new PropertyValueFactory<>("Stato"));
 
         initializeTableView();
 
     }
 
+    private void BottonePaga(SpeseProgrammate spesa) {
+        System.out.println("Paga spesa programmata: " + spesa.getIdSpesa());
+    }
 
 
     @FXML
@@ -59,6 +64,12 @@ public class SpeseProgrammateController extends Controller {
             TabellaProgrammazioni.getItems().clear();
             for (SpeseProgrammate spesa : ListaSpese) {
                 TabellaProgrammazioni.getItems().add(spesa);
+
+                // Configura l'evento per ogni bottone della colonna "Stato"
+                Button bottone = spesa.getStato();
+                bottone.setOnAction(event -> {
+                    BottonePaga(spesa);
+                });
             }
 
         } catch (SQLException e) {

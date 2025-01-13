@@ -1,5 +1,7 @@
 package smu.DTO;
 
+import javafx.scene.control.Button;
+
 import java.sql.Time;
 import java.sql.Date;
 
@@ -13,6 +15,8 @@ public class SpeseProgrammate {
     private Date FineRinnovo;
     private String Descrizione;
     private String NumeroCarta;
+    private Button Stato;
+
 
     public SpeseProgrammate(String idSpesa, String periodicita, Date dataScadenza, float importo, String destinatario, Date fineRinnovo, String descrizione, String numeroCarta){
         this.IdSpesa = idSpesa;
@@ -23,6 +27,7 @@ public class SpeseProgrammate {
         this.FineRinnovo = fineRinnovo;
         this.Descrizione = descrizione;
         this.NumeroCarta = numeroCarta;
+        this.Stato = new Button("Paga");
     }
 
     public String getIdSpesa(){
@@ -89,6 +94,13 @@ public class SpeseProgrammate {
         this.NumeroCarta = numeroCarta;
     }
 
+    public void setStato(Button stato){
+        this.Stato = stato;
+    }
+
+    public Button getStato(){
+        return Stato;
+    }
 
     @Override
     public String toString(){
