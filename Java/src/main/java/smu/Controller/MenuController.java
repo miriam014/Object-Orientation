@@ -25,7 +25,7 @@ public class MenuController {
     @FXML private Button scadenzeButton;
     @FXML private Button homepageButton;
     @FXML private Button portafoglioButton;
-    @FXML private Button familyButton;
+    @FXML private Button famigliaButton;
     @FXML private Button walletButton;
     @FXML private Button transactionsButton;
     @FXML private Button programmazioneButton;
@@ -80,6 +80,10 @@ public class MenuController {
 
    @FXML void portafoglioButton() throws IOException {
         Main.setRoot("portafoglio");
+    }
+
+    @FXML void famigliaButton() throws IOException {
+        Main.setRoot("famiglia");
     }
 
     @FXML
