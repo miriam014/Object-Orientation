@@ -5,12 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df4d01a2-e17b-4881-9bee-4a47bce15a26" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/AddTransactionController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/HomepageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/HomepageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/homepage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/homepage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/SpeseProgrammateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/SpeseProgrammateController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/changeProgrammazioneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/changeProgrammazioneController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/DAO/SpeseProgrammateDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/DAO/SpeseProgrammateDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/DTO/SpeseProgrammate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/DTO/SpeseProgrammate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/changeProgrammazione.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/changeProgrammazione.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/speseProgrammate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/speseProgrammate.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Progetto-OO-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/Progetto-OO-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/smu/Controller/HomepageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/smu/Controller/HomepageController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,8 +25,8 @@
         <option value="module-info" />
         <option value="Interface" />
         <option value="CSS File" />
-        <option value="FxmlFile" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -148,6 +150,9 @@
       <workItem from="1736703005931" duration="10577000" />
       <workItem from="1736713835461" duration="1015000" />
       <workItem from="1736760455742" duration="7473000" />
+      <workItem from="1736769926623" duration="18279000" />
+      <workItem from="1736845634806" duration="2223000" />
+      <workItem from="1736848341351" duration="3079000" />
     </task>
     <servers />
   </component>

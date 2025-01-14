@@ -30,13 +30,10 @@ public class SpeseProgrammate {
         this.Stato = new Button("Paga");
     }
 
-    public String getIdSpesa(){
-        return IdSpesa;
-    }
 
-    public String getPeriodicita(){
-        return Periodicita;
-    }
+    public String getIdSpesa(){ return IdSpesa; }
+
+    public String getPeriodicita(){ return Periodicita; }
 
     public Date getDataScadenza(){
         return DataScadenza;
@@ -61,6 +58,10 @@ public class SpeseProgrammate {
     public String getNumeroCarta(){
         return NumeroCarta;
     }
+
+    public Button getStato(){ return Stato; }
+
+
 
     public void setIdSpesa(String idSpesa){
         this.IdSpesa = idSpesa;
@@ -98,9 +99,6 @@ public class SpeseProgrammate {
         this.Stato = stato;
     }
 
-    public Button getStato(){
-        return Stato;
-    }
 
     @Override
     public String toString(){
@@ -108,7 +106,4 @@ public class SpeseProgrammate {
                 + DataScadenza + "|\t" + "|Importo = " + Importo + "|\t" + "|Destinatario = " + Destinatario + "|\t" +
                 "|FineRinnovo = " + FineRinnovo + "|\t" + "|Descrizione = " + Descrizione + "|";
     }
-
-
-
 }

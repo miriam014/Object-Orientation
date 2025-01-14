@@ -3,7 +3,6 @@ package smu.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -17,16 +16,15 @@ import java.util.List;
 
 public class SpeseProgrammateController extends Controller {
 
-    private List<SpeseProgrammate> programmazioni;
 
-    @FXML public TableColumn<SpeseProgrammate, String> destinatarioColumn;
     @FXML private TableView<SpeseProgrammate> TabellaProgrammazioni;
+    @FXML private TableColumn<SpeseProgrammate, String> destinatarioColumn;
     @FXML private TableColumn<SpeseProgrammate, Boolean> statoColumn;
-    @FXML private TableColumn<SpeseProgrammate, String> nomeColumn;
     @FXML private TableColumn<SpeseProgrammate, String> cartaColumn;
     @FXML private TableColumn<SpeseProgrammate, Float> importoColumn;
     @FXML private TableColumn<SpeseProgrammate, String> dataColumn;
-    @FXML private TableColumn<SpeseProgrammate, String> causaleColumn;
+    @FXML private TableColumn<SpeseProgrammate, String> dataTermineColumn;
+    @FXML private TableColumn<SpeseProgrammate, String> nomeColumn;
     @FXML private TableColumn<SpeseProgrammate, String> frequenzaColumn;
 
     private SpeseProgrammateDAO speseProgrammateDAO;
@@ -40,11 +38,12 @@ public class SpeseProgrammateController extends Controller {
         speseProgrammateDAO = new SpeseProgrammateDAOimp();
 
         // Imposta i valori per le colonne della tabella
-        nomeColumn.setCellValueFactory(new PropertyValueFactory<>("Destinatario"));
+        destinatarioColumn.setCellValueFactory(new PropertyValueFactory<>("Destinatario"));
         cartaColumn.setCellValueFactory(new PropertyValueFactory<>("NumeroCarta"));
         importoColumn.setCellValueFactory(new PropertyValueFactory<>("Importo"));
         dataColumn.setCellValueFactory(new PropertyValueFactory<>("DataScadenza"));
-        causaleColumn.setCellValueFactory(new PropertyValueFactory<>("Descrizione"));
+        dataTermineColumn.setCellValueFactory(new PropertyValueFactory<>("FineRinnovo"));
+        nomeColumn.setCellValueFactory(new PropertyValueFactory<>("Descrizione"));
         frequenzaColumn.setCellValueFactory(new PropertyValueFactory<>("Periodicita"));
         statoColumn.setCellValueFactory(new PropertyValueFactory<>("Stato"));
 
