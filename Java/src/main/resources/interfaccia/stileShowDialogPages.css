@@ -53,3 +53,16 @@
 .striped-table .table-row-cell:even {
     -fx-background-color: #ffffff; /* Bianco */
 }
+
+.button{
+    -fx-background-color: #008080;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-padding: 5px 6px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 5px;
+}
+
+.button:hover{
+    -fx-background-color: #339999;
+}

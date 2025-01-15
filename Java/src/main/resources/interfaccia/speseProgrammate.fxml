@@ -29,26 +29,27 @@
                         </Label>
                     </children>
                 </Pane>
-                <HBox alignment="CENTER_RIGHT" prefHeight="46.0" prefWidth="792.0" spacing="5.0">
-                    <children>
-                        <Button fx:id="NewProgram" onAction="#newProgrammazione" alignment="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="70.0" text="Aggiungi" />
-                        <Button fx:id="ChangeProgram" onAction="#changeProgrammazione" alignment="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="70.0" text="Modifica" />
-                        <Button fx:id="deleteProgram" onAction="#deleteProgrammazione" mnemonicParsing="false" text="Rimuovi" />
-                    </children>
-                    <padding>
-                        <Insets left="20.0" right="20.0" />
-                    </padding>
-                </HBox>
-                <TableView fx:id="TabellaProgrammazioni" cache="true" cacheHint="SPEED" fixedCellSize="0.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="508.0" prefWidth="752.0">
+            <Pane prefHeight="61.0" prefWidth="792.0">
+               <children>
+                      <HBox alignment="CENTER_RIGHT" layoutX="561.0" layoutY="14.0" prefHeight="35.0" spacing="6.0" stylesheets="@stileShowDialogPages.css">
+                          <children>
+                              <Button fx:id="NewProgram" alignment="CENTER" mnemonicParsing="false" onAction="#newProgrammazione" prefHeight="26.0" prefWidth="70.0" text="Aggiungi" />
+                              <Button fx:id="ChangeProgram" alignment="CENTER" mnemonicParsing="false" onAction="#changeProgrammazione" prefHeight="26.0" prefWidth="70.0" text="Modifica" />
+                              <Button fx:id="deleteProgram" mnemonicParsing="false" onAction="#deleteProgrammazione" text="Rimuovi" />
+                          </children>
+                      </HBox>
+               </children>
+            </Pane>
+                <TableView fx:id="TabellaProgrammazioni" cache="true" cacheHint="SPEED" fixedCellSize="0.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="494.0" prefWidth="752.0" style="-fx-background-color: #f4f4f4; -fx-border-color: #888888; -fx-border-image-width: 1; -fx-border-width: 2px;">
                     <columns>
                         <TableColumn fx:id="nomeColumn" editable="false" prefWidth="121.0" text="Spesa Programmata" />
                         <TableColumn fx:id="destinatarioColumn" editable="false" text="Destinatario" />
                         <TableColumn fx:id="cartaColumn" editable="false" prefWidth="137.5" text="Carta utilizzata" />
                         <TableColumn fx:id="importoColumn" editable="false" minWidth="0.0" prefWidth="58.0" text="Importo" />
-                        <TableColumn fx:id="dataColumn" editable="false" prefWidth="94.0" text="Scadenza" />
-                        <TableColumn fx:id="dataTermineColumn" editable="false" prefWidth="94.0" text="Termine rinnovo" />
-                        <TableColumn fx:id="frequenzaColumn" minWidth="0.0" prefWidth="67.0" text="Frequenza" />
-                        <TableColumn fx:id="statoColumn" minWidth="-Infinity" prefWidth="75.5" text="Stato" />
+                        <TableColumn fx:id="dataColumn" editable="false" prefWidth="90.0" text="Rinnovo" />
+                        <TableColumn fx:id="dataTermineColumn" editable="false" prefWidth="107.0" text="Termine rinnovo" />
+                        <TableColumn fx:id="frequenzaColumn" minWidth="0.0" prefWidth="78.0" text="Frequenza" />
+                        <TableColumn fx:id="statoColumn" minWidth="-Infinity" prefWidth="55.5" style="-fx-background-color: #b0b0b0;" text="Stato" />
                     </columns>
                     <VBox.margin>
                         <Insets bottom="20.0" left="20.0" right="20.0" />

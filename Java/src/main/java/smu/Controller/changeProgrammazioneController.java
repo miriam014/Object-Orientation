@@ -8,17 +8,19 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import smu.DAO.SpeseProgrammateDAO;
 import smu.DAO_Implementation.SpeseProgrammateDAOimp;
+import smu.DTO.Carta;
 import smu.DTO.SpeseProgrammate;
 import smu.Sessione;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Locale;
 
 public class changeProgrammazioneController extends Controller {
 
     @FXML private ComboBox<String> nomeProgrammazione;
     @FXML private ComboBox<String> CartaUtilizzata;
-    @FXML private ComboBox<String> Destinatario;
+    @FXML private TextField Destinatario;
     @FXML private TextField Importo;
     @FXML private ComboBox<String> Frequenza;
     @FXML private DatePicker DataScadenza;
@@ -26,13 +28,13 @@ public class changeProgrammazioneController extends Controller {
     @FXML private Button Conferma;
     private SpeseProgrammateDAO speseProgrammateDAO;
 
-
+    private List<SpeseProgrammate> ListaSpese;
 
     @FXML
     public void initialize() throws SQLException {
         speseProgrammateDAO = new SpeseProgrammateDAOimp();
         String username = Sessione.getInstance().getUtenteLoggato().getUsername();
-        List<SpeseProgrammate> ListaSpese = speseProgrammateDAO.getByUsername(username);
+        ListaSpese = speseProgrammateDAO.getByUsername(username);
 
         rimepiComboBox(ListaSpese);
     }
@@ -40,11 +42,13 @@ public class changeProgrammazioneController extends Controller {
 
     @FXML
     private void rimepiComboBox(List<SpeseProgrammate> ListaSpese) {
+        //riempio la combobox con le spese programmate
         for (SpeseProgrammate speseProgrammate : ListaSpese) {
             nomeProgrammazione.getItems().add(speseProgrammate.getDescrizione());
         }
-        //una volta scelto il nome riempi tutte le restanti celle e dai la possibiità di cambiare
 
+        //una volta scelta la spesa programmata riempi tutte le restanti celle con i valoiri corrispondenti
+        // e popolale anche degli altri valori possibili
         nomeProgrammazione.setOnAction(event -> {
             String selectedDescrizione = nomeProgrammazione.getValue();
             SpeseProgrammate sp = ListaSpese.stream()
@@ -52,12 +56,20 @@ public class changeProgrammazioneController extends Controller {
                     .findFirst()
                     .orElse(null);
             if (sp != null) {   //trovata la spesa selezionata recupero i dati
+                CartaUtilizzata.getItems().clear();
+                List<Carta> carteUtente = Sessione.getInstance().getCarteUtente();
+                for (Carta carta : carteUtente) {
+                    CartaUtilizzata.getItems().add(carta.getNumeroCarta()); // Aggiungi il numero della carta alla ComboBox
+                }
                 CartaUtilizzata.setValue(sp.getNumeroCarta());
-                Destinatario.setValue(sp.getDestinatario());
+
+                Destinatario.setText(sp.getDestinatario());
                 Importo.setText(String.valueOf(sp.getImporto()));
-                Frequenza.setValue(sp.getPeriodicita());
                 if (DataScadenza != null){ DataScadenza.setValue(sp.getDataScadenza().toLocalDate());}
-                if(DataTermine != null) { DataTermine.setValue(sp.getFineRinnovo().toLocalDate());}
+                if (DataTermine != null){ DataTermine.setValue(sp.getFineRinnovo().toLocalDate());}
+
+                Frequenza.setValue(sp.getPeriodicita());
+                Frequenza.getItems().addAll( "7 giorni", "15 giorni", "1 mese", "3 mesi", "6 mesi", "1 anno");
             }
         });
     }
@@ -65,30 +77,47 @@ public class changeProgrammazioneController extends Controller {
 
     @FXML
     public void changeProgrammazione(ActionEvent actionEvent) {
-        /*String nomeSpesa = nomeProgrammazione.getValue();
+        //recupero le modifiche dell'utente
+        String nomeSpesa = nomeProgrammazione.getValue();
         String cartaUtilizzata = CartaUtilizzata.getValue();
-        String destinatario = Destinatario.getValue();
-        double importo = Double.parseDouble(Importo.getText());
+        String destinatario = Destinatario.getText();
         String frequenza = Frequenza.getValue();
         java.sql.Date dataScadenza = java.sql.Date.valueOf(DataScadenza.getValue());
         java.sql.Date dataTermine = java.sql.Date.valueOf(DataTermine.getValue());
+        String importoString = Importo.getText();
 
-        // Crea un nuovo oggetto SpeseProgrammate con i dati modificati
-        SpeseProgrammate spesaModificata = new SpeseProgrammate();
-        spesaModificata.setDescrizione(nomeSpesa);
-        spesaModificata.setNumeroCarta(cartaUtilizzata);
-        spesaModificata.setDestinatario(destinatario);
-        spesaModificata.setImporto((float) importo);
-        spesaModificata.setPeriodicita(frequenza);
-        spesaModificata.setDataScadenza(dataScadenza);
-        spesaModificata.setFineRinnovo(dataTermine);
+        String importo = importoString.replace(",", ".");
+        float importofloat;
+        try {
+            importofloat = Float.parseFloat(importo);
+        } catch (NumberFormatException e) {
+            System.out.println("Errore: importo non valido.");
+            return;
+        }
+
+        // Trovo la spesa programmata selezionata dalla lista
+        SpeseProgrammate spesaModificata = ListaSpese.stream()
+                .filter(sp -> sp.getDescrizione().equals(nomeSpesa)) // Trovo la spesa con la stessa descrizione
+                .findFirst()
+                .orElse(null);
+
+        // modifico l'oggetto SpeseProgrammate con i dati modificati
+        if (spesaModificata != null) {
+            spesaModificata.setDescrizione(nomeSpesa);
+            spesaModificata.setNumeroCarta(cartaUtilizzata);
+            spesaModificata.setDestinatario(destinatario);
+            spesaModificata.setImporto(importofloat);
+            spesaModificata.setPeriodicita(frequenza);
+            spesaModificata.setDataScadenza(dataScadenza);
+            spesaModificata.setFineRinnovo(dataTermine);
+        }
 
         // Salva o aggiorna la spesa nel database (da implementare nel DAO)
         try {
             speseProgrammateDAO.update(spesaModificata);
         } catch (SQLException e) {
             e.printStackTrace();
-        }*/
+        }
     }
 
 }
