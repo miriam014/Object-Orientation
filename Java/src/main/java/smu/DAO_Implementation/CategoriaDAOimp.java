@@ -6,7 +6,10 @@ import smu.Database;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CategoriaDAOimp implements CategoriaDAO {
 
@@ -49,6 +52,29 @@ public class CategoriaDAOimp implements CategoriaDAO {
         int result = ps.executeUpdate();
         ps.close();
         return result != 0;
+    }
+
+    public List<String> getAllCategorie()throws Exception{
+        List<String> categorie= new ArrayList<>();
+        Connection connection = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try{
+            connection = Database.getConnection();
+            String sql = "SELECT NomeCategoria FROM smu.Categoria";
+            ps = connection.prepareStatement(sql);
+
+            rs = ps.executeQuery();
+            while(rs.next()){
+                categorie.add(rs.getString("NomeCategoria"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new Exception("Errore durante il recupero delle categorie", e);
+        }
+        ps.close();
+        return categorie;
     }
 
 }
