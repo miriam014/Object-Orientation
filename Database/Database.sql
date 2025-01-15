@@ -132,7 +132,7 @@ CREATE TABLE smu.Portafoglio(
 
 --tabella ponte tra Portafoglio e Carta  *a*
 CREATE TABLE smu.AssociazioneCartaPortafoglio(
-    IdPortafoglio INTEGER,
+    IdPortafoglio INTEGER UNIQUE,
     NumeroCarta   VARCHAR(16),
 
     CONSTRAINT FK_Carta FOREIGN KEY (NumeroCarta) REFERENCES smu.Carta (NumeroCarta) ON DELETE CASCADE,

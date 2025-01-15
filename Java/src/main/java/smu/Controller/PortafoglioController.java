@@ -7,6 +7,8 @@ import javafx.fxml.FXML;
 
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import smu.DAO.AssociazioneCartaPortafoglioDAO;
+import smu.DAO_Implementation.AssociazioneCartaPortafoglioDAOimp;
 import smu.DAO_Implementation.TransazioneDAOimp;
 import smu.DTO.Carta;
 import smu.DTO.Famiglia;
@@ -17,6 +19,7 @@ import javafx.scene.control.TableView;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +31,8 @@ public class PortafoglioController extends Controller {
     @FXML private Label balanceLabel;
     @FXML protected Label walletNameLabel;
     @FXML private Label currentWalletID;
+    @FXML private Label currentFamilyID;
+    @FXML private Label currentCardNumber;
     @FXML private TableView<Transazione> transactionsTableView;
 
     @FXML protected TextField nomePortafoglio;
@@ -41,7 +46,7 @@ public class PortafoglioController extends Controller {
 
 
     @FXML
-    public void initialize() {
+    public void initialize() throws SQLException {
         initializeTableView();
         loadUserWallet();
         showWallet();
@@ -113,7 +118,7 @@ public class PortafoglioController extends Controller {
         }
     }
 
-    protected void showWallet() {
+    protected void showWallet() throws SQLException {
         if (portafogliUtente != null && !portafogliUtente.isEmpty()) {
             if (currentWalletIndex >= portafogliUtente.size()) {
                 System.out.println("Indice del portafoglio supera la dimensione della lista.");
@@ -121,8 +126,15 @@ public class PortafoglioController extends Controller {
             }
 
             Portafoglio portafoglio = portafogliUtente.get(currentWalletIndex);
+            currentWalletID.setText(portafogliUtente.get(currentWalletIndex).getIdPortafoglio());
             balanceLabel.setText(portafoglio.getSaldo() != 0 ? String.valueOf(portafoglio.getSaldo()) : "0.00");
             walletNameLabel.setText(portafoglio.getNomePortafoglio());
+            currentFamilyID.setText(portafoglio.getIdFamiglia());
+
+            AssociazioneCartaPortafoglioDAO associazione = new AssociazioneCartaPortafoglioDAOimp();
+            String numeroCarta = associazione.getCardNumberByID(portafogliUtente.get(currentWalletIndex).getIdPortafoglio());
+            currentCardNumber.setText(numeroCarta);
+
             loadTransactions(portafoglio.getIdPortafoglio());
         }
         else {
@@ -144,18 +156,17 @@ public class PortafoglioController extends Controller {
     }
 
     @FXML
-    private void handleNextWallet() {
+    private void handleNextWallet() throws SQLException {
         System.out.println("Next wallet button clicked!"); // Verifica che questo venga eseguito
         currentWalletIndex++; // Incrementa l'indice della carta
         if (currentWalletIndex >= portafogliUtente.size()) { // Se l'indice supera il numero di carte
             currentWalletIndex = 0; // Torna alla prima carta
         }
-        currentWalletID.setText(portafogliUtente.get(currentWalletIndex).getIdPortafoglio());
         showWallet();
     }
 
     @FXML
-    private void handlePreviousWallet() {
+    private void handlePreviousWallet() throws SQLException {
         System.out.println("Previous wallet button clicked!");
         if (currentWalletIndex == 0)
             currentWalletIndex = portafogliUtente.size() -1;
@@ -168,7 +179,7 @@ public class PortafoglioController extends Controller {
 
 
     @FXML
-    public void insertWallet() {
+    public void insertWallet() throws SQLException {
         showDialog("/interfaccia/addWallet.fxml", addWalletButton, "Nuovo Portafoglio");
         handlePreviousWallet();
         handleNextWallet();
@@ -176,7 +187,7 @@ public class PortafoglioController extends Controller {
     }
 
     @FXML
-    public void updateWallet() {
+    public void updateWallet() throws SQLException {
         showDialog("/interfaccia/editWallet.fxml", editWalletButton, "Modifica Portafoglio");
         handlePreviousWallet();
         handleNextWallet();
