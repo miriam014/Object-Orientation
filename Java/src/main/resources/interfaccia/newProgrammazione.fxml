@@ -1,14 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="smu.Controller.newProgrammazioneController"
-            prefHeight="400.0" prefWidth="600.0">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="621.0" prefWidth="488.0" stylesheets="@stileShowDialogPages.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smu.Controller.newProgrammazioneController">
+    <top>
+        <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="493.0" style="-fx-background-color: #008080;" BorderPane.alignment="CENTER">
+            <children>
+                <Label layoutX="14.0" layoutY="4.0" prefHeight="24.0" prefWidth="228.0" style="-fx-text-fill: #FFFFFF; -fx-font-size: 16px;" text="Crea Spesa Programmata" textAlignment="CENTER" textFill="WHITE">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+    </top>
+    <center>
+        <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="509.0" prefWidth="487.0" BorderPane.alignment="CENTER">
+            <children>
+                <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="54.0" prefWidth="181.0">
+                    <children>
+                        <ImageView fitHeight="90.0" fitWidth="92.0" nodeOrientation="INHERIT">
+                            <image>
+                                <Image url="@../images/spesesprogr.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                    <VBox.margin>
+                        <Insets bottom="40.0" />
+                    </VBox.margin>
+                    <padding>
+                        <Insets left="15.0" />
+                    </padding>
+                </VBox>
 
-</AnchorPane>
+                <HBox alignment="CENTER" prefHeight="65.0" prefWidth="350.0" spacing="10.0">
+                    <children>
+                        <Label prefHeight="30.0" prefWidth="120.0" text="Spesa programmata" />
+                        <TextField fx:id="nomeProgrammazione" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="193.0" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="65.0" prefWidth="350.0" spacing="10.0">
+                    <children>
+                        <Label prefHeight="30.0" prefWidth="120.0" text="Carta utilizzata" />
+                        <ComboBox fx:id="CartaUtilizzata" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="197.0" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="65.0" prefWidth="350.0" spacing="10.0">
+                    <children>
+                        <Label prefHeight="30.0" prefWidth="120.0" text="Destinatario" />
+                        <TextField fx:id="Destinatario" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="195.0" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="65.0" prefWidth="350.0" spacing="10.0">
+                    <children>
+                        <Label prefHeight="30.0" prefWidth="120.0" text="Importo" />
+                        <TextField fx:id="Importo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="190.0" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="65.0" prefWidth="350.0" spacing="10.0">
+                    <children>
+                        <Label prefHeight="30.0" prefWidth="120.0" text="Frequenza" />
+                        <ComboBox fx:id="Frequenza" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="185.0" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="66.0" prefWidth="437.0" spacing="10.0">
+                    <children>
+                        <Label prefHeight="30.0" prefWidth="120.0" text="Data rinnovo" />
+                        <DatePicker fx:id="DataScadenza" prefHeight="29.0" prefWidth="182.0" style="-fx-background-color: transparent;" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="68.0" prefWidth="437.0" spacing="10.0">
+                    <children>
+                        <Label prefHeight="30.0" prefWidth="120.0" text="Data fine rinnovo" />
+                        <DatePicker fx:id="DataTermine" style="-fx-background-color: transparent;" />
+                    </children>
+                </HBox>
+
+                <VBox alignment="CENTER" prefHeight="86.0" prefWidth="389.0">
+                    <children>
+                        <Button fx:id="Conferma" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#addProgrammazione" prefHeight="33.0" prefWidth="81.0" style="-fx-border-color: transparent; -fx-background-color: #008080; -fx-background-radius: 15px;" text="Conferma" textFill="WHITE" />
+                    </children>
+                    <VBox.margin>
+                        <Insets top="30.0" />
+                    </VBox.margin>
+                </VBox>
+            </children>
+            <BorderPane.margin>
+                <Insets top="20.0" />
+            </BorderPane.margin>
+        </VBox>
+    </center>
+</BorderPane>

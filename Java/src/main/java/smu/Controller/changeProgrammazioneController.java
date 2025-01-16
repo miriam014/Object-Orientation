@@ -2,10 +2,9 @@ package smu.Controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.Node;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
 import smu.DAO.SpeseProgrammateDAO;
 import smu.DAO_Implementation.SpeseProgrammateDAOimp;
 import smu.DTO.Carta;
@@ -79,6 +78,10 @@ public class changeProgrammazioneController extends Controller {
     public void changeProgrammazione(ActionEvent actionEvent) {
         //recupero le modifiche dell'utente
         String nomeSpesa = nomeProgrammazione.getValue();
+        if (nomeSpesa == null) {
+            showAlert(Alert.AlertType.ERROR, "Errore", "Nessuna spesa selezionata", "Per favore seleziona una spesa programmata prima di premere 'Conferma'.");
+            return;
+        }
         String cartaUtilizzata = CartaUtilizzata.getValue();
         String destinatario = Destinatario.getText();
         String frequenza = Frequenza.getValue();
@@ -91,7 +94,7 @@ public class changeProgrammazioneController extends Controller {
         try {
             importofloat = Float.parseFloat(importo);
         } catch (NumberFormatException e) {
-            System.out.println("Errore: importo non valido.");
+            showAlert(Alert.AlertType.ERROR, "Errore", "Importo non valido", "L'importo inserito non è valido. Inserisci un valore numerico.");
             return;
         }
 
@@ -114,10 +117,27 @@ public class changeProgrammazioneController extends Controller {
 
         // Salva o aggiorna la spesa nel database (da implementare nel DAO)
         try {
-            speseProgrammateDAO.update(spesaModificata);
+            boolean successo = speseProgrammateDAO.update(spesaModificata);
+            if (successo) {
+                //chiudo direttamente la scheda
+                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                stage.close();
+            } else {
+                showAlert(Alert.AlertType.ERROR, "Errore", "Aggiornamento fallito", "Non è stato possibile aggiornare la spesa programmata.");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+
+    // Funzione generica per mostrare Alert
+    private void showAlert(Alert.AlertType alertType, String title, String header, String content) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 
 }

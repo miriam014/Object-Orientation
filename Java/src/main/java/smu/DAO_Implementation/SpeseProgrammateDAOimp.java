@@ -44,7 +44,7 @@ public class SpeseProgrammateDAOimp implements SpeseProgrammateDAO {
         ps.setFloat(5, sp.getImporto());
         ps.setString(6, sp.getDestinatario());
         ps.setString(7, sp.getNumeroCarta());
-        ps.setString(8, sp.getIdSpesa());
+        ps.setInt(8, sp.getIdSpesa());
 
         int result = ps.executeUpdate();
         ps.close();
@@ -76,7 +76,7 @@ public class SpeseProgrammateDAOimp implements SpeseProgrammateDAO {
         ResultSet rs = ps.executeQuery();
 
         if(rs.next()){
-            sp = new SpeseProgrammate(rs.getString("IDSpesa"),
+            sp = new SpeseProgrammate(rs.getInt("IDSpesa"),
                     rs.getString("Periodicita"),
                     rs.getDate("DataScadenza"),
                     rs.getFloat("Importo"),
@@ -104,7 +104,7 @@ public class SpeseProgrammateDAOimp implements SpeseProgrammateDAO {
         ResultSet rs = ps.executeQuery();
 
         while(rs.next()){
-            SpeseProgrammate sp = new SpeseProgrammate(rs.getString("IDSpesa"),
+            SpeseProgrammate sp = new SpeseProgrammate(rs.getInt("IDSpesa"),
                     rs.getString("Periodicita"),
                     rs.getDate("DataScadenza"),
                     rs.getFloat("Importo"),
@@ -134,7 +134,7 @@ public class SpeseProgrammateDAOimp implements SpeseProgrammateDAO {
         ResultSet rs = ps.executeQuery();
 
         while(rs.next()){
-            SpeseProgrammate sp = new SpeseProgrammate(rs.getString("IDSpesa"),
+            SpeseProgrammate sp = new SpeseProgrammate(rs.getInt("IDSpesa"),
                     rs.getString("Periodicita"),
                     rs.getDate("DataScadenza"),
                     rs.getFloat("Importo"),

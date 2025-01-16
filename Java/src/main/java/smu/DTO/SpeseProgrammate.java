@@ -7,7 +7,7 @@ import java.sql.Date;
 
 public class SpeseProgrammate {
 
-    private String IdSpesa;
+    private int IdSpesa;
     private String Periodicita;
     private Date DataScadenza;
     private float Importo;
@@ -18,7 +18,7 @@ public class SpeseProgrammate {
     private Button Stato;
 
 
-    public SpeseProgrammate(String idSpesa, String periodicita, Date dataScadenza, float importo, String destinatario, Date fineRinnovo, String descrizione, String numeroCarta){
+    public SpeseProgrammate(int idSpesa, String periodicita, Date dataScadenza, float importo, String destinatario, Date fineRinnovo, String descrizione, String numeroCarta){
         this.IdSpesa = idSpesa;
         this.Periodicita = periodicita;
         this.DataScadenza = dataScadenza;
@@ -31,7 +31,7 @@ public class SpeseProgrammate {
     }
 
 
-    public String getIdSpesa(){ return IdSpesa; }
+    public int getIdSpesa(){ return IdSpesa; }
 
     public String getPeriodicita(){ return Periodicita; }
 
@@ -63,7 +63,7 @@ public class SpeseProgrammate {
 
 
 
-    public void setIdSpesa(String idSpesa){
+    public void setIdSpesa(int idSpesa){
         this.IdSpesa = idSpesa;
     }
 
