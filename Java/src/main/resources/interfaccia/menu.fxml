@@ -38,7 +38,7 @@
     <left>
         <VBox fx:id="sidePanel" prefHeight="570.0" prefWidth="111.0" spacing="3.0" style="-fx-background-color: #339999;" BorderPane.alignment="TOP_LEFT">
             <children>
-                <Button fx:id="homepageButton" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#HomepageButton" prefHeight="33.0" prefWidth="119.0" stylesheets="@stileHomepage.css" text="Homepage" textAlignment="CENTER" textFill="#f8f6f6">
+                <Button fx:id="homepageButton" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#HomepageButton" prefHeight="33.0" prefWidth="119.0" stylesheets="@stileMenu.css" text="Homepage" textAlignment="CENTER" textFill="#f8f6f6">
                     <font>
                         <Font size="12.0" />
                     </font>
@@ -49,19 +49,19 @@
                   <Insets left="12.0" />
                </VBox.margin>
                 </Button>
-                <Button fx:id="famigliaButton" mnemonicParsing="false" onAction="#famigliaButton" prefHeight="38.0" prefWidth="142.0" stylesheets="@stileHomepage.css" text="Famiglia">
+                <Button fx:id="famigliaButton" mnemonicParsing="false" onAction="#famigliaButton" prefHeight="38.0" prefWidth="142.0" stylesheets="@stileMenu.css" text="Famiglia">
                <VBox.margin>
                   <Insets left="5.0" />
                </VBox.margin></Button>
-                <Button fx:id="portafoglioButton" mnemonicParsing="false" onAction="#portafoglioButton" prefHeight="38.0" prefWidth="141.0" stylesheets="@stileHomepage.css" text="Portafogli">
+                <Button fx:id="portafoglioButton" mnemonicParsing="false" onAction="#portafoglioButton" prefHeight="38.0" prefWidth="141.0" stylesheets="@stileMenu.css" text="Portafogli">
                <VBox.margin>
                   <Insets left="11.0" />
                </VBox.margin></Button>
-                <Button fx:id="ReportButton" mnemonicParsing="false" onAction="#ReportButton" prefHeight="38.0" prefWidth="141.0" stylesheets="@stileHomepage.css" text="Report">
+                <Button fx:id="ReportButton" mnemonicParsing="false" onAction="#ReportButton" prefHeight="38.0" prefWidth="141.0" stylesheets="@stileMenu.css" text="Report">
                <VBox.margin>
                   <Insets left="5.0" />
                </VBox.margin></Button>
-                <Button fx:id="ScadenzeButton" mnemonicParsing="false" onAction="#ScadenzeButton" prefHeight="38.0" prefWidth="145.0" stylesheets="@stileHomepage.css" text="Programmazioni">
+                <Button fx:id="ScadenzeButton" mnemonicParsing="false" onAction="#ScadenzeButton" prefHeight="38.0" prefWidth="145.0" stylesheets="@stileMenu.css" text="Programmazioni">
                <VBox.margin>
                   <Insets left="11.0" />
                </VBox.margin></Button>

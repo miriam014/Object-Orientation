@@ -1,0 +1,54 @@
+/* ---------- Stile della tabella ---------- */
+/* Stile generale della TableView */
+.table-view {
+    -fx-border-width: 0px 0px 2px 0px;    /* Spessore del bordo */
+}
+
+/* Stile delle righe */
+.table-row-cell {
+    -fx-background-color: transparent; /* Sfondo trasparente di base */
+    -fx-border-width: 1px 0px; /* Bordi solo sopra e sotto */
+}
+
+.table-row-cell:even {
+    -fx-background-color: #f4f4f4; /* Colore grigio */
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #ffffff; /* Colore grigio chiaro */
+}
+
+
+/* -------- Stile delle celle selezionate ---------- */
+.table-row-cell:selected {
+    -fx-background-color: #d3d3d3; /* Sfondo della riga selezionata */
+    -fx-text-fill: black;          /* Colore del testo */
+    -fx-border-color: transparent; /* Nessun bordo visibile */
+    -fx-border-width: 0;           /* Nessun bordo */
+}
+
+.table-row-cell:selected .table-cell {
+    -fx-border-color: transparent; /* Nessun bordo visibile */
+    -fx-border-width: 0px;     /* Nessun bordo visibile */
+}
+
+.table-row-cell:selected .text {
+    -fx-fill: black; /* Forza il colore del testo in nero */
+}
+
+.table-view .column-header {
+    -fx-text-fill: black;        /* Testo color acqua */
+    -fx-font-weight: bold;         /* Testo in grassetto */
+    -fx-alignment: CENTER;         /* Testo centrato */
+    -fx-border-width: 0px 0px 2px 0px; /* Bordo sotto la riga dei titoli */
+}
+
+.table-row-cell:hover {
+    -fx-background-color: #d3d3d3; /* Grigio più scuro per l'hover */
+}
+
+/* Rimuove il bordo che può apparire intorno alla tabella */
+.table-view:focused {
+    -fx-border-color: #d3d3d3; /* Nessun bordo per la tabella quando in focus */
+    -fx-padding: 0;                /* Nessun padding visibile */
+}

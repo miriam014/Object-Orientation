@@ -15,9 +15,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleMouseClick" prefHeight="600.0" prefWidth="792.0" stylesheets="@stileHomepage.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smu.Controller.ReportController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleMouseClick" prefHeight="600.0" prefWidth="792.0" stylesheets="@stileMenu.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smu.Controller.ReportController">
    <children>
-      <BorderPane prefHeight="600.0" prefWidth="792.0" stylesheets="@stileHomepage.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <BorderPane prefHeight="600.0" prefWidth="792.0" stylesheets="@stileMenu.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
             <VBox prefHeight="588.0" prefWidth="791.0" BorderPane.alignment="CENTER">
                <BorderPane.margin>
@@ -39,13 +39,13 @@
 
                   <HBox fx:id="comboBoxContainer" prefHeight="47.0" prefWidth="337.0">
                      <children>
-                        <Button fx:id="selectButton" mnemonicParsing="false" onAction="#SelezionaCarta" prefHeight="30.0" prefWidth="111.0" style="-fx-background-color: #008080;" stylesheets="@stileHomepage.css" text="seleziona carta">
+                        <Button fx:id="selectButton" mnemonicParsing="false" onAction="#SelezionaCarta" prefHeight="30.0" prefWidth="111.0" style="-fx-background-color: #008080;" stylesheets="@stileMenu.css" text="seleziona carta">
                            <HBox.margin>
                               <Insets left="5.0" />
                            </HBox.margin>
                         </Button>
-                        <ComboBox fx:id="cardComboBox" prefWidth="150.0" promptText="carta" stylesheets="@stileHomepage.css" visible="false" visibleRowCount="5" />
-                        <ComboBox fx:id="monthComboBox" prefHeight="38.0" prefWidth="136.0" promptText="mese" stylesheets="@stileHomepage.css" visible="false" visibleRowCount="5">
+                        <ComboBox fx:id="cardComboBox" prefWidth="150.0" promptText="carta" stylesheets="@stileMenu.css" visible="false" visibleRowCount="5" />
+                        <ComboBox fx:id="monthComboBox" prefHeight="38.0" prefWidth="136.0" promptText="mese" stylesheets="@stileMenu.css" visible="false" visibleRowCount="5">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -53,7 +53,7 @@
                               <Insets left="2.0" right="2.0" />
                            </HBox.margin>
                         </ComboBox>
-                        <ComboBox fx:id="yearComboBox" prefHeight="38.0" prefWidth="96.0" promptText="anno" stylesheets="@stileHomepage.css" visible="false" visibleRowCount="5">
+                        <ComboBox fx:id="yearComboBox" prefHeight="38.0" prefWidth="96.0" promptText="anno" stylesheets="@stileMenu.css" visible="false" visibleRowCount="5">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -97,7 +97,7 @@
                   </FlowPane>
                   <FlowPane prefHeight="357.0" prefWidth="791.0">
                      <children>
-                        <BarChart fx:id="statisticheEntrate" alternativeColumnFillVisible="true" barGap="20.0" legendVisible="false" prefHeight="301.0" prefWidth="329.0" stylesheets="@stileHomepage.css" title="entrate" verticalGridLinesVisible="false">
+                        <BarChart fx:id="statisticheEntrate" alternativeColumnFillVisible="true" barGap="20.0" legendVisible="false" prefHeight="301.0" prefWidth="329.0" stylesheets="@stileMenu.css" title="entrate" verticalGridLinesVisible="false">
                           <xAxis>
                             <CategoryAxis side="BOTTOM" />
                           </xAxis>
@@ -108,7 +108,7 @@
                               <Insets bottom="5.0" left="20.0" right="80.0" top="30.0" />
                            </FlowPane.margin>
                         </BarChart>
-                        <BarChart fx:id="statisticheUscite" alternativeColumnFillVisible="true" barGap="20.0" focusTraversable="true" legendVisible="false" prefHeight="301.0" prefWidth="329.0" stylesheets="@stileHomepage.css" title="uscite" verticalGridLinesVisible="false">
+                        <BarChart fx:id="statisticheUscite" alternativeColumnFillVisible="true" barGap="20.0" focusTraversable="true" legendVisible="false" prefHeight="301.0" prefWidth="329.0" stylesheets="@stileMenu.css" title="uscite" verticalGridLinesVisible="false">
                            <xAxis>
                               <CategoryAxis side="BOTTOM" />
                            </xAxis>

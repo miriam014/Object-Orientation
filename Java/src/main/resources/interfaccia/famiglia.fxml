@@ -12,9 +12,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="792.0" stylesheets="@stileHomepage.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smu.Controller.FamigliaController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="792.0" stylesheets="@stileMenu.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smu.Controller.FamigliaController">
     <children>
-        <BorderPane prefHeight="600.0" prefWidth="792.0" stylesheets="@stileHomepage.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <BorderPane prefHeight="600.0" prefWidth="792.0" stylesheets="@stileMenu.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <center>
                 <VBox prefHeight="588.0" prefWidth="791.0" BorderPane.alignment="CENTER">
                     <BorderPane.margin>
@@ -36,13 +36,13 @@
 
                         <HBox fx:id="comboBoxContainer" prefHeight="47.0" prefWidth="337.0">
                             <children>
-                                <Button fx:id="selectFamilyButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="128.0" style="-fx-background-color: #008080;" stylesheets="@stileHomepage.css" text="Seleziona Famiglia">
+                                <Button fx:id="selectFamilyButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="128.0" style="-fx-background-color: #008080;" stylesheets="@stileMenu.css" text="Seleziona Famiglia">
                                     <HBox.margin>
                                         <Insets left="5.0" />
                                     </HBox.margin>
                                 </Button>
-                                <ComboBox fx:id="familyComboBox" prefWidth="150.0" promptText="Famiglia" stylesheets="@stileHomepage.css" visible="false" visibleRowCount="5" />
-                                <ComboBox fx:id="portafoglioComboBox" prefHeight="38.0" prefWidth="136.0" promptText="Portafoglio" stylesheets="@stileHomepage.css" visible="false" visibleRowCount="5">
+                                <ComboBox fx:id="familyComboBox" prefWidth="150.0" promptText="Famiglia" stylesheets="@stileMenu.css" visible="false" visibleRowCount="5" />
+                                <ComboBox fx:id="portafoglioComboBox" prefHeight="38.0" prefWidth="136.0" promptText="Portafoglio" stylesheets="@stileMenu.css" visible="false" visibleRowCount="5">
                                     <opaqueInsets>
                                         <Insets />
                                     </opaqueInsets>
