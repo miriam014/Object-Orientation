@@ -52,12 +52,12 @@ public class SpeseProgrammateDAOimp implements SpeseProgrammateDAO {
     }
 
     @Override
-    public boolean delete(String idSpesa) throws SQLException {
+    public boolean delete(Integer idSpesa) throws SQLException {
         Connection connection = Database.getConnection();
         String sql = "DELETE FROM smu.SpeseProgrammate WHERE IDSpesa = ?";
 
         PreparedStatement ps = connection.prepareStatement(sql);
-        ps.setString(1, idSpesa);
+        ps.setInt(1, idSpesa);
 
         int result = ps.executeUpdate();
         ps.close();

@@ -86,19 +86,19 @@ public class SpeseProgrammateController extends Controller {
 
     @FXML
     public void newProgrammazione(ActionEvent actionEvent) {
-        showDialog("/interfaccia/newProgrammazione.fxml", NewProgram, "Crea nuovo Portafoglio");
+        showDialog("/interfaccia/newProgrammazione.fxml", NewProgram, "Crea nuova Spesa programmata");
         initializeTableView();
     }
 
     @FXML
     public void changeProgrammazione(ActionEvent actionEvent) {
-        showDialog("/interfaccia/changeProgrammazione.fxml", ChangeProgram, "Modifica Portafoglio");
+        showDialog("/interfaccia/changeProgrammazione.fxml", ChangeProgram, "Modifica Spesa programmata");
         initializeTableView();
     }
 
     @FXML
     public void deleteProgrammazione(ActionEvent actionEvent) {
-        showDialog("/interfaccia/deleteProgrammazione.fxml", deleteProgram, "Elimina Portafoglio");
+        showDialog("/interfaccia/deleteProgrammazione.fxml", deleteProgram, "Elimina Spesa programmata");
         initializeTableView();
     }
 }
