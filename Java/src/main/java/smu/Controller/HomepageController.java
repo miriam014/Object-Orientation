@@ -49,7 +49,7 @@ public class HomepageController extends Controller {
     private Button addTransactionButton;
 
 
-    @FXML private TableView<Transazione> transactionsTableView;
+    @FXML public TableView<Transazione> transactionsTableView;
     @FXML private TableColumn<Transazione, String> tipoColumn;
     @FXML private TableColumn<Transazione, Double> importoColumn;
     @FXML private TableColumn<Transazione, String> dataColumn;
@@ -102,7 +102,7 @@ public class HomepageController extends Controller {
             }
 
             Carta carta = carteUtente.get(currentCardIndex); // Recupera la carta corrente
-            balanceLabel.setText(String.valueOf(carta.getSaldo())); // Imposta il saldo
+            balanceLabel.setText(String.valueOf("€" + carta.getSaldo())); // Imposta il saldo
             cardNameLabel.setText(carta.getNomeCarta()); // Imposta il nome della carta
             cardNumberLabel.setText("Numero Carta: **** **** **** " + carta.getNumeroCarta().substring(carta.getNumeroCarta().length() - 4)); // Mostra solo gli ultimi 4 numeri
             expiryDateLabel.setText(carta.getScadenza().toString()); // Imposta la data di scadenza
@@ -114,13 +114,18 @@ public class HomepageController extends Controller {
         }
     }
 
-    private void loadTransactions(String cardNumber) {
+    @FXML
+    public void loadTransactions(String cardNumber) {
+        System.out.println("Transaction tableView: " + transactionsTableView);
         try {
             TransazioneDAOimp transazioneDAO = new TransazioneDAOimp();
             List<Transazione> transazioni = transazioneDAO.getByCardNumber(cardNumber, "tutte"); // Recupera le transazioni per la carta
-
             ObservableList<Transazione> transactionDetails = FXCollections.observableArrayList(transazioni);
-            transactionsTableView.setItems(transactionDetails);
+
+            //aggiorna la tabella solo se ci sono nuove transazioni
+            if (!transactionDetails.isEmpty()) {
+                transactionsTableView.setItems(transactionDetails);
+            }
 
         } catch (Exception e) {
             e.printStackTrace();

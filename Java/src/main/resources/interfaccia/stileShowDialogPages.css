@@ -66,3 +66,7 @@
 .button:hover{
     -fx-background-color: #339999;
 }
+
+.date-picker {
+    -fx-background-color: transparent;
+}

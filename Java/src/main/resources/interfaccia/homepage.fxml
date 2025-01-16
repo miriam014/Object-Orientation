@@ -12,12 +12,12 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="792.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smu.Controller.HomepageController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="792.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smu.Controller.HomepageController">
    <BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="792.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 
       <!-- Contenuto principale -->
       <center>
-         <VBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
+         <VBox alignment="CENTER" spacing="10.0" stylesheets="@stileHomepage.css" BorderPane.alignment="CENTER">
             <Pane fx:id="headerPane" prefHeight="31.0" prefWidth="791.0" style="-fx-background-color: #008080;">
                <children>
                   <Label layoutX="52.0" layoutY="6.0" text="Homepage" textFill="WHITE">
@@ -43,7 +43,7 @@
                         <Insets left="30.0" top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <Label fx:id="balanceLabel" style="-fx-font-size: 26px; -fx-font-weight: bold;" text="€ 0.00">
+                  <Label fx:id="balanceLabel" style="-fx-font-size: 26px; -fx-font-weight: bold;" text=" 0.00">
                      <VBox.margin>
                         <Insets left="30.0" top="5.0" />
                      </VBox.margin>
@@ -51,13 +51,13 @@
                </VBox>
 
                      <!-- Pulsante precedente -->
-               <Button fx:id="previousCardButton" onAction="#handlePreviousCard" style="-fx-background-color: #79a6a6; -fx-text-fill: white; -fx-font-size: 14px;" text="Precedente">
+               <Button fx:id="previousCardButton" onAction="#handlePreviousCard" style="-fx-background-color: #008080; -fx-text-fill: white; -fx-font-size: 14px;" text="Precedente">
                   <font>
                      <Font size="12.0" />
                   </font></Button>
 
                      <!-- Carta -->
-               <VBox fx:id="DatiCarta" alignment="CENTER" prefHeight="159.0" prefWidth="285.0" spacing="10.0" style="-fx-background-color: #008080; -fx-background-radius: 15px; -fx-padding: 20px;">
+               <VBox fx:id="DatiCarta" alignment="CENTER" prefHeight="159.0" prefWidth="285.0" spacing="10.0" style="-fx-background-color: #79a6a6; -fx-background-radius: 15px; -fx-padding: 20px;">
                   <Label fx:id="cardNameLabel" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white;" text="---" />
                   <Label fx:id="cardNumberLabel" style="-fx-font-size: 14px; -fx-text-fill: white;" text="Numero Carta: **** **** **** ----" />
                   <HBox spacing="10">
@@ -71,7 +71,7 @@
                </VBox>
 
                      <!-- Pulsante successivo -->
-               <Button fx:id="nextCardButton" onAction="#handleNextCard" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: #79a6a6; -fx-text-fill: white; -fx-font-size: 14px;" text="Successiva">
+               <Button fx:id="nextCardButton" onAction="#handleNextCard" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: #008080; -fx-text-fill: white; -fx-font-size: 14px;" text="Successiva">
                   <font>
                      <Font size="12.0" />
                   </font></Button>
@@ -82,7 +82,7 @@
 
                   <!-- Pulsante aggiungi transazione -->
             <HBox alignment="CENTER_LEFT" prefWidth="792.0">
-               <Button fx:id="addTransactionButton" onAction="#insertTransaction" style="-fx-background-color: #008080; -fx-text-fill: white; -fx-font-size: 16px; -fx-background-radius: 5px;" text="Nuova Transazione">
+               <Button fx:id="addTransactionButton" onAction="#insertTransaction" style="-fx-background-color: #008080; -fx-text-fill: white; -fx-font-size: 16px; -fx-background-radius: 5px;" stylesheets="@stileShowDialogPages.css" text="Nuova Transazione">
                   <HBox.margin>
                      <Insets left="30.0" />
                   </HBox.margin>
