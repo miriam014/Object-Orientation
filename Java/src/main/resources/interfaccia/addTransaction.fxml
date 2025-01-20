@@ -29,20 +29,20 @@
             <HBox alignment="CENTER" layoutX="10.0" layoutY="52.0" prefHeight="65.0" prefWidth="350.0" spacing="10.0">
                <children>
                   <Label prefHeight="30.0" prefWidth="120.0" text="Numero Carta" />
-                  <ComboBox fx:id="NumeroCarta" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="245.0" />
+                  <ComboBox fx:id="numeroCarta" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="245.0" />
                </children>
             </HBox>
                 <HBox alignment="CENTER" prefHeight="65.0" prefWidth="350.0" spacing="10.0">
                     <children>
                         <Label prefHeight="30.0" prefWidth="120.0" text="Tipo Transazione" />
-                        <ComboBox fx:id="TipoTransazione" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="245.0" />
+                        <ComboBox fx:id="tipoTransazione" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="245.0" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="65.0" prefWidth="350.0" spacing="10.0">
                     <children>
                         <Label prefHeight="30.0" prefWidth="120.0" text="Importo" />
-                        <TextField fx:id="NuovoImporto" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="141.0" />
-                  <ComboBox fx:id="Valuta" prefHeight="36.0" prefWidth="97.0" />
+                        <TextField fx:id="nuovoImporto" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="141.0" />
+                  <ComboBox fx:id="valuta" prefHeight="36.0" prefWidth="97.0" />
                     </children>
                 </HBox>
                 <VBox alignment="CENTER" prefHeight="70.0" prefWidth="220.0">
@@ -50,7 +50,7 @@
                   <HBox alignment="CENTER" prefHeight="65.0" prefWidth="350.0" spacing="10.0">
                      <children>
                         <Label prefHeight="30.0" prefWidth="120.0" text="Data" />
-                        <DatePicker fx:id="NuovaData" prefHeight="28.0" prefWidth="249.0" />
+                        <DatePicker fx:id="nuovaData" prefHeight="28.0" prefWidth="249.0" />
                      </children>
                   </HBox>
                </children>
@@ -60,7 +60,7 @@
                       <HBox alignment="CENTER" prefHeight="65.0" prefWidth="448.0" spacing="10.0">
                           <children>
                               <Label prefHeight="30.0" prefWidth="120.0" text="Categoria" />
-                              <ComboBox fx:id="NuovaCategoria" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="239.0" />
+                              <ComboBox fx:id="nuovaCategoria" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="239.0" />
                           </children>
                       </HBox>
                </children>
@@ -68,16 +68,16 @@
             <HBox alignment="CENTER" layoutX="10.0" layoutY="80.0" prefHeight="65.0" prefWidth="350.0" spacing="10.0">
                <children>
                   <Label prefHeight="30.0" prefWidth="120.0" text="Causale" />
-                  <TextField fx:id="NuovaCausale" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="239.0" />
+                  <TextField fx:id="nuovaCausale" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="239.0" />
                </children>
             </HBox>
             <HBox alignment="CENTER" layoutX="10.0" layoutY="344.0" prefHeight="65.0" prefWidth="350.0" spacing="10.0">
                <children>
                   <Label prefHeight="30.0" prefWidth="120.0" text="Da/A" />
-                  <TextField fx:id="NuovoDaA" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="243.0" />
+                  <TextField fx:id="nuovoDaA" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="243.0" />
                </children>
             </HBox>
-                  <Button fx:id="ConfermaButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#saveTransaction" prefHeight="28.0" prefWidth="95.0" style="-fx-border-color: transparent; -fx-background-color: #008080; -fx-background-radius: 15px;" text="Conferma" textFill="WHITE" />
+                  <Button fx:id="confermaButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#saveTransaction" prefHeight="28.0" prefWidth="95.0" style="-fx-border-color: transparent; -fx-background-color: #008080; -fx-background-radius: 15px;" text="Conferma" textFill="WHITE" />
             </children>
         </VBox>
     </center>
