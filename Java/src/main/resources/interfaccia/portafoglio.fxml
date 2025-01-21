@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
@@ -14,13 +15,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="792.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smu.Controller.PortafoglioController">
-    <BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="792.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+<AnchorPane xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smu.Controller.PortafoglioController">
+    <BorderPane prefHeight="600.0" prefWidth="792.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <center>
-            <VBox spacing="10.0" BorderPane.alignment="CENTER">
+            <VBox spacing="10.0" BorderPane.alignment="CENTER" VBox.vgrow="ALWAYS">
                 <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="792.0" style="-fx-background-color: #008080;">
                     <VBox.margin>
-                        <Insets left="-1.0" />
+                        <Insets />
                     </VBox.margin>
                <children>
                   <Label layoutX="23.0" layoutY="4.0" prefHeight="21.0" prefWidth="84.0" text="Portafogli" textFill="WHITE">
@@ -30,46 +31,63 @@
                   </Label>
                </children>
             </Pane>
-            <Pane prefHeight="40.0" prefWidth="750.0">
-               <VBox.margin>
-                  <Insets left="20.0" right="20.0" />
-               </VBox.margin>
-               <children>
-                  <HBox alignment="CENTER" layoutX="512.0" layoutY="-1.0" prefHeight="40.0" prefWidth="240.0" spacing="5.0">
+            <SplitPane dividerPositions="0.5050697084917617" prefHeight="50.0" stylesheets="@stileTabelle.css">
+              <items>
+                  <Pane>
+                     <children>
+                        <Label layoutX="10.0" prefHeight="35.0" text="ID Portafoglio:">
+                           <font>
+                              <Font name="System Bold Italic" size="18.5" />
+                           </font>
+                        </Label>
+                        <Label fx:id="currentWalletID" layoutX="130.0" prefHeight="35.0" prefWidth="44.0" text="1">
+                           <font>
+                              <Font name="System Bold Italic" size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets left="20.0" right="20.0" />
+                     </padding>
+                  </Pane>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="332.0" spacing="5.0">
                      <children>
                         <Button fx:id="addWalletButton" alignment="CENTER" mnemonicParsing="false" onAction="#insertWallet" prefHeight="26.0" prefWidth="70.0" stylesheets="@stileGenerale.css" text="Aggiungi" />
                         <Button fx:id="editWalletButton" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#updateWallet" prefHeight="26.0" prefWidth="70.0" stylesheets="@stileGenerale.css" text="Modifica" />
                         <Button fx:id="deleteWalletButton" mnemonicParsing="false" onAction="#deleteWallet" prefHeight="26.0" prefWidth="70.0" stylesheets="@stileGenerale.css" text="Rimuovi" />
                      </children>
+                     <padding>
+                        <Insets right="30.0" />
+                     </padding>
                   </HBox>
-                  <Label prefHeight="35.0" prefWidth="126.0" text="ID Portafoglio:">
-                     <font>
-                        <Font name="System Bold Italic" size="20.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="currentWalletID" layoutX="126.0" prefHeight="35.0" prefWidth="44.0" text="1">
-                     <font>
-                        <Font name="System Bold Italic" size="20.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-            <Pane prefHeight="164.0" prefWidth="751.0">
-               <VBox.margin>
-                  <Insets left="20.0" right="20.0" />
-               </VBox.margin>
-               <children>
-   
-                                      <!-- Pulsante per Cambiare Portafoglio -->
-                       <Button fx:id="nextWalletButton" layoutX="313.0" layoutY="59.0" nodeOrientation="RIGHT_TO_LEFT" onAction="#handleNextWallet" prefHeight="30.0" prefWidth="90.0" stylesheets="@stilePortafoglio.css" text="Prossimo" textAlignment="CENTER" />
-                        <Label fx:id="walletNameLabel" alignment="CENTER" layoutX="125.0" layoutY="137.0" prefHeight="34.0" prefWidth="180.0" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: black;" text="---">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <VBox layoutX="479.0" layoutY="8.0" prefHeight="143.0" prefWidth="245.0">
+              </items>
+            </SplitPane>
+            <SplitPane dividerPositions="0.66" prefHeight="222.0" prefWidth="791.0" stylesheets="@stileTabelle.css">
+              <items>
+                  <Pane>
                      <children>
-                        <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="245.0" spacing="10.0">
+         
+                                                  <!-- Pulsante per Cambiare Portafoglio -->
+                             <Button fx:id="nextWalletButton" alignment="CENTER" layoutX="343.0" layoutY="59.0" nodeOrientation="RIGHT_TO_LEFT" onAction="#handleNextWallet" prefHeight="30.0" prefWidth="90.0" stylesheets="@stilePortafoglio.css" text="Prossimo" textAlignment="CENTER" />
+                              <Label fx:id="walletNameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="150.0" layoutY="170.0" prefWidth="180.0" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: black;" text="---">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="previousWalletButton" alignment="CENTER" layoutX="60.0" layoutY="59.0" nodeOrientation="RIGHT_TO_LEFT" onAction="#handlePreviousWallet" prefHeight="30.0" prefWidth="90.0" stylesheets="@stilePortafoglio.css" text="Precedente" textAlignment="CENTER" />
+                        <ImageView disable="true" fitHeight="160.0" fitWidth="164.0" layoutX="160.0" nodeOrientation="INHERIT">
+                           <image>
+                              <Image url="@../images/portafoglio2.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Pane>
+                  <VBox alignment="CENTER" prefHeight="143.0">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="50.0" spacing="10.0">
                            <children>
                                     <Label alignment="TOP_LEFT" mouseTransparent="true" prefHeight="26.0" prefWidth="55.0" text="Saldo:" textFill="#1b1b1b">
                                         <font>
@@ -83,7 +101,7 @@
                                     </Label>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="245.0">
+                        <HBox alignment="CENTER_LEFT" prefHeight="50.0">
                            <children>
                               <Label alignment="TOP_LEFT" mouseTransparent="true" prefHeight="26.0" prefWidth="105.0" text="ID Famiglia:" textFill="#141414">
                                  <font>
@@ -97,7 +115,7 @@
                               </Label>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="245.0" spacing="10.0">
+                        <HBox alignment="CENTER_LEFT" prefHeight="50.0" spacing="10.0">
                            <children>
                               <Label alignment="TOP_LEFT" mouseTransparent="true" prefHeight="26.0" prefWidth="53.0" text="Carta:">
                                  <font>
@@ -113,20 +131,11 @@
                         </HBox>
                      </children>
                   </VBox>
-                  <Button fx:id="previousWalletButton" layoutX="25.0" layoutY="59.0" nodeOrientation="RIGHT_TO_LEFT" onAction="#handlePreviousWallet" prefHeight="30.0" prefWidth="90.0" stylesheets="@stilePortafoglio.css" text="Precedente" textAlignment="CENTER" />
-                  <ImageView fitHeight="160.0" fitWidth="164.0" layoutX="133.0" layoutY="-21.0">
-                     <image>
-                        <Image url="@../images/portafoglio2.png" />
-                     </image>
-                  </ImageView>
-               </children>
-               <padding>
-                  <Insets left="20.0" right="20.0" />
-               </padding>
-            </Pane>
-                <Pane prefHeight="35.0" prefWidth="752.0">
+              </items>
+            </SplitPane>
+                <Pane>
                     <children>
-                        <Label layoutX="8.0" layoutY="4.0" prefHeight="34.0" prefWidth="113.0" text="Transazioni">
+                        <Label layoutX="8.0" layoutY="4.0" prefHeight="34.0" prefWidth="170.0" text="Transazioni">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -137,7 +146,7 @@
                   <Insets left="20.0" right="20.0" />
                </VBox.margin>
                 </Pane>
-            <TableView fx:id="transactionsTableView" prefHeight="290.0" prefWidth="752.0" stylesheets="@stileTabelle.css">
+            <TableView fx:id="transactionsTableView" prefHeight="259.0" stylesheets="@stileTabelle.css" VBox.vgrow="ALWAYS">
               <columns>
                 <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID" />
                   <TableColumn fx:id="tipoColumn" prefWidth="100.0" text="Tipo" />

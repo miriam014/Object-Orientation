@@ -9,6 +9,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.stage.Modality;
 import javafx.util.Duration;
 import smu.DTO.Carta;
 import smu.Main;
@@ -93,6 +94,10 @@ public class MenuController {
         alert.setTitle("Logout");
         alert.setHeaderText(null);
         alert.setContentText("Sei sicuro di voler uscire?");
+        // Imposta l'owner dello stage per il dialog
+        alert.initOwner(Main.getPrimaryStage());
+        alert.initModality(Modality.WINDOW_MODAL); // Finestra modale
+
 
         Optional<ButtonType> result = alert.showAndWait();
         // Se l'utente preme OK, torna alla schermata di login

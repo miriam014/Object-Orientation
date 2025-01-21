@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -18,14 +19,18 @@
       <!-- Contenuto principale -->
       <center>
          <VBox alignment="CENTER" spacing="10.0" stylesheets="@stileMenu.css" BorderPane.alignment="CENTER">
-            <Pane fx:id="headerPane" prefHeight="36.0" prefWidth="791.0" style="-fx-background-color: #008080;">
+            <Pane fx:id="headerPane" prefHeight="31.0" prefWidth="791.0" style="-fx-background-color: #008080;">
                <children>
+                  <VBox alignment="CENTER_RIGHT" layoutX="726.0" layoutY="4.0" nodeOrientation="RIGHT_TO_LEFT">
+                     <children>
+                        <Button fx:id="statisticaButton" contentDisplay="RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#scenaReport" style="-fx-background-color: #008080;" text="Report" textFill="WHITE" VBox.vgrow="ALWAYS" />
+                     </children>
+                  </VBox>
                   <Label layoutX="52.0" layoutY="6.0" text="Homepage" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Button fx:id="statisticaButton" layoutX="718.0" layoutY="1.0" mnemonicParsing="false" onAction="#scenaReport" style="-fx-background-color: #008080;" text="Report" textFill="WHITE" />
                </children>
                <opaqueInsets>
                   <Insets />
@@ -34,51 +39,66 @@
                   <Insets />
                </VBox.margin>
             </Pane>
-            <!-- Saldo e carta -->
-            <HBox alignment="CENTER_LEFT" prefWidth="792.0" spacing="10.0">
-               <!-- Saldo -->
-               <VBox>
-                  <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Saldo disponibile:">
-                     <VBox.margin>
-                        <Insets left="40.0" top="10.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label fx:id="balanceLabel" style="-fx-font-size: 26px; -fx-font-weight: bold;" text=" 0.00">
-                     <VBox.margin>
-                        <Insets left="30.0" top="5.0" />
-                     </VBox.margin>
-                  </Label>
-               </VBox>
-
-                     <!-- Pulsante precedente -->
-               <Button fx:id="previousCardButton" onAction="#handlePreviousCard" prefHeight="25.0" prefWidth="89.0" stylesheets="@stileGenerale.css" text="Precedente">
-                  <font>
-                     <Font size="12.0" />
-                  </font></Button>
-
-                     <!-- Carta -->
-               <VBox fx:id="DatiCarta" alignment="CENTER" prefHeight="159.0" prefWidth="285.0" spacing="10.0" style="-fx-background-color: #79a6a6; -fx-background-radius: 15px; -fx-padding: 20px;">
-                  <Label fx:id="cardNameLabel" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white;" text="---" />
-                  <Label fx:id="cardNumberLabel" style="-fx-font-size: 14px; -fx-text-fill: white;" text="Numero Carta: **** **** **** ----" />
-                  <HBox spacing="10">
-                     <Label style="-fx-font-size: 14px; -fx-text-fill: white;" text="Tipo Carta:" />
-                     <Label fx:id="cardTypeLabel" style="-fx-font-size: 14px; -fx-text-fill: white;" text="---" />
+            <SplitPane dividerPositions="0.32" prefHeight="200.0" stylesheets="@stileTabelle.css">
+               <items>
+                  <!-- Saldo -->
+                  <VBox>
+                     <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Saldo disponibile:">
+                        <VBox.margin>
+                           <Insets left="40.0" top="15.0" />
+                        </VBox.margin>
+                     </Label>
+                     <Label fx:id="balanceLabel" style="-fx-font-size: 26px; -fx-font-weight: bold;" text=" 0.00">
+                        <VBox.margin>
+                           <Insets left="30.0" top="5.0" />
+                        </VBox.margin>
+                     </Label>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </VBox>
+                  <!-- Saldo e carta -->
+                  <HBox alignment="CENTER_LEFT" prefWidth="792.0" spacing="10.0">
+      
+                           <!-- Pulsante precedente -->
+                     <Button fx:id="previousCardButton" onAction="#handlePreviousCard" prefHeight="25.0" prefWidth="89.0" stylesheets="@stileGenerale.css" text="Precedente">
+                        <font>
+                           <Font size="12.0" />
+                        </font>
+                     </Button>
+      
+                           <!-- Carta -->
+                     <VBox fx:id="DatiCarta" alignment="CENTER" prefHeight="159.0" prefWidth="285.0" spacing="10.0" style="-fx-background-color: #79a6a6; -fx-background-radius: 15px; -fx-padding: 20px;">
+                        <Label fx:id="cardNameLabel" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white;" text="---" />
+                        <Label fx:id="cardNumberLabel" style="-fx-font-size: 14px; -fx-text-fill: white;" text="Numero Carta: **** **** **** ----" />
+                        <HBox spacing="10">
+                           <Label style="-fx-font-size: 14px; -fx-text-fill: white;" text="Tipo Carta:" />
+                           <Label fx:id="cardTypeLabel" style="-fx-font-size: 14px; -fx-text-fill: white;" text="---" />
+                        </HBox>
+                        <HBox spacing="10">
+                           <Label style="-fx-font-size: 14px; -fx-text-fill: white;" text="Scadenza:" />
+                           <Label fx:id="expiryDateLabel" style="-fx-font-size: 14px; -fx-text-fill: white;" text="--/--" />
+                        </HBox>
+                     </VBox>
+      
+                           <!-- Pulsante successivo -->
+                     <Button fx:id="nextCardButton" onAction="#handleNextCard" prefHeight="25.0" prefWidth="101.0" stylesheets="@stileGenerale.css" text="Successiva">
+                        <font>
+                           <Font size="12.0" />
+                        </font>
+                     </Button>
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
                   </HBox>
-                  <HBox spacing="10">
-                     <Label style="-fx-font-size: 14px; -fx-text-fill: white;" text="Scadenza:" />
-                     <Label fx:id="expiryDateLabel" style="-fx-font-size: 14px; -fx-text-fill: white;" text="--/--" />
-                  </HBox>
-               </VBox>
-
-                     <!-- Pulsante successivo -->
-               <Button fx:id="nextCardButton" onAction="#handleNextCard" prefHeight="25.0" prefWidth="101.0" stylesheets="@stileGenerale.css" text="Successiva">
-                  <font>
-                     <Font size="12.0" />
-                  </font></Button>
+               </items>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
                <VBox.margin>
-                  <Insets bottom="20.0" top="30.0" />
+                  <Insets />
                </VBox.margin>
-            </HBox>
+            </SplitPane>
 
                   <!-- Pulsante aggiungi transazione -->
             <HBox alignment="CENTER_LEFT" prefWidth="792.0">
@@ -90,10 +110,13 @@
                      <Font name="Al Bayan Bold" size="13.0" />
                   </font>
                </Button>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
             </HBox>
 
                   <!-- Tabella delle transazioni -->
-            <TableView fx:id="transactionsTableView" prefHeight="300.0" prefWidth="767.0" stylesheets="@stileTabelle.css">
+            <TableView fx:id="transactionsTableView" prefHeight="300.0" stylesheets="@stileTabelle.css" VBox.vgrow="ALWAYS">
                <columns>
                   <TableColumn fx:id="tipoColumn" prefWidth="100.0" text="Tipo" />
                   <TableColumn fx:id="importoColumn" prefWidth="100.0" text="Importo" />

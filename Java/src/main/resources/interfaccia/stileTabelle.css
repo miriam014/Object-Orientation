@@ -52,3 +52,15 @@
     -fx-border-color: #d3d3d3; /* Nessun bordo per la tabella quando in focus */
     -fx-padding: 0;                /* Nessun padding visibile */
 }
+
+
+/* ---------- Stile delle celle ---------- */
+
+.split-pane {
+    -fx-background-color: transparent; /* Rende trasparente lo sfondo */
+    -fx-border-color: transparent;    /* Nasconde i bordi */
+}
+
+.split-pane > .split-pane-divider {
+    -fx-background-color: transparent; /* Rende trasparente il divider */
+}
