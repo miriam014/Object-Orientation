@@ -13,6 +13,7 @@ import smu.DTO.SpeseProgrammate;
 
 import java.sql.CallableStatement;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.List;
 
 import static smu.Database.getConnection;
@@ -71,6 +72,12 @@ public class SpeseProgrammateController extends Controller {
                     bottone.setStyle("-fx-background-color: green; -fx-text-fill: white;");
                     bottone.setText("Pagato");
                     bottone.setDisable(true); // Disabilita il bottone se già pagato
+
+                    //faccio comunuque l'updated per verificare se la spesa ha superato la data di rinnovo o di termine
+                    boolean updated = speseProgrammateDAO.update(spesa);
+                    if (!updated) {
+                        System.out.println("Errore durante l'update nel database.");
+                    }
                 } else {
                     bottone.setOnAction(event -> BottonePaga(spesa, bottone));
                 }

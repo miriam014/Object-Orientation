@@ -13,6 +13,7 @@ import smu.Sessione;
 
 import java.sql.Date;
 import java.awt.*;
+import java.time.LocalDate;
 import java.util.List;
 
 public class newProgrammazioneController extends Controller {
@@ -63,6 +64,16 @@ public class newProgrammazioneController extends Controller {
         } catch (NumberFormatException e) {
             showAlert(Alert.AlertType.ERROR, "Errore", "Importo non valido. Inserisci un valore numerico.");
             return; // Se l'importo non è valido, mostra il messaggio di errore e ferma l'operazione
+        }
+        // Controllo che le date non siano precedenti alla data attuale
+        LocalDate oggi = LocalDate.now();
+        if (dataScadenza.toLocalDate().isBefore(oggi)) {
+            showAlert(Alert.AlertType.ERROR, "Errore", "La data di rinnovo non può essere precedente alla data attuale.");
+            return;
+        }
+        if (dataTermine.toLocalDate().isBefore(oggi)) {
+            showAlert(Alert.AlertType.ERROR, "Errore", "La data di termine rinnovo non può essere precedente alla data attuale.");
+            return;
         }
 
         SpeseProgrammate nuovaSpesa = new SpeseProgrammate(0, frequenza, dataScadenza, Float.parseFloat(importo), destinatario, dataTermine, nome, carta, false);
