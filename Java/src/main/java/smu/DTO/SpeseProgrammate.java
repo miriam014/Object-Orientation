@@ -2,7 +2,6 @@ package smu.DTO;
 
 import javafx.scene.control.Button;
 
-import java.sql.Time;
 import java.sql.Date;
 
 public class SpeseProgrammate {
@@ -15,10 +14,11 @@ public class SpeseProgrammate {
     private Date FineRinnovo;
     private String Descrizione;
     private String NumeroCarta;
-    private Button Stato;
+    private boolean Stato;
+    private Button Paga;
 
 
-    public SpeseProgrammate(int idSpesa, String periodicita, Date dataScadenza, float importo, String destinatario, Date fineRinnovo, String descrizione, String numeroCarta){
+    public SpeseProgrammate(int idSpesa, String periodicita, Date dataScadenza, float importo, String destinatario, Date fineRinnovo, String descrizione, String numeroCarta, boolean stato) {
         this.IdSpesa = idSpesa;
         this.Periodicita = periodicita;
         this.DataScadenza = dataScadenza;
@@ -27,7 +27,8 @@ public class SpeseProgrammate {
         this.FineRinnovo = fineRinnovo;
         this.Descrizione = descrizione;
         this.NumeroCarta = numeroCarta;
-        this.Stato = new Button("Paga");
+        this.Stato = stato;
+        this.Paga = new Button("Paga");
     }
 
 
@@ -59,7 +60,11 @@ public class SpeseProgrammate {
         return NumeroCarta;
     }
 
-    public Button getStato(){ return Stato; }
+    public boolean getStato(){
+        return Stato;
+    }
+
+    public Button getPaga(){ return Paga; }
 
 
 
@@ -95,8 +100,12 @@ public class SpeseProgrammate {
         this.NumeroCarta = numeroCarta;
     }
 
-    public void setStato(Button stato){
+    public void setStato(boolean stato){
         this.Stato = stato;
+    }
+
+    public void setPaga(Button paga){
+        this.Paga = paga;
     }
 
 
@@ -106,4 +115,5 @@ public class SpeseProgrammate {
                 + DataScadenza + "|\t" + "|Importo = " + Importo + "|\t" + "|Destinatario = " + Destinatario + "|\t" +
                 "|FineRinnovo = " + FineRinnovo + "|\t" + "|Descrizione = " + Descrizione + "|";
     }
+
 }

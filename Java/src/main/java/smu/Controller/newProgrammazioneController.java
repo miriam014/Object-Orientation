@@ -65,7 +65,7 @@ public class newProgrammazioneController extends Controller {
             return; // Se l'importo non è valido, mostra il messaggio di errore e ferma l'operazione
         }
 
-        SpeseProgrammate nuovaSpesa = new SpeseProgrammate(0, frequenza, dataScadenza, Float.parseFloat(importo), destinatario, dataTermine, nome, carta);
+        SpeseProgrammate nuovaSpesa = new SpeseProgrammate(0, frequenza, dataScadenza, Float.parseFloat(importo), destinatario, dataTermine, nome, carta, false);
         SpeseProgrammateDAOimp speseProgrammateDAO = new SpeseProgrammateDAOimp();
         try {
             boolean success = speseProgrammateDAO.insert(nuovaSpesa);

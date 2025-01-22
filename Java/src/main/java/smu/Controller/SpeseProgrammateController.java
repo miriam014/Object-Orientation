@@ -11,8 +11,11 @@ import smu.DAO.SpeseProgrammateDAO;
 import smu.DAO_Implementation.SpeseProgrammateDAOimp;
 import smu.DTO.SpeseProgrammate;
 
+import java.sql.CallableStatement;
 import java.sql.SQLException;
 import java.util.List;
+
+import static smu.Database.getConnection;
 
 public class SpeseProgrammateController extends Controller {
 
@@ -45,7 +48,7 @@ public class SpeseProgrammateController extends Controller {
         dataTermineColumn.setCellValueFactory(new PropertyValueFactory<>("FineRinnovo"));
         nomeColumn.setCellValueFactory(new PropertyValueFactory<>("Descrizione"));
         frequenzaColumn.setCellValueFactory(new PropertyValueFactory<>("Periodicita"));
-        statoColumn.setCellValueFactory(new PropertyValueFactory<>("Stato"));
+        statoColumn.setCellValueFactory(new PropertyValueFactory<>("Paga"));
 
         initializeTableView();
 
@@ -63,10 +66,14 @@ public class SpeseProgrammateController extends Controller {
                 TabellaProgrammazioni.getItems().add(spesa);
 
                 // Configura l'evento per ogni bottone della colonna "Stato"
-                Button bottone = spesa.getStato();
-                bottone.setOnAction(event -> {
-                    BottonePaga(spesa, bottone);
-                });
+                Button bottone = spesa.getPaga();
+                if (spesa.getStato()) {
+                    bottone.setStyle("-fx-background-color: green; -fx-text-fill: white;");
+                    bottone.setText("Pagato");
+                    bottone.setDisable(true); // Disabilita il bottone se già pagato
+                } else {
+                    bottone.setOnAction(event -> BottonePaga(spesa, bottone));
+                }
             }
 
         } catch (SQLException e) {
@@ -81,8 +88,19 @@ public class SpeseProgrammateController extends Controller {
         bottone.setText("Pagato");
         bottone.setDisable(true);   //in modo che non venga pagata di nuovo la spesa prima del dovuto
 
-        //riattivo il bottone una volta passato il tempo necessario in base alla data di scadenza
+        // Aggiorna lo stato della spesa
+        spesa.setStato(true);
+        try {
+            // Usa l'oggetto DAO per aggiornare il database
+            boolean updated = speseProgrammateDAO.update(spesa);
+            if (!updated) {
+                System.out.println("Errore durante l'update nel database.");
+            }
+        } catch (SQLException e) {
+                e.printStackTrace();
+        }
     }
+
 
     @FXML
     public void newProgrammazione(ActionEvent actionEvent) {
