@@ -7,7 +7,6 @@
     <list default="true" id="df4d01a2-e17b-4881-9bee-4a47bce15a26" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/SpeseProgrammateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/SpeseProgrammateController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/speseProgrammate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/speseProgrammate.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Progetto-OO-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/Progetto-OO-1.0-SNAPSHOT.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -152,6 +151,8 @@
       <workItem from="1737052567140" duration="5375000" />
       <workItem from="1737484553080" duration="15580000" />
       <workItem from="1737571482955" duration="1774000" />
+      <workItem from="1737573267807" duration="5014000" />
+      <workItem from="1737623314918" duration="1341000" />
     </task>
     <servers />
   </component>

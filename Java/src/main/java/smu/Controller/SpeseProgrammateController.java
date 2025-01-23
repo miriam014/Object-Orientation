@@ -63,22 +63,29 @@ public class SpeseProgrammateController extends Controller {
             List<SpeseProgrammate> ListaSpese = speseProgrammateDAO.getByUsername(username);
 
             TabellaProgrammazioni.getItems().clear();
+
             for (SpeseProgrammate spesa : ListaSpese) {
+                //se la data di termine è passata, elimino la spesa programmata
+                if( LocalDate.now().isAfter(spesa.getFineRinnovo().toLocalDate())){
+                    speseProgrammateDAO.delete(spesa.getIdSpesa());
+                    continue;
+                }
+
+                // Aggiunge la spesa alla tabella se non è sttat eliminata prima
                 TabellaProgrammazioni.getItems().add(spesa);
+
 
                 // Configura l'evento per ogni bottone della colonna "Stato"
                 Button bottone = spesa.getPaga();
-                if (spesa.getStato()) {
+                if (spesa.getStato()) { //se la spesa era già stata pagata la segna come tale
                     bottone.setStyle("-fx-background-color: green; -fx-text-fill: white;");
                     bottone.setText("Pagato");
                     bottone.setDisable(true); // Disabilita il bottone se già pagato
-
-                    //faccio comunuque l'updated per verificare se la spesa ha superato la data di rinnovo o di termine
-                    boolean updated = speseProgrammateDAO.update(spesa);
-                    if (!updated) {
-                        System.out.println("Errore durante l'update nel database.");
-                    }
                 } else {
+                    if (LocalDate.now().isAfter(spesa.getDataScadenza().toLocalDate())) {
+                        bottone.setStyle("-fx-background-color: #C85C5C; -fx-text-fill: white;");
+                        bottone.setText("Scaduto, pagare");
+                    }
                     bottone.setOnAction(event -> BottonePaga(spesa, bottone));
                 }
             }
