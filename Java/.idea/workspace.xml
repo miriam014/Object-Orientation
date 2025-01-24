@@ -5,9 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df4d01a2-e17b-4881-9bee-4a47bce15a26" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/smu/DAO/UtentiInFamiglieDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/smu/DAO_Implementation/UtentiInFamiglieDAOimp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/smu/DTO/UtentiInPortafogli.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Database/Database.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/Database.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/SpeseProgrammateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/SpeseProgrammateController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/PortafoglioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/PortafoglioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/DAO_Implementation/FamigliaDAOimp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/DAO_Implementation/FamigliaDAOimp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/DAO_Implementation/UtenteDAOimp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/DAO_Implementation/UtenteDAOimp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/DTO/Utente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/DTO/Utente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/portafoglio.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/portafoglio.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Progetto-OO-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/Progetto-OO-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/smu/Controller/PortafoglioController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/smu/Controller/PortafoglioController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,10 +27,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="module-info" />
-        <option value="Interface" />
-        <option value="Class" />
         <option value="FxmlFile" />
         <option value="CSS File" />
+        <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -115,8 +124,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23339.11" />
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23339.11" />
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.21565.193" />
+        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-IU-243.21565.193" />
       </set>
     </attachedChunks>
   </component>
@@ -153,6 +162,7 @@
       <workItem from="1737571482955" duration="1774000" />
       <workItem from="1737573267807" duration="5014000" />
       <workItem from="1737623314918" duration="1341000" />
+      <workItem from="1737713157160" duration="1394000" />
     </task>
     <servers />
   </component>

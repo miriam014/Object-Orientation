@@ -78,7 +78,7 @@ public class FamigliaDAOimp implements FamigliaDAO {
         Connection connection = Database.getConnection();
         List<Famiglia> families = new ArrayList<>();
 
-        String sql = "SELECT * FROM smu.Famiglia AS F JOIN smu.Utente AS U ON F.IdFamiglia = U.IdFamiglia WHERE U.Username = ?";
+        String sql = "SELECT * FROM smu.Famiglia AS F NATURAL JOIN smu.UtentiInFamiglie AS UF WHERE UF.NomeUtente = ?";
 
         PreparedStatement ps = connection.prepareStatement(sql);
         ps.setString(1, username);

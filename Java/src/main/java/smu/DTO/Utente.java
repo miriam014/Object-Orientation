@@ -9,17 +9,15 @@ public class Utente {
     private String Telefono;
     private String Email;
     private String Password;
-    private String IdFamiglia;
 
     // Costruttore
-    public Utente(String username, String nome, String cognome, String telefono, String email, String password, String idFamiglia){
+    public Utente(String username, String nome, String cognome, String telefono, String email, String password){
         this.Username = username;
         this.Nome = nome;
         this.Cognome = cognome;
         this.Telefono = telefono;
         this.Email = email;
         this.Password = password;
-        this.IdFamiglia = idFamiglia;
     }
     public String getUsername() {
         return Username;
@@ -69,18 +67,11 @@ public class Utente {
         this.Password = password;
     }
 
-    public String getIdFamiglia() {
-        return IdFamiglia;
-    }
-
-    public void setIdFamiglia(String idFamiglia) {
-        this.IdFamiglia = idFamiglia;
-    }
 
     @Override
     public String toString(){
         return "UTENTE: |Username = "+ Username + "|\t" + "|Nome = " + Nome + "|\t" + "|Cognome = " + Cognome +"|\t" + "|Telefono = "+
-        Telefono+ "|\t" + "|Email = "+ Email+ "|\t" + "|Password = " + Password + "|\t" + "|IdFamiglia = " + IdFamiglia+"|";
+        Telefono+ "|\t" + "|Email = "+ Email+ "|\t" + "|Password = " + Password + "|";
     }
 
 }

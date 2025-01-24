@@ -94,25 +94,11 @@
                                             <Font name="System Bold" size="20.0" />
                                         </font>
                                     </Label>
-                                    <Label fx:id="balanceLabel" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="83.0" style="-fx-font-size: 25; -fx-font-weight: bold;" text="0.00">
+                                    <Label fx:id="balanceLabel" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="117.0" style="-fx-font-size: 25; -fx-font-weight: bold;" text="0.00">
                                         <padding>
                                             <Insets left="6.0" />
                                         </padding>
                                     </Label>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="50.0">
-                           <children>
-                              <Label alignment="TOP_LEFT" mouseTransparent="true" prefHeight="26.0" prefWidth="105.0" text="ID Famiglia:" textFill="#141414">
-                                 <font>
-                                    <Font name="System Bold" size="20.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="currentFamilyID" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="33.0" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="---">
-                                 <padding>
-                                    <Insets left="6.0" />
-                                 </padding>
-                              </Label>
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="50.0" spacing="10.0">
@@ -129,13 +115,27 @@
                               </Label>
                            </children>
                         </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="50.0">
+                           <children>
+                              <Label fx:id="IdFamigliaLabel" alignment="TOP_LEFT" mouseTransparent="true" prefHeight="26.0" prefWidth="105.0" text="ID Famiglia:" textFill="#141414">
+                                 <font>
+                                    <Font name="System Bold" size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="currentFamilyID" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="33.0" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="---">
+                                 <padding>
+                                    <Insets left="6.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </HBox>
                      </children>
                   </VBox>
               </items>
             </SplitPane>
                 <Pane>
                     <children>
-                        <Label layoutX="8.0" layoutY="4.0" prefHeight="34.0" prefWidth="170.0" text="Transazioni">
+                        <Label layoutX="3.0" layoutY="-5.0" prefHeight="34.0" prefWidth="101.0" text="Transazioni">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -148,13 +148,12 @@
                 </Pane>
             <TableView fx:id="transactionsTableView" prefHeight="259.0" stylesheets="@stileTabelle.css" VBox.vgrow="ALWAYS">
               <columns>
-                <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID" />
-                  <TableColumn fx:id="tipoColumn" prefWidth="100.0" text="Tipo" />
+                  <TableColumn fx:id="tipoColumn" prefWidth="90.0" text="Tipo" />
                   <TableColumn fx:id="importoColumn" prefWidth="100.0" text="Importo" />
                   <TableColumn fx:id="dataColumn" prefWidth="100.0" text="Data" />
                   <TableColumn fx:id="causaleColumn" prefWidth="150.0" text="Causale" />
                   <TableColumn fx:id="daAColumn" prefWidth="150.0" text="Da / A" />
-                  <TableColumn fx:id="categoriaColumn" minWidth="-Infinity" prefWidth="100.0" text="Categoria" />
+                  <TableColumn fx:id="categoriaColumn" minWidth="-Infinity" prefWidth="111.63323974609375" text="Categoria" />
               </columns>
                <VBox.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" />
@@ -170,7 +169,7 @@
             </VBox>
       </center>
         <left>
-            <fx:include source="menu.fxml" />
+           <fx:include source="menu.fxml" />
         </left>
     </BorderPane>
 </AnchorPane>

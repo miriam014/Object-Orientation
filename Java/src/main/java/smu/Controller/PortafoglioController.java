@@ -32,6 +32,7 @@ public class PortafoglioController extends Controller {
     @FXML protected Label walletNameLabel;
     @FXML private Label currentWalletID;
     @FXML private Label currentFamilyID;
+    @FXML private Label IdFamigliaLabel;
     @FXML private Label currentCardNumber;
     @FXML private TableView<Transazione> transactionsTableView;
 
@@ -119,6 +120,7 @@ public class PortafoglioController extends Controller {
     }
 
     protected void showWallet() throws SQLException {
+        IdFamigliaLabel.setVisible(true);
         if (portafogliUtente != null && !portafogliUtente.isEmpty()) {
             if (currentWalletIndex >= portafogliUtente.size()) {
                 System.out.println("Indice del portafoglio supera la dimensione della lista.");
@@ -129,6 +131,10 @@ public class PortafoglioController extends Controller {
             currentWalletID.setText(portafogliUtente.get(currentWalletIndex).getIdPortafoglio());
             balanceLabel.setText(portafoglio.getSaldo() != 0 ? String.valueOf(portafoglio.getSaldo()) : "0.00");
             walletNameLabel.setText(portafoglio.getNomePortafoglio());
+
+            if((portafoglio.getIdFamiglia()) == null) {
+                IdFamigliaLabel.setVisible(false);
+            }
             currentFamilyID.setText(portafoglio.getIdFamiglia());
 
             AssociazioneCartaPortafoglioDAO associazione = new AssociazioneCartaPortafoglioDAOimp();

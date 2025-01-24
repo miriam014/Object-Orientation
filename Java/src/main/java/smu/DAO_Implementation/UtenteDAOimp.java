@@ -13,7 +13,7 @@ public class UtenteDAOimp implements UtenteDAO {
     public boolean insert(Utente user) throws SQLException{
         Connection connection = Database.getConnection();
 
-        String sql = "INSERT INTO smu.Utente(Username, Nome, Cognome, Telefono, Email, Password, IdFamiglia) VALUES (?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO smu.Utente(Username, Nome, Cognome, Telefono, Email, Password) VALUES (?,?,?,?,?,?)";
         PreparedStatement ps = connection.prepareStatement(sql);
 
         ps.setString(1, user.getUsername());
@@ -22,7 +22,6 @@ public class UtenteDAOimp implements UtenteDAO {
         ps.setString(4, user.getTelefono());
         ps.setString(5, user.getEmail());
         ps.setString(6, user.getPassword());
-        ps.setString(7, user.getIdFamiglia());
 
         int result = ps.executeUpdate();
         ps.close();
@@ -34,7 +33,7 @@ public class UtenteDAOimp implements UtenteDAO {
     public boolean update(Utente user) throws SQLException {
         Connection connection = Database.getConnection();
 
-        String sql = "UPDATE smu.Utente SET Nome = ?, Cognome = ?, Telefono = ?, Email = ?, Password = ?, IdFamiglia = ? WHERE Username = ?";
+        String sql = "UPDATE smu.Utente SET Nome = ?, Cognome = ?, Telefono = ?, Email = ?, Password = ?  WHERE Username = ?";
         PreparedStatement ps = connection.prepareStatement(sql);
 
         ps.setString(1, user.getNome());
@@ -42,8 +41,7 @@ public class UtenteDAOimp implements UtenteDAO {
         ps.setString(3, user.getTelefono());
         ps.setString(4, user.getEmail());
         ps.setString(5, user.getPassword());
-        ps.setString(6, user.getIdFamiglia());
-        ps.setString(7, user.getUsername());
+        ps.setString(6, user.getUsername());
 
         int result = ps.executeUpdate();
         ps.close();
@@ -85,8 +83,7 @@ public class UtenteDAOimp implements UtenteDAO {
             String telefono = rs.getString("Telefono");
             String email = rs.getString("Email");
             String password = rs.getString("Password");
-            String id_famiglia = rs.getString("IdFamiglia");
-            user = new Utente(username2, nome, cognome, telefono, email, password,id_famiglia);
+            user = new Utente(username2, nome, cognome, telefono, email, password);
         }
         rs.close();
         ps.close();
@@ -112,8 +109,7 @@ public class UtenteDAOimp implements UtenteDAO {
             String telefono = rs.getString("Telefono");
             String email2 = rs.getString("Email");
             String password = rs.getString("Password");
-            String id_famiglia = rs.getString("IdFamiglia");
-            user = new Utente(username, nome, cognome, telefono, email2, password,id_famiglia);
+            user = new Utente(username, nome, cognome, telefono, email2, password);
         }
         rs.close();
         ps.close();
@@ -141,8 +137,7 @@ public class UtenteDAOimp implements UtenteDAO {
             String telefono = rs.getString("Telefono");
             String email = rs.getString("Email");
             String password2 = rs.getString("Password");
-            String id_famiglia = rs.getString("IdFamiglia");
-            user = new Utente(username2, nome, cognome, telefono, email, password2,id_famiglia);
+            user = new Utente(username2, nome, cognome, telefono, email, password2);
         }
         rs.close();
         ps.close();
