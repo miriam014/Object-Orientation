@@ -49,7 +49,7 @@
                         <TableColumn fx:id="dataColumn" minWidth="-1.0" prefWidth="81.0" text="Rinnovo" />
                         <TableColumn fx:id="dataTermineColumn" minWidth="-1.0" prefWidth="100.0" text="Termine rinnovo" />
                         <TableColumn fx:id="frequenzaColumn" minWidth="-1.0" text="Frequenza" />
-                        <TableColumn fx:id="statoColumn" minWidth="-1.0" prefWidth="92.5" style="-fx-background-color: #b0b0b0;" text="Stato" />
+                        <TableColumn fx:id="statoColumn" minWidth="-1.0" prefWidth="76.5" resizable="false" style="-fx-background-color: #b0b0b0;" text="Stato" />
                     </columns>
                     <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

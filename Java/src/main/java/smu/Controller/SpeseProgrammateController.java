@@ -84,7 +84,7 @@ public class SpeseProgrammateController extends Controller {
                 } else {
                     if (LocalDate.now().isAfter(spesa.getDataScadenza().toLocalDate())) {
                         bottone.setStyle("-fx-background-color: #C85C5C; -fx-text-fill: white;");
-                        bottone.setText("Scaduto, pagare");
+                        bottone.setText("Paga");
                     }
                     bottone.setOnAction(event -> BottonePaga(spesa, bottone));
                 }
@@ -111,7 +111,7 @@ public class SpeseProgrammateController extends Controller {
                 System.out.println("Errore durante l'update nel database.");
             }
         } catch (SQLException e) {
-                e.printStackTrace();
+            e.printStackTrace();
         }
     }
 

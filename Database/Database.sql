@@ -390,7 +390,7 @@ $$
 
     BEGIN
         -- Assicurati che l'aggiornamento non attivi il trigger ricorsivo
-    IF NEW.DataScadenza = CURRENT_DATE THEN
+    IF NEW.Stato = TRUE THEN
         -- Aggiungi la logica per aggiornare la tabella Transazione
         INSERT INTO smu.Transazione(importo, data, ora, causale, tipo, mittente, destinatario, numerocarta)
         VALUES (NEW.Importo, CURRENT_DATE, CURRENT_TIME, NEW.Descrizione, 'Uscita', NULL, NEW.Destinatario, NEW.NumeroCarta);
@@ -398,7 +398,9 @@ $$
         -- Modifica la data di scadenza o elimina la spesa programmata
         IF NEW.DataFineRinnovo = CURRENT_DATE THEN
             DELETE FROM smu.SpeseProgrammate WHERE IdSpesa = NEW.IdSpesa;
-        ELSE
+        END IF;
+
+        IF (CURRENT_DATE >= NEW.Datascadenza AND NEW.Stato = TRUE)  THEN
             UPDATE smu.SpeseProgrammate
             SET DataScadenza =
                 CASE
@@ -413,7 +415,6 @@ $$
             WHERE IdSpesa = NEW.IdSpesa;
         END IF;
     END IF;
-
     RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
@@ -592,6 +593,8 @@ INSERT INTO smu.TransazioniInPortafogli(IdTransazione, IdPortafoglio) VALUES(47,
 
 -- Spese programmate
 INSERT INTO  smu.SpeseProgrammate(Descrizione, Periodicita, DataScadenza, DataFineRinnovo, Importo, Destinatario, NumeroCarta, Stato) VALUES('Paghetta Armando', '15 giorni', '2024-03-27', '2024-03-27', 20.00, 'Armando figlio', '5355284927482884', 'false');
+INSERT INTO  smu.SpeseProgrammate(Descrizione, Periodicita, DataScadenza, DataFineRinnovo, Importo, Destinatario, NumeroCarta, Stato) VALUES('Signora delle pulizie', '7 giorni', '2025-03-27', '2027-03-27', 24.00, 'Antonietta', '5355284927482884', 'false');
+INSERT INTO  smu.SpeseProgrammate(Descrizione, Periodicita, DataScadenza, DataFineRinnovo, Importo, Destinatario, NumeroCarta, Stato) VALUES('Netflix', '1 mese', '2025-01-25', '2027-03-27', 17.00, 'Netflix', '1212121212121212', 'false');
 INSERT INTO  smu.SpeseProgrammate(Descrizione, Periodicita, DataScadenza, DataFineRinnovo, Importo, Destinatario, NumeroCarta, Stato) VALUES('Affitto Mensile', '1 mese', '2024-04-05', '2025-04-05', 800.00, 'Proprietario', '5555666677778888', 'false');
 INSERT INTO  smu.SpeseProgrammate(Descrizione, Periodicita, DataScadenza, DataFineRinnovo, Importo, Destinatario, NumeroCarta, Stato) VALUES('Abbonamento Palestra', '1 anno', '2024-03-27', '2025-03-28', 40.00, 'Palestra XYZ', '9876543210987654', 'false');
 INSERT INTO  smu.SpeseProgrammate(Descrizione, Periodicita, DataScadenza, DataFineRinnovo, Importo, Destinatario, NumeroCarta, Stato) VALUES('Fornitura Gas', '3 mesi', '2024-04-15', '2025-04-15', 120.00, 'GasCo', '1515151665151515', 'false');
