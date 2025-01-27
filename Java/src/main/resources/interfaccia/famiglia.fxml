@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleMouseClick" prefHeight="600.0" prefWidth="792.0" stylesheets="@stileMenu.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smu.Controller.FamigliaController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleMouseClick" prefHeight="600.0" prefWidth="792.0" stylesheets="@stileMenu.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smu.Controller.FamigliaController">
     <children>
         <BorderPane prefHeight="600.0" prefWidth="792.0" stylesheets="@stileMenu.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <center>
@@ -34,9 +34,9 @@
                             </children>
                         </Pane>
 
-                        <HBox fx:id="comboBoxContainer" prefHeight="47.0" prefWidth="337.0">
+                        <HBox fx:id="comboBoxContainer" prefHeight="47.0" prefWidth="679.0">
                             <children>
-                                <Button fx:id="selectFamilyButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="128.0" style="-fx-background-color: #008080;" stylesheets="@stileMenu.css" text="Seleziona Famiglia">
+                                <Button fx:id="selectFamilyButton" mnemonicParsing="false"  prefHeight="30.0" prefWidth="128.0" style="-fx-background-color: #008080;" stylesheets="@stileMenu.css" text="Seleziona Famiglia">
                                     <HBox.margin>
                                         <Insets left="5.0" />
                                     </HBox.margin>
@@ -50,6 +50,13 @@
                                         <Insets left="2.0" right="2.0" />
                                     </HBox.margin>
                                 </ComboBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Button fx:id="newFamily" onAction="#newFamiglia" mnemonicParsing="false" text="aggiungi" />
+                              <Button fx:id="changeFamily" onAction="#changeFamiglia" mnemonicParsing="false" text="modifica" />
+                              <Button fx:id="deleteFamily" onAction="#deleteFamiglia" mnemonicParsing="false" text="elimina" />
+                           </children>
+                        </HBox>
                             </children>
                             <VBox.margin>
                                 <Insets right="250.0" top="5.0" />
@@ -64,7 +71,7 @@
                 </VBox>
             </center>
             <left>
-                <fx:include source="menu.fxml" />
+
             </left>
         </BorderPane>
     </children>

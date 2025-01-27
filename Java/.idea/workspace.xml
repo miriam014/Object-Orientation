@@ -5,9 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df4d01a2-e17b-4881-9bee-4a47bce15a26" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../Database/Database.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/Database.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/changeFamigliaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/deleteFamigliaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/newFamigliaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/changeFamiglia.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/deleteFamiglia.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/newFamiglia.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/SpeseProgrammateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/SpeseProgrammateController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/FamigliaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/FamigliaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/ReportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/ReportController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/famiglia.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/famiglia.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Progetto-OO-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/Progetto-OO-1.0-SNAPSHOT.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -19,10 +26,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="module-info" />
-        <option value="FxmlFile" />
         <option value="CSS File" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -156,7 +163,8 @@
       <workItem from="1737623314918" duration="1341000" />
       <workItem from="1737713157160" duration="1394000" />
       <workItem from="1737745256778" duration="548000" />
-      <workItem from="1737745817415" duration="4879000" />
+      <workItem from="1737745817415" duration="5924000" />
+      <workItem from="1737921865650" duration="3143000" />
     </task>
     <servers />
   </component>

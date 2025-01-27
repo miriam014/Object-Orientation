@@ -23,26 +23,16 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class ReportController {
-    @FXML
-    public Label LabelDati;
-    @FXML
-    private Label saldoIniziale;
-    @FXML
-    private Label saldoFinale;
-    @FXML
-    private Button selectButton;
-    @FXML
-    private ComboBox<String> cardComboBox;
-    @FXML
-    private ComboBox<String> monthComboBox; // ComboBox per i mesi
-    @FXML
-    private ComboBox<Integer> yearComboBox; // ComboBox per gli anni
-    @FXML
-    private HBox comboBoxContainer; // Contenitore delle ComboBox e del pulsante
-    @FXML
-    private BarChart<String, Number> statisticheEntrate;
-    @FXML
-    private BarChart<String, Number> statisticheUscite;
+    @FXML public Label LabelDati;
+    @FXML private Label saldoIniziale;
+    @FXML private Label saldoFinale;
+    @FXML private Button selectButton;
+    @FXML private ComboBox<String> cardComboBox;
+    @FXML private ComboBox<String> monthComboBox; // ComboBox per i mesi
+    @FXML private ComboBox<Integer> yearComboBox; // ComboBox per gli anni
+    @FXML private HBox comboBoxContainer; // Contenitore delle ComboBox e del pulsante
+    @FXML private BarChart<String, Number> statisticheEntrate;
+    @FXML private BarChart<String, Number> statisticheUscite;
 
 
 

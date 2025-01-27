@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="267.0" prefWidth="318.0" stylesheets="@stileGenerale.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smu.Controller.deleteFamigliaController">
+    <top>
+        <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="324.0" style="-fx-background-color: #008080;" BorderPane.alignment="CENTER">
+            <children>
+                <Label layoutX="14.0" layoutY="4.0" prefHeight="24.0" prefWidth="228.0" style="-fx-text-fill: #FFFFFF; -fx-font-size: 16px;" text="Modifica Spesa Programmata" textAlignment="CENTER" textFill="WHITE">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+    </top>
+    <center>
+        <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="232.0" prefWidth="273.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label style="-fx-text-fill: #006666;" text="Seleziona la spesa programmata da eliminare" />
+
+                <HBox alignment="CENTER" prefHeight="86.0" prefWidth="273.0" spacing="10.0">
+                    <children>
+                        <ComboBox fx:id="nomeFamiglia" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="160.0" />
+                    </children>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <VBox.margin>
+                        <Insets />
+                    </VBox.margin>
+                </HBox>
+
+                <VBox alignment="CENTER" prefHeight="52.0" prefWidth="255.0">
+                    <children>
+                        <Button fx:id="Conferma" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="33.0" prefWidth="81.0" style="-fx-border-color: transparent; -fx-background-color: #008080; -fx-background-radius: 15px;" text="Conferma" textFill="WHITE" />
+                    </children>
+                    <VBox.margin>
+                        <Insets top="30.0" />
+                    </VBox.margin>
+                </VBox>
+            </children>
+            <BorderPane.margin>
+                <Insets />
+            </BorderPane.margin>
+        </VBox>
+    </center>
+</BorderPane>
