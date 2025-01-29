@@ -213,6 +213,11 @@ DECLARE
     matched BOOLEAN := FALSE;       -- Variabile booleana per indicare se è stata trovata una corrispondenza, inizializzata a false
 BEGIN
 
+     -- Se NomeCategoria è già impostato, non fare nulla
+    IF NEW.NomeCategoria IS NOT NULL AND NEW.NomeCategoria <> '' THEN
+        RETURN NEW;
+    END IF;
+
     FOR nome_categoria IN
         SELECT NomeCategoria
         FROM smu.Categoria
@@ -238,7 +243,6 @@ BEGIN
         IF matched THEN
             EXIT;
         END IF;
-
     END LOOP;
 
     -- Se nessuna categoria è stata trovata, assegno la transazione alla categoria "Altro"
@@ -246,17 +250,12 @@ BEGIN
        NEW.NomeCategoria := 'Altro';
     END IF;
 
-    --aggiorno il nomecategoria della transazione
-    UPDATE smu.Transazione
-    SET NomeCategoria = NEW.NomeCategoria
-    WHERE IdTransazione = NEW.IdTransazione;
-
     RETURN NEW;  -- Restituisce la nuova riga con il campo NomeCategoria aggiornato
     END;
 $$ LANGUAGE plpgsql;
 
 CREATE TRIGGER InserisciCategoriaInTransazione
-    AFTER INSERT ON smu.Transazione
+    BEFORE INSERT ON smu.Transazione
     FOR EACH ROW EXECUTE FUNCTION smu.triggerCategorizzaTransazione();
 
 
@@ -476,11 +475,11 @@ INSERT INTO smu.Portafoglio(NomePortafoglio,IdFamiglia) VALUES('Casa', 1);
 INSERT INTO smu.Portafoglio(NomePortafoglio)VALUES('Vacanze');
 
 -- Categorie
-INSERT INTO smu.Categoria(NomeCategoria, ParoleChiavi) VALUES('Cibo e spesa', 'supermercato,supermarket,alimentari,discount,frutta,verdura,salumeria');
+INSERT INTO smu.Categoria(NomeCategoria, ParoleChiavi) VALUES('Cibo e spesa', 'spesa,supermercato,supermarket,alimentari,discount,frutta,verdura,salumeria');
 INSERT INTO smu.Categoria(NomeCategoria, ParoleChiavi) VALUES('Bar e ristoranti', 'ristorante,pizzeria,fastfood,bar,caffe');
 INSERT INTO smu.Categoria(NomeCategoria, ParoleChiavi) VALUES('Motori e Trasporti', 'assicurazione,trasporti,carburante,auto');
 INSERT INTO smu.Categoria(NomeCategoria, ParoleChiavi) VALUES('Shopping', 'abbigliamento,calzature,vestiti');
-INSERT INTO smu.Categoria(NomeCategoria, ParoleChiavi) VALUES('Salute', 'farmacia,sanitaria,benessere,comesi');
+INSERT INTO smu.Categoria(NomeCategoria, ParoleChiavi) VALUES('Salute', 'farmacia,sanitaria,benessere,cosmesi');
 INSERT INTO smu.Categoria(NomeCategoria, ParoleChiavi) VALUES('Bollette e Tasse', 'bollette,imposta');
 INSERT INTO smu.Categoria(NomeCategoria, ParoleChiavi) VALUES('Altro', '');
 

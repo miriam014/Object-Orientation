@@ -23,30 +23,18 @@ import java.util.List;
 
 public class HomepageController extends Controller {
 
-    @FXML
-    public VBox SaldoDisponibile;
-    @FXML
-    private Label balanceLabel; // Etichetta del saldo
-    @FXML
-    private Label cardNameLabel; // Etichetta del numero della carta
-    @FXML
-    private Label cardNumberLabel; // Etichetta del nome della carta
-    @FXML
-    private Label cardTypeLabel; // Etichetta per il tipo di carta
-    @FXML
-    private Label expiryDateLabel; // Etichetta per la data di scadenza
-    @FXML
-    private Button previousCardButton; // Pulsante per la carta precedente
-    @FXML
-    private Button nextCardButton; // Pulsante per la prossima carta
-    @FXML
-    private Button statisticaButton; // Pulsante per passare al report
-    @FXML
-    private Pane headerPane;
-    @FXML
-    public VBox DatiCarta;
-    @FXML
-    private Button addTransactionButton;
+    @FXML public VBox SaldoDisponibile;
+    @FXML private Label balanceLabel; // Etichetta del saldo
+    @FXML private Label cardNameLabel; // Etichetta del numero della carta
+    @FXML private Label cardNumberLabel; // Etichetta del nome della carta
+    @FXML private Label cardTypeLabel; // Etichetta per il tipo di carta
+    @FXML private Label expiryDateLabel; // Etichetta per la data di scadenza
+    @FXML private Button previousCardButton; // Pulsante per la carta precedente
+    @FXML private Button nextCardButton; // Pulsante per la prossima carta
+    @FXML private Button statisticaButton; // Pulsante per passare al report
+    @FXML private Pane headerPane;
+    @FXML public VBox DatiCarta;
+    @FXML private Button addTransactionButton;
 
 
     @FXML public TableView<Transazione> transactionsTableView;
@@ -58,7 +46,7 @@ public class HomepageController extends Controller {
     @FXML private TableColumn<Transazione, String> categoriaColumn;
 
 
-    private List<Carta> carteUtente; // Lista delle carte dell'utente
+    private List<Carta> carteUtente;
     private int currentCardIndex; // Indice della carta corrente che si sta visualizzando
 
     @FXML
@@ -156,7 +144,9 @@ public class HomepageController extends Controller {
     @FXML
     public void insertTransaction() {
         showDialog("/interfaccia/addTransaction.fxml", addTransactionButton, "Nuova Transazione");
+        loadTransactions(carteUtente.get(currentCardIndex).getNumeroCarta());
     }
+
 
     @FXML
     private void scenaReport() {

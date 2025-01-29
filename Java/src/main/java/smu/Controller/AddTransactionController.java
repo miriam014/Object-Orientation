@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.stage.Stage;
 import smu.DAO_Implementation.CategoriaDAOimp;
 import smu.DAO_Implementation.TransazioneDAOimp;
 import smu.DTO.Carta;
@@ -14,15 +15,16 @@ import smu.Sessione;
 import java.sql.SQLException;
 import java.util.List;
 
-public class AddTransactionController extends HomepageController{
-    @FXML ComboBox<String> tipoTransazione;
-    @FXML TextField nuovoImporto;
-    @FXML ComboBox<String> valuta;
-    @FXML DatePicker nuovaData;
-    @FXML ComboBox<String> nuovaCategoria;
-    @FXML TextField nuovaCausale;
-    @FXML TextField nuovoDaA;
-    @FXML ComboBox<String> numeroCarta;
+public class AddTransactionController extends HomepageController {
+    @FXML private Button confermaButton;
+    @FXML private ComboBox<String> tipoTransazione;
+    @FXML private TextField nuovoImporto;
+    @FXML private ComboBox<String> valuta;
+    @FXML private DatePicker nuovaData;
+    @FXML private ComboBox<String> nuovaCategoria;
+    @FXML private TextField nuovaCausale;
+    @FXML private TextField nuovoDaA;
+    @FXML private ComboBox<String> numeroCarta;
 
     @FXML
     public void initialize() {
@@ -72,38 +74,18 @@ public class AddTransactionController extends HomepageController{
         try {
             float amount = Float.parseFloat(nuovoImporto.getText());
             String selectedValuta = (String)valuta.getValue();
-
             float importo = convertToEuro(amount, selectedValuta);
-            // Crea l'oggetto Transazione utilizzando il costruttore completo
-            Transazione nuovaTransazione = new Transazione(
-                    null, // IDTransazione (generato dal database)
-                    null, // CRO (generato dal database)
-                    importo, // Importo
-                    java.sql.Date.valueOf(nuovaData.getValue()), // Data
-                    java.sql.Time.valueOf(java.time.LocalTime.now()), // Ora corrente
-                    nuovaCausale.getText(), // Causale
-                    (String) tipoTransazione.getValue(), // Tipo Transazione
-                    mittente, //mittente (solo per entrate)
-                    destinatario, //destinatario (solo per uscite)
-                    (String) numeroCarta.getValue(), // Numero Carta
-                    (String) nuovaCategoria.getValue() // Categoria
-            );
 
-            // Inserimento nel database
-            System.out.println("tentativo di inserire la transazione: " +nuovaTransazione);
+
+            Transazione nuovaTransazione = new Transazione(null, null, importo, java.sql.Date.valueOf(nuovaData.getValue()), java.sql.Time.valueOf(java.time.LocalTime.now()),
+                    nuovaCausale.getText(), (String) tipoTransazione.getValue(), mittente, destinatario, (String) numeroCarta.getValue(), (String) nuovaCategoria.getValue()
+            );
             TransazioneDAOimp transazioneDAO = new TransazioneDAOimp();
             boolean success = transazioneDAO.insert(nuovaTransazione);
-            System.out.println("inserimento riuscito: " + success);
-
             if (success) {
-                closePopup(event); // Chiudi il popup
-                if(transactionsTableView != null) {
-                ObservableList<Transazione> currentItems = transactionsTableView.getItems();
-                currentItems.add(nuovaTransazione);
-                transactionsTableView.setItems(currentItems);// Aggiorna la tabella nella homepage
-                } else {
-                    System.out.println("transactionsTableView non è stato inizializzato correttamente");
-                }
+                Stage stage = (Stage) confermaButton.getScene().getWindow();
+                stage.close();
+                System.out.println("inserimento riuscito: ");
             } else {
                 showError("Errore durante l'inserimento della transazione.");
             }
@@ -112,30 +94,24 @@ public class AddTransactionController extends HomepageController{
         } catch (SQLException e) {
             showError("Errore: uno dei dati inseriti non è corretto.");
         } catch (Exception e) {
-            showError("Errore sconosciuto: " + e.getMessage());
             e.printStackTrace();
         }
     }
 
     private boolean validateInputs() {
-        if (tipoTransazione.getValue() == null ||
-                nuovoImporto.getText().isEmpty() ||
-                nuovaData.getValue() == null ||
-                nuovaCausale.getText().isEmpty() ||
-                numeroCarta.getValue() == null ||
-                nuovaCategoria.getValue() == null) {
+        if (tipoTransazione.getValue() == null || nuovoImporto.getText().isEmpty() || nuovaData.getValue() == null ||
+                nuovaCausale.getText().isEmpty() || numeroCarta.getValue() == null) {
             showError("Tutti i campi obbligatori devono essere compilati.");
             return false;
         }
 
-        //controlla che l'importo sia un numero validot
-
+        //controlla che l'importo sia un numero valido
         try {
-        Float.parseFloat(nuovoImporto.getText());
-    } catch (NumberFormatException e) {
-        showError("L'importo deve essere un numero valido.");
-        return false;
-    }
+            Float.parseFloat(nuovoImporto.getText());
+        } catch (NumberFormatException e) {
+            showError("L'importo deve essere un numero valido.");
+            return false;
+        }
 
     return true;
 }
@@ -146,10 +122,6 @@ private float convertToEuro (float importoInEuro, String valutaCorrente) {
             return Math.round(result * 100.0f) / 100.0f; // Arrotondamento a 2 cifre decimali
         }
         return importoInEuro;
-}
-
-private void closePopup(ActionEvent event) {
-    ((Button) event.getSource()).getScene().getWindow().hide();
 }
 
 }

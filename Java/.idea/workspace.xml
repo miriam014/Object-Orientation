@@ -5,17 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df4d01a2-e17b-4881-9bee-4a47bce15a26" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/changeFamigliaController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/deleteFamigliaController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/newFamigliaController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/changeFamiglia.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/deleteFamiglia.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/newFamiglia.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/FamigliaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/FamigliaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/ReportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/ReportController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/famiglia.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/famiglia.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/AddTransactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/AddTransactionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/HomepageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/HomepageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Progetto-OO-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/Progetto-OO-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/smu/Controller/HomepageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/smu/Controller/HomepageController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +84,22 @@
     <configuration name="Progetto-OO " type="MavenRunConfiguration" factoryName="Maven">
       <MavenSettings>
         <option name="myGeneralSettings" />
-        <option name="myRunnerSettings" />
+        <option name="myRunnerSettings">
+          <MavenRunnerSettings>
+            <option name="delegateBuildToMaven" value="false" />
+            <option name="environmentProperties">
+              <map />
+            </option>
+            <option name="jreName" value="#USE_PROJECT_JDK" />
+            <option name="mavenProperties">
+              <map />
+            </option>
+            <option name="passParentEnv" value="true" />
+            <option name="runMavenInBackground" value="true" />
+            <option name="skipTests" value="false" />
+            <option name="vmOptions" value="--module-path $PROJECT_DIR$/../../../javafx-sdk-23/lib --add-modules javafx.controls,javafx.fxml " />
+          </MavenRunnerSettings>
+        </option>
         <option name="myRunnerParameters">
           <MavenRunnerParameters>
             <option name="cmdOptions" />
@@ -164,7 +173,8 @@
       <workItem from="1737713157160" duration="1394000" />
       <workItem from="1737745256778" duration="548000" />
       <workItem from="1737745817415" duration="5924000" />
-      <workItem from="1737921865650" duration="3143000" />
+      <workItem from="1737921865650" duration="3447000" />
+      <workItem from="1738076582398" duration="7127000" />
     </task>
     <servers />
   </component>
