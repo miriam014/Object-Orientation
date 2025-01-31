@@ -6,10 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="df4d01a2-e17b-4881-9bee-4a47bce15a26" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/AddTransactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/AddTransactionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/HomepageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/HomepageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Control/HomepageControl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Control/LoginControl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Control/MenuControl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/ReportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/ReportController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Progetto-OO-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/Progetto-OO-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/smu/Controller/HomepageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/smu/Controller/HomepageController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,6 +177,7 @@
       <workItem from="1737745817415" duration="5924000" />
       <workItem from="1737921865650" duration="3447000" />
       <workItem from="1738076582398" duration="7127000" />
+      <workItem from="1738331626094" duration="3877000" />
     </task>
     <servers />
   </component>

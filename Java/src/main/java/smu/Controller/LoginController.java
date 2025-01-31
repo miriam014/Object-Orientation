@@ -6,7 +6,8 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-import smu.Control.LoginControl;
+import smu.DAO.UtenteDAO;
+import smu.DAO_Implementation.UtenteDAOimp;
 import smu.DTO.Utente; // Importa la classe Utente
 import smu.Sessione; // Importa la classe Sessione
 import smu.Main;
@@ -16,19 +17,15 @@ import java.sql.SQLException;
 
 public class LoginController {
 
-    @FXML
-    private PasswordField passwordField;
+    @FXML private PasswordField passwordField;
+    @FXML private TextField usernameField;
 
-    @FXML
-    private TextField usernameField;
-
-    private LoginControl model;
+    private UtenteDAO userDAO;
 
     // Metodo di inizializzazione chiamato automaticamente da JavaFX
     @FXML
     public void initialize() {
-        // Inizializza l'oggetto model
-        model = new LoginControl();
+        userDAO = new UtenteDAOimp(); // Inizializza il DAO
     }
 
     @FXML
@@ -43,7 +40,7 @@ public class LoginController {
 
         try {
             // Controlla se l'utente è autenticato
-            Utente utente = model.authenticateUser(username, password);
+            Utente utente = authenticateUser(username, password);
 
             if (utente ==null) {
                 showAlert(AlertType.ERROR, "Errore", "Username e/o password errati.");
@@ -56,6 +53,10 @@ public class LoginController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private Utente authenticateUser(String username, String password) throws SQLException {
+        return userDAO.checkCredentials(username, password);
     }
 
     private void showAlert(AlertType alertType, String title, String message) {

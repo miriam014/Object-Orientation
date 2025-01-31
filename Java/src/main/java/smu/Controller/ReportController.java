@@ -73,8 +73,9 @@ public class ReportController {
         monthComboBox.setValue(months.get(Calendar.getInstance().get(Calendar.MONTH)));
         yearComboBox.setValue(currentYear);
 
-        LabelDati.setText(cardComboBox.getValue() + "\n" + monthComboBox.getValue() + " " + yearComboBox.getValue());
+        aggiornaLabel();
     }
+
 
     private void addComboBoxListeners() {
         // listener per aggiornare il Label e i grafici in tempo reale
@@ -135,8 +136,15 @@ public class ReportController {
         float massimo = importi.isEmpty() ? 0 : calcolaMassimo(importi);
         float minimo = importi.isEmpty() ? 0 : calcolaMinimo(importi);
         float medio = importi.isEmpty() ? 0 : calcolaMedio(importi);
-
         float valoreMinimoColonne = 0.15F;
+
+
+        // Se il tipo di transazione è "Uscita", trasforma i valori in positivi per mostrali correttamente nel grafico
+        if (tipoTransazione.equals("Uscita")) {
+            massimo = Math.abs(massimo);
+            minimo = Math.abs(minimo);
+            medio = Math.abs(medio);
+        }
 
         XYChart.Series<String, Number> serie = new XYChart.Series<>();
         serie.setName(tipoTransazione);
@@ -174,7 +182,6 @@ public class ReportController {
                 massimo = importo;
             }
         }
-        System.out.println("Massimo: " + massimo);
         return massimo;
     }
 
@@ -186,7 +193,6 @@ public class ReportController {
                 minimo = importo;
             }
         }
-        System.out.println("Minimo: " + minimo);
         return minimo;
     }
 
@@ -195,7 +201,6 @@ public class ReportController {
         for (Float importo : importi) {
             somma += importo;
         }
-        System.out.println("Somma: " + somma);
         return somma / importi.size();
     }
 
@@ -219,20 +224,18 @@ public class ReportController {
             LocalDate inizioMese = LocalDate.of(anno, meseSelezionato, 1);
 
             // Calcolare il saldo iniziale (sottraendo tutte le transazioni effettuate dopo l'inizio del mese)
-            float saldoInizialeVal = cartaSelezionata.getSaldo(); // Saldo iniziale della carta
+            float saldoInizialeVal = cartaSelezionata.getSaldo();
             float saldoFinaleVal = cartaSelezionata.getSaldo();
 
             for (Transazione transazione : tutteTransazioni) {
                 LocalDate dataTransazione = transazione.getData().toLocalDate();
-                float importo = transazione.getImporto();
+                float importo =Math.abs(transazione.getImporto());//la funziona math.abs restituisce il valore assoluto di un numero andando ad eliminare il segno
                 String tipoTransazione = transazione.getTipoTransazione(); // Usa getTipo() se il tipo è nel campo Tipo
 
                 if (dataTransazione.isAfter(inizioMese)) {
                     saldoInizialeVal += tipoTransazione.equals("Entrata") ? -importo : importo;
-                    saldoFinaleVal += tipoTransazione.equals("Entrata") ? -importo : importo;
-                }
+                } //se la transazione è stata effettuata nel mese ed annp selezionato, aggiorna il saldo finale
                 if (dataTransazione.getMonthValue() == meseSelezionato && dataTransazione.getYear() == anno) {
-                    //se la transazione è stata effettuata nel mese ed annp selezionato, aggiorna il saldo finale
                     saldoFinaleVal += tipoTransazione.equals("Entrata") ? importo : -importo;
                 }
             }
@@ -250,7 +253,7 @@ public class ReportController {
     // Metodo per aggiornare i Label quando il mese o l'anno vengono modificati
     //non mi serve fare il controllo per vedere se sono nulli perchè mai lo possono essere
     private void aggiornaLabel() {
-        LabelDati.setText(cardComboBox.getValue() + "\n" + monthComboBox.getValue() + " " + yearComboBox.getValue());
+        LabelDati.setText(cardComboBox.getValue() + " " + monthComboBox.getValue() + " " + yearComboBox.getValue());
     }
 
 
