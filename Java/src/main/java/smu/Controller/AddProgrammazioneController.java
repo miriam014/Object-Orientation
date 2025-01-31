@@ -12,11 +12,10 @@ import smu.DTO.SpeseProgrammate;
 import smu.Sessione;
 
 import java.sql.Date;
-import java.awt.*;
 import java.time.LocalDate;
 import java.util.List;
 
-public class newProgrammazioneController extends Controller {
+public class AddProgrammazioneController extends SpeseProgrammateController {
 
     @FXML private ComboBox<String> CartaUtilizzata;
     @FXML private ComboBox<String> Frequenza;

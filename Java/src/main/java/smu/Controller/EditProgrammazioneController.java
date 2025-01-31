@@ -14,9 +14,8 @@ import smu.Sessione;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Locale;
 
-public class changeProgrammazioneController extends Controller {
+public class EditProgrammazioneController extends SpeseProgrammateController {
 
     @FXML private ComboBox<String> nomeProgrammazione;
     @FXML private ComboBox<String> CartaUtilizzata;
@@ -31,11 +30,15 @@ public class changeProgrammazioneController extends Controller {
     private List<SpeseProgrammate> ListaSpese;
 
     @FXML
-    public void initialize() throws SQLException {
+    public void initialize()  {
         speseProgrammateDAO = new SpeseProgrammateDAOimp();
-        String username = Sessione.getInstance().getUtenteLoggato().getUsername();
-        ListaSpese = speseProgrammateDAO.getByUsername(username);
 
+        try {
+            String username = Sessione.getInstance().getUtenteLoggato().getUsername();
+            ListaSpese = speseProgrammateDAO.getByUsername(username);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         rimepiComboBox(ListaSpese);
     }
 

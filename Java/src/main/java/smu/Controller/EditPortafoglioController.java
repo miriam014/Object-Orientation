@@ -1,23 +1,16 @@
 package smu.Controller;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import smu.DAO.AssociazioneCartaPortafoglioDAO;
 import smu.DAO.PortafoglioDAO;
 import smu.DAO_Implementation.PortafoglioDAOimp;
-import smu.DTO.AssociazioneCartaPortafoglio;
 import smu.DTO.Portafoglio;
 
 import java.sql.SQLException;
 
 
 
-public class EditWalletController extends PortafoglioController {
+public class EditPortafoglioController extends PortafoglioController {
 
     private String selectedWalletId;
     private String selectedFamilyId;

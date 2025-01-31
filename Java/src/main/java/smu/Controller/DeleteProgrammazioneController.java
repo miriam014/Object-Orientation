@@ -8,29 +8,33 @@ import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 import smu.DAO.SpeseProgrammateDAO;
 import smu.DAO_Implementation.SpeseProgrammateDAOimp;
-import smu.DTO.Carta;
 import smu.DTO.SpeseProgrammate;
 import smu.Sessione;
 
 import java.sql.SQLException;
 import java.util.List;
 
-public class deleteProgrammazioneController extends Controller {
+public class DeleteProgrammazioneController extends SpeseProgrammateController {
     @FXML private Button Conferma;
     @FXML private ComboBox<String> nomeProgrammazione;
     private SpeseProgrammateDAO speseProgrammateDAO;
 
 
     @FXML
-    public void initialize() throws SQLException {
+    public void initialize(){
         speseProgrammateDAO = new SpeseProgrammateDAOimp();
-        String username = Sessione.getInstance().getUtenteLoggato().getUsername();
-        List<SpeseProgrammate> ListaSpese = speseProgrammateDAO.getByUsername(username);
+        try{
+            String username = Sessione.getInstance().getUtenteLoggato().getUsername();
+            List<SpeseProgrammate> ListaSpese = speseProgrammateDAO.getByUsername(username);
 
-        for (SpeseProgrammate spesa : ListaSpese) {
-            nomeProgrammazione.getItems().add(spesa.getDescrizione());
+            for (SpeseProgrammate spesa : ListaSpese) {
+             nomeProgrammazione.getItems().add(spesa.getDescrizione());
+            }
+        }catch (SQLException e) {
+            e.printStackTrace();
         }
     }
+
 
     public void deleteProgrammazione(ActionEvent actionEvent) {
         String nomeProgrammazioneValue = (String) nomeProgrammazione.getValue();

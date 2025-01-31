@@ -8,7 +8,7 @@ import smu.DTO.Portafoglio;
 
 import java.sql.SQLException;
 
-public class DeleteWalletController extends PortafoglioController {
+public class DeletePortafoglioController extends PortafoglioController {
 
     private String selectedWalletId;
 
