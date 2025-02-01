@@ -1,12 +1,10 @@
 package smu.Controller;
 
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import smu.DAO.AssociazioneCartaPortafoglioDAO;
 import smu.DAO_Implementation.AssociazioneCartaPortafoglioDAOimp;
 import smu.DAO_Implementation.TransazioneDAOimp;
@@ -17,8 +15,6 @@ import smu.DTO.Transazione;
 import smu.Sessione;
 import javafx.scene.control.TableView;
 
-import java.io.IOException;
-import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,8 +27,6 @@ public class PortafoglioController extends Controller {
     @FXML private Label balanceLabel;
     @FXML protected Label walletNameLabel;
     @FXML private Label currentWalletID;
-    @FXML private Label currentFamilyID;
-    @FXML private Label IdFamigliaLabel;
     @FXML private Label currentCardNumber;
     @FXML private TableView<Transazione> transactionsTableView;
 
@@ -42,7 +36,7 @@ public class PortafoglioController extends Controller {
     @FXML protected ComboBox<String> NumeroCarta;
     @FXML protected Button Conferma;
 
-    protected List<Portafoglio> portafogliUtente;
+    protected List<Portafoglio> personalWallets;
     private int currentWalletIndex;
 
 
@@ -55,21 +49,19 @@ public class PortafoglioController extends Controller {
 
     protected void loadUserWallet() {
         try {
-            portafogliUtente = Sessione.getInstance().getPortafogliUtente();
-            if (portafogliUtente == null || portafogliUtente.isEmpty()) {
+            personalWallets = Sessione.getInstance().getPersonalWallets();
+            if (personalWallets == null || personalWallets.isEmpty()) {
                 System.out.println("Nessun portafoglio trovato per l'utente."); // Debug
             } else {
                 List<String> walletsID = new ArrayList<>();
-
-                System.out.println("Portafogli trovati: " + portafogliUtente.size());
+                System.out.println("Portafogli trovati: " + personalWallets.size());
 
                 // Aggiungi gli ID delle famiglie alla lista
-                for (Portafoglio portafoglio : portafogliUtente) {
+                for (Portafoglio portafoglio : personalWallets) {
                     walletsID.add(portafoglio.getIdPortafoglio());
                 }
                 if(IdPortafoglio != null)
                     IdPortafoglio.getItems().setAll(walletsID);
-
             }
             currentWalletIndex = 0;
         } catch (Exception e) {
@@ -77,30 +69,6 @@ public class PortafoglioController extends Controller {
         }
     }
 
-    @FXML
-    protected void loadFamilyID() {
-        try {
-            // Recupera la lista delle famiglie
-            List<Famiglia> famiglieUtente = Sessione.getInstance().getFamilyByUsername();
-
-            if (famiglieUtente == null || famiglieUtente.isEmpty()) {
-                System.out.println("Nessuna famiglia trovata per l'utente."); // Debug
-            } else {
-                // Crea una lista per contenere gli ID delle famiglie
-                List<String> familyIds = new ArrayList<>();
-
-                // Aggiungi gli ID delle famiglie alla lista
-                for (Famiglia famiglia : famiglieUtente) {
-                    familyIds.add(famiglia.getIdFamiglia());
-                }
-
-                // Imposta gli ID delle famiglie nella ComboBox
-                IdFamiglia.getItems().setAll(familyIds);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
     protected void loadUserCards(){
         try {
@@ -120,25 +88,19 @@ public class PortafoglioController extends Controller {
     }
 
     protected void showWallet() throws SQLException {
-        IdFamigliaLabel.setVisible(true);
-        if (portafogliUtente != null && !portafogliUtente.isEmpty()) {
-            if (currentWalletIndex >= portafogliUtente.size()) {
+        if (personalWallets != null && !personalWallets.isEmpty()) {
+            if (currentWalletIndex >= personalWallets.size()) {
                 System.out.println("Indice del portafoglio supera la dimensione della lista.");
                 return;
             }
 
-            Portafoglio portafoglio = portafogliUtente.get(currentWalletIndex);
-            currentWalletID.setText(portafogliUtente.get(currentWalletIndex).getIdPortafoglio());
+            Portafoglio portafoglio = personalWallets.get(currentWalletIndex);
+            currentWalletID.setText(personalWallets.get(currentWalletIndex).getIdPortafoglio());
             balanceLabel.setText(portafoglio.getSaldo() != 0 ? String.valueOf(portafoglio.getSaldo()) : "0.00");
             walletNameLabel.setText(portafoglio.getNomePortafoglio());
 
-            if((portafoglio.getIdFamiglia()) == null) {
-                IdFamigliaLabel.setVisible(false);
-            }
-            currentFamilyID.setText(portafoglio.getIdFamiglia());
-
             AssociazioneCartaPortafoglioDAO associazione = new AssociazioneCartaPortafoglioDAOimp();
-            String numeroCarta = associazione.getCardNumberByID(portafogliUtente.get(currentWalletIndex).getIdPortafoglio());
+            String numeroCarta = associazione.getCardNumberByID(personalWallets.get(currentWalletIndex).getIdPortafoglio());
             currentCardNumber.setText(numeroCarta);
 
             loadTransactions(portafoglio.getIdPortafoglio());
@@ -165,7 +127,7 @@ public class PortafoglioController extends Controller {
     private void handleNextWallet() throws SQLException {
         System.out.println("Next wallet button clicked!"); // Verifica che questo venga eseguito
         currentWalletIndex++; // Incrementa l'indice della carta
-        if (currentWalletIndex >= portafogliUtente.size()) { // Se l'indice supera il numero di carte
+        if (currentWalletIndex >= personalWallets.size()) { // Se l'indice supera il numero di carte
             currentWalletIndex = 0; // Torna alla prima carta
         }
         showWallet();
@@ -175,11 +137,11 @@ public class PortafoglioController extends Controller {
     private void handlePreviousWallet() throws SQLException {
         System.out.println("Previous wallet button clicked!");
         if (currentWalletIndex == 0)
-            currentWalletIndex = portafogliUtente.size() -1;
+            currentWalletIndex = personalWallets.size() -1;
         else
             currentWalletIndex--;
 
-        currentWalletID.setText(portafogliUtente.get(currentWalletIndex).getIdPortafoglio());
+        currentWalletID.setText(personalWallets.get(currentWalletIndex).getIdPortafoglio());
         showWallet();
     }
 
@@ -190,6 +152,7 @@ public class PortafoglioController extends Controller {
         handlePreviousWallet();
         handleNextWallet();
         loadUserWallet();
+        initializeTableView();
     }
 
     @FXML
@@ -198,12 +161,14 @@ public class PortafoglioController extends Controller {
         handlePreviousWallet();
         handleNextWallet();
         loadUserWallet();
+        initializeTableView();
     }
 
     @FXML
     public void deleteWallet() {
         showDialog("/interfaccia/deleteWallet.fxml", deleteWalletButton, "Elimina Portafoglio");
         loadUserWallet();
+        initializeTableView();
     }
 
 }

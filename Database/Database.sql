@@ -122,8 +122,8 @@ CREATE TABLE smu.Portafoglio(
     IdFamiglia      INTEGER,
 
     CONSTRAINT PK_Portafoglio PRIMARY KEY (IdPortafoglio),
-    CONSTRAINT FK_Famiglia FOREIGN KEY (IdFamiglia) REFERENCES smu.Famiglia (IdFamiglia) ON DELETE CASCADE
-
+    CONSTRAINT FK_Famiglia FOREIGN KEY (IdFamiglia) REFERENCES smu.Famiglia (IdFamiglia) ON DELETE CASCADE,
+    CONSTRAINT UK_Portafoglio_Nome_Famiglia UNIQUE (NomePortafoglio, IdFamiglia)
 );
 
 
@@ -639,10 +639,10 @@ INSERT INTO smu.Transazione(Importo, Data, Ora, Causale, Tipo, Mittente, Destina
 INSERT INTO smu.Portafoglio(NomePortafoglio, IdFamiglia) VALUES('Viaggi', 1);
 INSERT INTO smu.Portafoglio(NomePortafoglio, IdFamiglia) VALUES('Casa', 1);
 INSERT INTO smu.Portafoglio(NomePortafoglio, IdFamiglia) VALUES('Cura e salute', 1);
-INSERT INTO smu.Portafoglio(NomePortafoglio, IdFamiglia) VALUES('Viaggio Lauree', 3);
+INSERT INTO smu.Portafoglio(NomePortafoglio, IdFamiglia) VALUES('Viaggio Laurea', 3);
 INSERT INTO smu.Portafoglio(NomePortafoglio, IdFamiglia) VALUES('Casa coinquiline', 3);
 INSERT INTO smu.Portafoglio(NomePortafoglio) VALUES('Spese Mensili');
-INSERT INTO smu.Portafoglio(NomePortafoglio)VALUES('Vacanze');
+INSERT INTO smu.Portafoglio(NomePortafoglio) VALUES('Vacanze');
 
 
 -- Associazione portafoglio e carta

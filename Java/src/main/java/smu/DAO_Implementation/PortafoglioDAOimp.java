@@ -91,13 +91,17 @@ public class PortafoglioDAOimp implements PortafoglioDAO {
     }
 
     @Override
-    public List<Portafoglio> getByUsername(String username) throws SQLException {
+    public List<Portafoglio> getPersonalByUsername(String username) throws SQLException {
         Connection connection = Database.getConnection();
-        List<Portafoglio> wallets = new ArrayList<>();
+        List<Portafoglio> personalWallets = new ArrayList<>();
 
-        String sql = "SELECT * FROM smu.Portafoglio AS P JOIN (smu.AssociazioneCartaPortafoglio ACP NATURAL JOIN smu.Carta AS C) " +
-                "ON P.IdPortafoglio = ACP.IdPortafoglio JOIN (smu.ContoCorrente AS CC JOIN smu.Utente AS U ON CC.Username = U.Username) " +
-                "ON CC.NumeroConto = C.NumeroConto WHERE U.Username = ?;";
+        String sql = "SELECT DISTINCT P.IdPortafoglio, P.NomePortafoglio, P.Saldo, P.IdFamiglia " +
+                "FROM smu.Portafoglio AS P " +
+                "LEFT JOIN smu.AssociazioneCartaPortafoglio AS ACP ON P.IdPortafoglio = ACP.IdPortafoglio " +
+                "LEFT JOIN smu.Carta AS C ON ACP.NumeroCarta = C.NumeroCarta " +
+                "LEFT JOIN smu.ContoCorrente AS CC ON C.NumeroConto = CC.NumeroConto " +
+                "LEFT JOIN smu.Utente AS U ON CC.Username = U.Username " +
+                "WHERE (U.Username = ? OR P.IdFamiglia IS NULL) AND P.IdFamiglia IS NULL;"; // Filtra per IdFamiglia NULL
 
         PreparedStatement ps = connection.prepareStatement(sql);
         ps.setString(1, username);
@@ -108,14 +112,46 @@ public class PortafoglioDAOimp implements PortafoglioDAO {
                     rs.getString("NomePortafoglio"),
                     rs.getFloat("Saldo"),
                     rs.getString("IdFamiglia"));
-            wallets.add(wallet);
+            personalWallets.add(wallet);
         }
         rs.close();
         ps.close();
-        System.out.println("Numero totale di portafogli trovati: " + wallets.size());
-        return wallets;
+        System.out.println("Numero totale di portafogli personali trovati: " + personalWallets.size());
+        return personalWallets;
     }
 
+    @Override
+    public List<Portafoglio> getFamiliarByUsername(String username) throws SQLException {
+        Connection connection = Database.getConnection();
+        List<Portafoglio> familiarWallets = new ArrayList<>();
+
+        String sql =   "SELECT DISTINCT P.IdPortafoglio, P.NomePortafoglio, P.Saldo, P.IdFamiglia " +
+                "FROM smu.Portafoglio AS P " +
+                "JOIN smu.Famiglia AS F ON P.IdFamiglia = F.IdFamiglia " +
+                "JOIN smu.UtentiInFamiglie AS UF ON F.IdFamiglia = UF.IdFamiglia " +
+                "WHERE UF.NomeUtente = ? AND P.IdFamiglia IS NOT NULL;";  // Filtra per IdFamiglia non NULL
+
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ps.setString(1, username);
+
+        ResultSet rs = ps.executeQuery();
+        while(rs.next()) {
+            Portafoglio wallet = new Portafoglio(rs.getString("IdPortafoglio"),
+                    rs.getString("NomePortafoglio"),
+                    rs.getFloat("Saldo"),
+                    rs.getString("IdFamiglia"));
+            familiarWallets.add(wallet);
+        }
+        rs.close();
+        ps.close();
+        System.out.println("Numero totale di portafogli familiari trovati: " + familiarWallets.size());
+        for (Portafoglio wallet : familiarWallets) {
+            System.out.println("Portafoglio familiare trovato -> ID: " + wallet.getIdPortafoglio() + ", Nome: " + wallet.getNomePortafoglio());
+        }
+        return familiarWallets;
+    }
+
+    @Override
     public String getCardNumberByWalletID(String walletID) throws SQLException{
         Connection connection = Database.getConnection();
         String cardNumber = null;

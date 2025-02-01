@@ -20,13 +20,15 @@ public class Sessione {
     private static Sessione istanza;
     private Utente utenteLoggato;
     private final List<Carta> carte;// Lista delle carte dell'utente
-    private List<Portafoglio> portafogli;
+    private List<Portafoglio> personalWallets;
+    private List<Portafoglio> familiarWallets;
     private List<Famiglia> famiglie;
     private Carta cartaSelezionata; // Carta attualmente selezionata
 
     private Sessione() {
         carte = new ArrayList<>();// Inizializza la lista delle carte
-        portafogli = new ArrayList<>();
+        personalWallets = new ArrayList<>();
+        familiarWallets = new ArrayList<>();
     }
 
     // Metodo per ottenere l'istanza del Singleton
@@ -41,7 +43,8 @@ public class Sessione {
     public void setUtenteLoggato(Utente utente) {
         this.utenteLoggato = utente;
         loadUserCards();
-        loadUserWallets();
+        loadUserFamiliarWallets();
+        loadUserPersonalWallets();
         loadUserFamily();
     }
 
@@ -64,15 +67,28 @@ public class Sessione {
         }
     }
 
-    private void loadUserWallets() {
-        if (utenteLoggato != null) { // Verifica che l'utente sia loggato
-            PortafoglioDAO portafoglioDAO = new PortafoglioDAOimp(); // Crea un'istanza del DAO per le carte
+    private void loadUserPersonalWallets() {
+        if (utenteLoggato != null) {
+            PortafoglioDAO portafoglioDAO = new PortafoglioDAOimp();
             try {
-                List<Portafoglio> userWallets = portafoglioDAO.getByUsername(utenteLoggato.getUsername()); // Recupera le carte dell'utente
-                portafogli.clear(); // Svuota la lista delle carte
-                portafogli.addAll(userWallets); // Aggiunge le carte dell'utente alla lista
+                List<Portafoglio> personal = portafoglioDAO.getPersonalByUsername(utenteLoggato.getUsername());
+                this.personalWallets.clear();
+                this.personalWallets.addAll(personal);
             } catch (SQLException e) {
-                e.printStackTrace(); // Stampa lo stack trace in caso di errore
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void loadUserFamiliarWallets() {
+        if (utenteLoggato != null) {
+            PortafoglioDAO portafoglioDAO = new PortafoglioDAOimp();
+            try {
+                List<Portafoglio> familiar = portafoglioDAO.getFamiliarByUsername(utenteLoggato.getUsername());
+                familiarWallets.clear();
+                familiarWallets.addAll(familiar);
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
         }
     }
@@ -88,18 +104,13 @@ public class Sessione {
                 // Recupera le famiglie associate all'utente dal DAO
                 FamigliaDAO famigliaDAO = new FamigliaDAOimp();
                 List<Famiglia> userFamily = famigliaDAO.getByUsername(utenteLoggato.getUsername());
-
+                famiglie.clear();
                 // Controlla se ci sono famiglie associate e aggiorna la lista
                 if (userFamily == null || userFamily.isEmpty()) {
                     System.out.println("Nessuna famiglia trovata per l'utente.");
-                    famiglie.clear(); // Assicurati che la lista sia vuota
                 } else {
-                    famiglie.clear(); // Pulisci la lista esistente
                     famiglie.addAll(userFamily); // Aggiungi le nuove famiglie
                     System.out.println("Famiglie caricate: ");
-                    for (Famiglia famiglia : famiglie) {
-                        System.out.println("ID Famiglia: " + famiglia.getIdFamiglia());
-                    }
                 }
             } catch (SQLException e) {
                 System.out.println("Errore durante il caricamento delle famiglie: " + e.getMessage());
@@ -113,9 +124,15 @@ public class Sessione {
         return carte; // Restituisce la lista delle carte
     }
 
-    public List<Portafoglio> getPortafogliUtente(){
-        loadUserWallets();
-        return portafogli;
+    // Metodi pubblici per ottenere i personalWallets
+    public List<Portafoglio> getPersonalWallets() {
+        loadUserPersonalWallets();
+        return personalWallets;
+    }
+
+    public List<Portafoglio> getFamiliarWallets() {
+        loadUserFamiliarWallets();
+        return familiarWallets;
     }
 
     public List<Famiglia> getFamilyByUsername(){

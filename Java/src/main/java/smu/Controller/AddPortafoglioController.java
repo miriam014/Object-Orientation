@@ -11,16 +11,16 @@ import smu.DTO.Portafoglio;
 
 import java.sql.SQLException;
 
+import static java.sql.Types.NULL;
+
 public class AddPortafoglioController extends PortafoglioController{
 
-    private String selectedFamilyId;
     private String selectedCardNumber;
 
     @FXML
     public void initialize() {
         // Rimuovi il focus dalla TextField all'avvio
         nomePortafoglio.setFocusTraversable(false);
-        loadFamilyID();
         loadUserCards();
         Conferma.setDisable(true);
 
@@ -28,12 +28,6 @@ public class AddPortafoglioController extends PortafoglioController{
             checkFormValidity(); // Verifica la validità del modulo ogni volta che il nome cambia
         });
 
-        IdFamiglia.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null) {
-                selectedFamilyId = newValue; // Salva l'ID della famiglia selezionata
-                System.out.println("Famiglia selezionata: " + selectedFamilyId); // Debugging
-            }
-        });
 
         NumeroCarta.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
@@ -66,11 +60,11 @@ public class AddPortafoglioController extends PortafoglioController{
             return;
         }
 
-        System.out.println("Creazione del portafoglio '" + walletName + " associato alla carta "+ selectedCardNumber + "' per la famiglia con ID: " + selectedFamilyId);
+        System.out.println("Creazione del portafoglio '" + walletName + " associato alla carta "+ selectedCardNumber);
 
         PortafoglioDAO portafoglioDAO = new PortafoglioDAOimp();
         AssociazioneCartaPortafoglioDAO associazioneDAO = new AssociazioneCartaPortafoglioDAOimp();
-        Portafoglio wallet = new Portafoglio(walletName, selectedFamilyId);
+        Portafoglio wallet = new Portafoglio(walletName, null);
 
         portafoglioDAO.insert(wallet);
         AssociazioneCartaPortafoglio associazione = new AssociazioneCartaPortafoglio(Integer.parseInt(wallet.getIdPortafoglio()), selectedCardNumber);

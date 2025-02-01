@@ -13,19 +13,14 @@ import java.sql.SQLException;
 public class EditPortafoglioController extends PortafoglioController {
 
     private String selectedWalletId;
-    private String selectedFamilyId;
     private String selectedCardNumber;
 
     @FXML
     public void initialize() {
-        //TODO: quando modifico un portafoglio devo visualizzare i dati attuali
-        //TODO: uso il metodo getbyID, faccio una chiamata al dao per avere i dati, e li inserisco nelle textfield
-
         nomePortafoglio.setFocusTraversable(false);
         loadUserWallet();
 
         nomePortafoglio.setDisable(true);
-        IdFamiglia.setDisable(true);
         NumeroCarta.setDisable(true);
         Conferma.setDisable(true);
 
@@ -35,23 +30,15 @@ public class EditPortafoglioController extends PortafoglioController {
                 selectedWalletId = newValue; // Salva l'ID della famiglia selezionata
                 System.out.println("Portafoglio selezionato: " + selectedWalletId); // Debugging
                 loadWalletInfo();
-                loadFamilyID();
                 loadUserCards();
 
                 nomePortafoglio.setDisable(false);
-                IdFamiglia.setDisable(false);
                 NumeroCarta.setDisable(false);
                 Conferma.setDisable(false);
             }
 
         });
 
-        IdFamiglia.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null) {
-                selectedFamilyId = newValue; // Salva l'ID della famiglia selezionata
-                System.out.println("Famiglia selezionata: " + selectedFamilyId); // Debugging
-            }
-        });
 
         NumeroCarta.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
@@ -72,15 +59,15 @@ public class EditPortafoglioController extends PortafoglioController {
 
         String walletName = nomePortafoglio.getText();
 
-        if ((walletName == null || walletName.trim().isEmpty()) && (selectedFamilyId == null || selectedFamilyId.trim().isEmpty())) {
-            System.out.println("Modifica il Nome o l'ID Famiglia del portafoglio.");
+        if ((walletName == null || walletName.trim().isEmpty())) {
+            System.out.println("Modifica il Nome del portafoglio.");
             return;
         }
 
         System.out.println("Modifica del portafoglio con ID:" + selectedWalletId);
 
         PortafoglioDAO portafoglioDAO = new PortafoglioDAOimp();
-        Portafoglio wallet = new Portafoglio(selectedWalletId, walletName, selectedFamilyId);
+        Portafoglio wallet = new Portafoglio(selectedWalletId, walletName, null);
         portafoglioDAO.update(wallet);
 
         // Chiudi la finestra corrente
@@ -102,10 +89,8 @@ public class EditPortafoglioController extends PortafoglioController {
 
             if (wallet != null) {
                 nomePortafoglio.setText(wallet.getNomePortafoglio());
-                selectedFamilyId = wallet.getIdFamiglia();
                 selectedCardNumber = portafoglioDAO.getCardNumberByWalletID(selectedWalletId);
 
-                IdFamiglia.getSelectionModel().select(selectedFamilyId);
                 NumeroCarta.getSelectionModel().select(selectedCardNumber);
             }
 
