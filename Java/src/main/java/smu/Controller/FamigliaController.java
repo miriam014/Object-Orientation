@@ -1,20 +1,16 @@
 package smu.Controller;
 
 import javafx.fxml.FXML;
-import javafx.scene.chart.BarChart;
-import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.XYChart;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Tooltip;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 
 import javafx.util.Duration;
 import smu.DAO_Implementation.TransazioneDAOimp;
+import smu.DAO_Implementation.UtentiInFamiglieDAOimp;
 import smu.DTO.Famiglia;
+import smu.DAO_Implementation.FamigliaDAOimp;
 import smu.DTO.Transazione;
 import smu.Sessione;
 import smu.DTO.Carta;
@@ -27,10 +23,16 @@ import static javax.swing.JColorChooser.showDialog;
 
 public class FamigliaController extends Controller{
 
-    @FXML  private HBox comboBoxContainer; // Contenitore delle ComboBox e del pulsante
+    @FXML private HBox comboBoxContainer; // Contenitore delle ComboBox e del pulsante
     @FXML private Button selectFamilyButton;
     @FXML private ComboBox<String> familyComboBox;
-    @FXML private ComboBox<String> portafoglioComboBox;
+    @FXML private ComboBox<String> utenteComboBox;
+    @FXML private TableView<Transazione> TabellaFamiglia;
+    @FXML private TableColumn<Transazione, String> tipoColumn;
+    @FXML private TableColumn<Transazione, Float> importoColumn;
+    @FXML private TableColumn<Transazione, String> daAColumn;
+    @FXML private TableColumn<Transazione, String> utenteColumn;
+    @FXML private TableColumn<Transazione, String> portafoglioColumn;
 
     @FXML private Button changeFamily;
     @FXML private Button newFamily;
@@ -52,12 +54,44 @@ public class FamigliaController extends Controller{
         for (Famiglia famiglia : famiglieUtente){
             familyComboBox.getItems().add(famiglia.getNomeFamiglia());
         }
+
+    familyComboBox.setOnAction(event -> { //listner per aggiornare la combobox per gli utenti
+        String nomeFamigliaSelezionata = familyComboBox.getValue();
+        if(nomeFamigliaSelezionata != null){
+            String idFamigliaSelezionata = null;
+            for (Famiglia famiglia : famiglieUtente){
+                if (famiglia.getNomeFamiglia().equals(nomeFamigliaSelezionata)){
+                    idFamigliaSelezionata = famiglia.getIdFamiglia();
+                    break;
+                }
+            }
+
+            if (idFamigliaSelezionata != null){
+                UtentiInFamiglieDAOimp utentiInFamigliaDAOimp = new UtentiInFamiglieDAOimp();
+                List<String> utentiFamiglia = null;
+                try {
+                    utentiFamiglia = utentiInFamigliaDAOimp.getUsersByFamilyId(idFamigliaSelezionata);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+
+                // Controlla se la lista di utenti è null o vuota
+                if (utentiFamiglia != null && !utentiFamiglia.isEmpty()) {
+                    //Aggiungere "Tutti" come prima opzione
+                    utentiFamiglia.add(0, "Tutti");
+                    utenteComboBox.getItems().addAll(utentiFamiglia);
+                } else {
+                    // Puoi decidere di aggiungere un messaggio di default o gestire il caso
+                    utenteComboBox.getItems().clear();
+                    utenteComboBox.getItems().add("Nessun utente disponibile");
+                }
+
+            }
+        }
+
+    });
     }
 
-    @FXML
-    private void SelezionaFamiglia(ActionEvent actionEvent){
-
-    }
 
     @FXML
     protected void initializeTableView() {
@@ -72,23 +106,30 @@ public class FamigliaController extends Controller{
 
     @FXML
     public void changeFamiglia(ActionEvent actionEvent) {
-        showDialog("/interfaccia/changeFamiglia.fxml", changeFamily, "Modificafamiglia");
+        showDialog("/interfaccia/changeFamiglia.fxml", changeFamily, "Modifica famiglia");
         initializeTableView();
     }
 
     @FXML
     public void deleteFamiglia(ActionEvent actionEvent) {
-        showDialog("/interfaccia/deleteFamiglia.fxml", deleteFamily, "Elimina Famiglia");
+        showDialog("/interfaccia/deleteFamiglia.fxml", deleteFamily, "Rimuovi Famiglia");
         initializeTableView();
     }
 
+    @FXML
+    private void SelezionaFamiglia(ActionEvent event) {
+        boolean isVisible = familyComboBox.isVisible();
+        familyComboBox.setVisible(!isVisible);
+        utenteComboBox.setVisible(!isVisible);
+
+    }
 
     @FXML
     private void handleMouseClick(MouseEvent event) {
         // Se si clicca al di fuori dell'HBox, chiudi le ComboBox
         if (event.getTarget() != comboBoxContainer) {
             familyComboBox.setVisible(false);
-            portafoglioComboBox.setVisible(false);
+            utenteComboBox.setVisible(false);
         }
     }
 }

@@ -6,24 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="df4d01a2-e17b-4881-9bee-4a47bce15a26" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/AddWalletController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/AddPortafoglioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/DeleteWalletController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/DeletePortafoglioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/EditWalletController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/EditPortafoglioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/changeFamigliaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/EditFamigliaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/changeProgrammazioneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/EditProgrammazioneController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/deleteFamigliaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/DeleteFamigliaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/deleteProgrammazioneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/DeleteProgrammazioneController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/newFamigliaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/AddFamigliaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/newProgrammazioneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/AddProgrammazioneController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/addWallet.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/addWallet.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/changeFamiglia.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/changeFamiglia.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/changeProgrammazione.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/changeProgrammazione.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/deleteFamiglia.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/deleteFamiglia.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/deleteProgrammazione.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/deleteProgrammazione.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/deleteWallet.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/deleteWallet.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/editWallet.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/editWallet.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/newFamiglia.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/newFamiglia.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/newProgrammazione.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/newProgrammazione.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/FamigliaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/FamigliaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/DAO/UtentiInFamiglieDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/DAO/UtentiInFamiglieDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/DAO_Implementation/FamigliaDAOimp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/DAO_Implementation/FamigliaDAOimp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/DAO_Implementation/UtentiInFamiglieDAOimp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/DAO_Implementation/UtentiInFamiglieDAOimp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/famiglia.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/famiglia.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Progetto-OO-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/Progetto-OO-1.0-SNAPSHOT.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -147,8 +134,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23339.11" />
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23339.11" />
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.22562.218" />
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-IU-243.22562.218" />
       </set>
     </attachedChunks>
   </component>
@@ -192,6 +179,8 @@
       <workItem from="1738076582398" duration="7127000" />
       <workItem from="1738331626094" duration="6898000" />
       <workItem from="1738338657341" duration="941000" />
+      <workItem from="1738339793544" duration="14712000" />
+      <workItem from="1738407791937" duration="6914000" />
     </task>
     <servers />
   </component>
