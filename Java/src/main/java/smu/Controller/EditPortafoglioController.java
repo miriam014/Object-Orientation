@@ -3,7 +3,10 @@ package smu.Controller;
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
 import smu.DAO.PortafoglioDAO;
+import smu.DAO.AssociazioneCartaPortafoglioDAO;
+import smu.DAO_Implementation.AssociazioneCartaPortafoglioDAOimp;
 import smu.DAO_Implementation.PortafoglioDAOimp;
+import smu.DTO.AssociazioneCartaPortafoglio;
 import smu.DTO.Portafoglio;
 
 import java.sql.SQLException;
@@ -24,7 +27,6 @@ public class EditPortafoglioController extends PortafoglioController {
         NumeroCarta.setDisable(true);
         Conferma.setDisable(true);
 
-
         IdPortafoglio.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 selectedWalletId = newValue; // Salva l'ID della famiglia selezionata
@@ -36,9 +38,7 @@ public class EditPortafoglioController extends PortafoglioController {
                 NumeroCarta.setDisable(false);
                 Conferma.setDisable(false);
             }
-
         });
-
 
         NumeroCarta.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
@@ -68,8 +68,20 @@ public class EditPortafoglioController extends PortafoglioController {
 
         PortafoglioDAO portafoglioDAO = new PortafoglioDAOimp();
         Portafoglio wallet = new Portafoglio(selectedWalletId, walletName, null);
-        portafoglioDAO.update(wallet);
+        boolean success = portafoglioDAO.update(wallet);
 
+        if (success) {
+            // Gestiamo la relazione con la carta separatamente
+            if (selectedCardNumber != null && !selectedCardNumber.trim().isEmpty()) {
+                AssociazioneCartaPortafoglioDAO associazioneDAO = new AssociazioneCartaPortafoglioDAOimp();
+                AssociazioneCartaPortafoglio associazione = new AssociazioneCartaPortafoglio(
+                        Integer.parseInt(selectedWalletId), selectedCardNumber);
+                associazioneDAO.update(associazione);  // Aggiorniamo la carta associata al portafoglio
+            }
+            System.out.println("Portafoglio aggiornato con successo");
+        } else {
+            System.out.println("Errore durante l'aggiornamento del portafoglio");
+        }
         // Chiudi la finestra corrente
         Stage stage = (Stage) nomePortafoglio.getScene().getWindow();
         stage.close();
@@ -89,8 +101,8 @@ public class EditPortafoglioController extends PortafoglioController {
 
             if (wallet != null) {
                 nomePortafoglio.setText(wallet.getNomePortafoglio());
-                selectedCardNumber = portafoglioDAO.getCardNumberByWalletID(selectedWalletId);
-
+                AssociazioneCartaPortafoglioDAO associazioneDAO = new AssociazioneCartaPortafoglioDAOimp();
+                selectedCardNumber = associazioneDAO.getCardNumberByID(selectedWalletId);
                 NumeroCarta.getSelectionModel().select(selectedCardNumber);
             }
 

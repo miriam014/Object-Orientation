@@ -43,12 +43,14 @@ public class PortafoglioDAOimp implements PortafoglioDAO {
 
         PreparedStatement ps = connection.prepareStatement(sql);
         ps.setString(1, wallet.getNomePortafoglio());
+
         String idFamiglia = wallet.getIdFamiglia();
         if (idFamiglia == null) {
             ps.setNull(2, NULL);
         } else {
             ps.setInt(2, Integer.parseInt(idFamiglia));
         }
+
         ps.setInt(3, Integer.parseInt(wallet.getIdPortafoglio()));
         int result = ps.executeUpdate();
         ps.close();
