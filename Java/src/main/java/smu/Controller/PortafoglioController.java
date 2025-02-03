@@ -21,6 +21,7 @@ import java.util.List;
 
 public class PortafoglioController extends Controller {
     @FXML public Button nextWalletButton;
+    @FXML public Button previousWalletButton;
     @FXML protected Button addWalletButton;
     @FXML protected Button editWalletButton;
     @FXML protected Button deleteWalletButton;
@@ -145,30 +146,26 @@ public class PortafoglioController extends Controller {
         showWallet();
     }
 
-
     @FXML
     public void insertWallet() throws SQLException {
         showDialog("/interfaccia/addWallet.fxml", addWalletButton, "Nuovo Portafoglio");
+        loadUserWallet();
         handlePreviousWallet();
         handleNextWallet();
-        loadUserWallet();
-        initializeTableView();
     }
 
     @FXML
     public void updateWallet() throws SQLException {
         showDialog("/interfaccia/editWallet.fxml", editWalletButton, "Modifica Portafoglio");
+        loadUserWallet();
         handlePreviousWallet();
         handleNextWallet();
-        loadUserWallet();
-        initializeTableView();
     }
 
     @FXML
-    public void deleteWallet() {
+    public void deleteWallet() throws SQLException {
         showDialog("/interfaccia/deleteWallet.fxml", deleteWalletButton, "Elimina Portafoglio");
         loadUserWallet();
-        initializeTableView();
+        handleNextWallet();
     }
-
 }
