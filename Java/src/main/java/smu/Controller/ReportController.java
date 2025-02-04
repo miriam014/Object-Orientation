@@ -97,6 +97,8 @@ public class ReportController {
         Integer anno = yearComboBox.getValue();
 
         if ((mese != null) && (anno != null)) {
+            Carta cartaSelezionata = Sessione.getInstance().getCartaSelezionata();
+            System.out.println("Aggiornamento grafici per " + cartaSelezionata.getNomeCarta());
             popolaBarChart(statisticheEntrate, "Entrata",mese, anno);
             popolaBarChart(statisticheUscite, "Uscita", mese, anno);
             aggiornaLabel();
@@ -176,7 +178,8 @@ public class ReportController {
     }
 
     private float calcolaMassimo(List<Float> importi) {
-        float massimo = Float.MIN_VALUE;
+        if (importi.isEmpty()) return 0; // Evita problemi con liste vuote
+        float massimo = importi.get(0); // Imposta il primo valore come riferimento
         for (Float importo : importi) {
             if (importo > massimo) {
                 massimo = importo;
@@ -187,7 +190,8 @@ public class ReportController {
 
 
     private float calcolaMinimo(List<Float> importi) {
-        float minimo = Float.MAX_VALUE; // Inizializza con il valore più alto possibile
+        if (importi.isEmpty()) return 0; // Evita problemi con liste vuote
+        float minimo = importi.get(0); // Imposta il primo valore come riferimento
         for (Float importo : importi) {
             if (importo < minimo) {
                 minimo = importo;
@@ -216,7 +220,6 @@ public class ReportController {
         try {
             Carta cartaSelezionata = Sessione.getInstance().getCartaSelezionata();
             TransazioneDAOimp transazioneDAO = new TransazioneDAOimp();
-
             List<Transazione> tutteTransazioni = transazioneDAO.getByCardNumber(cartaSelezionata.getNumeroCarta(), "Tutte");
 
             // Ottieni la data di inizio mese (primo giorno del mese)
@@ -224,22 +227,25 @@ public class ReportController {
             LocalDate inizioMese = LocalDate.of(anno, meseSelezionato, 1);
 
             // Calcolare il saldo iniziale (sottraendo tutte le transazioni effettuate dopo l'inizio del mese)
-            float saldoInizialeVal = cartaSelezionata.getSaldo();
-            float saldoFinaleVal = cartaSelezionata.getSaldo();
+            float saldoInizialeVal = 0;
+            float saldoFinaleVal = 0;
 
             for (Transazione transazione : tutteTransazioni) {
                 LocalDate dataTransazione = transazione.getData().toLocalDate();
-                float importo =Math.abs(transazione.getImporto());//la funziona math.abs restituisce il valore assoluto di un numero andando ad eliminare il segno
+                float importo = Math.abs(transazione.getImporto());//la funziona math.abs restituisce il valore assoluto di un numero andando ad eliminare il segno
                 String tipoTransazione = transazione.getTipoTransazione(); // Usa getTipo() se il tipo è nel campo Tipo
 
-                if (dataTransazione.isAfter(inizioMese)) {
-                    saldoInizialeVal += tipoTransazione.equals("Entrata") ? -importo : importo;
+                if (dataTransazione.isBefore(inizioMese)) {
+                    saldoInizialeVal += tipoTransazione.equals("Entrata") ? importo : -importo;
                 } //se la transazione è stata effettuata nel mese ed annp selezionato, aggiorna il saldo finale
-                if (dataTransazione.getMonthValue() == meseSelezionato && dataTransazione.getYear() == anno) {
+                if ((dataTransazione.getMonthValue() == meseSelezionato) && (dataTransazione.getYear() == anno)) {
                     saldoFinaleVal += tipoTransazione.equals("Entrata") ? importo : -importo;
                 }
             }
 
+            // Il saldo finale si ottiene sommando il saldo iniziale con le transazioni del mese selezionato
+            saldoFinaleVal += saldoInizialeVal;
+            
             // Aggiorna i label per il saldo iniziale e finale
             saldoIniziale.setText(String.format("Saldo Iniziale: %.2f €", saldoInizialeVal));
             saldoFinale.setText(String.format("Saldo Finale: %.2f €", saldoFinaleVal));
