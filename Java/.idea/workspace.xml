@@ -6,8 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="df4d01a2-e17b-4881-9bee-4a47bce15a26" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/EditPortafoglioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/EditPortafoglioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/smu/DAO_Implementation/PortafoglioDAOimp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/DAO_Implementation/PortafoglioDAOimp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/homepage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/homepage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/report.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/report.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Progetto-OO-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/Progetto-OO-1.0-SNAPSHOT.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -179,6 +180,7 @@
       <workItem from="1738339793544" duration="14712000" />
       <workItem from="1738407791937" duration="6914000" />
       <workItem from="1738591593856" duration="1598000" />
+      <workItem from="1738657752981" duration="6895000" />
     </task>
     <servers />
   </component>
