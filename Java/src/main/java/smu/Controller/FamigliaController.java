@@ -43,7 +43,7 @@ public class FamigliaController extends Controller{
     @FXML
     private void initialize() {
         popolaComboBox();
-
+        initializeTableView();
     }
 
 
@@ -51,45 +51,47 @@ public class FamigliaController extends Controller{
     private void popolaComboBox(){
         List<Famiglia> famiglieUtente = Sessione.getInstance().getFamilyByUsername();
         familyComboBox.getItems().clear();
+
         for (Famiglia famiglia : famiglieUtente){
             familyComboBox.getItems().add(famiglia.getNomeFamiglia());
         }
 
-    familyComboBox.setOnAction(event -> { //listner per aggiornare la combobox per gli utenti
-        String nomeFamigliaSelezionata = familyComboBox.getValue();
-        if(nomeFamigliaSelezionata != null){
-            String idFamigliaSelezionata = null;
-            for (Famiglia famiglia : famiglieUtente){
-                if (famiglia.getNomeFamiglia().equals(nomeFamigliaSelezionata)){
-                    idFamigliaSelezionata = famiglia.getIdFamiglia();
-                    break;
-                }
-            }
+        familyComboBox.setOnAction(event -> { //listner per aggiornare la combobox per gli utenti
+            String nomeFamigliaSelezionata = familyComboBox.getValue();
+            if(nomeFamigliaSelezionata != null){
+                String idFamigliaSelezionata = null;
+                utenteComboBox.setDisable(false);
 
-            if (idFamigliaSelezionata != null){
-                UtentiInFamiglieDAOimp utentiInFamigliaDAOimp = new UtentiInFamiglieDAOimp();
-                List<String> utentiFamiglia = null;
-                try {
-                    utentiFamiglia = utentiInFamigliaDAOimp.getUsersByFamilyId(idFamigliaSelezionata);
-                } catch (SQLException e) {
-                    e.printStackTrace();
+                for (Famiglia famiglia : famiglieUtente){
+                    if (famiglia.getNomeFamiglia().equals(nomeFamigliaSelezionata)){
+                        idFamigliaSelezionata = famiglia.getIdFamiglia();
+                        break;
+                    }
                 }
 
-                // Controlla se la lista di utenti è null o vuota
-                if (utentiFamiglia != null && !utentiFamiglia.isEmpty()) {
-                    //Aggiungere "Tutti" come prima opzione
-                    utentiFamiglia.add(0, "Tutti");
-                    utenteComboBox.getItems().addAll(utentiFamiglia);
-                } else {
-                    // Puoi decidere di aggiungere un messaggio di default o gestire il caso
+                if (idFamigliaSelezionata != null){
+                    UtentiInFamiglieDAOimp utentiInFamigliaDAOimp = new UtentiInFamiglieDAOimp();
+                    List<String> utentiFamiglia = null;
+                    try {
+                        utentiFamiglia = utentiInFamigliaDAOimp.getUsersByFamilyId(idFamigliaSelezionata);
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
                     utenteComboBox.getItems().clear();
-                    utenteComboBox.getItems().add("Nessun utente disponibile");
+
+
+                    if (utentiFamiglia != null && !utentiFamiglia.isEmpty()) {
+                        //Aggiungere "Tutti" come prima opzione
+                        utenteComboBox.getItems().add("Tutti");
+                        utenteComboBox.getItems().addAll(utentiFamiglia);
+                    } else {
+                        utenteComboBox.getItems().add("Nessun utente disponibile");
+                    }
+
                 }
-
             }
-        }
 
-    });
+        });
     }
 
 
@@ -121,7 +123,7 @@ public class FamigliaController extends Controller{
         boolean isVisible = familyComboBox.isVisible();
         familyComboBox.setVisible(!isVisible);
         utenteComboBox.setVisible(!isVisible);
-
+        utenteComboBox.setDisable(true);
     }
 
     @FXML

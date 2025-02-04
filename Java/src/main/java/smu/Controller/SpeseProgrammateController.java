@@ -11,12 +11,10 @@ import smu.DAO.SpeseProgrammateDAO;
 import smu.DAO_Implementation.SpeseProgrammateDAOimp;
 import smu.DTO.SpeseProgrammate;
 
-import java.sql.CallableStatement;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
 
-import static smu.Database.getConnection;
 
 public class SpeseProgrammateController extends Controller {
 
