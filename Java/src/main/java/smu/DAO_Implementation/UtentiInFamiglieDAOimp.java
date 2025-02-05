@@ -27,6 +27,7 @@ public class UtentiInFamiglieDAOimp implements UtentiInFamiglieDAO {
             utenti.add(rs.getString("Username"));
         }
 
+        ps.close();
         return utenti;
     }
 
@@ -41,5 +42,26 @@ public class UtentiInFamiglieDAOimp implements UtentiInFamiglieDAO {
         ps.setString(1, username);
         ps.setInt(2, familyID);
         ps.executeUpdate();
+    }
+
+    @Override
+    public void addUserToFamily(Integer familyID, String username) throws SQLException {
+        Connection connection = Database.getConnection();
+
+        //Query per aggiungere l'utente alla famiglia
+        String sql = "INSERT INTO smu.UtentiInFamiglie (NomeUtente, IdFamiglia) VALUES (?, CAST(? AS INTEGER))";
+
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ps.setString(1, username);
+        ps.setInt(2, familyID);
+
+        int rowsAffected = ps.executeUpdate();
+        if (rowsAffected > 0) {
+            System.out.println("Utente " + username + " aggiunto alla famiglia " + familyID);
+        } else {
+            System.out.println("Errore nell'aggiungere l'utente " + username + " alla famiglia " + familyID);
+        }
+
+        ps.close();
     }
 }

@@ -18,10 +18,20 @@ public class FamigliaDAOimp implements FamigliaDAO {
         Connection connection = Database.getConnection();
         String sql = "INSERT INTO smu.Famiglia(NomeFamiglia) VALUES (?)";
 
-        PreparedStatement ps = connection.prepareStatement(sql);
+        PreparedStatement ps = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
         ps.setString(1, family.getNomeFamiglia());
 
         int result = ps.executeUpdate();
+        if (result != 0) {
+            // Ottieni l'ID generato
+            try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    // Imposta l'ID generato sull'oggetto family
+                    family.setIdFamiglia(generatedKeys.getInt(1));
+                }
+            }
+        }
+
         ps.close();
         return result != 0;
     }
