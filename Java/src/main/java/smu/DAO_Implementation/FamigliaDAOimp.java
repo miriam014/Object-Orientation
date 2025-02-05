@@ -33,7 +33,7 @@ public class FamigliaDAOimp implements FamigliaDAO {
 
         PreparedStatement ps = connection.prepareStatement(sql);
         ps.setString(1, family.getNomeFamiglia());
-        ps.setString(2, family.getIdFamiglia());
+        ps.setInt(2, family.getIdFamiglia());
 
         int result = ps.executeUpdate();
         ps.close();
@@ -41,12 +41,12 @@ public class FamigliaDAOimp implements FamigliaDAO {
     }
 
     @Override
-    public boolean delete(String familyID) throws SQLException{
+    public boolean delete(Integer familyID) throws SQLException{
         Connection connection = Database.getConnection();
         String sql = "DELETE FROM smu.Famiglia WHERE IdFamiglia = ?";
 
         PreparedStatement ps = connection.prepareStatement(sql);
-        ps.setString(1, familyID);
+        ps.setInt(1, familyID);
 
         int result = ps.executeUpdate();
         ps.close();
@@ -54,18 +54,18 @@ public class FamigliaDAOimp implements FamigliaDAO {
     }
 
     @Override
-    public Famiglia getByID(String familyID) throws SQLException{
+    public Famiglia getByID(Integer familyID) throws SQLException{
         Connection connection = Database.getConnection();
         Famiglia family = null;
 
         String sql = "SELECT * FROM smu.Famiglia WHERE IdFamiglia = ?";
 
         PreparedStatement ps = connection.prepareStatement(sql);
-        ps.setString(1, familyID);
+        ps.setInt(1, familyID);
 
         ResultSet rs =ps.executeQuery();
         if(rs.next())
-            family = new Famiglia(rs.getString("IdFamiglia"),rs.getString("NomeFamiglia"));
+            family = new Famiglia(rs.getInt("IdFamiglia"),rs.getString("NomeFamiglia"));
 
         ps.close();
         rs.close();
@@ -85,7 +85,7 @@ public class FamigliaDAOimp implements FamigliaDAO {
 
         ResultSet rs = ps.executeQuery();
         while(rs.next())
-            families.add(new Famiglia(rs.getString("IdFamiglia"),rs.getString("NomeFamiglia")));
+            families.add(new Famiglia(rs.getInt("IdFamiglia"),rs.getString("NomeFamiglia")));
 
         ps.close();
         rs.close();

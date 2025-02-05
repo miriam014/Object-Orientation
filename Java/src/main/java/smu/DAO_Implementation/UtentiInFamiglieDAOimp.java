@@ -12,7 +12,7 @@ import java.util.List;
 
 public class UtentiInFamiglieDAOimp implements UtentiInFamiglieDAO {
     @Override
-    public  List<String> getUsersByFamilyId(String familyID) throws SQLException {
+    public  List<String> getUsersByFamilyId(Integer familyID) throws SQLException {
         Connection connection = Database.getConnection();
         List<String> utenti = new ArrayList<>();
 
@@ -20,7 +20,7 @@ public class UtentiInFamiglieDAOimp implements UtentiInFamiglieDAO {
         String sql = "SELECT u.Username FROM smu.UtentiInFamiglie uf JOIN smu.Utente u ON uf.NomeUtente = u.Username WHERE uf.IdFamiglia = CAST(? AS INTEGER)";
 
         PreparedStatement ps = connection.prepareStatement(sql);
-        ps.setString(1, familyID);
+        ps.setInt(1, familyID);
         ResultSet rs = ps.executeQuery();
 
         while(rs.next()) {
@@ -28,5 +28,18 @@ public class UtentiInFamiglieDAOimp implements UtentiInFamiglieDAO {
         }
 
         return utenti;
+    }
+
+    @Override
+    public void removeUserFromFamily(String username, Integer familyID) throws SQLException {
+        Connection connection = Database.getConnection();
+
+        //Query per rimuovere l'utente dalla famiglia
+        String sql = "DELETE FROM smu.UtentiInFamiglie WHERE NomeUtente = ? AND IdFamiglia = CAST(? AS INTEGER)";
+
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ps.setString(1, username);
+        ps.setInt(2, familyID);
+        ps.executeUpdate();
     }
 }
