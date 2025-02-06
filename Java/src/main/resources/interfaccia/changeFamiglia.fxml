@@ -16,20 +16,16 @@
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="579.0" prefWidth="477.0" stylesheets="@stileGenerale.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smu.Controller.EditFamigliaController">
     <top>
         <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="481.0" style="-fx-background-color: #008080;" BorderPane.alignment="CENTER">
-            <children>
                 <Label layoutX="14.0" layoutY="4.0" prefHeight="24.0" prefWidth="228.0" style="-fx-text-fill: #FFFFFF; -fx-font-size: 16px;" text="Modifica Famiglia" textAlignment="CENTER" textFill="WHITE">
                     <font>
                         <Font size="18.0" />
                     </font>
                 </Label>
-            </children>
         </Pane>
     </top>
     <center>
         <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="509.0" prefWidth="487.0" BorderPane.alignment="CENTER">
-            <children>
                 <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="54.0" prefWidth="181.0">
-                    <children>
                         <ImageView fitHeight="90.0" fitWidth="92.0" nodeOrientation="INHERIT">
                             <image>
                                 <Image url="@../images/famiglia.png" />
@@ -38,7 +34,6 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                         </ImageView>
-                    </children>
                     <VBox.margin>
                         <Insets bottom="40.0" />
                     </VBox.margin>
@@ -48,42 +43,31 @@
                 </VBox>
 
                 <HBox alignment="CENTER" prefHeight="65.0" prefWidth="350.0" spacing="10.0">
-                    <children>
                         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="120.0" text="Famiglia" textAlignment="CENTER" />
-                        <ComboBox fx:id="nomeFamiglia" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="198.0" visibleRowCount="5" />
-                    </children>
+                        <ComboBox fx:id="nomeFamigliadaModificare" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="198.0" visibleRowCount="5" />
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin>
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="65.0" prefWidth="350.0" spacing="10.0">
-                    <children>
                         <Label contentDisplay="CENTER" prefHeight="30.0" prefWidth="120.0" text="Modifica nome" />
-                  <TextField fx:id="Destinatario1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="175.0" />
-                    </children>
+                  <TextField fx:id="nuovoNome" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="175.0" />
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="65.0" prefWidth="350.0" spacing="10.0">
-                    <children>
                         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="149.0" text="Aggiungi componente" />
-                        <TextField fx:id="Destinatario" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="166.0" />
-                    </children>
+                        <TextField fx:id="nuovoUtente" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="166.0" />
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="65.0" prefWidth="350.0" spacing="10.0">
-                    <children>
                         <Label alignment="CENTER" prefHeight="30.0" prefWidth="142.0" text="Elimina componente" />
-                  <ComboBox fx:id="nomeUtenti" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="178.0" />
-                    </children>
+                  <ComboBox fx:id="eliminaUtente" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="178.0" />
                 </HBox>
 
                 <VBox alignment="CENTER" prefHeight="86.0" prefWidth="389.0">
-                    <children>
-                        <Button fx:id="Conferma" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="33.0" prefWidth="81.0" style="-fx-border-color: transparent; -fx-background-color: #008080; -fx-background-radius: 15px;" text="Conferma" textFill="WHITE" />
-                    </children>
+                        <Button fx:id="Conferma" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#modificaFamiglia" prefHeight="33.0" prefWidth="81.0" style="-fx-border-color: transparent; -fx-background-color: #008080; -fx-background-radius: 15px;" text="Conferma" textFill="WHITE" />
                     <VBox.margin>
                         <Insets top="30.0" />
                     </VBox.margin>
                 </VBox>
-            </children>
             <BorderPane.margin>
                 <Insets top="20.0" />
             </BorderPane.margin>

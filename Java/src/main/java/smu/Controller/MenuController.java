@@ -1,7 +1,6 @@
 package smu.Controller;
 
 import javafx.animation.TranslateTransition;
-import javafx.event.ActionEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -94,7 +93,7 @@ public class MenuController {
         alert.setTitle("Logout");
         alert.setHeaderText(null);
         alert.setContentText("Sei sicuro di voler uscire?");
-        // Imposta l'owner dello stage per il dialog
+        // Imposta il proprietario dello stage per il dialog
         alert.initOwner(Main.getPrimaryStage());
         alert.initModality(Modality.WINDOW_MODAL); // Finestra modale
 

@@ -34,6 +34,9 @@ public class AddFamigliaController extends Controller{
                 System.out.println("Famiglia creata con successo");
 
                 addUserToFamily(famiglia.getIdFamiglia(), utente.getUsername());
+                if(!usernameNuovoUtente.getText().trim().isEmpty()) {
+                    addUserToFamily(famiglia.getIdFamiglia(), usernameNuovoUtente.getText());
+                }
 
                 Stage stage = (Stage) ConfermaNew.getScene().getWindow();
                 stage.close();

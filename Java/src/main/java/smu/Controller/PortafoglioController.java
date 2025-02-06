@@ -9,7 +9,6 @@ import smu.DAO.AssociazioneCartaPortafoglioDAO;
 import smu.DAO_Implementation.AssociazioneCartaPortafoglioDAOimp;
 import smu.DAO_Implementation.TransazioneDAOimp;
 import smu.DTO.Carta;
-import smu.DTO.Famiglia;
 import smu.DTO.Portafoglio;
 import smu.DTO.Transazione;
 import smu.Sessione;
@@ -32,7 +31,6 @@ public class PortafoglioController extends Controller {
     @FXML private TableView<Transazione> transactionsTableView;
 
     @FXML protected TextField nomePortafoglio;
-    @FXML protected ComboBox<String> IdFamiglia;
     @FXML protected ComboBox<String> IdPortafoglio;
     @FXML protected ComboBox<String> NumeroCarta;
     @FXML protected Button Conferma;

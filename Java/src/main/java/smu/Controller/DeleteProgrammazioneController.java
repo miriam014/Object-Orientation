@@ -37,7 +37,7 @@ public class DeleteProgrammazioneController extends SpeseProgrammateController {
 
 
     public void deleteProgrammazione(ActionEvent actionEvent) {
-        String nomeProgrammazioneValue = (String) nomeProgrammazione.getValue();
+        String nomeProgrammazioneValue = nomeProgrammazione.getValue();
         SpeseProgrammate spesaSelezionata = null;
 
         try {

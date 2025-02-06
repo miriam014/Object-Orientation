@@ -16,29 +16,25 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane minHeight="600.0" minWidth="800.0" onMouseClicked="#handleMouseClick" prefHeight="600.0" prefWidth="792.0" stylesheets="@stileMenu.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smu.Controller.ReportController">
-   <children>
       <BorderPane prefHeight="600.0" prefWidth="800.0" stylesheets="@stileMenu.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
             <VBox BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets />
                </BorderPane.margin>
-               <children>
+
                   <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="792.0" style="-fx-background-color: #008080;">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
-                     <children>
                         <Label layoutX="25.0" layoutY="6.0" prefHeight="18.0" prefWidth="48.0" text="Report" textFill="WHITE">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Label>
-                     </children>
                   </Pane>
 
                   <HBox fx:id="comboBoxContainer">
-                     <children>
                         <Button fx:id="selectButton" mnemonicParsing="false" onAction="#SelezionaCarta" prefHeight="30.0" prefWidth="111.0" style="-fx-background-color: #008080;" stylesheets="@stileMenu.css" text="seleziona carta">
                            <HBox.margin>
                               <Insets left="10.0" />
@@ -58,13 +54,11 @@
                               <Insets />
                            </HBox.margin>
                         </ComboBox>
-                     </children>
                      <VBox.margin>
                         <Insets left="10.0" top="5.0" />
                      </VBox.margin>
                   </HBox>
                   <HBox>
-                     <children>
                         <Label fx:id="LabelDati" alignment="CENTER" prefHeight="31.0" prefWidth="415.0" text="Label" textOverrun="WORD_ELLIPSIS" HBox.hgrow="ALWAYS">
                            <font>
                               <Font name="Baloo 2 Medium" size="18.0" />
@@ -73,10 +67,8 @@
                               <Insets left="220.0" />
                            </HBox.margin>
                         </Label>
-                     </children>
                   </HBox>
                   <HBox prefHeight="31.0" prefWidth="766.0">
-                     <children>
                         <Label fx:id="saldoIniziale" prefHeight="31.0" prefWidth="381.0" text="Saldo iniziale: ">
                            <font>
                               <Font name="Baloo Bhai 2 Medium" size="18.0" />
@@ -85,10 +77,8 @@
                               <Insets left="15.0" />
                            </HBox.margin>
                         </Label>
-                     </children>
                   </HBox>
                   <HBox prefHeight="69.0" prefWidth="792.0">
-                     <children>
                         <Label fx:id="saldoFinale" prefHeight="31.0" prefWidth="791.0" text="Saldo finale: ">
                            <font>
                               <Font name="Baloo Bhai 2 Medium" size="18.0" />
@@ -97,12 +87,10 @@
                               <Insets left="15.0" />
                            </HBox.margin>
                         </Label>
-                     </children>
                   </HBox>
                   <SplitPane dividerPositions="0.5" stylesheets="@stileTabelle.css">
                      <items>
                         <VBox>
-                           <children>
                               <BarChart fx:id="statisticheEntrate" alternativeColumnFillVisible="true" animated="false" barGap="20.0" legendVisible="false" style="-fx-background-color: #f7f7f7;" stylesheets="@stileMenu.css" title="entrate" verticalGridLinesVisible="false">
                                 <xAxis>
                                   <CategoryAxis side="BOTTOM" />
@@ -114,10 +102,8 @@
                                     <Insets bottom="20.0" left="20.0" right="10.0" />
                                  </VBox.margin>
                               </BarChart>
-                           </children>
                         </VBox>
                         <VBox>
-                           <children>
                               <BarChart fx:id="statisticheUscite" alternativeColumnFillVisible="true" animated="false" barGap="20.0" focusTraversable="true" legendVisible="false" style="-fx-background-color: #f7f7f7;" stylesheets="@stileMenu.css" title="uscite" verticalGridLinesVisible="false">
                                  <xAxis>
                                     <CategoryAxis side="BOTTOM" />
@@ -132,11 +118,9 @@
                                     <Insets bottom="20.0" left="10.0" right="20.0" />
                                  </VBox.margin>
                               </BarChart>
-                           </children>
                         </VBox>
                      </items>
                   </SplitPane>
-               </children>
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -147,5 +131,4 @@
             <fx:include source="menu.fxml" />
          </left>
       </BorderPane>
-   </children>
 </AnchorPane>

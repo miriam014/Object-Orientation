@@ -46,6 +46,8 @@ public class Main extends Application {
         primaryStage.setResizable(true);
 
         if(fxml.equals("login")) {
+            currentWidth = 400;
+            currentHeight = 350;
             primaryStage.setResizable(false);
             primaryStage.setScene(new Scene(root, 400, 350));
             primaryStage.centerOnScreen();

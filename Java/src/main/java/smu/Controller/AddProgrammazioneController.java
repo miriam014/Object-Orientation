@@ -50,7 +50,7 @@ public class AddProgrammazioneController extends SpeseProgrammateController {
         // Controllo se tutti i campi sono stati compilati
         if (nome.isEmpty() || carta == null || destinatario.isEmpty() || importo.isEmpty() ||
                 frequenza == null || DataScadenza.getValue() == null || DataTermine.getValue() == null) {
-            showAlert(Alert.AlertType.ERROR, "Errore", "Compilare tutti i campi");
+            showError("Compilare tutti i campi");
             return;
         }
         dataScadenza = Date.valueOf(DataScadenza.getValue());
@@ -61,17 +61,17 @@ public class AddProgrammazioneController extends SpeseProgrammateController {
             importo = importo.replace(",", "."); // Gestione della virgola
             importoFloat = Float.parseFloat(importo); // Prova a convertire l'importo in float
         } catch (NumberFormatException e) {
-            showAlert(Alert.AlertType.ERROR, "Errore", "Importo non valido. Inserisci un valore numerico.");
+            showError("Importo non valido. Inserisci un valore numerico.");
             return; // Se l'importo non è valido, mostra il messaggio di errore e ferma l'operazione
         }
         // Controllo che le date non siano precedenti alla data attuale
         LocalDate oggi = LocalDate.now();
         if (dataScadenza.toLocalDate().isBefore(oggi)) {
-            showAlert(Alert.AlertType.ERROR, "Errore", "La data di rinnovo non può essere precedente alla data attuale.");
+            showError("La data di rinnovo non può essere precedente alla data attuale.");
             return;
         }
         if (dataTermine.toLocalDate().isBefore(oggi)) {
-            showAlert(Alert.AlertType.ERROR, "Errore", "La data di termine rinnovo non può essere precedente alla data attuale.");
+            showError("La data di termine rinnovo non può essere precedente alla data attuale.");
             return;
         }
 
@@ -83,19 +83,11 @@ public class AddProgrammazioneController extends SpeseProgrammateController {
                 Stage stage = (Stage) Conferma.getScene().getWindow();
                 stage.close();
             } else {
-                showAlert(Alert.AlertType.ERROR, "Errore", "Errore durante l'aggiunta della spesa programmata");
+                showError("Errore durante l'aggiunta della spesa programmata");
             }
         }catch (Exception e){
             e.printStackTrace();
         }
     }
 
-
-    private void showAlert(Alert.AlertType alertType, String title, String message) {
-        Alert alert = new Alert(alertType);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
 }
