@@ -2,6 +2,7 @@ package smu.Controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -10,6 +11,8 @@ import smu.Sessione;
 import smu.DAO.SpeseProgrammateDAO;
 import smu.DAO_Implementation.SpeseProgrammateDAOimp;
 import smu.DTO.SpeseProgrammate;
+import java.sql.CallableStatement;
+import static smu.Database.getConnection;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -95,21 +98,42 @@ public class SpeseProgrammateController extends Controller {
 
     @FXML
     private void BottonePaga(SpeseProgrammate spesa, Button bottone) {
-        System.out.println("Pagamento spesa programmata: " + spesa.getIdSpesa());
-        bottone.setStyle("-fx-background-color: green; -fx-text-fill: white;");
-        bottone.setText("Pagato");
-        bottone.setDisable(true);   //in modo che non venga pagata di nuovo la spesa prima del dovuto
+        // Ottieni la data di rinnovo dalla spesa
+        LocalDate dataRinnovo = spesa.getDataScadenza().toLocalDate();
+        LocalDate dataAttuale = LocalDate.now(); // Data di oggi
 
-        // Aggiorna lo stato della spesa
-        spesa.setStato(true);
-        try {
-            // Usa l'oggetto DAO per aggiornare il database
-            boolean updated = speseProgrammateDAO.update(spesa);
-            if (!updated) {
-                System.out.println("Errore durante l'update nel database.");
+        if(dataAttuale.isAfter(dataRinnovo)) {
+            bottone.setStyle("-fx-background-color: green; -fx-text-fill: white;");
+            bottone.setText("Pagato");
+            bottone.setDisable(true);   //in modo che non venga pagata di nuovo la spesa prima del dovuto
+
+            // Aggiorna lo stato della spesa
+            spesa.setStato(true);
+
+            try {
+                // Usa l'oggetto DAO per aggiornare il database
+                boolean updated = speseProgrammateDAO.update(spesa);
+                if (!updated) {
+                    System.out.println("Errore durante l'update nel database.");
+                } else {
+                    System.out.println("Pagamento spesa programmata: " + spesa.getIdSpesa());
+                }
+                initializeTableView();
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } else {
+            // Se il pagamento non è consentito, mostra un alert all'utente
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Pagamento non consentito");
+            alert.setHeaderText("Attenzione!");
+            alert.setContentText("La data attuale è precedente alla data di inizio rinnovo.\n"
+                    + "Non puoi effettuare il pagamento in questo momento:  attendere la data di inizio rinnovo.");
+            alert.showAndWait();
+
+            // Se la data attuale è maggiore o uguale alla data di rinnovo, non permettere il pagamento
+            System.out.println("Pagamento non consentito. La data attuale è precedente alla data di inizio rinnovo.");
+            bottone.setDisable(true);
         }
     }
 
