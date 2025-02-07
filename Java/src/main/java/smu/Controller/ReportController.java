@@ -37,7 +37,7 @@ public class ReportController {
 
 
     @FXML
-    private void initialize() throws SQLException {
+    private void initialize() {
         popolaComboBox();
         addComboBoxListeners();
         aggiornaGrafici();
@@ -62,7 +62,7 @@ public class ReportController {
             yearComboBox.getItems().add(i);
         }
 
-        // Recupera la carta selezionata dall'utente e inizia ad impostare i valori nel label
+        // Recupera la carta selezionata dall'utente e inizia a impostare i valori nel label
         Carta cartaSelezionata = Sessione.getInstance().getCartaSelezionata();
         if (cartaSelezionata != null) {
             cardComboBox.setValue(cartaSelezionata.getNomeCarta());
@@ -107,7 +107,7 @@ public class ReportController {
     }
 
     private void popolaBarChart ( BarChart<String, Number> grafico, String tipoTransazione, String mese, Integer anno) {
-        grafico.getData().clear(); // Pulisce i dati precedeti
+        grafico.getData().clear(); // Pulisce i dati precedenti
         Carta cartaSelezionata = Sessione.getInstance().getCartaSelezionata();
         TransazioneDAOimp transazioneDAO = new TransazioneDAOimp();
         List<Transazione> transazioni = new ArrayList<>();
@@ -173,13 +173,13 @@ public class ReportController {
         } else {
             asseY.setAutoRanging(true);
         }
-        //forza il layout per forzare l'aggiornamneto del grafico
+        //forza il layout per forzare l'aggiornamento del grafico
         grafico.layout();
     }
 
     private float calcolaMassimo(List<Float> importi) {
         if (importi.isEmpty()) return 0; // Evita problemi con liste vuote
-        float massimo = importi.get(0); // Imposta il primo valore come riferimento
+        float massimo = importi.getFirst(); // Imposta il primo valore come riferimento
         for (Float importo : importi) {
             if (importo > massimo) {
                 massimo = importo;
@@ -191,7 +191,7 @@ public class ReportController {
 
     private float calcolaMinimo(List<Float> importi) {
         if (importi.isEmpty()) return 0; // Evita problemi con liste vuote
-        float minimo = importi.get(0); // Imposta il primo valore come riferimento
+        float minimo = importi.getFirst(); // Imposta il primo valore come riferimento
         for (Float importo : importi) {
             if (importo < minimo) {
                 minimo = importo;
@@ -232,12 +232,12 @@ public class ReportController {
 
             for (Transazione transazione : tutteTransazioni) {
                 LocalDate dataTransazione = transazione.getData().toLocalDate();
-                float importo = Math.abs(transazione.getImporto());//la funziona math.abs restituisce il valore assoluto di un numero andando ad eliminare il segno
+                float importo = Math.abs(transazione.getImporto());//la funziona math.abs restituisce il valore assoluto di un numero andando a eliminare il segno
                 String tipoTransazione = transazione.getTipoTransazione(); // Usa getTipo() se il tipo è nel campo Tipo
 
                 if (dataTransazione.isBefore(inizioMese)) {
                     saldoInizialeVal += tipoTransazione.equals("Entrata") ? importo : -importo;
-                } //se la transazione è stata effettuata nel mese ed annp selezionato, aggiorna il saldo finale
+                } //se la transazione è stata effettuata nel mese e hanno selezionato, aggiorna il saldo finale
                 if ((dataTransazione.getMonthValue() == meseSelezionato) && (dataTransazione.getYear() == anno)) {
                     saldoFinaleVal += tipoTransazione.equals("Entrata") ? importo : -importo;
                 }
@@ -257,7 +257,7 @@ public class ReportController {
 
 
     // Metodo per aggiornare i Label quando il mese o l'anno vengono modificati
-    //non mi serve fare il controllo per vedere se sono nulli perchè mai lo possono essere
+    //non mi serve fare il controllo per vedere se sono nulli perché mai lo possono essere
     private void aggiornaLabel() {
         LabelDati.setText(cardComboBox.getValue() + " " + monthComboBox.getValue() + " " + yearComboBox.getValue());
     }

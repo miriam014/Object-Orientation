@@ -1,8 +1,6 @@
 package smu.Controller;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
@@ -15,7 +13,7 @@ import smu.Main;
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class LoginController {
+public class LoginController extends Controller {
 
     @FXML private PasswordField passwordField;
     @FXML private TextField usernameField;
@@ -34,7 +32,7 @@ public class LoginController {
         String password = passwordField.getText();
 
         if (username.isEmpty() || password.isEmpty()) {
-            showAlert(AlertType.ERROR, "Errore", "Campi username e/o password sono vuoti.");
+            showError("Campi username e/o password sono vuoti.");
             return;
         }
 
@@ -43,13 +41,13 @@ public class LoginController {
             Utente utente = authenticateUser(username, password);
 
             if (utente ==null) {
-                showAlert(AlertType.ERROR, "Errore", "Username e/o password errati.");
+                showError("Username e/o password errati.");
             } else {
                 Sessione.getInstance().setUtenteLoggato(utente);
                 Main.setRoot("homepage");
             }
         } catch (SQLException e) {
-            showAlert(AlertType.ERROR, "Errore", "Si è verificato un errore durante il login.");
+            showError("Si è verificato un errore durante il login.");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -59,10 +57,4 @@ public class LoginController {
         return userDAO.checkCredentials(username, password);
     }
 
-    private void showAlert(AlertType alertType, String title, String message) {
-        Alert alert = new Alert(alertType);
-        alert.setTitle(title);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
 }

@@ -93,7 +93,7 @@ public class Sessione {
         }
     }
 
-    private void loadUserFamily() {
+    public void loadUserFamily() {
         if (utenteLoggato != null) {
             try {
                 // Inizializza la lista delle famiglie, se necessario

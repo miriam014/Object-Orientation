@@ -1,6 +1,5 @@
 package smu.Controller;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.collections.FXCollections;
@@ -17,8 +16,6 @@ import smu.DAO_Implementation.CartaDAOimp;
 
 
 import java.io.IOException;
-import java.util.Objects;
-import java.util.Optional;
 import java.util.List;
 
 public class HomepageController extends Controller {

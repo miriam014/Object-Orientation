@@ -6,12 +6,20 @@
   <component name="ChangeListManager">
     <list default="true" id="df4d01a2-e17b-4881-9bee-4a47bce15a26" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/FamigliaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/FamigliaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/SpeseProgrammateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/SpeseProgrammateController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/AddFamigliaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/AddFamigliaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/AddProgrammazioneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/AddProgrammazioneController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/AddTransactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/AddTransactionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/DeleteProgrammazioneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/DeleteProgrammazioneController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/EditFamigliaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/EditFamigliaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/EditProgrammazioneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/EditProgrammazioneController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/HomepageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/HomepageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/MenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/PortafoglioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/PortafoglioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/ReportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/ReportController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/changeFamiglia.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/changeFamiglia.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/deleteFamiglia.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/deleteFamiglia.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/famiglia.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/famiglia.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/newFamiglia.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/newFamiglia.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/report.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/report.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Progetto-OO-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/Progetto-OO-1.0-SNAPSHOT.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,6 +57,9 @@
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
 }</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -184,6 +195,9 @@
       <workItem from="1738407791937" duration="6914000" />
       <workItem from="1738591593856" duration="1598000" />
       <workItem from="1738657752981" duration="6895000" />
+      <workItem from="1738753742555" duration="5323000" />
+      <workItem from="1738783935649" duration="7264000" />
+      <workItem from="1738828285336" duration="7120000" />
     </task>
     <servers />
   </component>

@@ -58,13 +58,13 @@ public class AddTransactionController extends HomepageController {
             return; // Blocca l'esecuzione in caso di errori
         }
 
-        if("Uscita".equals((String) tipoTransazione.getValue())){
+        if("Uscita".equals(tipoTransazione.getValue())){
             destinatario = nuovoDaA.getText(); //Solo per le transazioni in uscita
             if (destinatario.isEmpty()){
                 showError("Il destinatario non può essere nullo per una transazione di uscita.");
                 return;  // Blocca l'inserimento se il mittente è vuoto
             }
-        } else if ("Entrata".equals((String) tipoTransazione.getValue())){
+        } else if ("Entrata".equals(tipoTransazione.getValue())){
             mittente= nuovoDaA.getText();
             if (mittente.isEmpty()){
                 showError("Il mittente non può essere nullo per una transazione in entrata");
@@ -73,12 +73,12 @@ public class AddTransactionController extends HomepageController {
         }
         try {
             float amount = Float.parseFloat(nuovoImporto.getText());
-            String selectedValuta = (String)valuta.getValue();
+            String selectedValuta = valuta.getValue();
             float importo = convertToEuro(amount, selectedValuta);
 
 
             Transazione nuovaTransazione = new Transazione(null, null, importo, java.sql.Date.valueOf(nuovaData.getValue()), java.sql.Time.valueOf(java.time.LocalTime.now()),
-                    nuovaCausale.getText(), (String) tipoTransazione.getValue(), mittente, destinatario, (String) numeroCarta.getValue(), (String) nuovaCategoria.getValue()
+                    nuovaCausale.getText(), tipoTransazione.getValue(), mittente, destinatario, numeroCarta.getValue(),  nuovaCategoria.getValue()
             );
             TransazioneDAOimp transazioneDAO = new TransazioneDAOimp();
             boolean success = transazioneDAO.insert(nuovaTransazione);

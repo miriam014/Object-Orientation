@@ -27,8 +27,8 @@
                         </Label>
                     </Pane>
 
-                    <SplitPane dividerPositions="0.6437" prefHeight="31.0" prefWidth="792.0" stylesheets="@stileTabelle.css">
-                          <HBox fx:id="comboBoxContainer" prefHeight="38.0" prefWidth="434.0">
+                    <SplitPane dividerPositions="0.48037974683544304" prefHeight="31.0" prefWidth="792.0" stylesheets="@stileTabelle.css">
+                          <HBox fx:id="comboBoxContainer" prefHeight="38.0" prefWidth="438.0" SplitPane.resizableWithParent="false">
                               <Button fx:id="selectFamilyButton" mnemonicParsing="false" onAction="#SelezionaFamiglia" prefHeight="30.0" prefWidth="128.0" style="-fx-background-color: #008080;" stylesheets="@stileMenu.css" text="Seleziona Famiglia">
                                   <HBox.margin>
                                       <Insets left="10.0" />
@@ -41,8 +41,8 @@
                                   </HBox.margin>
                               </ComboBox>
                           </HBox>
-                          <HBox alignment="CENTER_LEFT" fillHeight="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="38.0" prefWidth="260.0" spacing="7.0" stylesheets="@stileGenerale.css">
-                              <Button fx:id="deleteFamily" mnemonicParsing="false" onAction="#deleteFamiglia" prefHeight="30.0" prefWidth="70.0" text="Rimuovi">
+                          <HBox alignment="CENTER_LEFT" fillHeight="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="38.0" prefWidth="354.0" spacing="7.0" stylesheets="@stileGenerale.css">
+                              <Button fx:id="logoutFamily" mnemonicParsing="false" onAction="#logoutFamiglia" prefHeight="30.0" prefWidth="137.0" text="Esci dalla famiglia">
                                  <HBox.margin>
                                     <Insets left="10.0" />
                                  </HBox.margin>

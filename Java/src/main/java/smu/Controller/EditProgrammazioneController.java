@@ -50,7 +50,7 @@ public class EditProgrammazioneController extends SpeseProgrammateController {
             nomeProgrammazione.getItems().add(speseProgrammate.getDescrizione());
         }
 
-        //una volta scelta la spesa programmata riempi tutte le restanti celle con i valoiri corrispondenti
+        //una volta scelta la spesa programmata riempi tutte le restanti celle con i valori corrispondenti
         // e popolale anche degli altri valori possibili
         nomeProgrammazione.setOnAction(event -> {
             String selectedDescrizione = nomeProgrammazione.getValue();
@@ -83,7 +83,7 @@ public class EditProgrammazioneController extends SpeseProgrammateController {
         //recupero le modifiche dell'utente
         String nomeSpesa = nomeProgrammazione.getValue();
         if (nomeSpesa == null) {
-            showAlert(Alert.AlertType.ERROR, "Errore", "Nessuna spesa selezionata", "Per favore seleziona una spesa programmata prima di premere 'Conferma'.");
+            showError("Per favore seleziona una spesa programmata prima di premere 'Conferma'.");
             return;
         }
         String cartaUtilizzata = CartaUtilizzata.getValue();
@@ -98,18 +98,18 @@ public class EditProgrammazioneController extends SpeseProgrammateController {
         try {
             importofloat = Float.parseFloat(importo);
         } catch (NumberFormatException e) {
-            showAlert(Alert.AlertType.ERROR, "Errore", "Importo non valido", "L'importo inserito non è valido. Inserisci un valore numerico.");
+            showError("L'importo inserito non è valido. Inserisci un valore numerico.");
             return;
         }
 
         // Controllo che le date non siano precedenti alla data attuale
         LocalDate oggi = LocalDate.now();
         if (dataScadenza.toLocalDate().isBefore(oggi)) {
-            showAlert(Alert.AlertType.ERROR, "Errore", "Data di rinnovo non valida", "La data di scadenza non può essere precedente alla data attuale.");
+            showError("La data di scadenza non può essere precedente alla data attuale.");
             return;
         }
         if (dataTermine.toLocalDate().isBefore(oggi)) {
-            showAlert(Alert.AlertType.ERROR, "Errore", "Data di termine rinnovo non valida", "La data di termine rinnovo non può essere precedente alla data attuale.");
+            showError("La data di termine rinnovo non può essere precedente alla data attuale.");
             return;
         }
 
@@ -134,25 +134,14 @@ public class EditProgrammazioneController extends SpeseProgrammateController {
         try {
             boolean successo = speseProgrammateDAO.update(spesaModificata);
             if (successo) {
-                //chiudo direttamente la scheda
                 Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
                 stage.close();
             } else {
-                showAlert(Alert.AlertType.ERROR, "Errore", "Aggiornamento fallito", "Non è stato possibile aggiornare la spesa programmata.");
+                showError("Non è stato possibile aggiornare la spesa programmata.");
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
-
-
-    // Funzione generica per mostrare Alert
-    private void showAlert(Alert.AlertType alertType, String title, String header, String content) {
-        Alert alert = new Alert(alertType);
-        alert.setTitle(title);
-        alert.setHeaderText(header);
-        alert.setContentText(content);
-        alert.showAndWait();
     }
 
 }

@@ -1,22 +1,19 @@
 package smu.Controller;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 
-import javafx.util.Duration;
-import smu.DAO_Implementation.TransazioneDAOimp;
 import smu.DAO_Implementation.UtentiInFamiglieDAOimp;
 import smu.DTO.Famiglia;
-import smu.DAO_Implementation.FamigliaDAOimp;
 import smu.DTO.Transazione;
 import smu.Sessione;
-import smu.DTO.Carta;
 
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.*;
 
 import static javax.swing.JColorChooser.showDialog;
@@ -36,7 +33,7 @@ public class FamigliaController extends Controller{
 
     @FXML private Button changeFamily;
     @FXML private Button newFamily;
-    @FXML private Button deleteFamily;
+    @FXML private Button logoutFamily;
 
 
 
@@ -44,6 +41,8 @@ public class FamigliaController extends Controller{
     private void initialize() {
         popolaComboBox();
         initializeTableView();
+        familyComboBox.setVisible(false);
+        utenteComboBox.setVisible(false);
     }
 
 
@@ -59,7 +58,7 @@ public class FamigliaController extends Controller{
         familyComboBox.setOnAction(event -> { //listner per aggiornare la combobox per gli utenti
             String nomeFamigliaSelezionata = familyComboBox.getValue();
             if(nomeFamigliaSelezionata != null){
-                String idFamigliaSelezionata = null;
+                Integer idFamigliaSelezionata = null;
                 utenteComboBox.setDisable(false);
 
                 for (Famiglia famiglia : famiglieUtente){
@@ -103,19 +102,19 @@ public class FamigliaController extends Controller{
     @FXML
     public void newFamiglia(ActionEvent actionEvent) {
         showDialog("/interfaccia/newFamiglia.fxml", newFamily, "Crea nuova Famiglia");
-        initializeTableView();
+        initialize();
     }
 
     @FXML
     public void changeFamiglia(ActionEvent actionEvent) {
         showDialog("/interfaccia/changeFamiglia.fxml", changeFamily, "Modifica famiglia");
-        initializeTableView();
+        initialize();
     }
 
     @FXML
-    public void deleteFamiglia(ActionEvent actionEvent) {
-        showDialog("/interfaccia/deleteFamiglia.fxml", deleteFamily, "Rimuovi Famiglia");
-        initializeTableView();
+    public void logoutFamiglia(ActionEvent actionEvent) {
+        showDialog("/interfaccia/leaveFamiglia.fxml", logoutFamily, "Logout dalla famiglia");
+        initialize();
     }
 
     @FXML

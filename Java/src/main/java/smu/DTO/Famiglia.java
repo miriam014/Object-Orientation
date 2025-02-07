@@ -1,15 +1,15 @@
 package smu.DTO;
 
 public class Famiglia {
-    private String IdFamiglia;
+    private Integer IdFamiglia;
     private String NomeFamiglia;
 
-    public Famiglia(String idFamiglia, String nomeFamiglia){
+    public Famiglia(Integer idFamiglia, String nomeFamiglia){
         this.IdFamiglia = idFamiglia;
         this.NomeFamiglia = nomeFamiglia;
     }
 
-    public String getIdFamiglia(){
+    public Integer getIdFamiglia(){
         return IdFamiglia;
     }
 
@@ -17,7 +17,7 @@ public class Famiglia {
         return NomeFamiglia;
     }
 
-    public void setIdFamiglia(String idFamiglia){
+    public void setIdFamiglia(Integer idFamiglia){
         this.IdFamiglia = idFamiglia;
     }
 
