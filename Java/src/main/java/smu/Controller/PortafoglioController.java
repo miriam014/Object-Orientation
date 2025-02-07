@@ -2,6 +2,7 @@ package smu.Controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 import javafx.scene.control.*;
@@ -25,6 +26,7 @@ public class PortafoglioController extends Controller {
     @FXML protected Button addWalletButton;
     @FXML protected Button editWalletButton;
     @FXML protected Button deleteWalletButton;
+    @FXML public Button addTransactionInWalletButton;
     @FXML private Label balanceLabel;
     @FXML protected Label walletNameLabel;
     @FXML private Label currentWalletID;
@@ -167,5 +169,10 @@ public class PortafoglioController extends Controller {
         showDialog("/interfaccia/deleteWallet.fxml", deleteWalletButton, "Elimina Portafoglio");
         loadUserWallet();
         handleNextWallet();
+    }
+
+    public void insertTransactionInWallet() throws SQLException {
+        showDialog("/interfaccia/addTransaction.fxml", addTransactionInWalletButton, "Aggiungi Transazione nel portafoglio");
+        loadTransactions(currentWalletID.getText());
     }
 }

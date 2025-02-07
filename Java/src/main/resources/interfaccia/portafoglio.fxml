@@ -119,19 +119,18 @@
                   </VBox>
               </items>
             </SplitPane>
-                <Pane>
-                    <children>
-                        <Label layoutX="3.0" layoutY="-5.0" prefHeight="34.0" prefWidth="101.0" text="Transazioni">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Label>
-                    <!-- <Button fx:id="addNewTransactionButton" layoutX="115.0" layoutY="25.0" mnemonicParsing="false" onAction="#addNewTransactionInWallet" prefHeight="0.0" prefWidth="0.0" text="+" textFill="TEAL" /> -->
-                    </children>
+            <HBox alignment="CENTER_LEFT">
                <VBox.margin>
                   <Insets left="20.0" right="20.0" />
                </VBox.margin>
-                </Pane>
+               <children>
+                  <Button fx:id="addTransactionInWalletButton" onAction="#insertTransactionInWallet" style="-fx-background-color: #008080; -fx-text-fill: white; -fx-font-size: 16px; -fx-background-radius: 5px;" stylesheets="@stileGenerale.css" text="Nuova Transazione">
+                     <font>
+                        <Font name="Al Bayan Bold" size="13.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
             <TableView fx:id="transactionsTableView" prefHeight="259.0" stylesheets="@stileTabelle.css" VBox.vgrow="ALWAYS">
               <columns>
                   <TableColumn fx:id="tipoColumn" prefWidth="90.0" text="Tipo" />
@@ -155,7 +154,7 @@
             </VBox>
       </center>
         <left>
-           <fx:include source="menu.fxml" />
+           <!--<fx:include source="menu.fxml" />-->
         </left>
     </BorderPane>
 </AnchorPane>
