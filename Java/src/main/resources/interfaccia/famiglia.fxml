@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleMouseClick" prefHeight="600.0" prefWidth="792.0" stylesheets="@stileMenu.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smu.Controller.FamigliaController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleMouseClick" prefHeight="600.0" prefWidth="792.0" stylesheets="@stileMenu.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smu.Controller.FamigliaController">
         <BorderPane prefHeight="600.0" prefWidth="792.0" stylesheets="@stileMenu.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <center>
                 <VBox prefHeight="588.0" prefWidth="791.0" BorderPane.alignment="CENTER" VBox.vgrow="ALWAYS">
@@ -29,7 +29,7 @@
 
                     <SplitPane dividerPositions="0.48037974683544304" prefHeight="31.0" prefWidth="792.0" stylesheets="@stileTabelle.css">
                           <HBox fx:id="comboBoxContainer" prefHeight="38.0" prefWidth="438.0" SplitPane.resizableWithParent="false">
-                              <Button fx:id="selectFamilyButton" mnemonicParsing="false" onAction="#SelezionaFamiglia" prefHeight="30.0" prefWidth="128.0" style="-fx-background-color: #008080;" stylesheets="@stileMenu.css" text="Seleziona Famiglia">
+                              <Button fx:id="selectFamilyButton" mnemonicParsing="false" onAction="#SelezionaFamiglia" prefHeight="30.0" prefWidth="137.0" style="-fx-background-color: #008080;" stylesheets="@stileMenu.css" text="Seleziona Famiglia">
                                   <HBox.margin>
                                       <Insets left="10.0" />
                                   </HBox.margin>
@@ -48,7 +48,7 @@
                                  </HBox.margin>
                               </Button>
                               <Button fx:id="changeFamily" alignment="CENTER" mnemonicParsing="false" onAction="#changeFamiglia" prefHeight="31.0" prefWidth="70.0" text="Modifica" />
-                              <Button fx:id="newFamily" alignment="CENTER" mnemonicParsing="false" onAction="#newFamiglia" prefHeight="32.0" prefWidth="70.0" text="Aggiungi" />
+                              <Button fx:id="newFamily" alignment="CENTER" mnemonicParsing="false" onAction="#newFamiglia" prefHeight="32.0" prefWidth="115.0" text="Aggiungi famiglia" />
                           </HBox>
                           <padding>
                             <Insets top="6.0" />

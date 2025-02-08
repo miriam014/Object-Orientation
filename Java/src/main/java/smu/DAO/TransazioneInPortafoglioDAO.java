@@ -9,4 +9,6 @@ public interface TransazioneInPortafoglioDAO {
     public boolean insert(TransazioneInPortafoglio transactionInWallet) throws SQLException;
     public boolean delete(TransazioneInPortafoglio transactionInWallet) throws SQLException;
     public boolean update(TransazioneInPortafoglio transactionInWallet) throws SQLException;
+
+    public Integer getPortafoglioByIdTransazione(String idTransazione) throws SQLException;
 }

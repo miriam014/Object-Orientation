@@ -29,4 +29,5 @@ public class TransazioneInPortafoglio {
     public String toString() {
         return "TransazioniInPortafogli{" + "IdTransazione=" + IdTransazione + ", IdPortafoglio=" + IdPortafoglio + '}';
     }
+
 }

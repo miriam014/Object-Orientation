@@ -13,5 +13,6 @@ public interface PortafoglioDAO {
     Portafoglio getByID(String walletID) throws SQLException;
     List<Portafoglio> getFamiliarByUsername(String username) throws SQLException;
     List<Portafoglio> getPersonalByUsername(String username) throws SQLException;
+    List<Portafoglio> getByIdFamiglia(Integer IdFamiglia) throws SQLException;
     String getCardNumberByWalletID(String walletID) throws SQLException;
 }

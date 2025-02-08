@@ -143,4 +143,31 @@ public class UtenteDAOimp implements UtenteDAO {
         ps.close();
         return user;
     }
+
+    @Override
+    public Utente getByNumberCount(String numeroConto) throws SQLException {
+        String query = "SELECT u.* FROM smu.UTENTE u " +
+                "JOIN smu.CONTOCORRENTE c ON u.CF = c.CF " +
+                "WHERE c.NumeroConto = ?";
+
+        try (Connection connection = Database.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setString(1, numeroConto);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                return new Utente(
+                        resultSet.getString("Username"),
+                        resultSet.getString("Nome"),
+                        resultSet.getString("Cognome"),
+                        resultSet.getString("Telefono"),
+                        resultSet.getString("Email"),
+                        resultSet.getString("Password")
+                );
+            }
+        }
+        return null;
+    }
+
 }
