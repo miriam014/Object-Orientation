@@ -170,7 +170,7 @@ public class PortafoglioController extends Controller {
     }
 
     public void insertTransactionInWallet() throws SQLException {
-        showDialog("/interfaccia/addTransaction.fxml", addTransactionInWalletButton, "Aggiungi Transazione nel portafoglio");
-        loadTransactions(currentWalletID.getText());
+        showDialog("/interfaccia/addTransactionInWallet.fxml", addTransactionInWalletButton, "Aggiungi Transazione nel portafoglio");
+        //loadTransactions(currentWalletID.getText());
     }
 }
