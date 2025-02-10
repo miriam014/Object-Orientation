@@ -11,6 +11,4 @@ public interface SpeseProgrammateDAO {
         boolean delete(Integer expenseID) throws SQLException;
         SpeseProgrammate getByID(String expenseID) throws SQLException;
         List<SpeseProgrammate> getByUsername(String username) throws SQLException;
-        List<SpeseProgrammate> getByFamilyID(String familyID) throws SQLException;
-
 }

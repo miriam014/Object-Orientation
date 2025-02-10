@@ -11,6 +11,4 @@ public interface ContoCorrenteDAO {
     boolean delete(String accountNumber) throws SQLException;
     ContoCorrente getByAccountNumber(String accountNumber) throws SQLException;
     List<ContoCorrente> getByUsername(String username) throws SQLException;
-    List<ContoCorrente> getByFamilyID(String familyID) throws SQLException;
-
 }

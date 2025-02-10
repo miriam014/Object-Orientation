@@ -123,34 +123,4 @@ public class SpeseProgrammateDAOimp implements SpeseProgrammateDAO {
         return list;
     }
 
-    @Override
-    public List<SpeseProgrammate> getByFamilyID(String familyID) throws SQLException{
-
-        Connection connection = Database.getConnection();
-        List<SpeseProgrammate> list = new ArrayList<>();
-
-        String sql = "SELECT  S.IdSpesa, S.NumeroCarta, S.Descrizione,S.Importo, S.Periodicita, S.DataScadenza, S.DataFineRinnovo, S.Importo, S.Destinatario, S.Stato, CC.Username, F.IdFamiglia\n" +
-                "FROM (smu.SpeseProgrammate AS S NATURAL JOIN smu.Carta AS C) JOIN smu.ContoCorrente AS CC ON C.NumeroConto= CC.NumeroConto JOIN\n" +
-                "(smu.Utente AS U NATURAL JOIN smu.Famiglia AS F) ON CC.Username = U.Username WHERE F.IdFamiglia = ?;";
-
-        PreparedStatement ps = connection.prepareStatement(sql);
-        ps.setString(1, familyID);
-        ResultSet rs = ps.executeQuery();
-
-        while(rs.next()){
-            SpeseProgrammate sp = new SpeseProgrammate(rs.getInt("IDSpesa"),
-                    rs.getString("Periodicita"),
-                    rs.getDate("DataScadenza"),
-                    rs.getFloat("Importo"),
-                    rs.getString("Destinatario"),
-                    rs.getDate("DataFineRinnovo"),
-                    rs.getString("Descrizione"),
-                    rs.getString("NumeroCarta"),
-                    rs.getBoolean("Stato"));
-            list.add(sp);
-        }
-        rs.close();
-        ps.close();
-        return list;
-    }
 }

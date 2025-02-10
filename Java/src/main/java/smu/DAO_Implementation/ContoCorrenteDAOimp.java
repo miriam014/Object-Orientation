@@ -110,29 +110,4 @@ public class ContoCorrenteDAOimp implements ContoCorrenteDAO {
         return list;
     }
 
-    @Override
-    public List<ContoCorrente> getByFamilyID(String familyID) throws SQLException{
-        Connection connection = Database.getConnection();
-        List<ContoCorrente> list = new ArrayList<>();
-
-        String sql = "SELECT * FROM smu.ContoCorrente NATURAL JOIN smu.Utente WHERE IdFamiglia = ?";
-
-        PreparedStatement ps = connection.prepareStatement(sql);
-        ps.setString(1, familyID);
-
-        ResultSet rs = ps.executeQuery();
-        while(rs.next()){
-            ContoCorrente account = new ContoCorrente(rs.getString("NumeroConto"),
-                    rs.getString("IBAN"),
-                    rs.getFloat("Saldo"),
-                    rs.getString("NomeBanca"),
-                    rs.getString("BIC"),
-                    rs.getString("Username"));
-            list.add(account);
-        }
-        ps.close();
-        rs.close();
-        return list;
-    }
-
 }

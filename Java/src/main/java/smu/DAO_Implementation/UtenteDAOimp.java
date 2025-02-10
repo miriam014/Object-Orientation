@@ -91,32 +91,6 @@ public class UtenteDAOimp implements UtenteDAO {
     }
 
     @Override
-    public Utente getByEmail(String email) throws SQLException {
-        Connection connection = Database.getConnection();
-        Utente user = null;
-
-        String sql = "SELECT * FROM smu.Utente WHERE Email = ?";
-        PreparedStatement ps = connection.prepareStatement(sql);
-
-        ps.setString(1, email);
-
-        ResultSet rs =ps.executeQuery();
-
-        if(rs.next()){
-            String username = rs.getString("Username");
-            String nome = rs.getString("Nome");
-            String cognome = rs.getString("Cognome");
-            String telefono = rs.getString("Telefono");
-            String email2 = rs.getString("Email");
-            String password = rs.getString("Password");
-            user = new Utente(username, nome, cognome, telefono, email2, password);
-        }
-        rs.close();
-        ps.close();
-        return user;
-    }
-
-    @Override
     public Utente checkCredentials(String username, String password) throws SQLException{
 
         Connection connection = Database.getConnection();
@@ -142,32 +116,6 @@ public class UtenteDAOimp implements UtenteDAO {
         rs.close();
         ps.close();
         return user;
-    }
-
-    @Override
-    public Utente getByNumberCount(String numeroConto) throws SQLException {
-        String query = "SELECT u.* FROM smu.UTENTE u " +
-                "JOIN smu.CONTOCORRENTE c ON u.CF = c.CF " +
-                "WHERE c.NumeroConto = ?";
-
-        try (Connection connection = Database.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-
-            preparedStatement.setString(1, numeroConto);
-            ResultSet resultSet = preparedStatement.executeQuery();
-
-            if (resultSet.next()) {
-                return new Utente(
-                        resultSet.getString("Username"),
-                        resultSet.getString("Nome"),
-                        resultSet.getString("Cognome"),
-                        resultSet.getString("Telefono"),
-                        resultSet.getString("Email"),
-                        resultSet.getString("Password")
-                );
-            }
-        }
-        return null;
     }
 
 }

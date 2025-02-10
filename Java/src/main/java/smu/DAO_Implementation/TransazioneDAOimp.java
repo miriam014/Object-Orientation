@@ -207,48 +207,5 @@ public class TransazioneDAOimp implements TransazioneDAO {
         return list;
     }
 
-    public List<Transazione> getTransazioniByFamiglia(int idFamiglia, String utenteSelezionato) throws SQLException {
-        Connection connection = Database.getConnection();
-        List<Transazione> transazioni = new ArrayList<>();
-
-        String sql = "SELECT * FROM smu.Transazione T " +
-                "JOIN smu.TransazioniInPortafogli TP ON T.IdTransazione = TP.IdTransazione " +
-                "JOIN smu.Portafoglio P ON TP.IdPortafoglio = P.IdPortafoglio " +
-                "JOIN smu.UtentiInFamiglie UF ON UF.IdFamiglia = P.IdFamiglia " +
-                "JOIN smu.Utente U ON UF.NomeUtente = U.Username " +
-                "WHERE P.IdFamiglia = ? " +
-                (utenteSelezionato != null && !utenteSelezionato.equals("Tutti") ? "AND U.Username = ?" : "");
-
-    try (PreparedStatement ps = connection.prepareStatement(sql)) {
-        ps.setInt(1, idFamiglia);
-
-        if (utenteSelezionato != null && !utenteSelezionato.equals("Tutti")) {
-            ps.setString(2, utenteSelezionato);
-        }
-
-        try (ResultSet rs = ps.executeQuery()) {
-            while (rs.next()) {
-                Transazione transazione = new Transazione(
-                        rs.getString("IdTransazione"),
-                        rs.getString("CRO"),
-                        rs.getFloat("Importo"),
-                        rs.getDate("Data"),
-                        rs.getTime("Ora"),
-                        rs.getString("Causale"),
-                        rs.getString("Tipo"),
-                        rs.getString("Mittente"),
-                        rs.getString("Destinatario"),
-                        rs.getString("NumeroCarta"),
-                        rs.getString("NomeCategoria")
-                );
-
-                transazioni.add(transazione);
-            }
-        }
-    }
-
-        return transazioni;
-    }
-
 }
 

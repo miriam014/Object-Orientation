@@ -1,10 +1,8 @@
 package smu.Controller;
 
-import javafx.application.Platform;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
 import javafx.scene.input.MouseEvent;
@@ -194,8 +192,7 @@ public class FamigliaController extends Controller{
             PortafoglioDAOimp portafoglioDAOimp = new PortafoglioDAOimp();
             TransazioneDAOimp transazioneDAOimp = new TransazioneDAOimp();
 
-            //Lista finale di tutte le transazioni
-            List<Transazione> transazioni = new ArrayList<>();
+            TabellaFamiglia.getItems().clear();
 
             //otteniamo tutti i portafogli della famiglia selezionata
             List<Portafoglio> portafogli = portafoglioDAOimp.getByIdFamiglia(idFamigliaSelezionata);
@@ -204,6 +201,10 @@ public class FamigliaController extends Controller{
                 System.out.println("Nessun portafoglio trovato per la famiglia selezionata!");
                 return;
             }
+
+            //Lista finale di tutte le transazioni
+            List<Transazione> transazioni = new ArrayList<>();
+
             //per ogni portafoglio trovato, recuperiamo le sue transazioni
             for (Portafoglio portafoglio : portafogli){
                 List<Transazione> transazioniPortafoglio = transazioneDAOimp.getByWalletId(portafoglio.getIdPortafoglio());
@@ -226,13 +227,13 @@ public class FamigliaController extends Controller{
 
     @FXML
     public void newFamiglia(ActionEvent actionEvent) {
-        showDialog("/interfaccia/newFamiglia.fxml", newFamily, "Crea nuova Famiglia");
+        showDialog("/interfaccia/addFamiglia.fxml", newFamily, "Crea nuova Famiglia");
         initialize();
     }
 
     @FXML
     public void changeFamiglia(ActionEvent actionEvent) {
-        showDialog("/interfaccia/changeFamiglia.fxml", changeFamily, "Modifica famiglia");
+        showDialog("/interfaccia/editFamiglia.fxml", changeFamily, "Modifica famiglia");
         initialize();
     }
 

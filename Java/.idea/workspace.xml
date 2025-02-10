@@ -6,6 +6,20 @@
   <component name="ChangeListManager">
     <list default="true" id="df4d01a2-e17b-4881-9bee-4a47bce15a26" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/FamigliaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/FamigliaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/SpeseProgrammateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/SpeseProgrammateController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/DAO/ContoCorrenteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/DAO/ContoCorrenteDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/DAO/SpeseProgrammateDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/DAO/SpeseProgrammateDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/DAO/UtenteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/DAO/UtenteDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/DAO_Implementation/ContoCorrenteDAOimp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/DAO_Implementation/ContoCorrenteDAOimp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/DAO_Implementation/SpeseProgrammateDAOimp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/DAO_Implementation/SpeseProgrammateDAOimp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/DAO_Implementation/TransazioneDAOimp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/DAO_Implementation/TransazioneDAOimp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/DAO_Implementation/UtenteDAOimp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/DAO_Implementation/UtenteDAOimp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/changeFamiglia.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/editFamiglia.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/changeProgrammazione.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/editProgrammazione.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/newFamiglia.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/addFamiglia.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/newProgrammazione.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/addProgrammazione.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Progetto-OO-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/Progetto-OO-1.0-SNAPSHOT.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,32 +67,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "Maven.Progetto-OO .executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/miriam/UNI/GitHub/Object-Orientation/Java",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Progetto-OO .executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/miriam/UNI/GitHub/Object-Orientation/Java&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Progetto-OO " type="MavenRunConfiguration" factoryName="Maven">
       <MavenSettings>
@@ -184,6 +198,9 @@
       <workItem from="1738783935649" duration="7264000" />
       <workItem from="1738828285336" duration="7120000" />
       <workItem from="1738946723324" duration="4645000" />
+      <workItem from="1739184730400" duration="67000" />
+      <workItem from="1739184807200" duration="154000" />
+      <workItem from="1739184997946" duration="1639000" />
     </task>
     <servers />
   </component>

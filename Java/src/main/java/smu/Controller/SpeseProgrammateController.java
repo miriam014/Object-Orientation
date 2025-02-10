@@ -11,8 +11,6 @@ import smu.Sessione;
 import smu.DAO.SpeseProgrammateDAO;
 import smu.DAO_Implementation.SpeseProgrammateDAOimp;
 import smu.DTO.SpeseProgrammate;
-import java.sql.CallableStatement;
-import static smu.Database.getConnection;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -102,7 +100,7 @@ public class SpeseProgrammateController extends Controller {
         LocalDate dataRinnovo = spesa.getDataScadenza().toLocalDate();
         LocalDate dataAttuale = LocalDate.now(); // Data di oggi
 
-        if(dataAttuale.isAfter(dataRinnovo)) {
+        if(dataAttuale.isAfter(dataRinnovo) || dataAttuale.isEqual(dataRinnovo)) {
             bottone.setStyle("-fx-background-color: green; -fx-text-fill: white;");
             bottone.setText("Pagato");
             bottone.setDisable(true);   //in modo che non venga pagata di nuovo la spesa prima del dovuto
@@ -140,13 +138,13 @@ public class SpeseProgrammateController extends Controller {
 
     @FXML
     public void newProgrammazione(ActionEvent actionEvent) {
-        showDialog("/interfaccia/newProgrammazione.fxml", NewProgram, "Crea nuova Spesa programmata");
+        showDialog("/interfaccia/addProgrammazione.fxml", NewProgram, "Crea nuova Spesa programmata");
         initializeTableView();
     }
 
     @FXML
     public void changeProgrammazione(ActionEvent actionEvent) {
-        showDialog("/interfaccia/changeProgrammazione.fxml", ChangeProgram, "Modifica Spesa programmata");
+        showDialog("/interfaccia/editProgrammazione.fxml", ChangeProgram, "Modifica Spesa programmata");
         initializeTableView();
     }
 
