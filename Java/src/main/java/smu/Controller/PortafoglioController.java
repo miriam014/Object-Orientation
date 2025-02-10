@@ -38,8 +38,8 @@ public class PortafoglioController extends Controller {
     @FXML protected Button Conferma;
 
     protected List<Portafoglio> personalWallets;
-    private int currentWalletIndex;
-
+    protected int currentWalletIndex;
+    protected Portafoglio selectedWallet;
 
     @FXML
     public void initialize() throws SQLException {
@@ -170,6 +170,9 @@ public class PortafoglioController extends Controller {
     }
 
     public void insertTransactionInWallet() throws SQLException {
+
+        selectedWallet = personalWallets.get(currentWalletIndex);
+        System.out.println("Selected Wallet = " + selectedWallet);
         showDialog("/interfaccia/addTransactionInWallet.fxml", addTransactionInWalletButton, "Aggiungi Transazione nel portafoglio");
         //loadTransactions(currentWalletID.getText());
     }
