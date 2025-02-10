@@ -6,6 +6,7 @@ import smu.Database;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class TransazioneInPortafoglioDAOimp implements TransazioneInPortafoglioDAO {
@@ -49,5 +50,25 @@ public class TransazioneInPortafoglioDAOimp implements TransazioneInPortafoglioD
         int result = ps.executeUpdate();
         ps.close();
         return result != 0;
+    }
+
+    @Override
+    public Integer getPortafoglioByIdTransazione(String idTransazione) throws SQLException{
+        Connection connection = Database.getConnection();
+        String sql ="SELECT IdPortafoglio FROM Smu.TransazioniInPortafogli WHERE IdTransazione = ?";
+
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ps.setInt(1, Integer.parseInt(idTransazione));
+
+        ResultSet rs = ps.executeQuery();
+        Integer idPortafoglio = null;
+
+        if(rs.next()){
+            idPortafoglio = rs.getInt("IdPortafoglio");
+        }
+
+        rs.close();
+        ps.close();
+        return idPortafoglio;
     }
 }

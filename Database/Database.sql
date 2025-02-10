@@ -396,7 +396,7 @@ $$
         VALUES (NEW.Importo, CURRENT_DATE, CURRENT_TIME, NEW.Descrizione, 'Uscita', NULL, NEW.Destinatario, NEW.NumeroCarta);
 
         -- Modifica la data di scadenza o elimina la spesa programmata
-        IF NEW.DataFineRinnovo = CURRENT_DATE THEN
+        IF NEW.DataFineRinnovo <= CURRENT_DATE THEN
             DELETE FROM smu.SpeseProgrammate WHERE IdSpesa = NEW.IdSpesa;
         END IF;
 
@@ -404,12 +404,12 @@ $$
             UPDATE smu.SpeseProgrammate
             SET DataScadenza =
                 CASE
-                    WHEN NEW.Periodicita = '7 giorni' THEN CURRENT_DATE + INTERVAL '7 days'
-                    WHEN NEW.Periodicita = '15 giorni' THEN CURRENT_DATE + INTERVAL '15 days'
-                    WHEN NEW.Periodicita = '1 mese' THEN CURRENT_DATE + INTERVAL '1 month'
-                    WHEN NEW.Periodicita = '3 mesi' THEN CURRENT_DATE + INTERVAL '3 months'
-                    WHEN NEW.Periodicita = '6 mesi' THEN CURRENT_DATE + INTERVAL '6 months'
-                    WHEN NEW.Periodicita = '1 anno' THEN CURRENT_DATE + INTERVAL '1 year'
+                    WHEN NEW.Periodicita = '7 giorni' THEN NEW.Datascadenza + INTERVAL '7 days'
+                    WHEN NEW.Periodicita = '15 giorni' THEN NEW.Datascadenza + INTERVAL '15 days'
+                    WHEN NEW.Periodicita = '1 mese' THEN NEW.Datascadenza + INTERVAL '1 month'
+                    WHEN NEW.Periodicita = '3 mesi' THEN NEW.Datascadenza + INTERVAL '3 months'
+                    WHEN NEW.Periodicita = '6 mesi' THEN NEW.Datascadenza + INTERVAL '6 months'
+                    WHEN NEW.Periodicita = '1 anno' THEN NEW.Datascadenza + INTERVAL '1 year'
                 END,
                 Stato = FALSE
             WHERE IdSpesa = NEW.IdSpesa;

@@ -11,4 +11,5 @@ public interface UtenteDAO {
     Utente getByUsername(String username) throws SQLException;
     Utente getByEmail(String email) throws SQLException;
     Utente checkCredentials(String username, String password) throws SQLException;
+    Utente getByNumberCount(String numeroConto) throws SQLException;
 }

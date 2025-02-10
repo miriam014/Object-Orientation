@@ -153,6 +153,31 @@ public class PortafoglioDAOimp implements PortafoglioDAO {
         return familiarWallets;
     }
 
+
+   @Override
+   public List<Portafoglio> getByIdFamiglia(Integer idFamiglia) throws SQLException {
+       Connection connection = Database.getConnection();
+       List<Portafoglio> portafogli = new ArrayList<>();
+       String query = "SELECT * FROM smu.Portafoglio WHERE IdFamiglia = ?";
+
+       try (PreparedStatement ps = connection.prepareStatement(query)) {
+           ps.setInt(1, idFamiglia);
+           try (ResultSet rs = ps.executeQuery()) {
+               while (rs.next()) {
+                   Portafoglio portafoglio = new Portafoglio(
+                           String.valueOf(rs.getInt("IdPortafoglio")), // Convertiamo l'ID in String
+                           rs.getString("NomePortafoglio"),
+                           rs.getFloat("Saldo"), // Assumendo che il campo Saldo esista
+                           rs.getString("IdFamiglia") // Se è NULL, rimarrà null
+                   );
+                   portafogli.add(portafoglio);
+               }
+           }
+       }
+       return portafogli;
+   }
+
+
     @Override
     public String getCardNumberByWalletID(String walletID) throws SQLException{
         Connection connection = Database.getConnection();

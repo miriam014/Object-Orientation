@@ -123,5 +123,6 @@ public class CartaDAOimp implements CartaDAO {
         System.out.println("Numero totale di carte trovate: " + cards.size()); // Debug
         return cards;
     }
+
 }
 
