@@ -154,7 +154,7 @@
             </VBox>
       </center>
         <left>
-           <!--<fx:include source="menu.fxml" />-->
+           <fx:include source="menu.fxml" />
         </left>
     </BorderPane>
 </AnchorPane>

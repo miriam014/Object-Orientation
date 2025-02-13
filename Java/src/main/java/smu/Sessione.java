@@ -130,11 +130,6 @@ public class Sessione {
         return personalWallets;
     }
 
-    public List<Portafoglio> getFamiliarWallets() {
-        loadUserFamiliarWallets();
-        return familiarWallets;
-    }
-
     public List<Famiglia> getFamilyByUsername(){
         return famiglie;
     }

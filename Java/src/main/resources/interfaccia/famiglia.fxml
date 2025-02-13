@@ -35,7 +35,7 @@
                                   </HBox.margin>
                               </Button>
                               <ComboBox fx:id="familyComboBox" prefHeight="36.0" prefWidth="137.0" promptText="Famiglia" stylesheets="@stileMenu.css" visible="false" visibleRowCount="5" />
-                              <ComboBox fx:id="utenteComboBox" prefHeight="38.0" prefWidth="136.0" promptText="Utente" stylesheets="@stileMenu.css" visible="false" visibleRowCount="7">
+                              <ComboBox fx:id="utenteComboBox" onAction="#filtraPerUtente" prefHeight="38.0" prefWidth="136.0" promptText="Utente" stylesheets="@stileMenu.css" visible="false" visibleRowCount="7">
                                   <HBox.margin>
                                       <Insets left="2.0" right="2.0" />
                                   </HBox.margin>
@@ -58,9 +58,9 @@
                      <columns>
                         <TableColumn fx:id="tipoColumn" minWidth="-1.0" prefWidth="118.0" text="Tipo" />
                         <TableColumn fx:id="importoColumn" minWidth="-1.0" prefWidth="172.0" text="Importo" />
-                        <TableColumn fx:id="daAColumn" minWidth="-1.0" prefWidth="146.0" text="Da/A" />
-                        <TableColumn fx:id="utenteColumn" minWidth="-1.0" prefWidth="147.0" text="Utente" />
-                        <TableColumn fx:id="portafoglioColumn" minWidth="-1.0" prefWidth="161.0" text="Portafoglio" />
+                        <TableColumn fx:id="daAColumn" minWidth="-1.0" prefWidth="195.0" text="Da/A" />
+                        <TableColumn fx:id="utenteColumn" minWidth="-1.0" prefWidth="118.0" text="Utente" />
+                        <TableColumn fx:id="portafoglioColumn" minWidth="-1.0" prefWidth="145.0" text="Portafoglio" />
                      </columns>
                      <cursor>
                         <Cursor fx:constant="DEFAULT" />

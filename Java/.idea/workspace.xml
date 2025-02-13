@@ -5,20 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df4d01a2-e17b-4881-9bee-4a47bce15a26" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/FamigliaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/FamigliaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/SpeseProgrammateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/SpeseProgrammateController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/smu/DAO/ContoCorrenteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/DAO/ContoCorrenteDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/smu/DAO/SpeseProgrammateDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/DAO/SpeseProgrammateDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/smu/DAO/UtenteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/DAO/UtenteDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/smu/DAO_Implementation/ContoCorrenteDAOimp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/DAO_Implementation/ContoCorrenteDAOimp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/smu/DAO_Implementation/SpeseProgrammateDAOimp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/DAO_Implementation/SpeseProgrammateDAOimp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/smu/DAO_Implementation/TransazioneDAOimp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/DAO_Implementation/TransazioneDAOimp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/smu/DAO_Implementation/UtenteDAOimp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/DAO_Implementation/UtenteDAOimp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/changeFamiglia.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/editFamiglia.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/changeProgrammazione.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/editProgrammazione.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/newFamiglia.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/addFamiglia.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/newProgrammazione.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/addProgrammazione.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Sessione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Sessione.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/famiglia.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/famiglia.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/portafoglio.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/portafoglio.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Progetto-OO-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/Progetto-OO-1.0-SNAPSHOT.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

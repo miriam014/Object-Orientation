@@ -1,5 +1,6 @@
 package smu.Controller;
 
+
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
@@ -7,7 +8,6 @@ import javafx.scene.control.*;
 import javafx.event.ActionEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-
 import smu.DAO_Implementation.*;
 import smu.DTO.*;
 import smu.Sessione;
@@ -15,7 +15,6 @@ import smu.Sessione;
 import java.sql.SQLException;
 import java.util.*;
 
-import static javax.swing.JColorChooser.showDialog;
 
 public class FamigliaController extends Controller{
 
@@ -41,6 +40,7 @@ public class FamigliaController extends Controller{
         popolaComboBox();
         familyComboBox.setVisible(false);
         utenteComboBox.setVisible(false);
+        utenteComboBox.setOnAction(event -> filtraPerUtente(event));
     }
 
 
@@ -50,11 +50,11 @@ public class FamigliaController extends Controller{
         familyComboBox.getItems().clear();
 
         if (famiglieUtente == null || famiglieUtente.isEmpty()) {
-            System.out.println("⚠️ Nessuna famiglia trovata per l'utente!");
+            System.out.println(" Nessuna famiglia trovata per l'utente!");
             return;
         }
 
-        System.out.println("✅ Famiglie trovate: " + famiglieUtente.size());
+        System.out.println("Famiglie trovate: " + famiglieUtente.size());
 
         for (Famiglia famiglia : famiglieUtente){
             familyComboBox.getItems().add(famiglia.getNomeFamiglia());
@@ -91,10 +91,12 @@ public class FamigliaController extends Controller{
                     } else {
                         utenteComboBox.getItems().add("Nessun utente disponibile");
                     }
+
                 }
                 initializeTableView();
             }
         });
+
     }
 
 
@@ -114,7 +116,7 @@ public class FamigliaController extends Controller{
             String numeroCarta = transazione.getNumeroCarta();
 
             try {
-                // 1. Ottieni il numero del conto corrente tramite il numero della carta
+                // il numero del conto corrente tramite il numero della carta
                 CartaDAOimp cartaDAOimp = new CartaDAOimp();
                 Carta carta = cartaDAOimp.getByNumeroCarta(numeroCarta);
                 if (carta == null) {
@@ -123,7 +125,7 @@ public class FamigliaController extends Controller{
 
                 String numeroConto = carta.getNumeroConto();
 
-                // 2. Ottieni l'utente associato al conto corrente
+                // Otteniamo l'utente associato al conto corrente
                 ContoCorrenteDAOimp contoCorrenteDAOimp = new ContoCorrenteDAOimp();
                 ContoCorrente contoCorrente = contoCorrenteDAOimp.getByAccountNumber(numeroConto);
 
@@ -131,12 +133,12 @@ public class FamigliaController extends Controller{
                     // L'utente è collegato al conto corrente tramite 'Username'
                     String usernameUtente = contoCorrente.getUsername();
 
-                    // Ottieni l'utente tramite il suo username
+                    // Otteniamo l'utente tramite il suo username
                     UtenteDAOimp utenteDAOimp = new UtenteDAOimp();
                     Utente utente = utenteDAOimp.getByUsername(usernameUtente);
 
                     if (utente != null) {
-                        return new SimpleStringProperty(utente.getNome() + " " + utente.getCognome());
+                        return new SimpleStringProperty(utente.getUsername());
                     } else {
                         return new SimpleStringProperty("Utente non trovato");
                     }
@@ -167,7 +169,6 @@ public class FamigliaController extends Controller{
                 return new SimpleStringProperty("Nessun portafoglio legato alla transazione");
             }
         });
-
         aggiornaTableView();
     }
 
@@ -194,6 +195,10 @@ public class FamigliaController extends Controller{
 
             TabellaFamiglia.getItems().clear();
 
+            //Lista finale di tutte le transazioni
+            List<Transazione> transazioni = new ArrayList<>();
+
+
             //otteniamo tutti i portafogli della famiglia selezionata
             List<Portafoglio> portafogli = portafoglioDAOimp.getByIdFamiglia(idFamigliaSelezionata);
 
@@ -201,10 +206,6 @@ public class FamigliaController extends Controller{
                 System.out.println("Nessun portafoglio trovato per la famiglia selezionata!");
                 return;
             }
-
-            //Lista finale di tutte le transazioni
-            List<Transazione> transazioni = new ArrayList<>();
-
             //per ogni portafoglio trovato, recuperiamo le sue transazioni
             for (Portafoglio portafoglio : portafogli){
                 List<Transazione> transazioniPortafoglio = transazioneDAOimp.getByWalletId(portafoglio.getIdPortafoglio());
@@ -224,6 +225,50 @@ public class FamigliaController extends Controller{
         }
     }
 
+    @FXML
+    public void filtraPerUtente(ActionEvent event) {
+        initializeTableView();
+        String utenteSelezionato = utenteComboBox.getValue();
+
+        if (utenteSelezionato == null || utenteSelezionato.equals("Nessun utente disponibile")) {
+            return;
+        }
+
+        // Recupera tutte le transazioni dalla tabella
+        List<Transazione> tutteLeTransazioni = new ArrayList<>(TabellaFamiglia.getItems());
+        List<Transazione> transazioniFiltrate = new ArrayList<>();
+
+        // Filtra le transazioni per l'utente selezionato
+        for (Transazione transazione : tutteLeTransazioni) {
+            try {
+                CartaDAOimp cartaDAOimp = new CartaDAOimp();
+                ContoCorrenteDAOimp contoCorrenteDAOimp = new ContoCorrenteDAOimp();
+                UtenteDAOimp utenteDAOimp = new UtenteDAOimp();
+
+                // Ottieni l'utente associato alla transazione tramite la carta
+                Carta carta = cartaDAOimp.getByNumeroCarta(transazione.getNumeroCarta());
+                if (carta == null) continue;
+
+                ContoCorrente contoCorrente = contoCorrenteDAOimp.getByAccountNumber(carta.getNumeroConto());
+                if (contoCorrente == null) continue;
+
+                Utente utente = utenteDAOimp.getByUsername(contoCorrente.getUsername());
+                if (utente == null) continue;
+
+                // Se l'utente selezionato corrisponde all'utente della transazione, aggiungila alla lista filtrata
+                if (utenteSelezionato.equals("Tutti") || utente.getUsername().equals(utenteSelezionato)) {
+                    transazioniFiltrate.add(transazione);
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        // Aggiorna la tabella con le transazioni filtrate
+        TabellaFamiglia.getItems().clear();
+        TabellaFamiglia.getItems().addAll(transazioniFiltrate);
+    }
 
     @FXML
     public void newFamiglia(ActionEvent actionEvent) {
