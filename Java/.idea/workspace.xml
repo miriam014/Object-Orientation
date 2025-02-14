@@ -5,11 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df4d01a2-e17b-4881-9bee-4a47bce15a26" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/FamigliaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/FamigliaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Sessione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Sessione.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/famiglia.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/famiglia.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/portafoglio.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/portafoglio.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/AddTransactionInWalletController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/AddTransactionInWalletController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/Controller/PortafoglioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/Controller/PortafoglioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/addTransactionInWallet.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/addTransactionInWallet.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Progetto-OO-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/Progetto-OO-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/smu/Controller/PortafoglioController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/smu/Controller/PortafoglioController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,8 +136,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23339.11" />
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23339.11" />
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.22562.218" />
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-IU-243.22562.218" />
       </set>
     </attachedChunks>
   </component>
@@ -191,6 +192,7 @@
       <workItem from="1739184730400" duration="67000" />
       <workItem from="1739184807200" duration="154000" />
       <workItem from="1739184997946" duration="1639000" />
+      <workItem from="1739536945711" duration="5744000" />
     </task>
     <servers />
   </component>

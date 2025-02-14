@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="500.0" prefWidth="700.0" stylesheets="@stileGenerale.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smu.Controller.AddTransactionInWalletController">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smu.Controller.AddTransactionInWalletController">
    <children>
-      <BorderPane prefHeight="500.0" prefWidth="700.0">
+      <BorderPane prefHeight="583.0" prefWidth="722.0">
          <top>
             <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="700.0" style="-fx-background-color: #008080;" BorderPane.alignment="CENTER">
                <children>
@@ -21,13 +23,13 @@
                         <Font size="17.0" />
                      </font>
                   </Label>
-                  <Label fx:id="walletNameLabel" layoutX="308.0" layoutY="4.0" prefHeight="22.0" prefWidth="121.0" text="Label" />
                </children>
             </Pane>
          </top>
          <center>
-            <TableView fx:id="transactionInCard" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="344.0" prefWidth="620.0" BorderPane.alignment="CENTER">
+            <TableView fx:id="transactionsTableView" fixedCellSize="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="221.0" prefWidth="620.0" stylesheets="@stileTabelle.css" BorderPane.alignment="CENTER">
               <columns>
+                  <TableColumn fx:id="idColumn" prefWidth="98.0" text="ID" />
                   <TableColumn fx:id="tipoColumn" prefWidth="98.0" text="Tipo" />
                   <TableColumn fx:id="importoColumn" prefWidth="104.0" text="Importo" />
                   <TableColumn fx:id="dataColumn" prefWidth="79.0" text="Data" />
@@ -35,12 +37,19 @@
                   <TableColumn fx:id="daAColumn" minWidth="0.0" prefWidth="138.0" text="Da / A" />
                   <TableColumn fx:id="categoriaColumn" minWidth="-Infinity" prefWidth="113.0" text="Categoria" />
               </columns>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
             </TableView>
          </center>
          <bottom>
-            <Pane prefHeight="66.0" prefWidth="700.0" BorderPane.alignment="CENTER">
+            <Pane prefHeight="265.0" prefWidth="700.0" stylesheets="@stileGenerale.css" BorderPane.alignment="CENTER">
                <children>
-                  <Button layoutX="307.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="87.0" text="Conferma" />
+                  <TextField fx:id="IdAggiugi" layoutX="486.0" layoutY="109.0" promptText="ID" />
+                  <Button layoutX="307.0" layoutY="213.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="87.0" text="Conferma" />
+                  <Label layoutX="32.0" layoutY="113.0" text="Inserisci l'ID della transazione da aggiungere al portafoglio" />
+                  <Label layoutX="273.0" layoutY="50.0" text="Seleziona portafoglio" />
+                  <ComboBox fx:id="portafogli" layoutX="486.0" layoutY="32.0" onAction="#portafoglioSelezionato" prefWidth="150.0" />
                </children>
             </Pane>
          </bottom>
