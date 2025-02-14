@@ -103,7 +103,7 @@ public class PortafoglioDAOimp implements PortafoglioDAO {
                 "LEFT JOIN smu.Carta AS C ON ACP.NumeroCarta = C.NumeroCarta " +
                 "LEFT JOIN smu.ContoCorrente AS CC ON C.NumeroConto = CC.NumeroConto " +
                 "LEFT JOIN smu.Utente AS U ON CC.Username = U.Username " +
-                "WHERE (U.Username = ? OR P.IdFamiglia IS NULL) AND P.IdFamiglia IS NULL;"; // Filtra per IdFamiglia NULL
+                "WHERE U.Username = ? AND P.IdFamiglia IS NULL;"; // Filtra per IdFamiglia NULL
 
         PreparedStatement ps = connection.prepareStatement(sql);
         ps.setString(1, username);

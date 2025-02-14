@@ -643,6 +643,8 @@ INSERT INTO smu.Portafoglio(NomePortafoglio, IdFamiglia) VALUES('Viaggio Laurea'
 INSERT INTO smu.Portafoglio(NomePortafoglio, IdFamiglia) VALUES('Casa coinquiline', 3);
 INSERT INTO smu.Portafoglio(NomePortafoglio) VALUES('Spese Mensili');
 INSERT INTO smu.Portafoglio(NomePortafoglio) VALUES('Vacanze');
+INSERT INTO smu.Portafoglio(NomePortafoglio) VALUES('Vacanze');
+
 
 
 -- Associazione portafoglio e carta
@@ -680,8 +682,10 @@ INSERT INTO smu.AssociazioneCartaPortafoglio(IdPortafoglio, NumeroCarta)VALUES (
 INSERT INTO smu.AssociazioneCartaPortafoglio(IdPortafoglio, NumeroCarta)VALUES (5, '5638291746532891');
 
 INSERT INTO smu.AssociazioneCartaPortafoglio(IdPortafoglio, NumeroCarta)VALUES (6, '9999000011112222');
-
 INSERT INTO smu.AssociazioneCartaPortafoglio(IdPortafoglio, NumeroCarta)VALUES (7, '1212121212121212');
+
+INSERT INTO smu.AssociazioneCartaPortafoglio(IdPortafoglio, NumeroCarta)VALUES (8, '5337589274884783');
+
 
 
 -- Transazioni in portafogli
