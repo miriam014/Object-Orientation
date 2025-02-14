@@ -39,7 +39,6 @@ public class PortafoglioController extends Controller {
 
     protected List<Portafoglio> personalWallets;
     protected int currentWalletIndex;
-    protected Portafoglio selectedWallet;
 
     @FXML
     public void initialize() throws SQLException {
@@ -172,5 +171,7 @@ public class PortafoglioController extends Controller {
     public void insertTransactionInWallet() throws SQLException {
         showDialog("/interfaccia/addTransactionInWallet.fxml", addTransactionInWalletButton, "Aggiungi Transazione nel portafoglio");
         loadUserWallet();
+        handleNextWallet();
+        handlePreviousWallet();
     }
 }

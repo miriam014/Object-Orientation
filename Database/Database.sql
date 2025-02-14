@@ -370,7 +370,7 @@ $$
         SET Saldo = Saldo + (SELECT T.Importo
                              FROM (smu.Transazione AS T JOIN smu.TransazioniInPortafogli AS TP on T.IdTransazione = TP.IdTransazione)
                                  JOIN smu.Portafoglio AS P on TP.IdPortafoglio = P.IdPortafoglio
-                             WHERE T.IdTransazione = NEW.IdTransazione)
+                             WHERE T.IdTransazione = NEW.IdTransazione LIMIT 1)
         WHERE IdPortafoglio = NEW.IdPortafoglio;
         RETURN NEW;
     END;
@@ -517,11 +517,11 @@ INSERT INTO smu.Transazione(Importo, Data, Ora, Causale, Tipo, Mittente, Destina
 INSERT INTO smu.Transazione(Importo, Data, Ora, Causale, Tipo, Mittente, Destinatario, NumeroCarta) VALUES(32.40, '2023-06-20', '09:30:11', 'Carburante auto', 'Uscita', NULL, 'Esso', '5355284927482884');
 INSERT INTO smu.Transazione(Importo, Data, Ora, Causale, Tipo, Mittente, Destinatario, NumeroCarta) VALUES(45.00, '2024-01-15', '13:20:30', 'Stipendio', 'Entrata', 'Agenzia', NULL, '5355284927482884');
 --23
-INSERT INTO smu.Transazione(Importo, Data, Ora, Causale, Tipo, Mittente, Destinatario, NumeroCarta) VALUES(150.00, '2023-10-10', '13:45:32', 'Visita medica', 'Uscita', NULL, 'Centro Medico Salus', '1212121212121212');
-INSERT INTO smu.Transazione(Importo, Data, Ora, Causale, Tipo, Mittente, Destinatario, NumeroCarta) VALUES(45.00, '2023-09-30', '14:40:40', 'Acquisto giardino', 'Uscita', NULL, 'Brico', '1212121212121212');
+INSERT INTO smu.Transazione(Importo, Data, Ora, Causale, Tipo, Mittente, Destinatario, NumeroCarta) VALUES(150.00, '2023-10-10', '13:45:32', 'Autobus', 'Uscita', NULL, 'AutobusRoma', '1212121212121212');
+INSERT INTO smu.Transazione(Importo, Data, Ora, Causale, Tipo, Mittente, Destinatario, NumeroCarta) VALUES(45.00, '2023-09-30', '14:40:40', 'Biglietto Treno', 'Uscita', NULL, 'Trenitalia', '1212121212121212');
 INSERT INTO smu.Transazione(Importo, Data, Ora, Causale, Tipo, Mittente, Destinatario, NumeroCarta) VALUES(70.60, '2024-03-10', '14:00:45', 'Acquisto vestiti', 'Uscita', NULL, 'Negozio di abbigliamento online', '1212121212121212');
-INSERT INTO smu.Transazione(Importo, Data, Ora, Causale, Tipo, Mittente, Destinatario, NumeroCarta) VALUES(300.00, '2024-02-23', '13:45:40', 'Rimborso danni assicurativi', 'Entrata', 'Assicurazione Vittoria', NULL, '1212121212121212');
-INSERT INTO smu.Transazione(Importo, Data, Ora, Causale, Tipo, Mittente, Destinatario, NumeroCarta) VALUES(75.00, '2024-02-15', '10:00:45', 'Rimborso biglietti concerto', 'Entrata', 'TicketOne', NULL, '1212121212121212');
+INSERT INTO smu.Transazione(Importo, Data, Ora, Causale, Tipo, Mittente, Destinatario, NumeroCarta) VALUES(300.00, '2024-02-23', '13:45:40', 'Rimborso ritardo aereo', 'Entrata', 'Ryanair', NULL, '1212121212121212');
+INSERT INTO smu.Transazione(Importo, Data, Ora, Causale, Tipo, Mittente, Destinatario, NumeroCarta) VALUES(75.00, '2024-02-15', '10:00:45', 'Rimborso escursione', 'Entrata', 'Agenzia di viaggi', NULL, '1212121212121212');
 INSERT INTO smu.Transazione(Importo, Data, Ora, Causale, Tipo, Mittente, Destinatario, NumeroCarta) VALUES(90.00, '2023-11-17', '20:20:20', 'Cena ristorante', 'Uscita', NULL, 'Ristorante Milano', '1212121212121212');
 --29
 INSERT INTO smu.Transazione(Importo, Data, Ora, Causale, Tipo, Mittente, Destinatario, NumeroCarta) VALUES(50.00, '2024-01-10', '11:30:30', 'Rimborso tasse comunali', 'Entrata', 'Comune di Milano', NULL, '1234567890443456');
@@ -681,7 +681,7 @@ INSERT INTO smu.AssociazioneCartaPortafoglio(IdPortafoglio, NumeroCarta)VALUES (
 INSERT INTO smu.AssociazioneCartaPortafoglio(IdPortafoglio, NumeroCarta)VALUES (5, '1928374650918273');
 INSERT INTO smu.AssociazioneCartaPortafoglio(IdPortafoglio, NumeroCarta)VALUES (5, '5638291746532891');
 
-INSERT INTO smu.AssociazioneCartaPortafoglio(IdPortafoglio, NumeroCarta)VALUES (6, '9999000011112222');
+INSERT INTO smu.AssociazioneCartaPortafoglio(IdPortafoglio, NumeroCarta)VALUES (6, '5355284927482884');
 INSERT INTO smu.AssociazioneCartaPortafoglio(IdPortafoglio, NumeroCarta)VALUES (7, '1212121212121212');
 
 INSERT INTO smu.AssociazioneCartaPortafoglio(IdPortafoglio, NumeroCarta)VALUES (8, '5337589274884783');
@@ -745,7 +745,9 @@ INSERT INTO smu.TransazioniInPortafogli(IdTransazione, IdPortafoglio) VALUES(93,
 INSERT INTO smu.TransazioniInPortafogli(IdTransazione, IdPortafoglio) VALUES(118,5);
 INSERT INTO smu.TransazioniInPortafogli(IdTransazione, IdPortafoglio) VALUES(110,5);
 --id 6 7 spese mensili utente singolo
-INSERT INTO smu.TransazioniInPortafogli(IdTransazione, IdPortafoglio) VALUES(46,6);
+INSERT INTO smu.TransazioniInPortafogli(IdTransazione, IdPortafoglio) VALUES(17,6);
+INSERT INTO smu.TransazioniInPortafogli(IdTransazione, IdPortafoglio) VALUES(20,6);
+
 INSERT INTO smu.TransazioniInPortafogli(IdTransazione, IdPortafoglio) VALUES(47,7);
 
 -- Spese programmate

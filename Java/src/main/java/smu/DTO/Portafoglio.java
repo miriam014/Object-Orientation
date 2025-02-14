@@ -58,7 +58,7 @@ public class Portafoglio {
 
     @Override
     public String toString(){
-        return "PORTAFOGLIO: |IdPortafoglio = "+ IdPortafoglio + "|\t" + "|NomePortafoglio = " + NomePortafoglio + "|\t" + "|Saldo = " + Saldo + "|\t" + "|IdFamiglia = " + IdFamiglia + "|";
+        return "PORTAFOGLIO: IdPortafoglio = "+ IdPortafoglio + "\t" + "NomePortafoglio = " + NomePortafoglio + "\t" + "Saldo = " + Saldo + "\t" + "IdFamiglia = " + IdFamiglia + "";
     }
 
 }
