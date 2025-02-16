@@ -69,34 +69,40 @@ public class TransazioneDAOimp implements TransazioneDAO {
 
     @Override
     public Transazione getByID(String idTransazione) throws SQLException {
-        Connection connection = Database.getConnection();
-        Transazione transaction = null;
-
         String sql = "SELECT * FROM smu.Transazione WHERE IDTransazione = ?";
-        PreparedStatement ps = connection.prepareStatement(sql);
 
-        ps.setString(1, idTransazione);
-        ResultSet rs = ps.executeQuery();
+        try (Connection connection = Database.getConnection();
+             PreparedStatement ps = connection.prepareStatement(sql)) {
 
-        if(rs.next()){
-            String id2 = rs.getString("IDTransazione");
-            String cro = rs.getString("CRO");
-            Float importo = rs.getFloat("Importo");
-            Date data = rs.getDate("Data");
-            Time ora = rs.getTime("Ora");
-            String causale = rs.getString("Causale");
-            String tipo = rs.getString("Tipo");
-            String mittente = rs.getString("Mittente");
-            String destinatario = rs.getString("Destinatario");
-            String numeroCarta = rs.getString("NumeroCarta");
-            String categoria = rs.getString("NomeCategoria");
-            transaction = new Transazione(id2,cro,importo,data,ora,causale,tipo,mittente,destinatario,numeroCarta,categoria);
+            ps.setString(1, idTransazione);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return new Transazione(
+                            idTransazione,
+                            rs.getString("CRO"),
+                            rs.getFloat("Importo"),
+                            rs.getDate("Data"),
+                            rs.getTime("Ora"),
+                            rs.getString("Causale"),
+                            rs.getString("Tipo"),
+                            rs.getString("Mittente"),
+                            rs.getString("Destinatario"),
+                            rs.getString("NumeroCarta"),
+                            rs.getString("NomeCategoria")
+                    );
+                }
+                rs.close();
+                ps.close();
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Errore durante la ricerca della transazione: " + e.getMessage());
+            throw e; // Propaga l'eccezione per una gestione a livello superiore
         }
-
-        rs.close();
-        ps.close();
-        return transaction;
+        return null; // Ritorna null se la transazione non è trovata
     }
+
 
     @Override
     public List<Transazione> getByCardNumber(String cardNumber, String x) throws SQLException {

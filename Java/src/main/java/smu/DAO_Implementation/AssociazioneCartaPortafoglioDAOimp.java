@@ -62,7 +62,11 @@ public class AssociazioneCartaPortafoglioDAOimp implements AssociazioneCartaPort
         String sql = "SELECT NumeroCarta FROM smu.AssociazioneCartaPortafoglio WHERE IdPortafoglio = ?";
 
         PreparedStatement ps = connection.prepareStatement(sql);
-        ps.setInt(1, Integer.parseInt(walletID));
+        try{
+            ps.setInt(1, Integer.parseInt(walletID));
+        }catch(NumberFormatException e){
+            System.out.println("Numero carta nullo");
+        }
 
         ResultSet rs = ps.executeQuery();
         rs.next();

@@ -47,7 +47,7 @@
                   <Button fx:id="Conferma" layoutX="307.0" layoutY="213.0" mnemonicParsing="false" onAction="#inserisciTransazione" prefHeight="30.0" prefWidth="87.0" text="Conferma" />
                   <Label layoutX="32.0" layoutY="113.0" text="Inserisci l'ID della transazione da aggiungere al portafoglio" />
                   <Label layoutX="273.0" layoutY="50.0" text="Seleziona portafoglio" />
-                  <ComboBox fx:id="idPortafoglio" layoutX="486.0" layoutY="32.0" onAction="#portafoglioSelezionato" prefWidth="150.0" />
+                  <ComboBox fx:id="idPortafoglio" layoutX="486.0" layoutY="32.0" prefWidth="150.0" />
                   <ComboBox fx:id="idTransazione" layoutX="486.0" layoutY="113.0" prefHeight="36.0" prefWidth="150.0" />
                </children>
             </Pane>

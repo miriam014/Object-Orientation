@@ -53,6 +53,7 @@ public class AddTransactionInWalletController extends PortafoglioController {
         idPortafoglio.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 selectedWalletID = newValue.getIdPortafoglio();
+                portafoglioSelezionato(selectedWalletID);
                 System.out.println("ID Portafoglio selezionato: " + selectedWalletID);
                 try {
                     popolaComboBoxTransazioni();
@@ -63,7 +64,7 @@ public class AddTransactionInWalletController extends PortafoglioController {
             }
         });
 
-        idPortafoglio.setOnAction(this::portafoglioSelezionato);
+        //idPortafoglio.setOnAction(this::portafoglioSelezionato);
 
         idTransazione.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
         if (newValue != null) {
@@ -89,55 +90,57 @@ public class AddTransactionInWalletController extends PortafoglioController {
         }
     }
 
-    private List<String> recuperaIdTransazioni() throws SQLException {
+    // Metodo che seleziona gli ID delle transazioni non ancora inserite nel portafoglio
+    private List<String> loadTransactions() throws SQLException {
         TransazioneDAOimp transazioneDAO = new TransazioneDAOimp();
         AssociazioneCartaPortafoglioDAO associazione = new AssociazioneCartaPortafoglioDAOimp();
         String numeroCarta = associazione.getCardNumberByID(selectedWalletID);
 
         // Recupera le transazioni in base al numero della carta
         List<Transazione> transazioni = transazioneDAO.getByCardNumber(numeroCarta, "Tutte");
-        System.out.println("Transazioni: " + transazioni);
 
         List<String> IdTransazioni = new ArrayList<>();
-
-        for(Transazione t : transazioni){
-            IdTransazioni.add(t.getIDTransazione());
-        }
 
         TransazioneInPortafoglioDAO transazioniInPortafoglio = new TransazioneInPortafoglioDAOimp();
         List<String> transazioniInPortafoglioID = transazioniInPortafoglio.getTransazioniInPortafoglio(selectedWalletID);
 
-        IdTransazioni.removeAll(transazioniInPortafoglioID);
-
+        for(Transazione t : transazioni){
+            if(!transazioniInPortafoglioID.contains(t.getIDTransazione())){
+                IdTransazioni.add(t.getIDTransazione());
+            }
+        }
         return IdTransazioni;
+    }
+
+    // Trasforma gli ID delle transazioni non ancora inserite nel portafoglio in oggetti Transazione
+    private List<Transazione> trasformaIdInTransazioni(List<String> IdTransazioni) throws SQLException {
+        TransazioneDAOimp transazioneDAO = new TransazioneDAOimp();
+
+        System.out.println(" METODO trasformaIDInTransazioni \n ID Transazioni: " + IdTransazioni);
+        List<Transazione> transazioni = new ArrayList<>();
+        for (String id : IdTransazioni) {
+            transazioni.add(transazioneDAO.getByID(id));
+        }
+        System.out.println("Transazioni: " + transazioni);
+        return transazioni;
     }
 
     private void popolaComboBoxTransazioni() throws SQLException {
         if (selectedWalletID != null) {
-             try {
-                 TransazioneDAOimp transazioneDAO = new TransazioneDAOimp();
-                 AssociazioneCartaPortafoglioDAO associazione = new AssociazioneCartaPortafoglioDAOimp();
-                 String numeroCarta = associazione.getCardNumberByID(selectedWalletID);
-
-                 // Recupera le transazioni in base al numero della carta
-                 List<Transazione> transazioni = transazioneDAO.getByCardNumber(numeroCarta, "Tutte");
-                 List<String> IdTransazioni = new ArrayList<>();
-
-                 for(Transazione t : transazioni){
-                     IdTransazioni.add(t.getIDTransazione());
-                 }
+            try {
+                List<String> IdTransazioni = loadTransactions();
 
                 // Popoliamo la ComboBox con le transazioni dell'utente
                 ObservableList<String> observableTransactions = FXCollections.observableArrayList(IdTransazioni);
                 idTransazione.setItems(observableTransactions);
 
-             } catch (Exception e) {
-            e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }
 
-
+    // Metodo che attiva il bottone conferma solo se sono stati inseriti IdPortafoglio e IdTransazione
     private void checkFormValidity() {
         // Controlla se il nome del portafoglio è stato inserito e se è stata selezionata una carta
         if (selectedWalletID != null && !selectedWalletID.trim().isEmpty() &&
@@ -166,18 +169,13 @@ public class AddTransactionInWalletController extends PortafoglioController {
         });
     }
 
-
-    public void portafoglioSelezionato(ActionEvent actionEvent) {
-        Portafoglio portafoglioSelezionato = idPortafoglio.getValue();
-        if (portafoglioSelezionato != null) {
+    @FXML
+    public void portafoglioSelezionato(String walletID) {
+        System.out.println("Metodo portafoglio selezionato");
+        if (walletID != null) {
             try {
-                // Carica le transazioni del portafoglio selezionato
-                TransazioneDAOimp transazioneDAO = new TransazioneDAOimp();
-                AssociazioneCartaPortafoglioDAO associazione = new AssociazioneCartaPortafoglioDAOimp();
-                String numeroCarta = associazione.getCardNumberByID(portafoglioSelezionato.getIdPortafoglio());
-
-                // Recupera le transazioni in base al numero della carta
-                List<Transazione> transazioni = transazioneDAO.getByCardNumber(numeroCarta, "Tutte");
+                List<Transazione> transazioni = trasformaIdInTransazioni(loadTransactions());
+                System.out.println("TransazioniIIIII: " + transazioni);
 
                 // Popola la TableView con le transazioni
                 ObservableList<Transazione> transactionDetails = FXCollections.observableArrayList(transazioni);
