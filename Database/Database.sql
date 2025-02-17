@@ -367,18 +367,17 @@ CREATE OR REPLACE FUNCTION smu.triggerAggiornaSaldoPortafoglio() RETURNS TRIGGER
 $$
     BEGIN
     UPDATE smu.Portafoglio
-        SET Saldo = Saldo + (SELECT T.Importo
-                             FROM (smu.Transazione AS T JOIN smu.TransazioniInPortafogli AS TP on T.IdTransazione = TP.IdTransazione)
-                                 JOIN smu.Portafoglio AS P on TP.IdPortafoglio = P.IdPortafoglio
-                             WHERE T.IdTransazione = NEW.IdTransazione LIMIT 1)
+        SET Saldo = Saldo + (SELECT SUM(T.Importo)
+                             FROM (smu.Transazione AS T
+                                 JOIN smu.TransazioniInPortafogli AS TP on T.IdTransazione = TP.IdTransazione)
+                             WHERE TP.IdPortafoglio = NEW.IdPortafoglio)
         WHERE IdPortafoglio = NEW.IdPortafoglio;
         RETURN NEW;
     END;
 $$ LANGUAGE plpgsql;
 
 CREATE OR REPLACE TRIGGER ModificaSaldoPortafoglio
-    AFTER INSERT
-    ON smu.TransazioniInPortafogli
+    AFTER INSERT ON smu.TransazioniInPortafogli
     FOR EACH ROW EXECUTE FUNCTION smu.triggerAggiornaSaldoPortafoglio();
 
 
@@ -745,7 +744,6 @@ INSERT INTO smu.TransazioniInPortafogli(IdTransazione, IdPortafoglio) VALUES(93,
 INSERT INTO smu.TransazioniInPortafogli(IdTransazione, IdPortafoglio) VALUES(118,5);
 INSERT INTO smu.TransazioniInPortafogli(IdTransazione, IdPortafoglio) VALUES(110,5);
 --id 6 7 spese mensili utente singolo
-INSERT INTO smu.TransazioniInPortafogli(IdTransazione, IdPortafoglio) VALUES(17,6);
 INSERT INTO smu.TransazioniInPortafogli(IdTransazione, IdPortafoglio) VALUES(20,6);
 
 INSERT INTO smu.TransazioniInPortafogli(IdTransazione, IdPortafoglio) VALUES(47,7);

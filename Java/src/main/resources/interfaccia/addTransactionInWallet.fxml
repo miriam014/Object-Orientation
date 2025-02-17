@@ -28,13 +28,13 @@
          <center>
             <TableView fx:id="transactionsTableView" fixedCellSize="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="221.0" prefWidth="620.0" stylesheets="@stileTabelle.css" BorderPane.alignment="CENTER">
               <columns>
-                  <TableColumn fx:id="idColumn" prefWidth="98.0" text="ID" />
-                  <TableColumn fx:id="tipoColumn" prefWidth="98.0" text="Tipo" />
-                  <TableColumn fx:id="importoColumn" prefWidth="104.0" text="Importo" />
-                  <TableColumn fx:id="dataColumn" prefWidth="79.0" text="Data" />
-                  <TableColumn fx:id="causaleColumn" minWidth="0.0" prefWidth="87.0" text="Causale" />
-                  <TableColumn fx:id="daAColumn" minWidth="0.0" prefWidth="138.0" text="Da / A" />
-                  <TableColumn fx:id="categoriaColumn" minWidth="-Infinity" prefWidth="113.0" text="Categoria" />
+                  <TableColumn fx:id="idColumn" prefWidth="57.0" text="ID" />
+                  <TableColumn fx:id="tipoColumn" prefWidth="78.0" text="Tipo" />
+                  <TableColumn fx:id="importoColumn" prefWidth="96.0" text="Importo" />
+                  <TableColumn fx:id="dataColumn" prefWidth="96.0" text="Data" />
+                  <TableColumn fx:id="causaleColumn" minWidth="0.0" prefWidth="101.0" text="Causale" />
+                  <TableColumn fx:id="daAColumn" minWidth="0.0" prefWidth="99.0" text="Da / A" />
+                  <TableColumn fx:id="categoriaColumn" editable="false" maxWidth="92.0" minWidth="-Infinity" prefWidth="91.0" text="Categoria" />
               </columns>
                <BorderPane.margin>
                   <Insets />
@@ -45,7 +45,7 @@
             <Pane prefHeight="265.0" prefWidth="700.0" stylesheets="@stileGenerale.css" BorderPane.alignment="CENTER">
                <children>
                   <Button fx:id="Conferma" layoutX="307.0" layoutY="213.0" mnemonicParsing="false" onAction="#inserisciTransazione" prefHeight="30.0" prefWidth="87.0" text="Conferma" />
-                  <Label layoutX="32.0" layoutY="113.0" text="Inserisci l'ID della transazione da aggiungere al portafoglio" />
+                  <Label layoutX="57.0" layoutY="113.0" text="Inserisci l'ID della transazione da aggiungere al portafoglio" />
                   <Label layoutX="273.0" layoutY="50.0" text="Seleziona portafoglio" />
                   <ComboBox fx:id="idPortafoglio" layoutX="486.0" layoutY="32.0" onAction="#portafoglioSelezionato" prefWidth="150.0" />
                   <ComboBox fx:id="idTransazione" layoutX="486.0" layoutY="113.0" prefHeight="36.0" prefWidth="150.0" />

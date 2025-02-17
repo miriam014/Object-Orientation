@@ -1,19 +1,17 @@
 package smu.Controller;
 
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import smu.DAO.AssociazioneCartaPortafoglioDAO;
-import smu.DAO.TransazioneDAO;
 import smu.DAO.TransazioneInPortafoglioDAO;
 import smu.DAO_Implementation.AssociazioneCartaPortafoglioDAOimp;
 import smu.DAO_Implementation.TransazioneDAOimp;
@@ -44,6 +42,8 @@ public class AddTransactionInWalletController extends PortafoglioController {
 
     private String selectedWalletID;
     private String transactionId;
+    private List<Transazione> transazioniList = new ArrayList<>();
+
 
     public void initialize(){
         popolaComboBoxPortafogli();
@@ -51,19 +51,14 @@ public class AddTransactionInWalletController extends PortafoglioController {
         Conferma.setDisable(true);
 
         idPortafoglio.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null) {
-                selectedWalletID = newValue.getIdPortafoglio();
-                System.out.println("ID Portafoglio selezionato: " + selectedWalletID);
-                try {
-                    popolaComboBoxTransazioni();
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
-                checkFormValidity();
+            selectedWalletID = newValue.getIdPortafoglio();
+            System.out.println("ID Portafoglio selezionato: " + selectedWalletID);
+            try {
+                popolaComboBoxTransazioni();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
             }
         });
-
-        idPortafoglio.setOnAction(this::portafoglioSelezionato);
 
         idTransazione.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
         if (newValue != null) {
@@ -84,56 +79,54 @@ public class AddTransactionInWalletController extends PortafoglioController {
             ObservableList<Portafoglio> observableWallets = FXCollections.observableArrayList(personalWallets);
             idPortafoglio.setItems(observableWallets);
 
+
+            // Usa il setCellFactory per visualizzare solo il nome del portafoglio
+            idPortafoglio.setCellFactory(param -> new ListCell<Portafoglio>() {
+                @Override
+                protected void updateItem(Portafoglio portafoglio, boolean empty) {
+                    super.updateItem(portafoglio, empty);
+                    if (empty || portafoglio == null) {
+                        setText(null);
+                    } else {
+                        setText(portafoglio.getNomePortafoglio()); // Mostra solo il nome
+                    }
+                }
+            });
+
+            // Impostiamo anche il comportamento quando un elemento viene selezionato
+            idPortafoglio.setButtonCell(new ListCell<Portafoglio>() {
+                @Override
+                protected void updateItem(Portafoglio portafoglio, boolean empty) {
+                    super.updateItem(portafoglio, empty);
+                    if (empty || portafoglio == null) {
+                        setText(null);
+                    } else {
+                        setText(portafoglio.getNomePortafoglio()); // Mostra solo il nome
+                    }
+                }
+            });
+
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private List<String> recuperaIdTransazioni() throws SQLException {
-        TransazioneDAOimp transazioneDAO = new TransazioneDAOimp();
-        AssociazioneCartaPortafoglioDAO associazione = new AssociazioneCartaPortafoglioDAOimp();
-        String numeroCarta = associazione.getCardNumberByID(selectedWalletID);
-
-        // Recupera le transazioni in base al numero della carta
-        List<Transazione> transazioni = transazioneDAO.getByCardNumber(numeroCarta, "Tutte");
-        System.out.println("Transazioni: " + transazioni);
-
-        List<String> IdTransazioni = new ArrayList<>();
-
-        for(Transazione t : transazioni){
-            IdTransazioni.add(t.getIDTransazione());
-        }
-
-        TransazioneInPortafoglioDAO transazioniInPortafoglio = new TransazioneInPortafoglioDAOimp();
-        List<String> transazioniInPortafoglioID = transazioniInPortafoglio.getTransazioniInPortafoglio(selectedWalletID);
-
-        IdTransazioni.removeAll(transazioniInPortafoglioID);
-
-        return IdTransazioni;
-    }
-
     private void popolaComboBoxTransazioni() throws SQLException {
-        if (selectedWalletID != null) {
-             try {
-                 TransazioneDAOimp transazioneDAO = new TransazioneDAOimp();
-                 AssociazioneCartaPortafoglioDAO associazione = new AssociazioneCartaPortafoglioDAOimp();
-                 String numeroCarta = associazione.getCardNumberByID(selectedWalletID);
+        try {
+            if (transazioniList != null && !transazioniList.isEmpty()) {
+                List<String> idTransazioni = new ArrayList<>();
+                for (Transazione t : transazioniList) {
+                    idTransazioni.add(t.getIDTransazione());
+                }
 
-                 // Recupera le transazioni in base al numero della carta
-                 List<Transazione> transazioni = transazioneDAO.getByCardNumber(numeroCarta, "Tutte");
-                 List<String> IdTransazioni = new ArrayList<>();
-
-                 for(Transazione t : transazioni){
-                     IdTransazioni.add(t.getIDTransazione());
-                 }
-
-                // Popoliamo la ComboBox con le transazioni dell'utente
-                ObservableList<String> observableTransactions = FXCollections.observableArrayList(IdTransazioni);
+                // Popola la ComboBox con gli ID delle transazioni
+                ObservableList<String> observableTransactions = FXCollections.observableArrayList(idTransazioni);
                 idTransazione.setItems(observableTransactions);
-
-             } catch (Exception e) {
-            e.printStackTrace();
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -171,17 +164,39 @@ public class AddTransactionInWalletController extends PortafoglioController {
         Portafoglio portafoglioSelezionato = idPortafoglio.getValue();
         if (portafoglioSelezionato != null) {
             try {
-                // Carica le transazioni del portafoglio selezionato
+                // Carica le transazioni che possono essere associate al portafoglio selezionato
                 TransazioneDAOimp transazioneDAO = new TransazioneDAOimp();
                 AssociazioneCartaPortafoglioDAO associazione = new AssociazioneCartaPortafoglioDAOimp();
                 String numeroCarta = associazione.getCardNumberByID(portafoglioSelezionato.getIdPortafoglio());
 
+                List<Transazione> transazioniGiaPresenti = transazioneDAO.getByWalletId(portafoglioSelezionato.getIdPortafoglio());
                 // Recupera le transazioni in base al numero della carta
                 List<Transazione> transazioni = transazioneDAO.getByCardNumber(numeroCarta, "Tutte");
+                // Crea una lista per le transazioni che non sono già nel portafoglio
+                List<Transazione> transazioniFiltrate = new ArrayList<>();
+
+                for (Transazione t : transazioni) {
+                    boolean transazionePresente = false;
+                    for (Transazione t2 : transazioniGiaPresenti) {
+                        if (t.getIDTransazione().equals(t2.getIDTransazione())) {
+                            transazionePresente = true;
+                            break;
+                        }
+                    }
+                    if (!transazionePresente) {
+                        transazioniFiltrate.add(t);
+                    }
+                }
 
                 // Popola la TableView con le transazioni
-                ObservableList<Transazione> transactionDetails = FXCollections.observableArrayList(transazioni);
+                ObservableList<Transazione> transactionDetails = FXCollections.observableArrayList(transazioniFiltrate);
                 transactionsTableView.setItems(transactionDetails);
+
+                // Salva le transazioni nella lista per il futuro utilizzo
+                transazioniList = new ArrayList<>(transazioniFiltrate);
+
+                // Popola la ComboBox degli ID delle transazioni
+                popolaComboBoxTransazioni();
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -191,17 +206,6 @@ public class AddTransactionInWalletController extends PortafoglioController {
 
     @FXML
     public void inserisciTransazione() throws SQLException {
-
-        if (selectedWalletID == null || selectedWalletID.trim().isEmpty()) {
-            System.out.println("Inserisci un ID portafoglio.");
-            return;
-        }
-
-        if(transactionId == null || transactionId.trim().isEmpty()) {
-            System.out.println("Seleziona una transazione da aggiungere al portafoglio.");
-            return;
-        }
-
         try {
             System.out.println("Inserimento della transazione '" + transactionId + " al portafoglio " + selectedWalletID);
 
@@ -214,7 +218,6 @@ public class AddTransactionInWalletController extends PortafoglioController {
             System.out.println("Inserimento della transazione non riuscito.");
             e.printStackTrace();
         }
-
 
         // Chiudi la finestra corrente
         Stage stage = (Stage) Conferma.getScene().getWindow();
