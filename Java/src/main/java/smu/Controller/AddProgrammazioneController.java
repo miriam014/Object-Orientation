@@ -6,7 +6,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import smu.DAO_Implementation.SpeseProgrammateDAOimp; // Corretto l'import
+import smu.DAOImplementation.SpeseProgrammateDAOimp; // Corretto l'import
 import smu.DTO.Carta;
 import smu.DTO.SpeseProgrammate;
 import smu.Sessione;

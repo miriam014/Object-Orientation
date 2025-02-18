@@ -9,7 +9,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import smu.Sessione;
 import smu.DAO.SpeseProgrammateDAO;
-import smu.DAO_Implementation.SpeseProgrammateDAOimp;
+import smu.DAOImplementation.SpeseProgrammateDAOimp;
 import smu.DTO.SpeseProgrammate;
 
 import java.sql.SQLException;

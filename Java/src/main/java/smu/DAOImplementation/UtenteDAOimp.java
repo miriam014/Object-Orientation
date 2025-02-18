@@ -1,4 +1,4 @@
-package smu.DAO_Implementation;
+package smu.DAOImplementation;
 
 import java.sql.*;
 

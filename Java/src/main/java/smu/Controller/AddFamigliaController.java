@@ -26,7 +26,7 @@ public class AddFamigliaController extends Controller{
             // Creazione dell'oggetto Famiglia
             smu.DTO.Famiglia famiglia = new smu.DTO.Famiglia(null, nomeFamiglia.getText());
 
-            smu.DAO_Implementation.FamigliaDAOimp famigliaDAOimp = new smu.DAO_Implementation.FamigliaDAOimp();
+            smu.DAOImplementation.FamigliaDAOimp famigliaDAOimp = new smu.DAOImplementation.FamigliaDAOimp();
             boolean success = famigliaDAOimp.insert(famiglia);
 
             if (success) {
@@ -50,7 +50,7 @@ public class AddFamigliaController extends Controller{
     }
 
     private void addUserToFamily(Integer idFamiglia, String username) {
-        smu.DAO_Implementation.UtentiInFamiglieDAOimp utentiInFamiglieDAOimp = new smu.DAO_Implementation.UtentiInFamiglieDAOimp();
+        smu.DAOImplementation.UtentiInFamiglieDAOimp utentiInFamiglieDAOimp = new smu.DAOImplementation.UtentiInFamiglieDAOimp();
 
         try {
             utentiInFamiglieDAOimp.addUserToFamily(idFamiglia, username);

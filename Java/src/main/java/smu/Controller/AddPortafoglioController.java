@@ -4,14 +4,12 @@ import javafx.fxml.FXML;
 import javafx.stage.Stage;
 import smu.DAO.AssociazioneCartaPortafoglioDAO;
 import smu.DAO.PortafoglioDAO;
-import smu.DAO_Implementation.AssociazioneCartaPortafoglioDAOimp;
-import smu.DAO_Implementation.PortafoglioDAOimp;
+import smu.DAOImplementation.AssociazioneCartaPortafoglioDAOimp;
+import smu.DAOImplementation.PortafoglioDAOimp;
 import smu.DTO.AssociazioneCartaPortafoglio;
 import smu.DTO.Portafoglio;
 
 import java.sql.SQLException;
-
-import static java.sql.Types.NULL;
 
 public class AddPortafoglioController extends PortafoglioController{
 

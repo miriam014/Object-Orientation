@@ -8,7 +8,7 @@ import javafx.scene.control.*;
 import javafx.event.ActionEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-import smu.DAO_Implementation.*;
+import smu.DAOImplementation.*;
 import smu.DTO.*;
 import smu.Sessione;
 

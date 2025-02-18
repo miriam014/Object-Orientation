@@ -1,7 +1,6 @@
-package smu.DAO_Implementation;
+package smu.DAOImplementation;
 import smu.DAO.AssociazioneCartaPortafoglioDAO;
 import smu.DTO.AssociazioneCartaPortafoglio;
-import smu.DTO.Carta;
 import smu.Database;
 
 import java.sql.Connection;

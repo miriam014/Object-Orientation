@@ -13,7 +13,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 
 import javafx.util.Duration;
-import smu.DAO_Implementation.TransazioneDAOimp;
+import smu.DAOImplementation.TransazioneDAOimp;
 import smu.DTO.Transazione;
 import smu.Sessione;
 import smu.DTO.Carta;

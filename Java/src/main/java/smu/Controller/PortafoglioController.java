@@ -2,13 +2,12 @@ package smu.Controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 import javafx.scene.control.*;
 import smu.DAO.AssociazioneCartaPortafoglioDAO;
-import smu.DAO_Implementation.AssociazioneCartaPortafoglioDAOimp;
-import smu.DAO_Implementation.TransazioneDAOimp;
+import smu.DAOImplementation.AssociazioneCartaPortafoglioDAOimp;
+import smu.DAOImplementation.TransazioneDAOimp;
 import smu.DTO.Carta;
 import smu.DTO.Portafoglio;
 import smu.DTO.Transazione;

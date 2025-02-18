@@ -73,11 +73,11 @@ public class Main extends Application {
         boolean inFullScreen = primaryStage.isFullScreen();
         if (!inFullScreen) {
             // Solo se non è in fullscreen, aggiorna le dimensioni
-            primaryStage.widthProperty().addListener((_, __, newValue) -> {
+            primaryStage.widthProperty().addListener((observable, oldValue, newValue) -> {
                 currentWidth = newValue.doubleValue();
             });
 
-            primaryStage.heightProperty().addListener((_, __, newValue) -> {
+            primaryStage.heightProperty().addListener((observable, oldValue, newValue) -> {
                 currentHeight = newValue.doubleValue();
             });
         }

@@ -7,7 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 import smu.DAO.SpeseProgrammateDAO;
-import smu.DAO_Implementation.SpeseProgrammateDAOimp;
+import smu.DAOImplementation.SpeseProgrammateDAOimp;
 import smu.DTO.SpeseProgrammate;
 import smu.Sessione;
 

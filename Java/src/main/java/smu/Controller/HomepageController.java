@@ -11,8 +11,7 @@ import smu.Sessione;
 import smu.DTO.Utente;
 import smu.DTO.Carta;
 import smu.DTO.Transazione;
-import smu.DAO_Implementation.TransazioneDAOimp;
-import smu.DAO_Implementation.CartaDAOimp;
+import smu.DAOImplementation.TransazioneDAOimp;
 
 
 import java.io.IOException;
