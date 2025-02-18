@@ -1,0 +1,350 @@
+@startuml 
+scale 1024 width
+scale 768 height
+class smu.Controller.ReportController {
++ Label LabelDati
+- Label saldoIniziale
+- Label saldoFinale
+- Button selectButton
+- ComboBox<String> cardComboBox
+- ComboBox<String> monthComboBox
+- ComboBox<Integer> yearComboBox
+- HBox comboBoxContainer
+- BarChart<String,Number> statisticheEntrate
+- BarChart<String,Number> statisticheUscite
+- void initialize()
+- void popolaComboBox()
+- void addComboBoxListeners()
+- void aggiornaGrafici()
+- void popolaBarChart(BarChart<String,Number>,String,String,Integer)
+- float calcolaMassimo(List<Float>)
+- float calcolaMinimo(List<Float>)
+- float calcolaMedio(List<Float>)
+- void aggiungiTooltip(XYChart.Data<String,Number>,float)
+- void aggiornaSaldi(String,int)
+- void aggiornaLabel()
+- void SelezionaCarta(ActionEvent)
++ void handleMouseClick(MouseEvent)
+- int convertiMeseInNumero(String)
+}
+
+
+class smu.Controller.AddPortafoglioController {
+- String selectedCardNumber
++ void initialize()
+- void checkFormValidity()
++ void addWallet()
+}
+
+
+class smu.Controller.FamigliaController {
+- HBox comboBoxContainer
+- Button selectFamilyButton
+- ComboBox<String> familyComboBox
+- ComboBox<String> utenteComboBox
+- TableView<Transazione> TabellaFamiglia
+- TableColumn<Transazione,String> tipoColumn
+- TableColumn<Transazione,Float> importoColumn
+- TableColumn<Transazione,String> daAColumn
+- TableColumn<Transazione,String> utenteColumn
+- TableColumn<Transazione,String> portafoglioColumn
+- Button changeFamily
+- Button newFamily
+- Button logoutFamily
+- void initialize()
+- void popolaComboBox()
+# void initializeTableView()
+- void aggiornaTableView()
++ void filtraPerUtente(ActionEvent)
++ void newFamiglia(ActionEvent)
++ void changeFamiglia(ActionEvent)
++ void logoutFamiglia(ActionEvent)
+- void SelezionaFamiglia(ActionEvent)
+- void handleMouseClick(MouseEvent)
+}
+
+
+class smu.Controller.EditFamigliaController {
+- TextField nuovoNome
+- ComboBox<String> eliminaUtente
+- TextField nuovoUtente
+- Button Conferma
+- ComboBox<String> nomeFamigliadaModificare
++ void initialize()
+- void caricaFamiglie()
+- void caricaUtentiDellaFamiglia()
++ void modificaFamiglia(ActionEvent)
+- Integer getSelectedFamilyId()
+}
+
+
+class smu.Controller.EditPortafoglioController {
+- String selectedWalletId
+- String selectedCardNumber
++ void initialize()
++ void editWallet()
+- void loadWalletInfo()
+}
+
+
+class smu.Controller.AddTransactionController {
+- Button confermaButton
+- ComboBox<String> tipoTransazione
+- TextField nuovoImporto
+- ComboBox<String> valuta
+- DatePicker nuovaData
+- ComboBox<String> nuovaCategoria
+- TextField nuovaCausale
+- TextField nuovoDaA
+- ComboBox<String> numeroCarta
++ void initialize()
+- void saveTransaction(ActionEvent)
+- boolean validateInputs()
+- float convertToEuro(float,String)
+}
+
+
+class smu.Controller.LoginController {
+- PasswordField passwordField
+- TextField usernameField
+- UtenteDAO userDAO
++ void initialize()
++ void login()
+- Utente authenticateUser(String,String)
+}
+
+
+class smu.Controller.LeaveFamigliaController {
++ ComboBox<String> nomeFamiglia
+- Button Conferma
+- FamigliaDAO famigliaDAO
++ void initialize()
++ void leaveFamiglia(ActionEvent)
+}
+
+
+class smu.Controller.HomepageController {
++ VBox SaldoDisponibile
+- Label balanceLabel
+- Label cardNameLabel
+- Label cardNumberLabel
+- Label cardTypeLabel
+- Label expiryDateLabel
+- Button previousCardButton
+- Button nextCardButton
+- Button statisticaButton
+- Pane headerPane
++ VBox DatiCarta
+- Button addTransactionButton
++ TableView<Transazione> transactionsTableView
+- TableColumn<Transazione,String> tipoColumn
+- TableColumn<Transazione,Double> importoColumn
+- TableColumn<Transazione,String> dataColumn
+- TableColumn<Transazione,String> causaleColumn
+- TableColumn<Transazione,String> daAColumn
+- TableColumn<Transazione,String> categoriaColumn
+- List<Carta> carteUtente
+- int currentCardIndex
++ void initialize()
+- void loadUserCards()
+- void showCard()
++ void loadTransactions(String)
+- void handleNextCard()
+- void handlePreviousCard()
++ void insertTransaction()
+- void scenaReport()
+}
+
+
+class smu.Controller.Controller {
+# TableColumn<Transazione,String> tipoColumn
+# TableColumn<Transazione,Double> importoColumn
+# TableColumn<Transazione,String> dataColumn
+# TableColumn<Transazione,String> causaleColumn
+# TableColumn<Transazione,String> daAColumn
+# TableColumn<Transazione,String> categoriaColumn
+# void showDialog(String,Button,String)
+# void initializeTableView()
++ void showError(String)
+}
+
+
+class smu.Controller.DeleteProgrammazioneController {
+- Button Conferma
+- ComboBox<String> nomeProgrammazione
+- SpeseProgrammateDAO speseProgrammateDAO
++ void initialize()
++ void deleteProgrammazione(ActionEvent)
+}
+
+
+class smu.Controller.MenuController {
+- Button toggleButton
+- Button scadenzeButton
+- Button homepageButton
+- Button portafoglioButton
+- Button famigliaButton
+- Button walletButton
+- Button transactionsButton
+- Button programmazioneButton
+- Button logoutButton
+- VBox sidePanel
+- boolean isMenuVisible
++ void initialize()
++ void HomepageButton()
++ void ReportButton()
++ void ScadenzeButton()
+~ void portafoglioButton()
+~ void famigliaButton()
++ void btnLogout()
++ void toggleMenu()
++ void handleMouseClick(MouseEvent)
+}
+
+
+class smu.Controller.PortafoglioController {
++ Button nextWalletButton
++ Button previousWalletButton
+# Button addWalletButton
+# Button editWalletButton
+# Button deleteWalletButton
++ Button addTransactionInWalletButton
+- Label balanceLabel
+# Label walletNameLabel
+- Label currentWalletID
+- Label currentCardNumber
+- TableView<Transazione> transactionsTableView
+# TextField nomePortafoglio
+# ComboBox<String> IdPortafoglio
+# ComboBox<String> NumeroCarta
+# Button Conferma
+# List<Portafoglio> personalWallets
+# int currentWalletIndex
++ void initialize()
+# void loadUserWallet()
+# void loadUserCards()
+# void showWallet()
+- void loadTransactions(String)
+- void handleNextWallet()
+- void handlePreviousWallet()
++ void insertWallet()
++ void updateWallet()
++ void deleteWallet()
++ void insertTransactionInWallet()
+}
+
+
+class smu.Controller.AddProgrammazioneController {
+- ComboBox<String> CartaUtilizzata
+- ComboBox<String> Frequenza
+- DatePicker DataScadenza
+- DatePicker DataTermine
+- Button Conferma
+- TextField nomeProgrammazione
+- TextField Destinatario
+- TextField Importo
++ void initialize()
++ void addProgrammazione(ActionEvent)
+}
+
+
+class smu.Controller.AddTransactionInWalletController {
+- ComboBox<Portafoglio> idPortafoglio
+- ComboBox<String> idTransazione
+- TableView<Transazione> transactionsTableView
+- TableColumn<Transazione,String> idColumn
+- TableColumn<Transazione,String> tipoColumn
+- TableColumn<Transazione,Float> importoColumn
+- TableColumn<Transazione,String> dataColumn
+- TableColumn<Transazione,String> causaleColumn
+- TableColumn<Transazione,String> daAColumn
+- TableColumn<Transazione,String> categoriaColumn
+- String selectedWalletID
+- String transactionId
+- List<Transazione> transazioniList
++ void initialize()
+- void popolaComboBoxPortafogli()
+- void popolaComboBoxTransazioni()
+- void checkFormValidity()
+# void initializeTableView()
++ void portafoglioSelezionato(ActionEvent)
++ void inserisciTransazione()
+}
+
+
+class smu.Controller.EditProgrammazioneController {
+- ComboBox<String> nomeProgrammazione
+- ComboBox<String> CartaUtilizzata
+- TextField Destinatario
+- TextField Importo
+- ComboBox<String> Frequenza
+- DatePicker DataScadenza
+- DatePicker DataTermine
+- Button Conferma
+- SpeseProgrammateDAO speseProgrammateDAO
+- List<SpeseProgrammate> ListaSpese
++ void initialize()
+- void rimepiComboBox(List<SpeseProgrammate>)
++ void changeProgrammazione(ActionEvent)
+}
+
+
+class smu.Controller.AddFamigliaController {
++ TextField nomeFamiglia
++ Button ConfermaNew
++ TextField usernameNuovoUtente
++ void createFamily(ActionEvent)
+- void addUserToFamily(Integer,String)
+}
+
+
+class smu.Controller.SpeseProgrammateController {
+- TableView<SpeseProgrammate> TabellaProgrammazioni
+- TableColumn<SpeseProgrammate,String> destinatarioColumn
+- TableColumn<SpeseProgrammate,Boolean> statoColumn
+- TableColumn<SpeseProgrammate,String> cartaColumn
+- TableColumn<SpeseProgrammate,Float> importoColumn
+- TableColumn<SpeseProgrammate,String> dataColumn
+- TableColumn<SpeseProgrammate,String> dataTermineColumn
+- TableColumn<SpeseProgrammate,String> nomeColumn
+- TableColumn<SpeseProgrammate,String> frequenzaColumn
+- SpeseProgrammateDAO speseProgrammateDAO
+- Button deleteProgram
+- Button NewProgram
+- Button ChangeProgram
++ void initialize()
+# void initializeTableView()
+- void BottonePaga(SpeseProgrammate,Button)
++ void newProgrammazione(ActionEvent)
++ void changeProgrammazione(ActionEvent)
++ void deleteProgrammazione(ActionEvent)
+}
+
+
+class smu.Controller.DeletePortafoglioController {
+- String selectedWalletId
++ void initialize()
++ void removeWallet()
+- void loadWalletInfo()
+}
+
+
+
+
+smu.Controller.PortafoglioController <|-- smu.Controller.AddPortafoglioController
+smu.Controller.Controller <|-- smu.Controller.FamigliaController
+smu.Controller.AddFamigliaController <|-- smu.Controller.EditFamigliaController
+smu.Controller.PortafoglioController <|-- smu.Controller.EditPortafoglioController
+smu.Controller.HomepageController <|-- smu.Controller.AddTransactionController
+smu.Controller.Controller <|-- smu.Controller.LoginController
+smu.Controller.FamigliaController <|-- smu.Controller.LeaveFamigliaController
+smu.Controller.Controller <|-- smu.Controller.HomepageController
+smu.Controller.SpeseProgrammateController <|-- smu.Controller.DeleteProgrammazioneController
+smu.Controller.Controller <|-- smu.Controller.PortafoglioController
+smu.Controller.SpeseProgrammateController <|-- smu.Controller.AddProgrammazioneController
+smu.Controller.PortafoglioController <|-- smu.Controller.AddTransactionInWalletController
+smu.Controller.SpeseProgrammateController <|-- smu.Controller.EditProgrammazioneController
+smu.Controller.Controller <|-- smu.Controller.AddFamigliaController
+smu.Controller.Controller <|-- smu.Controller.SpeseProgrammateController
+smu.Controller.PortafoglioController <|-- smu.Controller.DeletePortafoglioController
+@enduml

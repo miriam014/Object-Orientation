@@ -1,0 +1,266 @@
+@startuml
+class smu.DTO.SpeseProgrammate {
+- int IdSpesa
+- String Periodicita
+- Date DataScadenza
+- float Importo
+- String Destinatario
+- Date FineRinnovo
+- String Descrizione
+- String NumeroCarta
+- boolean Stato
+- Button Paga
++ int getIdSpesa()
++ String getPeriodicita()
++ Date getDataScadenza()
++ float getImporto()
++ String getDestinatario()
++ Date getFineRinnovo()
++ String getDescrizione()
++ String getNumeroCarta()
++ boolean getStato()
++ Button getPaga()
++ void setIdSpesa(int)
++ void setPeriodicita(String)
++ void setDataScadenza(Date)
++ void setImporto(float)
++ void setDestinatario(String)
++ void setFineRinnovo(Date)
++ void setDescrizione(String)
++ void setNumeroCarta(String)
++ void setStato(boolean)
++ void setPaga(Button)
++ String toString()
+}
+
+
+class smu.DTO.Portafoglio {
+- String IdPortafoglio
+- String NomePortafoglio
+- float Saldo
+- String IdFamiglia
++ String getIdPortafoglio()
++ String getNomePortafoglio()
++ float getSaldo()
++ String getIdFamiglia()
++ void setIdPortafoglio(String)
++ void setNomePortafoglio(String)
++ void setSaldo(float)
++ void setIdFamiglia(String)
++ String toString()
+}
+
+
+class smu.DTO.Transazione {
+- String IDTransazione
+- String CRO
+- Float Importo
+- Date Data
+- Time Ora
+- String Causale
+- String TipoTransazione
+- String Mittente
+- String Destinatario
+- String NumeroCarta
+- String Categoria
++ String getIDTransazione()
++ String getCRO()
++ Float getImporto()
++ Date getData()
++ Time getOra()
++ String getCausale()
++ String getTipoTransazione()
++ String getMittente()
++ String getDestinatario()
++ String getCategoria()
++ void setIDTransazione(String)
++ void setCRO(String)
++ void setImporto(Float)
++ void setData(Date)
++ void setOra(Time)
++ void setCausale(String)
++ void setTipoTransazione(String)
++ void setMittente(String)
++ void setDestinatario(String)
++ void setCategoria(String)
++ String getNumeroCarta()
++ void setNumeroCarta(String)
++ String toString()
+}
+
+
+class smu.Database {
+- {static} Connection instance
++ {static} Connection getConnection()
++ {static} void cleanConnection()
+}
+
+
+class smu.DTO.Famiglia {
+- Integer IdFamiglia
+- String NomeFamiglia
++ Integer getIdFamiglia()
++ String getNomeFamiglia()
++ void setIdFamiglia(Integer)
++ void setNomeFamiglia(String)
++ String toString()
+}
+
+
+class smu.Sessione {
+- {static} Sessione istanza
+- Utente utenteLoggato
+- List<Carta> carte
+- List<Portafoglio> personalWallets
+- List<Portafoglio> familiarWallets
+- List<Famiglia> famiglie
+- Carta cartaSelezionata
++ {static} Sessione getInstance()
++ void setUtenteLoggato(Utente)
++ Utente getUtenteLoggato()
+- void loadUserCards()
+- void loadUserPersonalWallets()
+- void loadUserFamiliarWallets()
++ void loadUserFamily()
++ List<Carta> getCarteUtente()
++ List<Portafoglio> getPersonalWallets()
++ List<Famiglia> getFamilyByUsername()
++ void setCartaSelezionata(Carta)
++ Carta getCartaSelezionata()
+}
+
+
+class smu.DTO.ContoCorrente {
+- String NumeroConto
+- String IBAN
+- float Saldo
+- String NomeBanca
+- String BIC
+- String Username
++ String getNumeroConto()
++ String getIBAN()
++ float getSaldo()
++ String getNomeBanca()
++ String getBIC()
++ String getUsername()
++ void setNumeroConto(String)
++ void setIBAN(String)
++ void setSaldo(float)
++ void setNomeBanca(String)
++ void setBIC(String)
++ void setUsername(String)
++ String toString()
+}
+
+
+class smu.DTO.Categoria {
+- String NomeCategoria
+- String ParoleChiavi
++ String getNomeCategoria()
++ String getParoleChiavi()
++ void setNomeCategoria(String)
++ void setParoleChiavi(String)
++ String toString()
+}
+
+
+class smu.DTO.TransazioneInPortafoglio {
+- String IdTransazione
+- String IdPortafoglio
++ String getIdTransazione()
++ String getIdPortafoglio()
++ void setIdTransazione(String)
++ void setIdPortafoglio(String)
++ String toString()
+}
+
+
+class smu.DTO.UtentiInPortafogli {
+- String NomeUtente
+- String IdPortafoglio
++ String getNomeUtente()
++ void setNomeUtente(String)
++ String getIdPortafoglio()
++ void setIdPortafoglio(String)
++ String toString()
+}
+
+
+class smu.DTO.Carta {
+- String NumeroCarta
+- String NomeCarta
+- Date Scadenza
+- float Saldo
+- String TipoCarta
+- float Plafond
+- String CVV
+- String NumeroConto
++ String getNumeroCarta()
++ String getNomeCarta()
++ Date getScadenza()
++ float getSaldo()
++ String getTipoCarta()
++ float getPlafond()
++ String getCVV()
++ String getNumeroConto()
++ void setNumeroCarta(String)
++ void setNomeCarta(String)
++ void setScadenza(Date)
++ void setSaldo(float)
++ void setTipoCarta(String)
++ void setPlafond(float)
++ void setCVV(String)
++ void setNumeroConto(String)
++ String toString()
+}
+
+
+class smu.DTO.AssociazioneCartaPortafoglio {
+- int IdPortafoglio
+- String NumeroCarta
++ int getIdPortafoglio()
++ void setIdPortafoglio(int)
++ String getNumeroCarta()
++ void setNumeroCarta(String)
+}
+
+
+class smu.DTO.Utente {
+- String Username
+- String Nome
+- String Cognome
+- String Telefono
+- String Email
+- String Password
++ String getUsername()
++ void setUsername(String)
++ String getNome()
++ void setNome(String)
++ String getCognome()
++ void setCognome(String)
++ String getTelefono()
++ void setTelefono(String)
++ String getEmail()
++ void setEmail(String)
++ String getPassword()
++ void setPassword(String)
++ String toString()
+}
+
+
+class smu.Main {
+- {static} Stage primaryStage
+- {static} double currentWidth
+- {static} double currentHeight
+- {static} boolean firstPageAfterLogin
++ {static} void main(String[])
++ {static} Window getPrimaryStage()
++ void start(Stage)
++ {static} void setRoot(String)
+}
+
+
+
+
+javafx.application.Application <|-- smu.Main
+@enduml

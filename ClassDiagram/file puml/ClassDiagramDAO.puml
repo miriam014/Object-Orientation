@@ -1,0 +1,192 @@
+@startuml
+interface smu.DAO.UtentiInFamiglieDAO {
+~ List<String> getUsersByFamilyId(Integer)
+~ void removeUserFromFamily(String,Integer)
+~ void addUserToFamily(Integer,String)
+}
+
+interface smu.DAO.FamigliaDAO {
+~ boolean insert(Famiglia)
+~ boolean update(Famiglia)
+~ boolean delete(Integer)
+~ Famiglia getByID(Integer)
+~ List<Famiglia> getByUsername(String)
+}
+
+class smu.DAOImplementation.TransazioneInPortafoglioDAOimp {
++ boolean insert(TransazioneInPortafoglio)
++ boolean delete(TransazioneInPortafoglio)
++ boolean update(TransazioneInPortafoglio)
++ Integer getPortafoglioByIdTransazione(String)
++ List<String> getTransazioniInPortafoglio(String)
+}
+
+class smu.DAOImplementation.UtenteDAOimp {
++ boolean insert(Utente)
++ boolean update(Utente)
++ boolean delete(String)
++ Utente getByUsername(String)
++ Utente checkCredentials(String,String)
+}
+
+interface smu.DAO.TransazioneInPortafoglioDAO {
++ boolean insert(TransazioneInPortafoglio)
++ boolean delete(TransazioneInPortafoglio)
++ boolean update(TransazioneInPortafoglio)
++ Integer getPortafoglioByIdTransazione(String)
++ List<String> getTransazioniInPortafoglio(String)
+}
+
+class smu.DAOImplementation.PortafoglioDAOimp {
++ boolean insert(Portafoglio)
++ boolean update(Portafoglio)
++ boolean delete(String)
++ Portafoglio getByID(String)
++ List<Portafoglio> getPersonalByUsername(String)
++ List<Portafoglio> getFamiliarByUsername(String)
++ List<Portafoglio> getByIdFamiglia(Integer)
++ String getCardNumberByWalletID(String)
+}
+
+interface smu.DAO.ContoCorrenteDAO {
+~ boolean insert(ContoCorrente)
+~ boolean update(ContoCorrente)
+~ boolean delete(String)
+~ ContoCorrente getByAccountNumber(String)
+~ List<ContoCorrente> getByUsername(String)
+}
+
+class smu.DAOImplementation.UtentiInFamiglieDAOimp {
++ List<String> getUsersByFamilyId(Integer)
++ void removeUserFromFamily(String,Integer)
++ void addUserToFamily(Integer,String)
+}
+
+class smu.DAOImplementation.CartaDAOimp {
++ boolean insert(Carta)
++ boolean update(Carta)
++ boolean delete(String)
++ Carta getByNumeroCarta(String)
++ List<Carta> getCardsByUsername(String)
+}
+
+class smu.DAOImplementation.CategoriaDAOimp {
++ boolean insert(Categoria)
++ boolean update(Categoria)
++ boolean delete(String)
++ List<String> getAllCategorie()
+}
+
+class smu.DAOImplementation.TransazioneDAOimp {
++ boolean insert(Transazione)
++ boolean update(Transazione)
++ boolean delete(String)
++ Transazione getByID(String)
++ List<Transazione> getByCardNumber(String,String)
++ List<Transazione> getByCategory(String)
++ List<Transazione> getByWalletId(String)
+}
+
+interface smu.DAO.AssociazioneCartaPortafoglioDAO {
++ boolean insert(AssociazioneCartaPortafoglio)
++ boolean delete(AssociazioneCartaPortafoglio)
++ boolean update(AssociazioneCartaPortafoglio)
++ String getCardNumberByID(String)
+}
+
+interface smu.DAO.UtenteDAO {
+~ boolean insert(Utente)
+~ boolean update(Utente)
+~ boolean delete(String)
+~ Utente getByUsername(String)
+~ Utente checkCredentials(String,String)
+}
+
+class smu.DAOImplementation.ContoCorrenteDAOimp {
++ boolean insert(ContoCorrente)
++ boolean update(ContoCorrente)
++ boolean delete(String)
++ ContoCorrente getByAccountNumber(String)
++ List<ContoCorrente> getByUsername(String)
+}
+
+interface smu.DAO.SpeseProgrammateDAO {
+~ boolean insert(SpeseProgrammate)
+~ boolean update(SpeseProgrammate)
+~ boolean delete(Integer)
+~ SpeseProgrammate getByID(String)
+~ List<SpeseProgrammate> getByUsername(String)
+}
+
+class smu.DAOImplementation.FamigliaDAOimp {
++ boolean insert(Famiglia)
++ boolean update(Famiglia)
++ boolean delete(Integer)
++ Famiglia getByID(Integer)
++ List<Famiglia> getByUsername(String)
+}
+
+interface smu.DAO.CategoriaDAO {
+~ boolean insert(Categoria)
+~ boolean update(Categoria)
+~ boolean delete(String)
+}
+
+class smu.DAOImplementation.SpeseProgrammateDAOimp {
++ boolean insert(SpeseProgrammate)
++ boolean update(SpeseProgrammate)
++ boolean delete(Integer)
++ SpeseProgrammate getByID(String)
++ List<SpeseProgrammate> getByUsername(String)
+}
+
+interface smu.DAO.CartaDAO {
+~ boolean insert(Carta)
+~ boolean update(Carta)
+~ boolean delete(String)
+~ Carta getByNumeroCarta(String)
+~ List<Carta> getCardsByUsername(String)
+}
+
+class smu.DAOImplementation.AssociazioneCartaPortafoglioDAOimp {
++ boolean insert(AssociazioneCartaPortafoglio)
++ boolean delete(AssociazioneCartaPortafoglio)
++ boolean update(AssociazioneCartaPortafoglio)
++ String getCardNumberByID(String)
+}
+
+interface smu.DAO.PortafoglioDAO {
+~ boolean insert(Portafoglio)
+~ boolean update(Portafoglio)
+~ boolean delete(String)
+~ Portafoglio getByID(String)
+~ List<Portafoglio> getFamiliarByUsername(String)
+~ List<Portafoglio> getPersonalByUsername(String)
+~ List<Portafoglio> getByIdFamiglia(Integer)
+~ String getCardNumberByWalletID(String)
+}
+
+interface smu.DAO.TransazioneDAO {
+~ boolean insert(Transazione)
+~ boolean update(Transazione)
+~ boolean delete(String)
+~ Transazione getByID(String)
+~ List<Transazione> getByCardNumber(String,String)
+~ List<Transazione> getByCategory(String)
+~ List<Transazione> getByWalletId(String)
+}
+
+
+
+smu.DAO.TransazioneInPortafoglioDAO <|.. smu.DAOImplementation.TransazioneInPortafoglioDAOimp
+smu.DAO.UtenteDAO <|.. smu.DAOImplementation.UtenteDAOimp
+smu.DAO.PortafoglioDAO <|.. smu.DAOImplementation.PortafoglioDAOimp
+smu.DAO.UtentiInFamiglieDAO <|.. smu.DAOImplementation.UtentiInFamiglieDAOimp
+smu.DAO.CartaDAO <|.. smu.DAOImplementation.CartaDAOimp
+smu.DAO.CategoriaDAO <|.. smu.DAOImplementation.CategoriaDAOimp
+smu.DAO.TransazioneDAO <|.. smu.DAOImplementation.TransazioneDAOimp
+smu.DAO.ContoCorrenteDAO <|.. smu.DAOImplementation.ContoCorrenteDAOimp
+smu.DAO.FamigliaDAO <|.. smu.DAOImplementation.FamigliaDAOimp
+smu.DAO.SpeseProgrammateDAO <|.. smu.DAOImplementation.SpeseProgrammateDAOimp
+smu.DAO.AssociazioneCartaPortafoglioDAO <|.. smu.DAOImplementation.AssociazioneCartaPortafoglioDAOimp
+@enduml
