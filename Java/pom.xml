@@ -9,6 +9,12 @@
   <name>Progetto-OO</name>
   <url>https://maven.apache.org</url>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+
+
     <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -62,6 +68,8 @@
                   <argument>-Dprism.order=sw</argument>
                   <argument>-Djavafx.embed.singleThread=true</argument>
                   <argument>-XstartOnFirstThread</argument>
+                    <argument>--module</argument>
+                    <argument>smu.Progetto.OO/smu.Main</argument>
                 </arguments>
           </configuration>
               <executions>
@@ -81,6 +89,7 @@
               <configuration>
                   <source>23</source>
                   <target>23</target>
+                  <encoding>UTF-8</encoding>
               </configuration>
           </plugin>
           <plugin>
