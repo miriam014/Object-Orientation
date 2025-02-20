@@ -5,7 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df4d01a2-e17b-4881-9bee-4a47bce15a26" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Database/Database.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../Database/Database.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/DTO/Portafoglio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smu/DTO/Portafoglio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smu/TO-DO" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/addFamiglia.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/addFamiglia.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/addProgrammazione.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/addProgrammazione.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/addTransaction.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/addTransaction.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/addTransactionInWallet.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/addTransactionInWallet.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/addWallet.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/addWallet.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/deleteProgrammazione.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/deleteProgrammazione.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/deleteWallet.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/deleteWallet.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/editFamiglia.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/editFamiglia.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/editProgrammazione.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/editProgrammazione.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/editWallet.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/editWallet.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/famiglia.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/famiglia.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/homepage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/homepage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/leaveFamiglia.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/leaveFamiglia.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/menu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/portafoglio.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/portafoglio.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/report.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/report.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/interfaccia/speseProgrammate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interfaccia/speseProgrammate.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Progetto-OO-1.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/smu/Controller/HomepageController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/smu/Controller/PortafoglioController.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,55 +107,6 @@
     ]
   }
 }</component>
-  <component name="RunManager">
-    <configuration name="Progetto-OO " type="MavenRunConfiguration" factoryName="Maven">
-      <MavenSettings>
-        <option name="myGeneralSettings" />
-        <option name="myRunnerSettings">
-          <MavenRunnerSettings>
-            <option name="delegateBuildToMaven" value="false" />
-            <option name="environmentProperties">
-              <map />
-            </option>
-            <option name="jreName" value="#USE_PROJECT_JDK" />
-            <option name="mavenProperties">
-              <map />
-            </option>
-            <option name="passParentEnv" value="true" />
-            <option name="runMavenInBackground" value="true" />
-            <option name="skipTests" value="false" />
-            <option name="vmOptions" value="--module-path $USER_HOME$/javafx-sdk-23/lib --add-modules javafx.controls,javafx.fxml " />
-          </MavenRunnerSettings>
-        </option>
-        <option name="myRunnerParameters">
-          <MavenRunnerParameters>
-            <option name="cmdOptions" />
-            <option name="profiles">
-              <set />
-            </option>
-            <option name="goals">
-              <list>
-                <option value="clean" />
-                <option value="install" />
-                <option value="exec:java" />
-              </list>
-            </option>
-            <option name="multimoduleDir" />
-            <option name="pomFileName" />
-            <option name="profilesMap">
-              <map />
-            </option>
-            <option name="projectsCmdOptionValues">
-              <list />
-            </option>
-            <option name="resolveToWorkspace" value="false" />
-            <option name="workingDirPath" value="$PROJECT_DIR$" />
-          </MavenRunnerParameters>
-        </option>
-      </MavenSettings>
-      <method v="2" />
-    </configuration>
-  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -195,6 +172,7 @@
       <workItem from="1739886993941" duration="322000" />
       <workItem from="1739887328835" duration="1218000" />
       <workItem from="1739888707924" duration="2501000" />
+      <workItem from="1740041914997" duration="3807000" />
     </task>
     <servers />
   </component>

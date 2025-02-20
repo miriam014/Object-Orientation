@@ -23,14 +23,14 @@ public class AddPortafoglioController extends PortafoglioController{
         Conferma.setDisable(true);
 
         nomePortafoglio.textProperty().addListener((observable, oldValue, newValue) -> {
-            checkFormValidity(); // Verifica la validità del modulo ogni volta che il nome cambia
+            checkFormValidity();
         });
 
 
         NumeroCarta.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 selectedCardNumber = newValue; // Salva il numero della carta selezionata
-                System.out.println("Carta selezionata: " + selectedCardNumber); // Debugging
+                System.out.println("Carta selezionata: " + selectedCardNumber);
                 checkFormValidity();
             }
         });

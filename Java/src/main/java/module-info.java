@@ -1,4 +1,3 @@
-// FORSE NON SERVE
 module smu.Progetto.OO {
     requires java.sql;
     requires javafx.controls;
@@ -8,5 +7,8 @@ module smu.Progetto.OO {
     requires javafx.base;
     requires org.postgresql.jdbc;
 
+    opens smu to javafx.graphics, javafx.fxml;
     opens smu.Controller to javafx.fxml;
+    opens smu.DTO to javafx.base;
+    exports smu;
 }

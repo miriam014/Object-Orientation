@@ -1,8 +1,0 @@
-1. L'IDFamiglia deve essere una stringa o un intero?
-2. TipoCarta è un'enumerazione, ma è dichiata stringa. Bisogna fare un menu a tendina.
-3. Cambiare Nome in NomeCarta sul database.
-4. Potrebbe essere necessario dichiarare alcuni float come oggetti, e quindi con la F grande (Float)
-   per utilizzare i metodi associati (ad esempio per confrontare due valori).
-5. Controllare se nelle classi DAOimp, nei metodi delete è necessario utilizzare "CASCADE" per eliminare
-   le righe collegate.
-6. Cambiare le insert di Transazione nel database (mancano i NomiCategoria in tutte le insert)

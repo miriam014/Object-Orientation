@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="579.0" prefWidth="477.0" stylesheets="@stileGenerale.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smu.Controller.EditFamigliaController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="579.0" prefWidth="477.0" stylesheets="@stileGenerale.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smu.Controller.EditFamigliaController">
     <top>
         <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="481.0" style="-fx-background-color: #008080;" BorderPane.alignment="CENTER">
                 <Label layoutX="14.0" layoutY="4.0" prefHeight="24.0" prefWidth="228.0" style="-fx-text-fill: #FFFFFF; -fx-font-size: 16px;" text="Modifica Famiglia" textAlignment="CENTER" textFill="WHITE">
