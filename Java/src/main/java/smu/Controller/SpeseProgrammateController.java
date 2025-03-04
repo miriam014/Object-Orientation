@@ -7,15 +7,18 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import smu.Control.SpeseProgrammateControl;
 import smu.Sessione;
+import smu.DAO.SpeseProgrammateDAO;
+import smu.DAOImplementation.SpeseProgrammateDAOimp;
 import smu.DTO.SpeseProgrammate;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
 
+
 public class SpeseProgrammateController extends Controller {
+
 
     @FXML private TableView<SpeseProgrammate> TabellaProgrammazioni;
     @FXML private TableColumn<SpeseProgrammate, String> destinatarioColumn;
@@ -27,15 +30,15 @@ public class SpeseProgrammateController extends Controller {
     @FXML private TableColumn<SpeseProgrammate, String> nomeColumn;
     @FXML private TableColumn<SpeseProgrammate, String> frequenzaColumn;
 
-    private SpeseProgrammateControl speseProgrammateControl; // Il servizio che contiene la logica di business
-
+    private SpeseProgrammateDAO speseProgrammateDAO;
     @FXML private Button deleteProgram;
     @FXML private Button NewProgram;
     @FXML private Button ChangeProgram;
 
+
     @FXML
     public void initialize() {
-        speseProgrammateControl = new SpeseProgrammateControl(); // Inizializza il servizio
+        speseProgrammateDAO = new SpeseProgrammateDAOimp();
 
         // Imposta i valori per le colonne della tabella
         destinatarioColumn.setCellValueFactory(new PropertyValueFactory<>("Destinatario"));
@@ -48,29 +51,32 @@ public class SpeseProgrammateController extends Controller {
         statoColumn.setCellValueFactory(new PropertyValueFactory<>("Paga"));
 
         initializeTableView();
+
     }
+
 
     @FXML
     protected void initializeTableView() {
         try {
             String username = Sessione.getInstance().getUtenteLoggato().getUsername();
-            List<SpeseProgrammate> ListaSpese = speseProgrammateControl.getSpeseProgrammateByUsername(username);
+            List<SpeseProgrammate> ListaSpese = speseProgrammateDAO.getByUsername(username);
 
             TabellaProgrammazioni.getItems().clear();
 
             for (SpeseProgrammate spesa : ListaSpese) {
-                // Se la data di termine è passata, elimina la spesa programmata
-                if(LocalDate.now().isAfter(spesa.getFineRinnovo().toLocalDate())) {
-                    speseProgrammateControl.deleteSpesa(spesa.getIdSpesa());
+                //se la data di termine è passata, elimino la spesa programmata
+                if( LocalDate.now().isAfter(spesa.getFineRinnovo().toLocalDate())){
+                    speseProgrammateDAO.delete(spesa.getIdSpesa());
                     continue;
                 }
 
-                // Aggiungi la spesa alla tabella
+                // Aggiunge la spesa alla tabella se non è sttat eliminata prima
                 TabellaProgrammazioni.getItems().add(spesa);
+
 
                 // Configura l'evento per ogni bottone della colonna "Stato"
                 Button bottone = spesa.getPaga();
-                if (spesa.getStato()) { // Se la spesa è già stata pagata
+                if (spesa.getStato()) { //se la spesa era già stata pagata la segna come tale
                     bottone.setStyle("-fx-background-color: green; -fx-text-fill: white;");
                     bottone.setText("Pagato");
                     bottone.setDisable(true); // Disabilita il bottone se già pagato
@@ -90,26 +96,45 @@ public class SpeseProgrammateController extends Controller {
 
     @FXML
     private void BottonePaga(SpeseProgrammate spesa, Button bottone) {
-        try {
-            boolean pagamentoRiuscito = speseProgrammateControl.pagaSpesa(spesa);
+        // Ottieni la data di rinnovo dalla spesa
+        LocalDate dataRinnovo = spesa.getDataScadenza().toLocalDate();
+        LocalDate dataAttuale = LocalDate.now(); // Data di oggi
 
-            if (pagamentoRiuscito) {
-                bottone.setStyle("-fx-background-color: green; -fx-text-fill: white;");
-                bottone.setText("Pagato");
-                bottone.setDisable(true); // Disabilita il bottone dopo il pagamento
+        if(dataAttuale.isAfter(dataRinnovo) || dataAttuale.isEqual(dataRinnovo)) {
+            bottone.setStyle("-fx-background-color: green; -fx-text-fill: white;");
+            bottone.setText("Pagato");
+            bottone.setDisable(true);   //in modo che non venga pagata di nuovo la spesa prima del dovuto
+
+            // Aggiorna lo stato della spesa
+            spesa.setStato(true);
+
+            try {
+                // Usa l'oggetto DAO per aggiornare il database
+                boolean updated = speseProgrammateDAO.update(spesa);
+                if (!updated) {
+                    System.out.println("Errore durante l'update nel database.");
+                } else {
+                    System.out.println("Pagamento spesa programmata: " + spesa.getIdSpesa());
+                }
                 initializeTableView();
-            } else {
-                // Mostra l'alert se il pagamento non è consentito
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Pagamento non consentito");
-                alert.setHeaderText("Attenzione!");
-                alert.setContentText("Non puoi effettuare il pagamento prima della data di rinnovo.");
-                alert.showAndWait();
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } else {
+            // Se il pagamento non è consentito, mostra un alert all'utente
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Pagamento non consentito");
+            alert.setHeaderText("Attenzione!");
+            alert.setContentText("La data attuale è precedente alla data di inizio rinnovo.\n"
+                    + "Non puoi effettuare il pagamento in questo momento:  attendere la data di inizio rinnovo.");
+            alert.showAndWait();
+
+            // Se la data attuale è maggiore o uguale alla data di rinnovo, non permettere il pagamento
+            System.out.println("Pagamento non consentito. La data attuale è precedente alla data di inizio rinnovo.");
+            bottone.setDisable(true);
         }
     }
+
 
     @FXML
     public void newProgrammazione(ActionEvent actionEvent) {
