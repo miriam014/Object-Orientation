@@ -29,7 +29,7 @@ public class AddPortafoglioController extends PortafoglioController{
 
         NumeroCarta.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
-                selectedCardNumber = newValue; // Salva il numero della carta selezionata
+                selectedCardNumber = newValue;
                 System.out.println("Carta selezionata: " + selectedCardNumber);
                 checkFormValidity();
             }

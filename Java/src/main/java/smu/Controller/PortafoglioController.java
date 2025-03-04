@@ -124,8 +124,8 @@ public class PortafoglioController extends Controller {
 
     @FXML
     private void handleNextWallet() throws SQLException {
-        System.out.println("Next wallet button clicked!"); // Verifica che questo venga eseguito
-        currentWalletIndex++; // Incrementa l'indice della carta
+        System.out.println("Next wallet button clicked!");
+        currentWalletIndex++;
         if (currentWalletIndex >= personalWallets.size()) { // Se l'indice supera il numero di carte
             currentWalletIndex = 0; // Torna alla prima carta
         }

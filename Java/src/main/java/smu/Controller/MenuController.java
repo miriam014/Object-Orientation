@@ -22,14 +22,6 @@ public class MenuController {
 
 
     @FXML private Button toggleButton;
-    @FXML private Button scadenzeButton;
-    @FXML private Button homepageButton;
-    @FXML private Button portafoglioButton;
-    @FXML private Button famigliaButton;
-    @FXML private Button walletButton;
-    @FXML private Button transactionsButton;
-    @FXML private Button programmazioneButton;
-    @FXML private Button logoutButton;
     @FXML private VBox sidePanel;
 
     private boolean isMenuVisible = false; // Stato del menu inizializzato a false
@@ -104,7 +96,7 @@ public class MenuController {
             try {
                 Main.setRoot("login");
             } catch (IOException e) {
-                e.printStackTrace(); // Gestisci l'eccezione in caso di errore nel caricamento
+                e.printStackTrace();
             }
         }
     }

@@ -6,7 +6,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import smu.DAOImplementation.SpeseProgrammateDAOimp; // Corretto l'import
+import smu.DAOImplementation.SpeseProgrammateDAOimp;
 import smu.DTO.Carta;
 import smu.DTO.SpeseProgrammate;
 import smu.Sessione;
@@ -44,8 +44,8 @@ public class AddProgrammazioneController extends SpeseProgrammateController {
         String destinatario = Destinatario.getText().trim();
         String importo = Importo.getText().trim();
         String frequenza = Frequenza.getValue();
-        Date dataScadenza = null;
-        Date dataTermine = null;
+        Date dataScadenza;
+        Date dataTermine;
 
         // Controllo se tutti i campi sono stati compilati
         if (nome.isEmpty() || carta == null || destinatario.isEmpty() || importo.isEmpty() ||
@@ -56,13 +56,12 @@ public class AddProgrammazioneController extends SpeseProgrammateController {
         dataScadenza = Date.valueOf(DataScadenza.getValue());
         dataTermine = Date.valueOf(DataTermine.getValue());
 
-        float importoFloat;
+
         try {
-            importo = importo.replace(",", "."); // Gestione della virgola
-            importoFloat = Float.parseFloat(importo); // Prova a convertire l'importo in float
+            importo = importo.replace(",", ".");
         } catch (NumberFormatException e) {
             showError("Importo non valido. Inserisci un valore numerico.");
-            return; // Se l'importo non è valido, mostra il messaggio di errore e ferma l'operazione
+            return;
         }
         // Controllo che le date non siano precedenti alla data attuale
         LocalDate oggi = LocalDate.now();

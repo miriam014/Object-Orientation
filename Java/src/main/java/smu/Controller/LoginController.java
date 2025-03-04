@@ -6,8 +6,8 @@ import javafx.scene.control.TextField;
 
 import smu.DAO.UtenteDAO;
 import smu.DAOImplementation.UtenteDAOimp;
-import smu.DTO.Utente; // Importa la classe Utente
-import smu.Sessione; // Importa la classe Sessione
+import smu.DTO.Utente;
+import smu.Sessione;
 import smu.Main;
 
 import java.io.IOException;
@@ -20,7 +20,6 @@ public class LoginController extends Controller {
 
     private UtenteDAO userDAO;
 
-    // Metodo di inizializzazione chiamato automaticamente da JavaFX
     @FXML
     public void initialize() {
         userDAO = new UtenteDAOimp(); // Inizializza il DAO

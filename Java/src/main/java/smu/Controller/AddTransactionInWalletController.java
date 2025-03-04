@@ -75,13 +75,12 @@ public class AddTransactionInWalletController extends PortafoglioController {
             Sessione sessione = Sessione.getInstance();
             List<Portafoglio> personalWallets = sessione.getPersonalWallets();
 
-            // Popoliamo la ComboBox con i portafogli dell'utente
+            // Popolo la ComboBox con i portafogli dell'utente
             ObservableList<Portafoglio> observableWallets = FXCollections.observableArrayList(personalWallets);
             idPortafoglio.setItems(observableWallets);
 
-
             // Usa il setCellFactory per visualizzare solo il nome del portafoglio
-            idPortafoglio.setCellFactory(param -> new ListCell<Portafoglio>() {
+            idPortafoglio.setCellFactory(param -> new ListCell<>() {
                 @Override
                 protected void updateItem(Portafoglio portafoglio, boolean empty) {
                     super.updateItem(portafoglio, empty);
@@ -94,7 +93,7 @@ public class AddTransactionInWalletController extends PortafoglioController {
             });
 
             // Impostiamo anche il comportamento quando un elemento viene selezionato
-            idPortafoglio.setButtonCell(new ListCell<Portafoglio>() {
+            idPortafoglio.setButtonCell(new ListCell<>() {
                 @Override
                 protected void updateItem(Portafoglio portafoglio, boolean empty) {
                     super.updateItem(portafoglio, empty);
@@ -105,8 +104,6 @@ public class AddTransactionInWalletController extends PortafoglioController {
                     }
                 }
             });
-
-
 
         } catch (Exception e) {
             e.printStackTrace();

@@ -19,27 +19,16 @@ import java.util.List;
 
 public class HomepageController extends Controller {
 
-    @FXML public VBox SaldoDisponibile;
-    @FXML private Label balanceLabel; // Etichetta del saldo
-    @FXML private Label cardNameLabel; // Etichetta del numero della carta
-    @FXML private Label cardNumberLabel; // Etichetta del nome della carta
-    @FXML private Label cardTypeLabel; // Etichetta per il tipo di carta
-    @FXML private Label expiryDateLabel; // Etichetta per la data di scadenza
-    @FXML private Button previousCardButton; // Pulsante per la carta precedente
-    @FXML private Button nextCardButton; // Pulsante per la prossima carta
-    @FXML private Button statisticaButton; // Pulsante per passare al report
-    @FXML private Pane headerPane;
+    @FXML private Label balanceLabel;
+    @FXML private Label cardNameLabel;
+    @FXML private Label cardNumberLabel;
+    @FXML private Label cardTypeLabel;
+    @FXML private Label expiryDateLabel;
+    @FXML private Button nextCardButton;
+    @FXML private Button statisticaButton;
     @FXML public VBox DatiCarta;
     @FXML private Button addTransactionButton;
-
-
     @FXML public TableView<Transazione> transactionsTableView;
-    @FXML private TableColumn<Transazione, String> tipoColumn;
-    @FXML private TableColumn<Transazione, Double> importoColumn;
-    @FXML private TableColumn<Transazione, String> dataColumn;
-    @FXML private TableColumn<Transazione, String> causaleColumn;
-    @FXML private TableColumn<Transazione, String> daAColumn;
-    @FXML private TableColumn<Transazione, String> categoriaColumn;
 
 
     private List<Carta> carteUtente;

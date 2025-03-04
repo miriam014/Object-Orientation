@@ -44,7 +44,6 @@ public class DeletePortafoglioController extends PortafoglioController {
         PortafoglioDAO portafoglioDAO = new PortafoglioDAOimp();
         portafoglioDAO.delete(selectedWalletId);
 
-        // Chiudi la finestra corrente
         Stage stage = (Stage) nomePortafoglio.getScene().getWindow();
         stage.close();
     }

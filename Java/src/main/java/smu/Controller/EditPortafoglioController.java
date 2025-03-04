@@ -48,7 +48,6 @@ public class EditPortafoglioController extends PortafoglioController {
         });
     }
 
-
     @FXML
     public void editWallet() throws SQLException {
 

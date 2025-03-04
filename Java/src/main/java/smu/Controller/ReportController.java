@@ -35,7 +35,6 @@ public class ReportController {
     @FXML private BarChart<String, Number> statisticheUscite;
 
 
-
     @FXML
     private void initialize() {
         popolaComboBox();

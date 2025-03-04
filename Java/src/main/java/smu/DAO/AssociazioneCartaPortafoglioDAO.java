@@ -1,8 +1,6 @@
 package smu.DAO;
 
 import smu.DTO.AssociazioneCartaPortafoglio;
-import smu.DTO.Carta;
-
 import java.sql.SQLException;
 
 public interface AssociazioneCartaPortafoglioDAO {

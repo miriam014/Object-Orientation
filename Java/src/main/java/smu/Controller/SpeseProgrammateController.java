@@ -70,7 +70,7 @@ public class SpeseProgrammateController extends Controller {
                     continue;
                 }
 
-                // Aggiunge la spesa alla tabella se non è sttat eliminata prima
+                // Aggiunge la spesa alla tabella se non è stata eliminata prima
                 TabellaProgrammazioni.getItems().add(spesa);
 
 

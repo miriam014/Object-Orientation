@@ -66,7 +66,7 @@ public class LeaveFamigliaController extends FamigliaController{
                     famigliaDAO.delete(idFamiglia);
                 }
 
-                // 2. Aggiornare la sessione
+                // 3. Aggiornare la sessione
                 Sessione.getInstance().loadUserFamily(); // Metodo da implementare in Sessione
 
                 Stage stage = (Stage) Conferma.getScene().getWindow();
