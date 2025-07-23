@@ -1,5 +1,4 @@
-# SavingMoneyUnina OOP2324_16
-
+# SavingMoneyUnina
 ## 📚 Informazioni generali
 Progetto realizzato per il corso di Object Orientation presso l’**Università degli Studi di Napoli Federico II**, anno accademico 2023–2024.
 Il progetto riutilizza il database sviluppato nel modulo di Basi di Dati e ne estende la logica applicativa secondo i principi della programmazione orientata agli oggetti.
