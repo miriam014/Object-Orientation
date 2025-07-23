@@ -109,8 +109,8 @@ public class ReportController {
         grafico.getData().clear(); // Pulisce i dati precedenti
         Carta cartaSelezionata = Sessione.getInstance().getCartaSelezionata();
         TransazioneDAOimp transazioneDAO = new TransazioneDAOimp();
-        List<Transazione> transazioni = new ArrayList<>();
 
+        List<Transazione> transazioni = new ArrayList<>();
         try {
             transazioni = transazioneDAO.getByCardNumber(cartaSelezionata.getNumeroCarta(), tipoTransazione);
         } catch (SQLException e) {
