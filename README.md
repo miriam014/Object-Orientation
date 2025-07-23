@@ -10,14 +10,10 @@ Le transazioni possono essere organizzate in specifici portafogli, che consenton
 Il sistema offre anche la gestione di spese ricorrenti, permettendo di programmare pagamenti periodici e segnarli come pagati, generando automaticamente le relative transazioni.
 È inoltre supportata una valuta aggiuntiva (USD), con conversione automatica in Euro prima della registrazione nel database.
 
---- 
-
 ## 🛠️ Tecnologie utilizzate
 Java
 PL/pgSQL
 CSS
-
----
 
 ## 👩‍💻 Autori
 D'Urso Fortunata
