@@ -16,6 +16,6 @@ PL/pgSQL
 CSS
 
 ## 👩‍💻 Autori
-D'Urso Fortunata
-Gaetano Miriam
-Gargiulo Giulia
+- D'Urso Fortunata
+- Gaetano Miriam
+- Gargiulo Giulia
